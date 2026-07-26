@@ -33,7 +33,7 @@ type AvatarChipSizeConfig = (typeof avatarChipSizeConfig)[AvatarChipSize];
 
 class MuiAvatarChip extends HTMLElement {
   static get observedAttributes() {
-    return ["primary", "secondary", "image", "label", "href", "target", "usage", "size"];
+    return ["primary", "secondary", "image", "label", "background", "background-color", "href", "target", "usage", "size"];
   }
 
   constructor() {
@@ -65,9 +65,13 @@ class MuiAvatarChip extends HTMLElement {
   private renderAvatar(size: string) {
     const image = this.getAttribute("image");
     const label = this.getAttribute("label") || this.getAttribute("primary") || "Profile";
+    const background = this.getAttribute("background");
+    const backgroundColor = this.getAttribute("background-color");
     const imageAttribute = image ? ` image="${this.escapeAttribute(image)}"` : "";
+    const backgroundAttribute = background ? ` background="${this.escapeAttribute(background)}"` : "";
+    const backgroundColorAttribute = backgroundColor ? ` background-color="${this.escapeAttribute(backgroundColor)}"` : "";
 
-    return `<mui-avatar size="${size}"${imageAttribute} label="${this.escapeAttribute(label)}"></mui-avatar>`;
+    return `<mui-avatar size="${size}"${imageAttribute}${backgroundAttribute}${backgroundColorAttribute} label="${this.escapeAttribute(label)}"></mui-avatar>`;
   }
 
   private syncSlottedTextSizes(sizeConfig: AvatarChipSizeConfig) {

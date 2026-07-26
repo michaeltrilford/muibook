@@ -4,7 +4,7 @@
   "attributes": [
     {
       "name": "has-card-slat-group",
-      "description": "Set when card slat group content exists, allowing the card body to tune internal spacing for grouped slats."
+      "description": "Set when card slat group content exists, allowing the card body to apply the current Card size inset to grouped slats."
     },
     {
       "name": "has-accordion-slat-group",

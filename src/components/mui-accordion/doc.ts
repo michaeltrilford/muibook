@@ -18,6 +18,8 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use to progressively reveal grouped or secondary content.",
+        "Use Accordion Block size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large; medium is the default.",
+        "Set level to match the surrounding document hierarchy; changing size does not change heading semantics.",
         "Can replace tables on small viewports when content is grouped by row.",
         "Ideal for mobile or narrow layouts where space is constrained.",
         "Stack, slat, or grid layouts can be used inside an accordion for custom structures.",
@@ -85,6 +87,16 @@ export const muiDocs: MuiDocs = {
           "description": "The block accordion is typically used within a page layout full-width to the parent container.",
           "list": [
             "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "accordion-block-sizes",
+          "title": "Accordion Block Sizes",
+          "description": "Compares heading typography, summary spacing, disclosure icon size, and detail spacing across the full Accordion Block size scale.",
+          "list": [
+            "Use size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large.",
+            "Use medium as the unchanged default baseline and smaller sizes for denser data-oriented layouts.",
+            "Set level from the document hierarchy independently from the visual size."
           ]
         },
         {

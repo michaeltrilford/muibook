@@ -162,6 +162,42 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
+        <story-card id="action-sizes" title="${storyMeta["action-sizes"].title}" description="${storyMeta["action-sizes"].description}" usage="${storyMeta["action-sizes"].usage}">
+          <mui-slat-group slot="body">
+            <mui-slat variant="action" size="x-small">
+              <mui-v-stack slot="start" space="var(--space-000)">
+                <mui-body size="x-small" weight="bold">Account details</mui-body>
+                <mui-body size="x-small" variant="secondary">Review your personal information</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+            <mui-slat variant="action" size="small">
+              <mui-v-stack slot="start" space="var(--space-000)">
+                <mui-body size="small" weight="bold">Account details</mui-body>
+                <mui-body size="small" variant="secondary">Review your personal information</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+            <mui-slat variant="action" size="medium">
+              <mui-v-stack slot="start" space="var(--space-000)">
+                <mui-body size="medium" weight="bold">Account details</mui-body>
+                <mui-body size="medium" variant="secondary">Review your personal information</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+            <mui-slat variant="action" size="large">
+              <mui-v-stack slot="start" space="var(--space-000)">
+                <mui-body size="large" weight="bold">Account details</mui-body>
+                <mui-body size="large" variant="secondary">Review your personal information</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+          </mui-slat-group>
+
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-slat variant=&quot;action&quot; size=&quot;x-small&quot;&gt;...&lt;/mui-slat&gt;<br />
+            &lt;mui-slat variant=&quot;action&quot; size=&quot;small&quot;&gt;...&lt;/mui-slat&gt;<br />
+            &lt;mui-slat variant=&quot;action&quot; size=&quot;medium&quot;&gt;...&lt;/mui-slat&gt;<br />
+            &lt;mui-slat variant=&quot;action&quot; size=&quot;large&quot;&gt;...&lt;/mui-slat&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card id="truncation-file-diff" title="${storyMeta["truncation-file-diff"].title}" description="${storyMeta["truncation-file-diff"].description}" usage="${storyMeta["truncation-file-diff"].usage}">
 
           <mui-slat slot="body" variant="action" col="minmax(0, 1fr) auto">
@@ -326,7 +362,7 @@ class storySlat extends HTMLElement {
               </mui-v-stack>
             </mui-slat>
 
-            <mui-card>
+            <mui-card size="medium">
               <mui-card-header>
                 <mui-heading size="3">Transactions</mui-heading>
                 <mui-body>Here’s a summary of recent transactions on your account.</mui-body>
@@ -334,13 +370,13 @@ class storySlat extends HTMLElement {
               <mui-card-body>
                 <mui-slat-group>
                   <mui-rule></mui-rule>
-                  <mui-slat variant="header">
+                  <mui-slat variant="header" size="medium">
                     <mui-heading slot="start" size="6">Today</mui-heading>
                     <mui-h-stack slot="end" alignX="end">
                       <mui-body size="small">22 July 2025</mui-body>
                     </mui-h-stack>
                   </mui-slat>
-                  <mui-slat variant="action">
+                  <mui-slat variant="action" size="medium">
                     <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="neutral">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
                     </mui-avatar>
@@ -353,9 +389,9 @@ class storySlat extends HTMLElement {
               </mui-card-body>
             </mui-card>
 
-            <mui-card>
-              <mui-card-body size="none">
-                <mui-slat variant="header">
+            <mui-card size="none">
+              <mui-card-body>
+                <mui-slat variant="header" size="x-small">
                   <mui-heading slot="start" size="6">Today</mui-heading>
                   <mui-h-stack slot="end" alignX="end">
                     <mui-body size="small">22 July 2025</mui-body>
@@ -363,7 +399,7 @@ class storySlat extends HTMLElement {
                 </mui-slat>
                 <mui-rule></mui-rule>
                 <mui-v-stack space="var(--space-000)">
-                  <mui-slat variant="action" radius="none">
+                  <mui-slat variant="action" size="x-small" radius="none">
                     <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="attention">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
                     </mui-avatar>
@@ -399,7 +435,7 @@ class storySlat extends HTMLElement {
             // CARD USE
             <br />
             <br />
-            &lt;mui-card&gt;<br>
+            &lt;mui-card size=&quot;medium&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Transactions&lt;/mui-heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Here&rsquo;s a summary of recent transactions on your account.&lt;/mui-body&gt;<br>
@@ -407,13 +443,13 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;header&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;header&quot; size=&quot;medium&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot=&quot;start&quot; size=&quot;6&quot;&gt;Today&lt;/mui-heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot;&gt;22 July 2025&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;action&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;action&quot; size=&quot;medium&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot=&quot;accessory&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size=&quot;small&quot;&gt;&lt;/mui-icon-left-sidebar&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br>
@@ -426,12 +462,12 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;<br />
             <br />
-            // CARD BODY SIZE NONE
+            // CARD SIZE NONE
             <br />
             <br />
-            &nbsp;&nbsp;&lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br /><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card size=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header" size="x-small"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;22 July 2025&lt;/mui-body&gt;<br />
@@ -439,7 +475,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" size="x-small" radius="none"&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot="accessory"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size="small"&gt;&lt;/mui-icon-left-sidebar&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br /><br />
@@ -1165,9 +1201,9 @@ class storySlat extends HTMLElement {
           usage="${storyMeta["card-size-none"].usage}"
         >
 
-          <mui-card slot="body">
-            <mui-card-body size="none">
-              <mui-slat variant="header">
+          <mui-card slot="body" size="none">
+            <mui-card-body>
+              <mui-slat variant="header" size="x-small">
                 <mui-heading slot="start" size="6">Today</mui-heading>
                 <mui-h-stack slot="end" alignX="end">
                   <mui-body size="small">22 July 2025</mui-body>
@@ -1176,7 +1212,7 @@ class storySlat extends HTMLElement {
 
               <mui-rule></mui-rule>
 
-              <mui-slat variant="action" radius="none">
+              <mui-slat variant="action" size="x-small" radius="none">
                 <mui-v-stack slot="start" space="0">
                   <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
                   <mui-body size="small">Food & Drink</mui-body>
@@ -1187,7 +1223,7 @@ class storySlat extends HTMLElement {
                 </mui-v-stack>
               </mui-slat>
               <mui-rule></mui-rule>
-              <mui-slat variant="action" radius="none">
+              <mui-slat variant="action" size="x-small" radius="none">
                 <mui-v-stack slot="start" space="0">
                   <mui-body size="medium" weight="bold">Apple App Store</mui-body>
                   <mui-body size="small">Entertainment</mui-body>
@@ -1200,7 +1236,7 @@ class storySlat extends HTMLElement {
 
               <mui-rule></mui-rule>
 
-              <mui-slat variant="header">
+              <mui-slat variant="header" size="x-small">
                 <mui-heading slot="start" size="6">Yesterday</mui-heading>
                 <mui-h-stack slot="end" alignX="end">
                   <mui-body size="small">21 July 2025</mui-body>
@@ -1210,7 +1246,7 @@ class storySlat extends HTMLElement {
               <mui-rule></mui-rule>
 
               <mui-v-stack space="var(--space-025)">
-                <mui-slat variant="action" radius="none">
+                <mui-slat variant="action" size="x-small" radius="none">
                   <mui-v-stack slot="start" space="0">
                     <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
                     <mui-body size="small">Groceries</mui-body>
@@ -1225,16 +1261,16 @@ class storySlat extends HTMLElement {
           </mui-card>
 
           <story-code-block slot="footer" scrollable>
-            &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
+            &lt;mui-card size=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header" size="x-small"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;22 July 2025&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" size="x-small" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Espresso Bar&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Food &amp; Drink&lt;/mui-body&gt;<br />
@@ -1245,7 +1281,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" size="x-small" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Apple App Store&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Entertainment&lt;/mui-body&gt;<br />
@@ -1256,7 +1292,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header" size="x-small"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Yesterday&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;21 July 2025&lt;/mui-body&gt;<br />
@@ -1264,7 +1300,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-025)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" size="x-small" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;IGA South Yarra&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Groceries&lt;/mui-body&gt;<br />

@@ -18,6 +18,7 @@ import "../mui-work-log";
 
 export type MuiMarketSparklineType = "line" | "area" | "baseline";
 export type MuiMarketSparklineTrend = "auto" | "positive" | "negative" | "neutral";
+export type MuiMarketSparklineScale = "both" | "time" | "price" | "none";
 
 export interface MuiMarketSparklineDatum {
   time: number | string;
@@ -26,7 +27,7 @@ export interface MuiMarketSparklineDatum {
 
 class MuiMarketSparkline extends HTMLElement {
   static get observedAttributes() {
-    return ["type", "trend", "label", "currency", "height", "baseline", "interactive", "attribution", "loading", "error"];
+    return ["type", "trend", "label", "currency", "height", "baseline", "scale", "interactive", "attribution", "loading", "error"];
   }
 
   private chart: IChartApi | null = null;
@@ -79,7 +80,7 @@ class MuiMarketSparkline extends HTMLElement {
     }
 
     if (["type", "trend", "baseline"].includes(name)) this.rebuildSeries();
-    if (["interactive", "attribution"].includes(name)) this.chart?.applyOptions(this.chartOptions());
+    if (["scale", "interactive", "attribution"].includes(name)) this.chart?.applyOptions(this.chartOptions());
     if (["label", "currency", "loading", "error"].includes(name)) this.renderState();
   }
 
@@ -98,6 +99,11 @@ class MuiMarketSparkline extends HTMLElement {
   private get type(): MuiMarketSparklineType {
     const type = this.getAttribute("type");
     return type === "line" || type === "baseline" ? type : "area";
+  }
+
+  private get scale(): MuiMarketSparklineScale {
+    const scale = this.getAttribute("scale");
+    return scale === "both" || scale === "time" || scale === "price" ? scale : "none";
   }
 
   private render() {
@@ -264,6 +270,8 @@ class MuiMarketSparkline extends HTMLElement {
   private chartOptions() {
     const colors = this.colors();
     const interactive = this.hasAttribute("interactive");
+    const showTime = this.scale === "both" || this.scale === "time";
+    const showPrice = this.scale === "both" || this.scale === "price";
     return {
       autoSize: true,
       layout: {
@@ -274,9 +282,15 @@ class MuiMarketSparkline extends HTMLElement {
       },
       grid: { vertLines: { visible: false }, horzLines: { visible: false } },
       crosshair: { mode: interactive ? CrosshairMode.Magnet : CrosshairMode.Hidden },
-      rightPriceScale: { visible: false },
+      rightPriceScale: { visible: showPrice, borderColor: colors.text },
       leftPriceScale: { visible: false },
-      timeScale: { visible: false, borderVisible: false, fixLeftEdge: true, fixRightEdge: true },
+      timeScale: {
+        visible: showTime,
+        borderVisible: showTime,
+        borderColor: colors.text,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+      },
       handleScroll: interactive,
       handleScale: interactive,
     };

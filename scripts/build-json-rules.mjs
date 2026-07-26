@@ -32,10 +32,10 @@ CRITICAL RULES:
 17. For equal Grid columns, use col="repeat(N, minmax(0, 1fr))". Do not use a numeric column count or repeat bare tracks such as "1fr 1fr 1fr"; minmax(0, 1fr) prevents content from forcing tracks wider than the Grid.
 18. Layout spacing props such as space and padding must use complete CSS token references such as "var(--space-400)". Do not output "space-400", "400", or other bare scale values. Use "var(--space-000)" for zero spacing.
 19. Prefer Responsive variant=container for reusable components and compositions so they react to available parent space. Use viewport responsiveness only for page-level or app-shell decisions that genuinely depend on the browser viewport.
-20. Card does not have a size scale. Card width comes from its Grid, Container, parent layout, or an explicit style when a constrained reading or form width is required. CardBody size controls internal padding only: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Repeated Cards should normally receive width from Grid rather than individual Card styles.
-21. For repeated Card clusters in a Grid, size CardBody padding to column density: 1-up leaves CardBody size unset (default medium); 2-up leaves size unset (medium) on larger widths, adjusting down via Responsive at smaller breakpoints if needed; 3-up uses size="small"; 4-up uses size="small", or size="none" with custom padding via a space token (e.g. var(--space-300)) when edge-to-edge control is required.
-22. In Drawer navigation, compose nav items as Button or Link with align="start", variant="tertiary" as the default (non-prominent) emphasis, and a slot="before" _Icon matching the item's meaning. Use mui-icon-rectangle as a generic placeholder icon only when no semantically matching icon exists.
-23. When composing Muibook charts in Redactd, populate the structured Data field through props.data, or the Series field through props.series for ComparisonChart. Redactd owns passing that value to the Muibook component. FinancialChart uses { time, open, high, low, close, volume? }. MarketSparkline and FinancialBarChart use { time, value }. ComparisonChart uses { id, label, color?, data: [{ time, value }] }. Keep dates and numeric values as JSON values, sort points chronologically, and provide a coherent illustrative dataset when the user requests a populated chart without supplying data.
+20. Card does not have a width size scale. Card width comes from its Grid, HStack, Container, parent layout, or an explicit style when a constrained reading or form width is required. Set the size attribute on Card to propagate internal padding density to its direct CardHeader, CardBody, and CardFooter sections: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Set size directly on an individual section only when Card has no size. Card-aware Tables, Accordions, and Slats remain edge-to-edge inside CardBody and inherit the per-size content inset. This inherited inset is alignment behavior, not a recommendation to derive the child component size from Card size. Choose Table, Accordion, or Slat density from the content, available width, readability, and touch-target needs. Treat Card Body size-offset stories as diagnostic references rather than canonical compositions. Medium is the safe default for complete Slat groups; avoid none or small Cards for them unless the content has been validated. Tables and Accordions can work across Card sizes when their content remains usable. A ButtonGroup inside CardFooter removes top padding while preserving size-aware inline and bottom spacing. Use usage="grid" on repeated Cards in Grid, or usage="h-stack" in an HStack with aligny="stretch", when their headers and footers should align; direct children retain document order, CardBody receives the flexible row, and composed elements such as Rule remain auto-sized. Repeated Cards should normally receive width from their parent layout rather than individual Card width styles.
+21. For repeated Card clusters in a Grid, set usage="grid" on each Card. For a two-up HStack, set aligny="stretch" on HStack and usage="h-stack" on each Card. Size Card padding to column density: 1-up leaves Card size unset (default medium); 2-up leaves size unset (medium) on larger widths, adjusting down via Responsive at smaller breakpoints if needed; 3-up uses size="small"; 4-up uses size="small", or size="none" with custom padding via a space token (e.g. var(--space-300)) when edge-to-edge control is required.
+22. In Drawer navigation, compose nav items as Button or Link with align="start", variant="tertiary" as the default (non-prominent) emphasis, and a slot="before" _Icon matching the item's meaning.
+23. When composing Muibook charts in Redactd, populate the structured Data field through props.data, or the Series field through props.series for ComparisonChart. Redactd owns passing that value to the Muibook component. FinancialChart uses { time, open, high, low, close, volume? }. MarketSparkline and FinancialBarChart use { time, value }. ComparisonChart uses { id, label, color?, data: [{ time, value }] }. Use finite JSON numbers, unique chronological times, and coherent illustrative values. FinancialChart high/low values must contain open and close. ComparisonChart series ids must be unique; indexed and percent modes receive raw values with a non-zero first value. Follow the Structured Chart Data section for component-specific structures and examples.
 24. Use slots for content projection, not as the only control for significant chrome or layout decisions in generated/editor output. When a component exposes an explicit public attr such as hide-header, use that attr instead of relying only on omitted or present slotted content. Runtime attrs such as has-header and has-footer are dynamic metadata, not authored source props.
 25. Use col="1fr auto" as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
 26. For a single side drawer opened from a menu or hamburger icon, prefer Drawer variant="push" with open and side. The side property (left or right) should match the position of the menu icon trigger. Persistent drawers are for content that stays adjacent/visible and usually do not need a menu trigger. Use workspace only for advanced editor or canvas shells with independent left/right panels around a central page. Do not use left-open, right-open, left-width, right-width, page, left, or right for overlay, push, or persistent drawers; those controls and slots are workspace-only.
@@ -45,7 +45,12 @@ CRITICAL RULES:
 30. Explicitly define layout boundaries to prevent unpredictable canvas rendering. For VStack and HStack, always output width="auto" and height="auto" unless a specific dimension or fill is required.
 31. For Grid, never leave col empty. It defaults to two columns (1fr 1fr), so omitting it can lead to unexpected layouts.
 32. For Dialog and Drawer, omit width and height properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
-33. When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with variant="secondary" and slot="action") inside a Dropdown, and use Menu with Buttons for the dropdown actions.`;
+33. When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with variant="secondary" and slot="action") inside a Dropdown, and use Menu with Buttons for the dropdown actions.
+34. Badge variants are exactly neutral, positive, warning, attention, and overlay. Never output Badge variant="secondary", variant="default", or variant="error". Omit variant for the default neutral treatment. Secondary remains valid for components that explicitly document it, such as Body or Button, but not Badge.
+35. Use Grid for repeated Cards, page regions, forms, and other primary layout structure. When a collection should naturally reduce its column count as its container narrows, use intrinsic tracks such as col="repeat(auto-fit, minmax(min(100%, 18rem), 1fr))" and choose the minimum width to suit the content. Use col="repeat(N, minmax(0, 1fr))" only when the requested number of columns must remain fixed.
+36. Use HStack wrap only for compact inline relationships such as actions, chips, metadata, legends, and small toolbar groups that remain meaningful across multiple horizontal lines. Wrapping does not turn HStack into VStack. Do not use a wrapping HStack as the default for main page regions, card collections, forms, or a deliberate horizontal-to-vertical layout change.
+37. When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive variant="container" with HStack in show-above and VStack in show-below only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate ids, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
+38. Before assigning any _Icon, inspect the available Muibook icon component names in the selected component knowledge or Custom Elements Manifest and use an exact existing mui-icon-* name. If no available icon semantically matches the requested concept, use _Icon with props.icon="mui-icon-rectangle" as the neutral Redactd fallback. Never invent an icon component or icon name.`;
 
 const muiscanRules = `MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -73,7 +78,7 @@ const muiscanRules = `MUI SCAN NORMALIZATION RULES:
   - slot=before -> props.slot = "before"
   - slot=after -> props.slot = "after"
   - if an icon is the only child of Button, Link, or Chip, keep it as the default child
-- For Badge: preserve variant="neutral"; do NOT convert "neutral" to "secondary"
+- For Badge: valid output variants are neutral, positive, warning, attention, and overlay. Preserve neutral and never convert it to secondary. Omit variant for the default neutral treatment; do not output secondary, default, or error.
 
 TEXT NODE RULES FOR MUISCAN:
 - TEXT is input-only; collapse into the nearest valid Redactd text model
@@ -102,6 +107,9 @@ const jsonComponents = fs.readFileSync(path.join(__dirname, '../src/knowledge/fr
 // Read the shared chart data
 const chartData = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/chart-data.md'), 'utf8');
 
+// Read the shared chart composition guidance
+const chartComposition = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/chart-composition.md'), 'utf8');
+
 // Read the shared design assets
 const designAssets = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/design-assets.md'), 'utf8');
 
@@ -128,6 +136,9 @@ ${escapeTemplate(jsonComponents)}
 
 ## Structured Chart Data
 ${escapeTemplate(chartData)}
+
+## Composable Chart Headers
+${escapeTemplate(chartComposition)}
 
 ${escapeTemplate(designAssets)}
 \`;
@@ -174,6 +185,10 @@ ${jsonComponents}
 
 ${chartData}
 
+## Composable Chart Headers
+
+${chartComposition}
+
 ${designAssets}
 `;
 
@@ -181,4 +196,3 @@ const skillDir = path.join(__dirname, '../skills/muibook-json-rules');
 fs.mkdirSync(skillDir, { recursive: true });
 fs.writeFileSync(path.join(skillDir, 'SKILL.md'), skillOutput);
 console.log('Successfully generated skills/muibook-json-rules/SKILL.md');
-

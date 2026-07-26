@@ -3,8 +3,8 @@ export const muiApi = {
     description: "Expands a block-level detail region below a generated heading control.",
     attributes: [
       { name: "heading", type: { text: "string" }, default: "Heading...", description: "Visible label for the accordion summary control." },
-      { name: "size", type: { text: '"small" | "medium" | "large"' }, default: "medium", description: "Sets summary and detail spacing." },
-      { name: "level", type: { text: "1 | 2 | 3 | 4 | 5 | 6" }, default: "3", description: "Semantic heading level for the generated summary label." },
+      { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets heading typography, summary and detail spacing, and the disclosure icon size." },
+      { name: "level", type: { text: "1 | 2 | 3 | 4 | 5 | 6" }, default: "3", description: "Sets the semantic heading level independently from the visual size." },
       { name: "detail-space", type: { text: '"none"' }, description: "Removes built-in padding from the expanded detail region." },
     ],
     slots: [{ name: "detail", description: "Content displayed when the accordion is expanded." }],

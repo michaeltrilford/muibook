@@ -166,6 +166,14 @@ class MuiCardBody extends HTMLElement {
         :host {
           display: block;
           box-sizing: border-box;
+          --card-layout-inline-space: var(--space-500);
+          --card-slat-inline-space: var(--space-400);
+        }
+
+        @media (min-width: 768px) {
+          :host {
+            --card-layout-inline-space: var(--space-600);
+          }
         }
 
         :host([inner-space]) {
@@ -186,47 +194,63 @@ class MuiCardBody extends HTMLElement {
           }
         }
 
-        :host([size="none"]),
+        :host([size="none"]) {
+          --card-layout-inline-space: var(--space-000);
+          --card-slat-inline-space: var(--space-000);
+        }
+
         :host([size="none"][inner-space]),
-        :host([size="none"][has-card-slat-group]),
-        :host([size="none"][has-accordion-slat-group]) {
+        :host([size="none"][has-card-slat-group]) {
           padding: var(--space-000);
         }
 
-        :host([size="small"]),
+        :host([size="small"]) {
+          --card-layout-inline-space: var(--space-300);
+          --card-slat-inline-space: var(--space-200);
+        }
+
         :host([size="small"][inner-space]),
-        :host([size="small"][has-card-slat-group]),
-        :host([size="small"][has-accordion-slat-group]) {
+        :host([size="small"][has-card-slat-group]) {
           padding: var(--space-300);
         }
 
-        :host([size="medium"]),
+        :host([size="medium"]) {
+          --card-layout-inline-space: var(--space-500);
+          --card-slat-inline-space: var(--space-400);
+        }
+
         :host([size="medium"][inner-space]),
-        :host([size="medium"][has-card-slat-group]),
-        :host([size="medium"][has-accordion-slat-group]) {
+        :host([size="medium"][has-card-slat-group]) {
           padding: var(--space-500);
         }
 
-        :host([size="large"]),
+        :host([size="large"]) {
+          --card-layout-inline-space: var(--space-700);
+          --card-slat-inline-space: var(--space-600);
+        }
+
         :host([size="large"][inner-space]),
-        :host([size="large"][has-card-slat-group]),
-        :host([size="large"][has-accordion-slat-group]) {
+        :host([size="large"][has-card-slat-group]) {
           padding: var(--space-700);
         }
 
         @media (min-width: 768px) {
-          :host([size="medium"]),
+          :host([size="medium"]) {
+            --card-layout-inline-space: var(--space-600);
+          }
+
           :host([size="medium"][inner-space]),
-          :host([size="medium"][has-card-slat-group]),
-          :host([size="medium"][has-accordion-slat-group]) {
+          :host([size="medium"][has-card-slat-group]) {
             padding: var(--space-600);
           }
 
-          :host([size="large"]),
+          :host([size="large"]) {
+            --card-layout-inline-space: var(--space-800);
+          }
+
           :host([size="large"][inner-space]),
-          :host([size="large"][has-card-slat-group]),
-          :host([size="large"][has-accordion-slat-group]) {
-            padding: var(--space-800);
+          :host([size="large"][has-card-slat-group]) {
+            padding: var(--space-600) var(--space-800);
           }
         }
         

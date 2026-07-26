@@ -4,7 +4,7 @@ import "../../mui-stack";
 
 class MuiSlat extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "col", "space"];
+    return ["variant", "size", "col", "space"];
   }
 
   private variant = "";
@@ -23,26 +23,35 @@ class MuiSlat extends HTMLElement {
   }
 
   enforceAvatarSizes() {
+    const size = this.getSize();
+    const avatarSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "xx-small",
+      medium: "small",
+      large: "medium",
+    };
     const slots = this.shadowRoot?.querySelectorAll("slot");
     slots?.forEach((slot) => {
       const assigned = slot.assignedElements({ flatten: true });
       assigned.forEach((el) => {
         if (el.tagName.toLowerCase() === "mui-avatar") {
-          el.setAttribute("size", "small");
+          el.setAttribute("size", avatarSizeMap[size]);
         }
       });
     });
+  }
+
+  private getSize(): string {
+    const requestedSize = this.getAttribute("size") || "medium";
+    return ["x-small", "small", "medium", "large"].includes(requestedSize)
+      ? requestedSize
+      : "medium";
   }
 
   connectedCallback() {
     this.variant = this.getAttribute("variant") || "";
     this.setAttribute("role", "row");
     this.render();
-
-    // Enforce avatar sizes after render
-    requestAnimationFrame(() => {
-      this.enforceAvatarSizes();
-    });
   }
 
   applyCellRoles() {
@@ -62,6 +71,13 @@ class MuiSlat extends HTMLElement {
 
   render() {
     const isAction = this.variant === "action";
+    const size = this.getSize();
+    const chevronSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "x-small",
+      large: "small",
+    };
     const col =
       this.getAttribute("col") || (isAction ? "minmax(0, 1fr) auto" : "1fr 1fr");
     const space = this.getAttribute("space") || "var(--space-500)";
@@ -75,10 +91,34 @@ class MuiSlat extends HTMLElement {
         align-items: center;
         gap: ${space};
         box-sizing: border-box;
+        --slat-row-block-space: var(--space-300);
+        --slat-inline-space: var(--space-400);
+        --slat-header-block-space: var(--space-200);
+        --slat-header-top-space: var(--space-400);
+      }
+
+      :host([size="x-small"]) {
+        --slat-row-block-space: var(--space-100);
+        --slat-inline-space: var(--space-300);
+        --slat-header-block-space: var(--space-100);
+        --slat-header-top-space: var(--space-200);
+      }
+
+      :host([size="small"]) {
+        --slat-row-block-space: var(--space-200);
+        --slat-header-block-space: var(--space-100);
+        --slat-header-top-space: var(--space-300);
+      }
+
+      :host([size="large"]) {
+        --slat-row-block-space: var(--space-400);
+        --slat-inline-space: var(--space-500);
+        --slat-header-block-space: var(--space-300);
+        --slat-header-top-space: var(--space-500);
       }
 
       :host([variant="row"]) {
-        padding: var(--space-300) var(--space-400);
+        padding: var(--slat-row-block-space) var(--card-slat-inline-space, var(--slat-inline-space));
         background: var(--slat-background);
         border-radius: var(--slat-radius);
       }
@@ -98,8 +138,8 @@ class MuiSlat extends HTMLElement {
       }
 
       :host([variant="header"]) {
-        padding: var(--space-200) var(--space-400);
-        padding-top: var(--space-400);
+        padding: var(--slat-header-block-space) var(--card-slat-inline-space, var(--slat-inline-space));
+        padding-top: var(--slat-header-top-space);
       }
 
       :host([variant="action"]) {
@@ -126,11 +166,12 @@ class MuiSlat extends HTMLElement {
       }
 
       .action::part(padding) {
-        padding: var(--space-300) var(--space-400);
+        padding: var(--slat-row-block-space) var(--card-slat-inline-space, var(--slat-inline-space));
       }
 
       :host([file-diff-slot]) .action::part(padding) {
-        padding: var(--space-100) var(--space-400);
+        padding-block: var(--space-100);
+        padding-inline: var(--card-slat-inline-space, var(--space-400));
       }
 
       .action::part(border) {
@@ -232,11 +273,11 @@ class MuiSlat extends HTMLElement {
     this.shadowRoot!.innerHTML = isAction
       ? /*html*/ `
         <style>${styles}</style>
-        <mui-button variant="tertiary" class="action">
+        <mui-button variant="tertiary" size="${size}" class="action">
           ${startSlotMarkup}
           <div class="end" slot="after">
             <slot name="end"></slot>
-            <mui-icon-right-chevron size="${isFileDiff ? 'xx-small' : 'x-small'}"></mui-icon-right-chevron>
+            <mui-icon-right-chevron size="${isFileDiff ? "xx-small" : chevronSizeMap[size]}"></mui-icon-right-chevron>
           </div>
           
         </mui-button>
@@ -247,7 +288,10 @@ class MuiSlat extends HTMLElement {
         <slot name="end"></slot>
       `;
 
-    requestAnimationFrame(() => this.applyCellRoles());
+    requestAnimationFrame(() => {
+      this.applyCellRoles();
+      this.enforceAvatarSizes();
+    });
   }
 }
 

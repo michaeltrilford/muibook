@@ -1,11 +1,13 @@
 class MuiTable extends HTMLElement {
   private resizeObserver?: ResizeObserver;
   private mutationObserver?: MutationObserver;
+  private rowSizeObserver?: MutationObserver;
   private animationFrame?: number;
   private hoverRow: HTMLElement | null = null;
+  private managedRowSizes = new Map<HTMLElement, string | null>();
 
   static get observedAttributes() {
-    return ["highlight", "highlight-row", "highlight-row-index"];
+    return ["highlight", "highlight-row", "highlight-row-index", "size"];
   }
 
   constructor() {
@@ -19,6 +21,8 @@ class MuiTable extends HTMLElement {
     this.addEventListener("pointerover", this.handlePointerOver);
     this.addEventListener("pointerleave", this.handlePointerLeave);
     this.addEventListener("click", this.handleRowClick);
+    this.syncRowSizes();
+    this.observeRowSizeChanges();
     this.syncHighlightTracking();
     this.scheduleHighlightUpdate();
   }
@@ -27,13 +31,72 @@ class MuiTable extends HTMLElement {
     this.removeEventListener("pointerover", this.handlePointerOver);
     this.removeEventListener("pointerleave", this.handlePointerLeave);
     this.removeEventListener("click", this.handleRowClick);
+    this.rowSizeObserver?.disconnect();
+    this.rowSizeObserver = undefined;
+    this.restoreManagedRowSizes();
     this.disconnectLayoutObservers();
     if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
   }
 
-  attributeChangedCallback() {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (name === "size" && oldValue !== newValue) {
+      this.syncRowSizes();
+    }
     this.syncHighlightTracking();
     this.scheduleHighlightUpdate();
+  }
+
+  private getTableRows() {
+    return Array.from(this.querySelectorAll("mui-row")).filter(
+      (row): row is HTMLElement => row.closest("mui-table") === this,
+    );
+  }
+
+  private restoreRowSize(row: HTMLElement, size: string | null) {
+    if (size === null) {
+      row.removeAttribute("size");
+    } else {
+      row.setAttribute("size", size);
+    }
+  }
+
+  private restoreManagedRowSizes() {
+    this.managedRowSizes.forEach((size, row) => this.restoreRowSize(row, size));
+    this.managedRowSizes.clear();
+  }
+
+  private syncRowSizes = () => {
+    const size = this.getAttribute("size");
+    const rows = this.getTableRows();
+    const currentRows = new Set(rows);
+
+    this.managedRowSizes.forEach((originalSize, row) => {
+      if (size && currentRows.has(row)) return;
+      this.restoreRowSize(row, originalSize);
+      this.managedRowSizes.delete(row);
+    });
+
+    if (!size) return;
+
+    rows.forEach((row) => {
+      if (!this.managedRowSizes.has(row)) {
+        this.managedRowSizes.set(row, row.getAttribute("size"));
+      }
+      if (row.getAttribute("size") !== size) {
+        row.setAttribute("size", size);
+      }
+    });
+  };
+
+  private observeRowSizeChanges() {
+    this.rowSizeObserver?.disconnect();
+    this.rowSizeObserver = new MutationObserver(this.syncRowSizes);
+    this.rowSizeObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["size"],
+    });
   }
 
   private hasHighlightTarget() {

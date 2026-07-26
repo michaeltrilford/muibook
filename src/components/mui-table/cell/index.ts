@@ -45,10 +45,10 @@ class MuiCell extends HTMLElement {
 
     /* Card Slot (Supports: Table Cell, Accordion Block) */
     :host([card-slot]:first-of-type) {
-      padding-left: var(--space-500);
+      padding-left: var(--card-layout-inline-space, var(--space-500));
     }
     :host([card-slot]:last-of-type) {
-      padding-right: var(--space-500);
+      padding-right: var(--card-layout-inline-space, var(--space-500));
     }
     @media (min-width: 768px) {
       :host(*:first-of-type) {
@@ -58,10 +58,10 @@ class MuiCell extends HTMLElement {
         padding-right: var(--space-600);
       }
       :host([card-slot]:first-of-type) {
-        padding-left: var(--space-600);
+        padding-left: var(--card-layout-inline-space, var(--space-600));
       }
       :host([card-slot]:last-of-type) {
-        padding-right: var(--space-600);
+        padding-right: var(--card-layout-inline-space, var(--space-600));
       }
     }
 

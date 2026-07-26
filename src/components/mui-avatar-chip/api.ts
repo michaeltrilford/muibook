@@ -7,6 +7,19 @@ export const muiApi = {
       { name: "secondary", type: { text: "string" }, description: "Fallback secondary label when slot='secondary' is not provided." },
       { name: "image", type: { text: "string" }, description: "Avatar image URL. Uses initials from label when omitted." },
       { name: "label", type: { text: "string" }, description: "Accessible avatar label and initials source." },
+      {
+        name: "background",
+        type: {
+          text: '"neutral" | "positive" | "warning" | "attention" | "purple" | "violet" | "pink" | "magenta" | "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "teal" | "cyan" | "blue" | "indigo"',
+        },
+        default: "neutral",
+        description: "Named semantic or profile color applied to the internal avatar.",
+      },
+      {
+        name: "background-color",
+        type: { text: "string" },
+        description: "Custom CSS color overriding the internal avatar's named background treatment.",
+      },
       { name: "href", type: { text: "string" }, description: "Optional profile URL. When provided, the avatar is rendered as a link." },
       { name: "target", type: { text: "string" }, default: "_self", description: "Anchor browsing context for the avatar link." },
       {

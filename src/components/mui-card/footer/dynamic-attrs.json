@@ -4,7 +4,7 @@
   "attributes": [
     {
       "name": "has-button-group",
-      "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+      "description": "Set when a Button Group is present, removing Card Footer top padding while preserving size-aware inline and bottom spacing."
     }
   ]
 }

@@ -104,6 +104,39 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="avatar-background" title="${storyMeta["avatar-background"].title}" description="${storyMeta["avatar-background"].description}" usage="${storyMeta["avatar-background"].usage}">
+        <div slot="body" class="canvas">
+          <div class="size-list">
+            <mui-avatar-chip
+              background="purple"
+              primary="Alex Morgan"
+              secondary="Named background"
+              label="Alex Morgan">
+            </mui-avatar-chip>
+            <mui-avatar-chip
+              background-color="var(--feedback-info-background)"
+              primary="Riley Chen"
+              secondary="Custom background color"
+              label="Riley Chen">
+            </mui-avatar-chip>
+          </div>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar-chip<br />
+          &nbsp;&nbsp;background="purple"<br />
+          &nbsp;&nbsp;primary="Alex Morgan"<br />
+          &nbsp;&nbsp;secondary="Named background"<br />
+          &nbsp;&nbsp;label="Alex Morgan"&gt;<br />
+          &lt;/mui-avatar-chip&gt;<br /><br />
+          &lt;mui-avatar-chip<br />
+          &nbsp;&nbsp;background-color="var(--feedback-info-background)"<br />
+          &nbsp;&nbsp;primary="Riley Chen"<br />
+          &nbsp;&nbsp;secondary="Custom background color"<br />
+          &nbsp;&nbsp;label="Riley Chen"&gt;<br />
+          &lt;/mui-avatar-chip&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="dropdown" title="${storyMeta["dropdown"].title}" description="${storyMeta["dropdown"].description}" usage="${storyMeta["dropdown"].usage}">
         <div slot="body" class="canvas">
           <div class="dropdown-list">

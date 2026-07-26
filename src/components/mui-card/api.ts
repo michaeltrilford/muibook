@@ -1,8 +1,19 @@
 export const muiApi = {
   "mui-card": {
-    description: "Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card has no size scale; its width comes from the parent layout or an explicit constrained style.",
+    description: "Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card size controls section padding; Card width comes from the parent layout or an explicit constrained style.",
     attributes: [
       { name: "borderless", type: { text: "boolean" }, default: "false", description: "Removes the card border." },
+      {
+        name: "size",
+        type: { text: '"none" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Propagates internal padding size to direct Card Header, Body, and Footer sections. It does not control Card width.",
+      },
+      {
+        name: "usage",
+        type: { text: '"grid" | "h-stack"' },
+        description: "Uses ordered rows for equal-height Cards in Grid or H Stack layouts. Card Body receives the flexible row while Header, Footer, Rule, and other composed elements remain auto-sized.",
+      },
     ],
     slots: [
       { name: "", description: "Related `mui-card-header`, `mui-card-body`, and `mui-card-footer` sections." },
@@ -11,6 +22,14 @@ export const muiApi = {
   },
   "mui-card-header": {
     description: "Displays heading or summary content at the top of a card.",
+    attributes: [
+      {
+        name: "size",
+        type: { text: '"none" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Controls internal Card Header padding. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
+      },
+    ],
     slots: [{ name: "", description: "Header content such as headings, text, or actions." }],
   },
   "mui-card-body": {
@@ -26,7 +45,15 @@ export const muiApi = {
     slots: [{ name: "", description: "Main card content, including layouts such as tables, slats, and accordions." }],
   },
   "mui-card-footer": {
-    description: "Displays supporting actions or code content after the main card body.",
+    description: "Displays supporting actions or code content after the main card body. A contained Button Group removes the Footer's top padding while preserving its size-aware inline and bottom spacing.",
+    attributes: [
+      {
+        name: "size",
+        type: { text: '"none" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Controls internal Card Footer padding. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
+      },
+    ],
     slots: [{ name: "", description: "Footer actions, links, button groups, or code blocks." }],
   },
 };

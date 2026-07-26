@@ -129,6 +129,33 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card id="accordion-block-sizes" title="${storyMeta["accordion-block-sizes"].title}" description="${storyMeta["accordion-block-sizes"].description}" usage="${storyMeta["accordion-block-sizes"].usage}">
+          <mui-accordion-group slot="body">
+            <mui-accordion-block heading="XX-Small" size="xx-small">
+              <mui-body slot="detail" size="x-small">XX-Small accordion detail.</mui-body>
+            </mui-accordion-block>
+            <mui-accordion-block heading="X-Small" size="x-small">
+              <mui-body slot="detail" size="x-small">X-Small accordion detail.</mui-body>
+            </mui-accordion-block>
+            <mui-accordion-block heading="Small" size="small">
+              <mui-body slot="detail" size="x-small">Small accordion detail.</mui-body>
+            </mui-accordion-block>
+            <mui-accordion-block heading="Medium" size="medium">
+              <mui-body slot="detail" size="x-small">Medium accordion detail.</mui-body>
+            </mui-accordion-block>
+            <mui-accordion-block heading="Large" size="large">
+              <mui-body slot="detail" size="x-small">Large accordion detail.</mui-body>
+            </mui-accordion-block>
+          </mui-accordion-group>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-accordion-block heading=&quot;XX-Small&quot; size=&quot;xx-small&quot;&gt;...&lt;/mui-accordion-block&gt;<br />
+            &lt;mui-accordion-block heading=&quot;X-Small&quot; size=&quot;x-small&quot;&gt;...&lt;/mui-accordion-block&gt;<br />
+            &lt;mui-accordion-block heading=&quot;Small&quot; size=&quot;small&quot;&gt;...&lt;/mui-accordion-block&gt;<br />
+            &lt;mui-accordion-block heading=&quot;Medium&quot; size=&quot;medium&quot;&gt;...&lt;/mui-accordion-block&gt;<br />
+            &lt;mui-accordion-block heading=&quot;Large&quot; size=&quot;large&quot;&gt;...&lt;/mui-accordion-block&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card id="accordion-group-and-block-exclusive" title="${storyMeta["accordion-group-and-block-exclusive"].title}" description="${storyMeta["accordion-group-and-block-exclusive"].description}" usage="${storyMeta["accordion-group-and-block-exclusive"].usage}">
           <mui-accordion-group exclusive slot="body">
             <mui-accordion-block heading="Heading">

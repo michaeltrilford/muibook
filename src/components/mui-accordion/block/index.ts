@@ -99,7 +99,17 @@ class MuiAccordionBlock extends HTMLElement {
 
     const wasOpen = this.getDetailEl()?.hasAttribute("open") ?? false;
     const headingText = this.getAttribute("heading") || "Heading...";
-    const size = this.getAttribute("size") || "medium";
+    const validSizes = ["xx-small", "x-small", "small", "medium", "large"];
+    const requestedSize = this.getAttribute("size") || "medium";
+    const size = validSizes.includes(requestedSize) ? requestedSize : "medium";
+    const iconSizeMap: Record<string, string> = {
+      "xx-small": "xx-small",
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "x-small",
+      large: "small",
+    };
+    const iconSize = iconSizeMap[size];
     const headingLevel = this.getAttribute("level") || "3";
     const detailSpace = this.getAttribute("detail-space");
     const detailSpaceClass = detailSpace ? `detail-space-${detailSpace}` : "";
@@ -132,6 +142,20 @@ class MuiAccordionBlock extends HTMLElement {
         border-radius: var(--radius-200);
       }
 
+      .size-xx-small-icon {
+        padding: var(--space-025);
+      }
+      .size-x-small-icon,
+      .size-small-icon {
+        padding: var(--space-100);
+      }
+      .size-medium-icon {
+        padding: var(--space-200);
+      }
+      .size-large-icon {
+        padding: var(--space-300);
+      }
+
       mui-icon-down-chevron {
         transition: transform var(--speed-200) ease-in-out;
         transform: rotate(0deg);
@@ -139,6 +163,23 @@ class MuiAccordionBlock extends HTMLElement {
 
       mui-heading {
         width: 100%;
+      }
+
+      .size-xx-small-heading {
+        --heading-font-size-600: var(--text-font-size-xxs);
+        --heading-line-height-600: var(--text-line-height-xxs);
+      }
+      .size-x-small-heading {
+        --heading-font-size-600: var(--text-font-size-xs);
+        --heading-line-height-600: var(--text-line-height-xs);
+      }
+      .size-small-heading {
+        --heading-font-size-600: var(--text-font-size-s);
+        --heading-line-height-600: var(--text-line-height-s);
+      }
+      .size-large-heading {
+        --heading-font-size-600: var(--text-font-size-l);
+        --heading-line-height-600: var(--text-line-height-l);
       }
 
       mui-icon-down-chevron[open] {
@@ -160,6 +201,12 @@ class MuiAccordionBlock extends HTMLElement {
         margin-bottom: 0;
       }
 
+      .size-xx-small-summary {
+        padding: var(--space-100) var(--space-300);
+      }
+      .size-x-small-summary {
+        padding: var(--space-200) var(--space-400);
+      }
       .size-small-summary {
         padding: var(--space-300) var(--space-500);
       }
@@ -170,6 +217,12 @@ class MuiAccordionBlock extends HTMLElement {
         padding: var(--space-500) var(--space-600);
       }
 
+      .size-xx-small-detail {
+        padding: var(--space-300);
+      }
+      .size-x-small-detail {
+        padding: var(--space-400);
+      }
       .size-small-detail {
         padding: var(--space-500);
       }
@@ -189,27 +242,27 @@ class MuiAccordionBlock extends HTMLElement {
       }
 
       :host([card-slot]) .accordion-summary {
-        padding-left: var(--space-500);
-        padding-right: var(--space-500);
+        padding-left: var(--card-layout-inline-space, var(--space-500));
+        padding-right: var(--card-layout-inline-space, var(--space-500));
         border-top-color: color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       @media (min-width: 768px) {
         :host([card-slot]) .accordion-summary {
-          padding-left: var(--space-600);
-          padding-right: var(--space-600);
+          padding-left: var(--card-layout-inline-space, var(--space-600));
+          padding-right: var(--card-layout-inline-space, var(--space-600));
         }
       }
       :host([card-slot]) .accordion-detail-inner {
-        padding-left: var(--space-500);
-        padding-right: var(--space-500);
+        padding-left: var(--card-layout-inline-space, var(--space-500));
+        padding-right: var(--card-layout-inline-space, var(--space-500));
       }
       :host([card-slot]) .accordion-detail {
         box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       @media (min-width: 768px) {
         :host([card-slot]) .accordion-detail-inner {
-          padding-left: var(--space-600);
-          padding-right: var(--space-600);
+          padding-left: var(--card-layout-inline-space, var(--space-600));
+          padding-right: var(--card-layout-inline-space, var(--space-600));
         }
       }
       :host([card-slot]) .detail-space-none {
@@ -230,9 +283,9 @@ class MuiAccordionBlock extends HTMLElement {
       aria-expanded="false"
       aria-controls="${this.accordionId}"
     >
-      <mui-heading size="6" level="${headingLevel}">${headingText}</mui-heading>
-      <div class="icon">
-        <mui-icon-down-chevron size="x-small"></mui-icon-down-chevron>
+      <mui-heading class="size-${size}-heading" size="6" level="${headingLevel}">${headingText}</mui-heading>
+      <div class="icon size-${size}-icon">
+        <mui-icon-down-chevron size="${iconSize}"></mui-icon-down-chevron>
       </div>
     </div>
 

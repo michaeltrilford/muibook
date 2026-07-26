@@ -332,16 +332,16 @@ class storyTable extends HTMLElement {
 
           <story-card id="xx-small-action-size" title="${storyMeta["xx-small-action-size"].title}" description="${storyMeta["xx-small-action-size"].description}" usage="${storyMeta["xx-small-action-size"].usage}">
             <div class="canvas" slot="body">
-              <mui-table>
+              <mui-table size="xx-small">
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}" size="xx-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}" size="xx-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -354,7 +354,7 @@ class storyTable extends HTMLElement {
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}" size="xx-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
@@ -373,7 +373,8 @@ class storyTable extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &lt;mui-row columns="\${Columns_Action}" size="xx-small"&gt;<br />
+              &lt;mui-table size="xx-small"&gt;<br />
+              &lt;mui-row columns="\${Columns_Action}"&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
@@ -388,22 +389,23 @@ class storyTable extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br />
               &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
-              &lt;/mui-row&gt;
+              &lt;/mui-row&gt;<br />
+              &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
 
           <story-card id="x-small-action-size" title="${storyMeta["x-small-action-size"].title}" description="${storyMeta["x-small-action-size"].description}" usage="${storyMeta["x-small-action-size"].usage}">
             <div class="canvas" slot="body">
-              <mui-table>
+              <mui-table size="x-small">
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}" size="x-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}" size="x-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -416,7 +418,7 @@ class storyTable extends HTMLElement {
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}" size="x-small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
@@ -435,7 +437,8 @@ class storyTable extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &lt;mui-row columns="\${Columns_Action}" size="x-small"&gt;<br />
+              &lt;mui-table size="x-small"&gt;<br />
+              &lt;mui-row columns="\${Columns_Action}"&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
@@ -450,22 +453,23 @@ class storyTable extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br />
               &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
-              &lt;/mui-row&gt;
+              &lt;/mui-row&gt;<br />
+              &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
 
           <story-card id="small-action-size" title="${storyMeta["small-action-size"].title}" description="${storyMeta["small-action-size"].description}" usage="${storyMeta["small-action-size"].usage}">
             <div class="canvas" slot="body">
-              <mui-table>
+              <mui-table size="small">
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}" size="small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}" size="small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -478,7 +482,7 @@ class storyTable extends HTMLElement {
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}" size="small">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
@@ -497,7 +501,8 @@ class storyTable extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &lt;mui-row columns="\${Columns_Action}" size="small"&gt;<br />
+              &lt;mui-table size="small"&gt;<br />
+              &lt;mui-row columns="\${Columns_Action}"&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
@@ -512,22 +517,23 @@ class storyTable extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br />
               &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
-              &lt;/mui-row&gt;
+              &lt;/mui-row&gt;<br />
+              &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
 
           <story-card id="medium-action-size" title="${storyMeta["medium-action-size"].title}" description="${storyMeta["medium-action-size"].description}" usage="${storyMeta["medium-action-size"].usage}">
             <div class="canvas" slot="body">
-              <mui-table>
+              <mui-table size="medium">
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}" size="medium">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}" size="medium">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -540,7 +546,7 @@ class storyTable extends HTMLElement {
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}" size="medium">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
@@ -559,7 +565,8 @@ class storyTable extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &lt;mui-row columns="\${Columns_Action}" size="medium"&gt;<br />
+              &lt;mui-table size="medium"&gt;<br />
+              &lt;mui-row columns="\${Columns_Action}"&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
@@ -574,22 +581,23 @@ class storyTable extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br />
               &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
-              &lt;/mui-row&gt;
+              &lt;/mui-row&gt;<br />
+              &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
 
           <story-card id="large-action-size" title="${storyMeta["large-action-size"].title}" description="${storyMeta["large-action-size"].description}" usage="${storyMeta["large-action-size"].usage}">
             <div class="canvas" slot="body">
-              <mui-table>
+              <mui-table size="large">
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}" size="large">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}" size="large">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -602,7 +610,7 @@ class storyTable extends HTMLElement {
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}" size="large">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
@@ -621,7 +629,8 @@ class storyTable extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &lt;mui-row columns="\${Columns_Action}" size="large"&gt;<br />
+              &lt;mui-table size="large"&gt;<br />
+              &lt;mui-row columns="\${Columns_Action}"&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
               &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
@@ -636,7 +645,8 @@ class storyTable extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br />
               &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
-              &lt;/mui-row&gt;
+              &lt;/mui-row&gt;<br />
+              &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
 

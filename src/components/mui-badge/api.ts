@@ -8,7 +8,7 @@ export const muiApi = {
         type: { text: '"neutral" | "positive" | "warning" | "attention" | "overlay"' },
         default: "neutral",
         description:
-          "Sets the badge intent style for lightweight non-interactive metadata. Use Status when the value is the primary state of an object, record, workflow, or system, especially in tables and slats.",
+          "Sets the badge intent style for lightweight non-interactive metadata. Valid values are neutral, positive, warning, attention, and overlay; secondary is not a Badge variant. Use Status when the value is the primary state of an object, record, workflow, or system, especially in tables and slats.",
       },
       {
         name: "size",

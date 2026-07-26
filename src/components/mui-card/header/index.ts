@@ -14,10 +14,32 @@ class MuiCardHeader extends HTMLElement {
         box-sizing: border-box;
         padding: var(--space-400) var(--space-500);
       }
+
+      :host([size="none"]) {
+        padding: var(--space-000);
+      }
+
+      :host([size="small"]) {
+        padding: var(--space-200) var(--space-300);
+      }
+
+      :host([size="medium"]) {
+        padding: var(--space-400) var(--space-500);
+      }
+
+      :host([size="large"]) {
+        padding: var(--space-600) var(--space-700);
+      }
+
       @media (min-width: 768px) {
-        :host {
+        :host,
+        :host([size="medium"]) {
           padding: var(--space-500) var(--space-600);
-        } 
+        }
+
+        :host([size="large"]) {
+          padding: var(--space-600) var(--space-800);
+        }
       }
     </style>
     <slot></slot>

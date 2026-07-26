@@ -39,6 +39,7 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
 - Put named slot placement on the child through its documented native `slot` attribute. In Redactd trees, store that value in `props.slot`; never add slot as a top-level node field.
 - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+- Badge variants are exactly `neutral`, `positive`, `warning`, `attention`, and `overlay`. Omit variant for the default neutral treatment. Never use `secondary`, `default`, or `error` for Badge, even though `secondary` is valid on components such as Body and Button.
 - Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in `slot="start"` and trailing metadata/action in `slot="end"`. Always explicitly set `variant="row"` on standard Slat items unless creating a section header (`variant="header"`), interactive row (`variant="action"`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit `variant` ("row", "header", or "action") for correct automatic alignment and card/group styles.
 - Use `col="1fr auto"` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
 - For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set `fill` or `height` on VStack and apply `style="align-self: end;"` to the slotted child. Use `fill` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use `height` when specifying an explicit length (e.g. `height="300px"`).
@@ -46,13 +47,17 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - For Grid, never leave `col` empty. It defaults to two columns (`1fr 1fr`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit `width` and `height` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
 - For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Do not use `left-open`, `right-open`, `left-width`, `right-width`, or the `left`/`right`/`page` slots unless `variant="workspace"`; those controls are workspace-only.
-- In Drawer navigation, compose nav items as Button or Link with `align="start"`, `variant="tertiary"` as the default (non-prominent) emphasis, and a `slot="before"` _Icon matching the item's meaning. Use mui-icon-rectangle as a generic placeholder icon only when no semantically matching icon exists.
+- Before assigning an icon, inspect the available `mui-icon-*` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd `_Icon` with `icon="mui-icon-rectangle"` as the neutral fallback. Never invent an icon component or icon name.
+- In Drawer navigation, compose nav items as Button or Link with `align="start"`, `variant="tertiary"` as the default (non-prominent) emphasis, and a `slot="before"` _Icon matching the item's meaning.
 - When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with `variant="secondary"` and `slot="action"`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
 - For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not use numeric counts or repeated bare `1fr` tracks.
 - Layout spacing values must use complete CSS token references such as `var(--space-400)`; never use `space-400`, `400`, or another bare scale value. Use `var(--space-000)` for zero spacing.
 - CSS length props and style values must include valid units or CSS functions. For `height`, `width`, `max-height`, `min-height`, padding, margin, gap, and similar CSS lengths, use values such as `320px`, `20rem`, `100%`, `100vh`, `auto`, or `var(--space-500)`; never output bare numeric strings such as `320` or `20` unless the component API explicitly documents a number scale for that prop.
 - Prefer container-based responsiveness for reusable components and compositions. Use viewport responsiveness only for page-level or app-shell decisions that genuinely depend on browser width.
-- Card has no size scale. Its width comes from Grid, Container, the parent layout, or an explicit constrained style. Card Body `size` controls internal padding only: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Let Grid size repeated Cards rather than styling each Card width independently.
+- Use Grid for repeated Cards, page regions, forms, and other primary layout structure. When a collection should naturally reduce its column count as its container narrows, use intrinsic tracks such as `col="repeat(auto-fit, minmax(min(100%, 18rem), 1fr))"` and choose the minimum width to suit the content. Use `repeat(N, minmax(0, 1fr))` only when the requested number of columns must remain fixed.
+- Use HStack `wrap` only for compact inline relationships such as actions, chips, metadata, legends, and small toolbar groups that remain meaningful across multiple horizontal lines. Wrapping does not turn HStack into VStack. Do not use a wrapping HStack as the default for main page regions, card collections, forms, or a deliberate horizontal-to-vertical layout change.
+- When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive `variant="container"` with HStack in `show-above` and VStack in `show-below` only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate IDs, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
+- Card has no width size scale. Its width comes from Grid, Container, the parent layout, or an explicit constrained style. Set `size` on Card to propagate internal padding density to its direct Card Header, Body, and Footer sections: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Set size directly on an individual section only when Card has no size. Card-aware Tables, Accordions, and Slats remain edge-to-edge inside Card Body and inherit the per-size content inset. Treat that inset as alignment behavior, not a requirement to derive child density from Card size. Choose Table, Accordion, or Slat size from the content, available width, readability, and touch-target needs. Card Body size-offset stories are diagnostic references rather than canonical compositions. Medium is the safe default for complete Slat groups; avoid none or small Cards for them unless the content has been validated. Tables and Accordions can work across Card sizes when their content remains usable. Use `usage="grid"` on repeated Cards when their headers and footers should align; direct children retain document order, Card Body receives the flexible row, and composed elements such as Rule remain auto-sized. Let Grid size repeated Cards rather than styling each Card width independently.
 - Use Heading levels 1-6 for document structure. Use `level="none"` only for prominent display text, such as a metric value, that must not enter the heading outline.
 - Compose forms with Form Section, Form Group, Field, and the appropriate form control. Keep labels, messages, validation, and control behavior in those components instead of rebuilding them from generic text and layout primitives.
 
@@ -67,17 +72,49 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 
 When composing Muibook charts in Redactd, populate the structured **Data** field through
 `props.data`, or the **Series** field through `props.series` for Comparison Chart. Redactd owns
-passing that structured value to the underlying Muibook component. Do not stringify the array or
-generate JavaScript assignment code.
+passing that structured value to the underlying Muibook component. Do not stringify the array,
+place JSON inside an HTML attribute, or generate JavaScript assignment code.
+
+## Data contracts
 
 - `FinancialChart.props.data`: `[{ time, open, high, low, close, volume? }]`
 - `MarketSparkline.props.data`: `[{ time, value }]`
 - `FinancialBarChart.props.data`: `[{ time, value }]`
 - `ComparisonChart.props.series`: `[{ id, label, color?, data: [{ time, value }] }]`
 
-Use ISO `YYYY-MM-DD` dates for daily illustrative data unless the user provides another valid time
-format. Keep numeric fields as numbers, sort points chronologically, and generate enough coherent
-illustrative points to make the requested trend visible when the user does not supply data.
+For every generated dataset:
+
+- Keep all measurements as finite JSON numbers, not formatted strings. Use `4.2`, `101.28`, or
+  `18400000`, not `"4.2%"`, `"$101.28"`, or `"18.4M"`. Formatting belongs in component props and
+  composed labels.
+- Use one unique `time` value per datum within a dataset or comparison series. Sort points from
+  oldest to newest even though the components defensively sort copied input arrays.
+- Prefer ISO `YYYY-MM-DD` strings for daily and periodic illustrative data. Unix timestamps in
+  seconds or milliseconds are also accepted when supplied by the user. Do not mix time formats in
+  one generated dataset.
+- Match the cadence to the subject: daily points for illustrative market performance, monthly or
+  quarterly points for economic and business reporting, and the user's supplied cadence when one
+  exists.
+- Generate enough coherent points to make the requested pattern visible. Avoid random-looking
+  values, impossible OHLC relationships, duplicate dates, and placeholder sequences such as
+  `1, 2, 3` unless that sequence is genuinely meaningful.
+- Treat generated values as illustrative data. Preserve user-supplied data exactly apart from
+  chronological ordering; do not silently change units, normalize values, or invent missing facts.
+
+## Financial Chart: OHLCV market data
+
+Use Financial Chart for open/high/low/close market observations. Candlestick and area presentations
+both consume the complete OHLC shape; area charts plot each datum's `close`. `volume` is optional
+and should be non-negative when supplied.
+
+For every datum:
+
+- `high` must be greater than or equal to both `open` and `close`.
+- `low` must be less than or equal to both `open` and `close`.
+- Keep all price fields in the same unit and use the matching `currency` label.
+- Keep consecutive points plausible for the requested market and interval. The next `open` may
+  differ from the previous `close`, but unexplained extreme gaps should not appear in illustrative
+  data.
 
 Example Financial Chart tree:
 
@@ -89,47 +126,443 @@ Example Financial Chart tree:
     "symbol": "BTC/USD",
     "currency": "USD",
     "type": "candlestick",
+    "interval": "1D",
     "data": [
-      { "time": "2026-06-01", "open": 102.4, "high": 104.8, "low": 101.7, "close": 103.9, "volume": 18400000 },
-      { "time": "2026-06-02", "open": 103.9, "high": 105.2, "low": 102.8, "close": 104.5, "volume": 16900000 },
-      { "time": "2026-06-03", "open": 104.5, "high": 106.1, "low": 103.6, "close": 105.8, "volume": 21300000 }
+      { "time": "2026-06-01", "open": 102400, "high": 104800, "low": 101700, "close": 103900, "volume": 18400000 },
+      { "time": "2026-06-02", "open": 103900, "high": 105200, "low": 102800, "close": 104500, "volume": 16900000 },
+      { "time": "2026-06-03", "open": 104500, "high": 106100, "low": 103600, "close": 105800, "volume": 21300000 }
     ]
   },
   "children": []
 }
 ```
 
-For Sparkline and Financial Bar Chart, the Data field uses the simpler time/value shape:
+## Market Sparkline: compact time/value trends
+
+Use Market Sparkline for compact prices, indexes, yields, rates, totals, and KPI trends when shape
+and direction matter more than dense inspection. Supply raw numeric values and keep currency, visible
+labels, `trend`, `baseline`, and `scale` as component or composition props rather than embedding them
+inside the data.
+
+- A price or index trend can use ordinary positive values.
+- A yield or rate uses the numeric rate value, such as `4.38`; a visible header can render `4.38%`.
+- A baseline series still uses `{ time, value }`; set the comparison point through `props.baseline`.
+- `trend: "auto"` compares the first and latest values. Do not pre-color individual data points.
+
+Example Market Sparkline tree for a yield trend:
 
 ```json
-"data": [
-  { "time": "2026-06-01", "value": 101.2 },
-  { "time": "2026-06-02", "value": 103.8 },
-  { "time": "2026-06-03", "value": 102.9 }
-]
-```
-
-Comparison Chart uses the Series field:
-
-```json
-"series": [
-  {
-    "id": "actual",
-    "label": "Actual",
+{
+  "id": "treasury_yield_sparkline",
+  "type": "MarketSparkline",
+  "props": {
+    "label": "US 10-year Treasury yield",
+    "trend": "auto",
+    "scale": "none",
     "data": [
-      { "time": "2026-06-01", "value": 101.2 },
-      { "time": "2026-06-02", "value": 103.8 }
+      { "time": "2026-06-01", "value": 4.31 },
+      { "time": "2026-06-02", "value": 4.35 },
+      { "time": "2026-06-03", "value": 4.38 }
     ]
   },
-  {
-    "id": "forecast",
-    "label": "Forecast",
+  "children": []
+}
+```
+
+## Financial Bar Chart: periodic magnitudes and signed values
+
+Use Financial Bar Chart for periodic economic or financial values such as inflation, interest rates,
+volume, revenue, returns, and cash flow. Match formatting and color semantics to the data:
+
+- `value-format: "percent"` expects ordinary percentage values such as `4.2`, not decimal fractions
+  such as `0.042` and not strings such as `"4.2%"`.
+- `value-format: "currency"` expects full numeric currency values and uses `currency` for display.
+- `value-format: "volume"` expects full numeric quantities such as `18400000`; do not abbreviate the
+  stored number to `18.4` merely because the rendered label uses compact notation.
+- Use `variant: "neutral"` when magnitude is the main message. Use `variant: "directional"` when
+  values above and below `baseline` carry positive/negative meaning. Negative values are valid.
+
+Example monthly inflation data:
+
+```json
+{
+  "id": "inflation_bar_chart",
+  "type": "FinancialBarChart",
+  "props": {
+    "label": "Annual inflation rate",
+    "value-format": "percent",
+    "variant": "neutral",
     "data": [
-      { "time": "2026-06-01", "value": 100.8 },
-      { "time": "2026-06-02", "value": 104.1 }
+      { "time": "2026-01-01", "value": 3.3 },
+      { "time": "2026-02-01", "value": 3.8 },
+      { "time": "2026-03-01", "value": 4.2 }
     ]
-  }
-]
+  },
+  "children": []
+}
+```
+
+Example signed cash-flow data:
+
+```json
+{
+  "id": "cash_flow_bar_chart",
+  "type": "FinancialBarChart",
+  "props": {
+    "label": "Monthly net cash flow",
+    "value-format": "currency",
+    "currency": "USD",
+    "variant": "directional",
+    "baseline": 0,
+    "data": [
+      { "time": "2026-01-01", "value": 4200000 },
+      { "time": "2026-02-01", "value": -2100000 },
+      { "time": "2026-03-01", "value": 3600000 }
+    ]
+  },
+  "children": []
+}
+```
+
+## Comparison Chart: named collections of time/value series
+
+Comparison Chart uses `props.series`, never `props.data`. Every series needs a unique stable `id`, a
+human-readable `label`, and its own chronological `data` array. Omit `color` to use the component's
+theme-aware automatic series palette unless the user supplies an explicit series-color requirement.
+
+Choose the mode before generating values:
+
+- `mode: "absolute"` preserves supplied values. Use it when all series share the same unit and scale,
+  such as actual versus forecast revenue. Set `value-format` and `currency` to match that unit.
+- `mode: "indexed"` rebases each series to 100 from its own first value. Supply the original raw
+  values—even when series have very different price levels—and let the component normalize them.
+- `mode: "percent"` calculates percentage change from each series' own first value. Supply raw values,
+  not precomputed percentage changes.
+- Indexed and percent series need a finite, non-zero first value so the component can calculate the
+  transformation.
+- Series may cover different date ranges. Align dates when point-for-point comparison matters; for
+  actual-versus-forecast data, sharing the handoff date can make continuity explicit.
+
+Example indexed comparison using raw values with different magnitudes:
+
+```json
+{
+  "id": "asset_performance_comparison",
+  "type": "ComparisonChart",
+  "props": {
+    "mode": "indexed",
+    "label": "Three-asset relative performance",
+    "series": [
+      {
+        "id": "btc",
+        "label": "Bitcoin",
+        "data": [
+          { "time": "2026-06-01", "value": 102400 },
+          { "time": "2026-06-02", "value": 104500 },
+          { "time": "2026-06-03", "value": 105800 }
+        ]
+      },
+      {
+        "id": "eth",
+        "label": "Ethereum",
+        "data": [
+          { "time": "2026-06-01", "value": 3200 },
+          { "time": "2026-06-02", "value": 3180 },
+          { "time": "2026-06-03", "value": 3290 }
+        ]
+      },
+      {
+        "id": "ndx",
+        "label": "Nasdaq 100",
+        "data": [
+          { "time": "2026-06-01", "value": 19500 },
+          { "time": "2026-06-02", "value": 19640 },
+          { "time": "2026-06-03", "value": 19720 }
+        ]
+      }
+    ]
+  },
+  "children": []
+}
+```
+
+Example actual-versus-forecast series for `mode: "absolute"`:
+
+```json
+{
+  "id": "revenue_forecast_comparison",
+  "type": "ComparisonChart",
+  "props": {
+    "mode": "absolute",
+    "label": "Actual and forecast revenue",
+    "value-format": "currency",
+    "currency": "USD",
+    "series": [
+      {
+        "id": "actual",
+        "label": "Actual revenue",
+        "data": [
+          { "time": "2026-01-01", "value": 8400000 },
+          { "time": "2026-02-01", "value": 8900000 },
+          { "time": "2026-03-01", "value": 9300000 }
+        ]
+      },
+      {
+        "id": "forecast",
+        "label": "Forecast revenue",
+        "data": [
+          { "time": "2026-03-01", "value": 9300000 },
+          { "time": "2026-04-01", "value": 9700000 },
+          { "time": "2026-05-01", "value": 10100000 }
+        ]
+      }
+    ]
+  },
+  "children": []
+}
+```
+
+
+## Composable Chart Headers
+
+Chart headers are composable named-slot regions, not a fixed subcomponent or required anatomy.
+Build them from the Muibook layout and content components that fit the information the user asks
+for. The examples below are starting points to adapt, simplify, reorder, or extend; do not reproduce
+every child merely because it appears in an example.
+
+- Put the outer header layout directly inside `MarketSparkline`, `FinancialBarChart`, or
+  `ComparisonChart` with `props.slot: "header"`. Slot placement stays inside `props`, never on the
+  node itself.
+- Start with the smallest useful hierarchy: a visible title and optional supporting copy. Add an
+  instrument badge, current value, change, units, forecast, release date, actions, or other context
+  only when it supports the requested chart.
+- Use `VStack` for vertically grouped title, value, and supporting text. Use `HStack` for related
+  inline metadata or to place two meaningful groups at opposite sides of a wider header. Allow
+  wrapping when a split header or legend may run out of horizontal space.
+- Use `Heading` with `level: "none"` for prominent values or display labels that should not create a
+  document section. Use a semantic heading level when the chart title introduces a real section in
+  the surrounding page hierarchy.
+- Keep the chart's accessible `label` even when the same idea is visible in the composed header.
+  Pair trends and series colors with text; color and plot shape must not carry the meaning alone.
+- Market Sparkline defaults to `scale: "none"` so both axes stay hidden, including when it is
+  interactive. Set `scale` to `both`, `time`, or `price` only when the compact trend needs a visible
+  reference axis. Financial Bar Chart and Comparison Chart default to `scale: "both"`. Across all
+  three components, the value/price scale appears on the right and the time scale along the bottom;
+  `scale` controls which axes are visible and does not reposition them.
+- `ComparisonChart` also exposes a `legend` slot. A compact legend may sit beside the title inside
+  the header; use a separate child with `props.slot: "legend"` when the legend needs its own row or
+  independent layout. Whichever placement is chosen, label every supplied series and keep legend
+  colors consistent with the series.
+- `FinancialBarChart` and `ComparisonChart` provide their own padded header region. Add local
+  padding to a Market Sparkline header only when its surrounding Card or layout does not already
+  provide the needed inset. Do not copy example padding or spacing without considering the parent.
+- Use `header-stroke` on Financial Bar Chart or Comparison Chart only when the requested composition
+  should visually join the populated header to the plot without the default divider.
+
+Example Market Sparkline header with instrument context and a current value:
+
+```json
+{
+  "id": "dollar_index_sparkline",
+  "type": "MarketSparkline",
+  "props": {
+    "label": "US Dollar index three month trend",
+    "height": "10rem",
+    "data": [
+      { "time": "2026-06-01", "value": 100.72 },
+      { "time": "2026-06-02", "value": 101.04 },
+      { "time": "2026-06-03", "value": 101.28 }
+    ]
+  },
+  "children": [
+    {
+      "id": "dollar_index_header",
+      "type": "VStack",
+      "props": {
+        "slot": "header",
+        "space": "var(--space-000)",
+        "width": "auto",
+        "height": "auto",
+        "style": "padding: var(--space-400);"
+      },
+      "children": [
+        {
+          "id": "dollar_index_identity",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-200)",
+            "alignY": "center",
+            "width": "auto",
+            "height": "auto"
+          },
+          "children": [
+            { "id": "dollar_index_name", "type": "Body", "props": { "text": "US Dollar index", "size": "small" }, "children": [] },
+            { "id": "dollar_index_symbol", "type": "Badge", "props": { "text": "DXY", "size": "x-small" }, "children": [] }
+          ]
+        },
+        {
+          "id": "dollar_index_value_row",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-200)",
+            "alignY": "center",
+            "width": "auto",
+            "height": "auto"
+          },
+          "children": [
+            { "id": "dollar_index_value", "type": "Heading", "props": { "text": "101.280 USD", "size": "3", "level": "none" }, "children": [] },
+            { "id": "dollar_index_change", "type": "Body", "props": { "text": "+1.61%", "variant": "positive" }, "children": [] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Example Financial Bar Chart header with optional economic context:
+
+```json
+{
+  "id": "inflation_chart",
+  "type": "FinancialBarChart",
+  "props": {
+    "label": "US annual inflation rate",
+    "value-format": "percent",
+    "height": "24rem",
+    "data": [
+      { "time": "2026-04-01", "value": 3.8 },
+      { "time": "2026-05-01", "value": 4.0 },
+      { "time": "2026-06-01", "value": 4.2 }
+    ]
+  },
+  "children": [
+    {
+      "id": "inflation_header",
+      "type": "VStack",
+      "props": {
+        "slot": "header",
+        "space": "var(--space-400)",
+        "width": "auto",
+        "height": "auto"
+      },
+      "children": [
+        {
+          "id": "inflation_title_row",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-100)",
+            "alignY": "center",
+            "width": "auto",
+            "height": "auto"
+          },
+          "children": [
+            { "id": "inflation_title", "type": "Heading", "props": { "text": "US annual inflation rate", "size": "4", "level": "none" }, "children": [] },
+            { "id": "inflation_symbol", "type": "Badge", "props": { "text": "USIRYY", "size": "x-small" }, "children": [] }
+          ]
+        },
+        {
+          "id": "inflation_metrics",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-600)",
+            "width": "auto",
+            "height": "auto",
+            "wrap": true
+          },
+          "children": [
+            {
+              "id": "inflation_actual",
+              "type": "VStack",
+              "props": { "space": "var(--space-000)", "width": "auto", "height": "auto" },
+              "children": [
+                { "id": "inflation_actual_label", "type": "Body", "props": { "text": "Actual", "size": "x-small", "variant": "secondary" }, "children": [] },
+                { "id": "inflation_actual_value", "type": "Heading", "props": { "text": "4.2%", "size": "4", "level": "none" }, "children": [] }
+              ]
+            },
+            {
+              "id": "inflation_forecast",
+              "type": "VStack",
+              "props": { "space": "var(--space-000)", "width": "auto", "height": "auto" },
+              "children": [
+                { "id": "inflation_forecast_label", "type": "Body", "props": { "text": "Forecast", "size": "x-small", "variant": "secondary" }, "children": [] },
+                { "id": "inflation_forecast_value", "type": "Heading", "props": { "text": "4.0%", "size": "4", "level": "none" }, "children": [] }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Example Comparison Chart with a compact legend composed into the header:
+
+```json
+{
+  "id": "revenue_comparison",
+  "type": "ComparisonChart",
+  "props": {
+    "mode": "absolute",
+    "label": "Actual and forecast revenue",
+    "value-format": "currency",
+    "height": "26rem",
+    "series": [
+      {
+        "id": "actual",
+        "label": "Actual revenue",
+        "data": [
+          { "time": "2026-05-01", "value": 10.8 },
+          { "time": "2026-06-01", "value": 11.1 }
+        ]
+      },
+      {
+        "id": "forecast",
+        "label": "Forecast revenue",
+        "data": [
+          { "time": "2026-06-01", "value": 11.1 },
+          { "time": "2026-07-01", "value": 11.6 }
+        ]
+      }
+    ]
+  },
+  "children": [
+    {
+      "id": "revenue_comparison_header",
+      "type": "HStack",
+      "props": {
+        "slot": "header",
+        "alignX": "space-between",
+        "alignY": "center",
+        "space": "var(--space-400)",
+        "width": "auto",
+        "height": "auto",
+        "wrap": true
+      },
+      "children": [
+        {
+          "id": "revenue_comparison_title_group",
+          "type": "VStack",
+          "props": { "space": "var(--space-100)", "width": "auto", "height": "auto" },
+          "children": [
+            { "id": "revenue_comparison_title", "type": "Heading", "props": { "text": "Actual and forecast revenue", "size": "4", "level": "none" }, "children": [] },
+            { "id": "revenue_comparison_unit", "type": "Body", "props": { "text": "USD billions", "size": "small", "variant": "secondary" }, "children": [] }
+          ]
+        },
+        {
+          "id": "revenue_comparison_legend",
+          "type": "HStack",
+          "props": { "space": "var(--space-300)", "width": "auto", "height": "auto", "wrap": true },
+          "children": [
+            { "id": "actual_legend_badge", "type": "Badge", "props": { "text": "Actual", "size": "x-small", "color": "blue" }, "children": [] },
+            { "id": "forecast_legend_badge", "type": "Badge", "props": { "text": "Forecast", "size": "x-small", "color": "green" }, "children": [] }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 
@@ -162,17 +595,17 @@ Use real Muibook asset paths:
 - `mui-addon` — Adds compact leading or trailing supporting content to an input control. Attributes: slot, size. Slots: default.
 - `mui-alert` — Surfaces task-related feedback with an intent icon, message content and optional action. Attributes: variant, label, hide-label, size. Slots: default, action.
 - `mui-avatar` — Displays an image, initials, or slotted icon for a represented person or entity. Attributes: label, image, size, background, background-color, status, status-label. Slots: default.
-- `mui-avatar-chip` — Composes an avatar, primary label, and secondary label into a compact profile identity pattern for media metadata, creator rows, and compact profile references. Attributes: primary, secondary, image, label, href, target, usage, size. Slots: primary, secondary.
+- `mui-avatar-chip` — Composes an avatar, primary label, and secondary label into a compact profile identity pattern for media metadata, creator rows, and compact profile references. Attributes: primary, secondary, image, label, background, background-color, href, target, usage, size. Slots: primary, secondary.
 - `mui-avatar-group` — Stacks multiple avatars with controlled overlap and a separating ring. Attributes: size, overlap, label, fan. Slots: default.
 - `mui-badge` — Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record. Use Status for state values in tables and slats. Attributes: variant, size, color, usage. Slots: default.
 - `mui-body` — Renders body text with semantic size, weight and feedback color treatments. Attributes: size, weight, variant, truncate, clamp. Slots: default, before, after.
 - `mui-button` — Triggers an action with semantic button behaviour, visual emphasis variants, and optional leading or trailing content. Attributes: onclick, type, aria-label, disabled, pending, variant, stroke, stroke-ring-size, focus-ring, size, usage, align. Slots: default, before, after.
 - `mui-button-group` — Arranges related buttons horizontally or as full-width stacked actions. Attributes: layout, align, right. Slots: default.
 - `mui-calendar` — A flexible, accessible calendar grid for selecting dates. Attributes: value, view, min-date, max-date. Slots: none.
-- `mui-card` — Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card has no size scale; its width comes from the parent layout or an explicit constrained style. Attributes: footer, borderless. Slots: default.
+- `mui-card` — Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card size controls section padding; Card width comes from the parent layout or an explicit constrained style. Attributes: footer, borderless, size, usage. Slots: default.
 - `mui-card-body` — Displays the main content area of a card and adapts spacing for known layout components. Attributes: size. Slots: default.
-- `mui-card-footer` — Displays supporting actions or code content after the main card body. Attributes: none. Slots: default.
-- `mui-card-header` — Displays heading or summary content at the top of a card. Attributes: none. Slots: default.
+- `mui-card-footer` — Displays supporting actions or code content after the main card body. A contained Button Group removes the Footer's top padding while preserving its size-aware inline and bottom spacing. Attributes: size. Slots: default.
+- `mui-card-header` — Displays heading or summary content at the top of a card. Attributes: size. Slots: default.
 - `mui-carousel-controller` — Coordinates carousel controls and item panels, with optional automatic rotation. Attributes: auto-rotate, rotate-interval, borderless, radius, swipe. Slots: controls, item.
 - `mui-carousel-panel` — Displays content associated with a selected carousel control. Attributes: item. Slots: default.
 - `mui-cell` — Displays content inside a table row with optional checkbox or action-column alignment. Attributes: align-y, action, checkbox. Slots: default.
@@ -264,7 +697,7 @@ Use real Muibook asset paths:
 - `mui-list` — Groups ordered or unordered list item content. Attributes: as. Slots: default.
 - `mui-list-item` — Renders one text item within a `mui-list`. Attributes: variant, size, weight. Slots: default.
 - `mui-loader` — Animates slotted content into view for loading and refresh states. Attributes: loading, animation, direction, duration. Slots: default.
-- `mui-market-sparkline` — Displays a compact financial time series as a line, area, or baseline chart. Attributes: type, trend, label, currency, height, baseline, interactive, attribution, loading, error. Slots: header, footer.
+- `mui-market-sparkline` — Displays a compact financial time series as a line, area, or baseline chart. Attributes: type, trend, label, currency, height, baseline, scale, interactive, attribution, loading, error. Slots: header, footer.
 - `mui-media-player` — Renders native or embedded audio and video media from a supplied source, with optional Muibook controls for direct media files and composable metadata for titles, avatars, links, badges, and product actions. Attributes: src, type, autoplay, muted, loop, poster, artwork, media-title, height, center-play, loading, controls, waveform. Slots: meta-before, meta-after.
 - `mui-menu` — Provides the visual surface and vertical layout for menu actions and grouped overlay content. Attributes: size, inset, width. Slots: default, top, bottom.
 - `mui-message` — Presents a persistent page-level notification with an intent icon, heading, and slotted supporting body content. Use Form Message for form guidance and Body with an info icon for lightweight inline notes. Attributes: variant, heading, icon, size. Slots: default.
@@ -285,7 +718,7 @@ Use real Muibook asset paths:
 - `mui-search-input` — Composes mui-input, mui-button and icons into a search affordance that can vertically reveal over adjacent slotted controls. Attributes: id, label, placeholder, value, name, size, disabled, open, autofocus, cancel-label, menu-slot, padding-block, padding-inline, surface. Slots: action, after.
 - `mui-select` — Captures one selection from a supplied option list with label and validation styling. Attributes: name, value, id, label, options, disabled, hide-label, variant, optional, size, appearance, selected-content, col, space, max-height, padding-block, padding-inline, surface. Slots: none.
 - `mui-skeleton` — Renders placeholder shapes and lines for loading states, with optional before and after slot composition. Attributes: shape, size, width, height, radius, animation, lines, gap, loading, line-widths, max-width, duration. Slots: default, before, after.
-- `mui-slat` — Arranges leading and trailing row content with optional action and accessory treatments. Attributes: variant, col, space, radius. Slots: accessory, start, end.
+- `mui-slat` — Arranges leading and trailing row content with optional action and accessory treatments. Attributes: variant, size, col, space, radius. Slots: accessory, start, end.
 - `mui-slat-group` — Groups related slats and rules with context-aware alignment spacing. Attributes: usage. Slots: default.
 - `mui-slide-frame` — Presents slide content in a framed surface with optional chrome, notes and presentation controls. Attributes: ratio, present, active-section, padding, notes-open, variant, title, footer-text, hide-header, hide-footer, scroll, fullscreen. Slots: default, image, header, header-after, header-description, footer, footer-after, notes.
 - `mui-slide-section` — MuiSlideSection Attributes: none. Slots: none.
@@ -300,7 +733,7 @@ Use real Muibook asset paths:
 - `mui-tab-controller` — Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values. Attributes: none. Slots: default.
 - `mui-tab-item` — Interactive tab label controlled by a parent `mui-tab-bar`. Attributes: active, size, variant, id. Slots: default, before, after.
 - `mui-tab-panel` — Displays content associated with the selected tab item inside `mui-tab-controller`. Attributes: item. Slots: default.
-- `mui-table` — Groups row collections into an accessible table layout. Attributes: highlight, highlight-row, highlight-row-index. Slots: default.
+- `mui-table` — Groups row collections into an accessible table layout. Attributes: highlight, highlight-row, highlight-row-index, size. Slots: default.
 - `mui-textarea` — Captures multi-line text with label, validation state, visible rows and optional character counting. Attributes: name, value, placeholder, id, label, disabled, hide-label, variant, rows, optional, max-length, size, padding-block, padding-inline, surface. Slots: none.
 - `mui-time` — A scrolling columnar interface for selecting a specific time of day. Attributes: value, format, step, start, end, variant, header. Slots: none.
 - `mui-time-picker` — A time selection input field with an interactive popover. Attributes: value, type, label, hide-label, optional, size, variant, menu-slot, padding-block, padding-inline, surface. Slots: none.

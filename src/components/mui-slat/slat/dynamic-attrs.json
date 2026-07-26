@@ -4,7 +4,7 @@
   "attributes": [
     {
       "name": "card-slot",
-      "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+      "description": "Applied to a Slat used in Card Body, allowing edge-to-edge layout with content inset matched to the current Card size."
     },
     {
       "name": "card-body-size-none-slot",

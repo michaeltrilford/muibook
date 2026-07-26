@@ -7,7 +7,7 @@ export const muiApi = {
       { name: "value-format", values: ["decimal", "percent", "currency"], default: "decimal", description: "Formats absolute values. Indexed and percent modes use their corresponding formats automatically." },
       { name: "currency", default: "USD", description: "Currency code used by currency formatting." },
       { name: "height", default: "24rem", description: "CSS length applied to the plot region." },
-      { name: "scale", values: ["both", "time", "price", "none"], default: "both", description: "Controls visible time and price scales." },
+      { name: "scale", values: ["both", "time", "price", "none"], default: "both", description: "Controls the bottom time scale and right-side value scale. Both are visible by default." },
       { name: "interactive", type: "boolean", description: "Enables crosshair, scrolling, and scale gestures." },
       { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution." },
       { name: "header-stroke", values: ["none"], description: "Removes the divider between a populated header and the plot." },

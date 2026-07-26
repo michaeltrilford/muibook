@@ -19,8 +19,14 @@ export const muiDocs: MuiDocs = {
         "Use cards to visually group related content, actions, or components in a structured block.",
         "Use Card for generic content containers; use Form Section when you need semantic fieldset grouping for related form controls.",
         "Use the header for titles or key actions, the body for primary content, and the footer for secondary actions or metadata.",
-        "Card has no size scale. Let Grid, Container, or the parent layout determine its width; use an explicit width or max-width only for intentionally constrained reading or form layouts.",
-        "Card Body size controls internal padding only. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
+        "Card size controls section padding, not Card width. Let Grid, Container, or the parent layout determine its width; use an explicit width or max-width only for intentionally constrained reading or form layouts.",
+        "Set size on Card to apply one spacing density to its direct Header, Body, and Footer. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
+        "Set size on an individual Card section only when Card itself has no size and the sections intentionally use different spacing densities.",
+        "Card-aware Tables, Accordions, and Slats remain edge-to-edge inside Card Body; their internal content inset follows the Card size.",
+        "Treat inherited insets as alignment behavior, not a requirement to match child density to Card size. Choose Table, Accordion, or Slat size from the content, available width, readability, and touch-target needs.",
+        "Card Body size-offset stories are diagnostic references, not canonical compositions. Medium is the safe default for complete Slat groups; avoid none or small Cards for them unless the content has been validated. Tables and Accordions can work across Card sizes when their content remains usable.",
+        "Use usage=grid for repeated Cards in Grid, or usage=h-stack in an H Stack with aligny=stretch, when their headers and footers should align. Direct children retain document order, Card Body expands to absorb available height, and composed elements such as Rule remain auto-sized.",
+        "When Card Footer contains a Button Group, its top padding is removed while the remaining padding continues to follow the Footer size.",
         "Let Grid size repeated cards consistently instead of applying individual widths to each Card.",
         "Cards include a subtle border by default. Use borderless when you need a flush surface.",
         "Avoid overloading cards with too much content — keep them focused and scannable.",
@@ -62,6 +68,24 @@ export const muiDocs: MuiDocs = {
           "description": "Demonstrates the Card Card treatment.",
           "list": [
             "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "layout-grid",
+          "title": "Card: Grid",
+          "description": "Compares two equal-height Cards with uneven body content in a two-column Grid.",
+          "list": [
+            "Set usage=grid on repeated Cards so Card Body absorbs the available height and their footers align.",
+            "Let Grid own the equal column widths and outer gap."
+          ]
+        },
+        {
+          "key": "layout-h-stack",
+          "title": "Card: H Stack",
+          "description": "Compares two equal-height Cards with uneven body content in a stretched H Stack.",
+          "list": [
+            "Set aligny=stretch on H Stack and usage=h-stack on each Card so their bodies fill and their footers align.",
+            "Give each Card equal flex growth when the H Stack should form a two-up layout."
           ]
         },
         {
@@ -147,6 +171,34 @@ export const muiDocs: MuiDocs = {
           "description": "Demonstrates the Card: Header & Accordion Card treatment.",
           "list": [
             "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "body-size-slat-offsets",
+          "title": "Card Body Sizes: Slat Offsets",
+          "description": "Diagnostic comparison of Card section padding and automatic Slat offsets across each size.",
+          "list": [
+            "Use this as an offset and alignment reference, not a recommended composition for every Card size.",
+            "Prefer medium or large Cards for complete Slat groups; none and small can be too constrained for this content.",
+            "Set the Slat size explicitly when reviewing how its density interacts with Card spacing."
+          ]
+        },
+        {
+          "key": "body-size-accordion-offsets",
+          "title": "Card Body Sizes: Accordion Offsets",
+          "description": "Diagnostic comparison of Card section padding and automatic Accordion offsets across each size.",
+          "list": [
+            "Use this as an offset and alignment reference rather than a universal Card recipe.",
+            "Accordion compositions can work across Card sizes when the content and touch-target density suit the context."
+          ]
+        },
+        {
+          "key": "body-size-table-offsets",
+          "title": "Card Body Sizes: Table Offsets",
+          "description": "Diagnostic comparison of Card section padding and automatic Table offsets across each size.",
+          "list": [
+            "Use this as an offset and alignment reference rather than a universal Card recipe.",
+            "Table compositions can work across Card sizes, but choose density from the data and available space."
           ]
         }
       ],

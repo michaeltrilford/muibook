@@ -2,6 +2,7 @@ export const muiApi = {
   "mui-table": {
     description: "Groups row collections into an accessible table layout.",
     attributes: [
+      { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Propagates one size to all rows owned by the Table, including heading rows." },
       { name: "highlight", type: { text: '"hover" | "select"' }, description: "Opts into row-driven highlight behavior. `hover` follows the pointer, `select` updates the highlight when a body row is clicked. Use one mode at a time." },
       { name: "highlight-row", type: { text: "string" }, description: "Opt-in animated row highlight target matching a child row's `row-id`." },
       { name: "highlight-row-index", type: { text: "number" }, description: "Opt-in animated row highlight target by zero-based body row index for static tables." },

@@ -44,7 +44,10 @@ class MuiBadge extends HTMLElement {
 
   render() {
     const variantAttr = this.getAttribute("variant") || "neutral";
-    const variant = variantAttr as Variant;
+    const variant: Variant =
+      variantAttr === "positive" || variantAttr === "warning" || variantAttr === "attention" || variantAttr === "overlay"
+        ? variantAttr
+        : "neutral";
     const sizeAttr = this.getAttribute("size") || "medium";
     const size = sizeAttr as Size;
     const colorAttr = this.getAttribute("color")?.trim();

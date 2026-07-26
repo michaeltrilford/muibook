@@ -9,6 +9,13 @@ export const muiApi = {
           "Sets the slat layout and interactive presentation. Explicitly set variant='row' for standard row slats unless creating a header (variant='header'), interactive action slat (variant='action'), or custom layout; Slat items inside SlatGroup or CardBody require an explicit variant for automatic layout and card alignment.",
       },
       {
+        name: "size",
+        type: { text: '"x-small" | "small" | "medium" | "large"' },
+        default: "medium",
+        description:
+          "Sets Slat row density. Action Slats pass the size to their internal Button so action height and typography use the same scale.",
+      },
+      {
         name: "col",
         type: { text: "string" },
         default: "1fr 1fr; action: minmax(0, 1fr) auto",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T01:02:37.139Z",
+  "generatedAt": "2026-07-26T02:20:32.950Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -282,7 +282,7 @@
       "attributes": [
         {
           "name": "card-slot",
-          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+          "description": "Applied to an Accordion Block used in Card Body, allowing edge-to-edge layout with content inset matched to the current Card size."
         },
         {
           "name": "first-child",
@@ -300,7 +300,7 @@
       "attributes": [
         {
           "name": "has-card-slat-group",
-          "description": "Set when card slat group content exists, allowing the card body to tune internal spacing for grouped slats."
+          "description": "Set when card slat group content exists, allowing the card body to apply the current Card size inset to grouped slats."
         },
         {
           "name": "has-accordion-slat-group",
@@ -318,7 +318,7 @@
       "attributes": [
         {
           "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+          "description": "Set when a Button Group is present, removing Card Footer top padding while preserving size-aware inline and bottom spacing."
         }
       ]
     },
@@ -338,7 +338,7 @@
       "attributes": [
         {
           "name": "card-slot",
-          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+          "description": "Applied to a Slat used in Card Body, allowing edge-to-edge layout with content inset matched to the current Card size."
         },
         {
           "name": "card-body-size-none-slot",
@@ -354,13 +354,13 @@
         }
       ]
     },
-    "mui-row": {
+    "mui-cell": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
+          "name": "card-slot",
+          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
         }
       ]
     },
@@ -370,7 +370,7 @@
       "attributes": [
         {
           "name": "card-slot",
-          "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
+          "description": "Applied to a table used in Card Body, allowing edge-to-edge table layout with content inset matched to the current Card size."
         }
       ]
     },
@@ -385,6 +385,16 @@
         {
           "name": "has-after",
           "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
         }
       ]
     }

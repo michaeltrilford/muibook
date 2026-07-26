@@ -8,6 +8,7 @@ export const muiApi = {
       { name: "currency", description: "Optional currency included in the accessible summary." },
       { name: "height", default: "8rem", description: "CSS length applied to the plot region." },
       { name: "baseline", description: "Numeric baseline value. Defaults to the first visible value." },
+      { name: "scale", values: ["both", "time", "price", "none"], default: "none", description: "Controls the bottom time scale and right-side value scale. Both are hidden by default." },
       { name: "interactive", type: "boolean", description: "Enables crosshair, scrolling, and scale gestures." },
       { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution." },
       { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },

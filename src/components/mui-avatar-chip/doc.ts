@@ -19,6 +19,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use Avatar Chip when an avatar and two compact text lines need to travel as one profile identity pattern.",
         "Use `primary` and `secondary` for simple text labels.",
+        "Use `background` for a named avatar treatment or `background-color` for a custom CSS color.",
         "Use `slot='primary'` or `slot='secondary'` when the copy needs custom typography, links, badges, or supporting icons.",
         "When Avatar Chip is slotted into Media Player metadata, Media Player applies `usage='media-player'` automatically.",
       ],
@@ -45,6 +46,15 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Use image when the identity benefits from a recognisable avatar.",
             "Keep label meaningful so the avatar remains accessible and initials can be generated if the image fails."
+          ]
+        },
+        {
+          "key": "avatar-background",
+          "title": "Avatar Background",
+          "description": "The internal avatar supports named background treatments and custom CSS colors.",
+          "list": [
+            "Use background for semantic or profile palette treatments.",
+            "Use background-color only when the supplied color is required; it takes precedence over background."
           ]
         },
         {

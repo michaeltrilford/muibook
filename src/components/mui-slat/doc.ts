@@ -24,6 +24,8 @@ export const muiDocs: MuiDocs = {
         "Ideal for presenting structured data in a compact, scannable format",
         "Supports stacking labels and values for easier readability",
         "Can include expandable sections to reveal more content on demand",
+        "Use size to control Slat density from x-small through large; medium preserves the default treatment.",
+        "Action Slats pass their size to the internal Button so the interactive row follows the Button action-height scale.",
         "Use col and space to tune slat columns and spacing, including action slats.",
         "Use with SlatGroup when rows need to be presented as a related set, such as wallet activity, settings lists, grouped account records, or transaction histories.",
         "Use Status in the end slot when the slat communicates row state, such as Paid, Pending, Urgent, Open, or Unlodged.",
@@ -105,6 +107,15 @@ export const muiDocs: MuiDocs = {
           "description": "Used for interactive controls placed within or at the end of a list or repeatable layout.",
           "list": [
             "Use with Row and Header variants where required."
+          ]
+        },
+        {
+          "key": "action-sizes",
+          "title": "Action: Sizes",
+          "description": "Compares action Slats across the x-small, small, medium, and large size scale.",
+          "list": [
+            "Medium is the default Slat size.",
+            "Action Slats pass size to their internal Button so the interactive row uses the corresponding action scale."
           ]
         },
         {
@@ -192,10 +203,10 @@ export const muiDocs: MuiDocs = {
         },
         {
           "key": "card-size-none",
-          "title": "Card Body: Size None",
-          "description": "Uses Card Body size none to create an edge-to-edge Slat layout on a constrained surface.",
+          "title": "Card: Size None",
+          "description": "Uses Card size none with x-small Slats to create an edge-to-edge layout on a constrained surface.",
           "list": [
-            "Use radius='none' on action slats inside Card Body with size none layouts.",
+            "Use x-small Slats and radius='none' on action Slats inside Card size none layouts.",
             "Keep content hierarchy clear as the card narrows."
           ]
         }

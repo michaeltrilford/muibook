@@ -23,6 +23,7 @@ export const muiDocs: MuiDocs = {
         "Use Badge for counts and short labels inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces.",
         "Use Badge as a non-interactive label; use Status with action when the state itself needs to behave as a trigger.",
         "Use Badge when the surrounding UI already explains the object and the label is supporting context.",
+        "Use only neutral, positive, warning, attention, or overlay for variant. Omit variant for the default neutral treatment; secondary is not a Badge variant.",
         "Use Status instead when the value is the primary state of an object, record, workflow, or system, especially in table cells, slat end slots, dashboards, and data-heavy pages.",
         "Use color to override the badge background with a shared named colour or custom CSS background value; named colours resolve through theme-aware badge background tokens.",
         "Use Message for persistent page-level or section-level notices; Badge can appear inside message content when it remains supporting metadata.",
@@ -43,9 +44,9 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
-          key: "default",
-          title: "default",
-          description: "Used for data that is visually in the foreground.",
+          key: "neutral",
+          title: "neutral",
+          description: "The default treatment for supporting metadata without semantic emphasis.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/3Xgz2qoLs8NACel4fRr9iC/52699b5763f1efd4853a9ffb991b3ff3/badge-default.png",
         },
@@ -64,8 +65,8 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/5AFfOShVyTEKO1wgIe6rYv/e809c76ddabdfd9789adc31a26becf83/badge-warning.png",
         },
         {
-          key: "error",
-          title: "error",
+          key: "attention",
+          title: "attention",
           description: "For lightweight metadata that needs the strongest presentational emphasis, such as Do not disturb.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/E0jtn7WSTwYligMqSNl0k/c3c041e025c3725682ec12eb3ab98400/badge-error.png",

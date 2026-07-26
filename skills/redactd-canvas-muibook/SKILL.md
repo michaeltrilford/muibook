@@ -26,6 +26,7 @@ For native Muibook components and compositions:
 
 - Remove `mui-` and convert kebab-case to PascalCase: `mui-card-body` becomes `CardBody`.
 - Convert `mui-icon-name` to `_Icon` with `props.icon: "mui-icon-name"`.
+- Before assigning an icon, inspect the available `mui-icon-*` component names in the selected Muibook knowledge source and use an exact existing name. If none semantically matches the requested concept, use `_Icon` with `props.icon: "mui-icon-rectangle"` as the neutral fallback. Never invent an icon component or icon name.
 - Convert `mui-illustration-name` to `_Illustration` with `props.illustration: "mui-illustration-name"`.
 - Put rendered text in `props.text` for `Heading`, `Body`, `Button`, `Link`, `Badge`, `Status`, `Chip`, `TabItem`, and `ListItem`.
 - Move native `slot="name"` to `props.slot: "name"`.
@@ -157,7 +158,7 @@ When operating standalone without access to `assets/muibook-knowledge/`, `muiboo
 - `Heading`: `text`, `size`, `level`; `Body`: `text`, `size`, `weight`, `variant`.
 - `Button`: `text`, `variant`, `size`, `aria-label`; `Link`: `text`, `href`, `variant`, `size`.
 - `Field`: `label`, `variant`, `message`, `size`; `Input`: `label`, `type`, `placeholder`, `name`, `value`, `size`.
-- `Badge`: `text`, `variant`, `size`; `_Icon`: `icon`, `size`, `color`, `slot`.
+- `Badge`: `text`, `variant` (`neutral|positive|warning|attention|overlay`), `size`; `_Icon`: `icon`, `size`, `color`, `slot`. Omit Badge variant for neutral; never use `secondary`, `default`, or `error`.
 
 ## 6. Wireframe Interpretation
 
@@ -188,11 +189,18 @@ When a prompt asks for a populated Muibook chart, include its structured dataset
 
 Keep datasets as structured JSON arrays. Do not stringify them or generate JavaScript assignment code. Use numeric values, order points chronologically, and use ISO `YYYY-MM-DD` dates for daily illustrative data unless the user supplies another valid time format.
 
+- Use finite numeric values and one unique time per datum within each dataset or comparison series.
+- For Financial Chart, ensure `high >= max(open, close)` and `low <= min(open, close)`; area charts still receive the full OHLC shape and plot `close`.
+- For Financial Bar Chart, match `value-format` to raw numeric percent, currency, decimal, or full volume values. Negative values are valid for directional data around a baseline.
+- For Comparison Chart, use unique series ids. Absolute mode expects a shared unit; indexed and percent modes expect raw values with a non-zero first value and perform their own transformation.
+- For Market Sparkline, keep labels, currency, baseline, trend, and scale in props rather than encoding them into `{ time, value }` data.
+
 ## 8. Tree Rules
 
 When running in the plugin environment, inspect `assets/muibook-knowledge/json-rules.ts`; when using the `muibook-knowledge` MCP, call `get_rules` to read `json-rules`. For standalone use, follow the self-contained summary of core tree construction rules below:
 
 - **Component API Compliance:** Use only component types and props from the selected Muibook knowledge source. Never invent Redactd component names, aliases, props, CSS tokens, or Material UI names.
+- **Icon Resolution:** Check the available Muibook icons before choosing one and use its exact `mui-icon-*` name. If no available icon matches, use `_Icon` with `props.icon: "mui-icon-rectangle"`; never invent an icon name.
 - **Slat Column Defaults:** `variant="action"` automatically defaults to `col="minmax(0, 1fr) auto"` so trailing actions stay end-aligned. Standard `variant="row"` defaults to `col="1fr 1fr"`. Only set `props.col` explicitly (e.g. `"1fr auto"`) when a non-action row needs a constrained trailing column.
 - **Mandatory CSS Units:** All length props (`height`, `width`, `min-height`, `gap`, `padding`, `space`) MUST include valid CSS units (e.g. `"240px"`, `"320px"`, `"100%"`). NEVER output bare numeric strings like `"240"` or `"320"`.
 - **Slat & SlatGroup Rows:** Prefer `SlatGroup` and `Slat` over ad-hoc `HStack` for structured row items. Place primary row content in `slot="start"`, trailing metadata/status/action in `slot="end"`, and leading avatar/icon in `slot="accessory"`. Always specify an explicit `variant` (`"row"`, `"action"`, or `"header"`).
@@ -200,6 +208,7 @@ When running in the plugin environment, inspect `assets/muibook-knowledge/json-r
 - **Root Containers:** Root additions should usually use `Container` with `center: true` and `size: "medium"` unless the user asks for a fragment or a `Drawer` app shell.
 - **Card Hierarchy:** Card content must be inside a direct child `CardBody`.
 - **Action Labels:** Button and Link text belongs on the component props, not inside a child `Body`.
+- **Badge Variants:** Badge variants are exactly `neutral`, `positive`, `warning`, `attention`, and `overlay`. Omit variant for neutral. Never output `secondary`, `default`, or `error` for Badge, even though `secondary` is valid on other components such as Body and Button.
 - **Spacing Tokens:** Layout spacing props such as `space` and `padding` must use complete CSS token references such as `var(--space-400)`. Do not use `space-400`, `400`, or another bare scale value; use `var(--space-000)` for zero spacing.
 - **Grid Column Tracks:** For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not pass a numeric count or repeated bare tracks such as `1fr 1fr 1fr`.
 - **Responsiveness:** Prefer `Responsive` with `variant: "container"` for reusable components and compositions.

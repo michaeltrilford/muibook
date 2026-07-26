@@ -21,6 +21,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use for structured content that benefits from a grid format.",
         "Ideal for comparing data across multiple rows and columns.",
+        "Set size on Table to apply one density to every heading and body Row. Set size directly on individual Rows only when Table itself has no size.",
         "Supports sorting, filtering, or action buttons if needed.",
         "Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.",
         "Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.",

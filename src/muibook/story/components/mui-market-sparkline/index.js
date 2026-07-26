@@ -260,6 +260,29 @@ class StoryMarketSparkline extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card id="scales" title="${storyMeta.scales.title}" usage="${storyMeta.scales.usage}">
+          <mui-grid slot="body" col="repeat(auto-fit, minmax(16rem, 1fr))" space="var(--space-400)">
+            ${this.scaleExample("bothScaleSparkline", "both", "Both scales", "Time and value")}
+            ${this.scaleExample("timeScaleSparkline", "time", "Time scale", "Bottom axis only")}
+            ${this.scaleExample("priceScaleSparkline", "price", "Value scale", "Right axis only")}
+            ${this.scaleExample("noScaleSparkline", "none", "No scales", "Default Sparkline")}
+          </mui-grid>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-grid col=&quot;repeat(auto-fit, minmax(16rem, 1fr))&quot; space=&quot;var(--space-400)&quot;&gt;<br />
+            ${this.scaleCodeExample("bothScaleSparkline", "both", "Both scales", "Time and value")}<br />
+            ${this.scaleCodeExample("timeScaleSparkline", "time", "Time scale", "Bottom axis only")}<br />
+            ${this.scaleCodeExample("priceScaleSparkline", "price", "Value scale", "Right axis only")}<br />
+            ${this.scaleCodeExample("noScaleSparkline", "none", "No scales", "Default Sparkline")}<br />
+            &lt;/mui-grid&gt;<br /><br />
+            &lt;script&gt;<br />
+            &nbsp;&nbsp;document.querySelector(&quot;#bothScaleSparkline&quot;).data = positiveTrendData;<br />
+            &nbsp;&nbsp;document.querySelector(&quot;#timeScaleSparkline&quot;).data = positiveTrendData;<br />
+            &nbsp;&nbsp;document.querySelector(&quot;#priceScaleSparkline&quot;).data = positiveTrendData;<br />
+            &nbsp;&nbsp;document.querySelector(&quot;#noScaleSparkline&quot;).data = positiveTrendData;<br />
+            &lt;/script&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card id="states" title="${storyMeta.states.title}" usage="${storyMeta.states.usage}">
           <mui-grid slot="body" col="repeat(auto-fit, minmax(16rem, 1fr))" space="var(--space-400)">
             <mui-card>
@@ -356,6 +379,10 @@ class StoryMarketSparkline extends HTMLElement {
       volatility: 2.4,
       seed: 15,
     });
+    this.shadowRoot.querySelector("#bothScaleSparkline").data = positiveTrendData;
+    this.shadowRoot.querySelector("#timeScaleSparkline").data = positiveTrendData;
+    this.shadowRoot.querySelector("#priceScaleSparkline").data = positiveTrendData;
+    this.shadowRoot.querySelector("#noScaleSparkline").data = positiveTrendData;
   }
 
   marketCard(id, title, symbol, value, change, variant, action, attribution) {
@@ -403,6 +430,30 @@ class StoryMarketSparkline extends HTMLElement {
       &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;header&quot; space=&quot;var(--space-000)&quot; style=&quot;padding-block-end: var(--space-200);&quot;&gt;<br />
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;4&quot; level=&quot;none&quot;&gt;${title}&lt;/mui-heading&gt;<br />
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; variant=&quot;secondary&quot;&gt;Compact trend&lt;/mui-body&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+      &nbsp;&nbsp;&lt;/mui-market-sparkline&gt;<br />
+      &lt;/mui-card-body&gt;&lt;/mui-card&gt;`;
+  }
+
+  scaleExample(id, scale, title, description) {
+    return `<mui-card>
+      <mui-card-body size="small">
+        <mui-market-sparkline id="${id}" scale="${scale}" label="${title} market trend" height="14rem" attribution="none">
+          <mui-v-stack slot="header" space="var(--space-000)" style="padding-block-end: var(--space-200);">
+            <mui-heading size="4" level="none">${title}</mui-heading>
+            <mui-body size="small" variant="secondary">${description}</mui-body>
+          </mui-v-stack>
+        </mui-market-sparkline>
+      </mui-card-body>
+    </mui-card>`;
+  }
+
+  scaleCodeExample(id, scale, title, description) {
+    return `&lt;mui-card&gt;&lt;mui-card-body size=&quot;small&quot;&gt;<br />
+      &nbsp;&nbsp;&lt;mui-market-sparkline id=&quot;${id}&quot; scale=&quot;${scale}&quot; label=&quot;${title} market trend&quot; height=&quot;14rem&quot; attribution=&quot;none&quot;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;header&quot; space=&quot;var(--space-000)&quot; style=&quot;padding-block-end: var(--space-200);&quot;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;4&quot; level=&quot;none&quot;&gt;${title}&lt;/mui-heading&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; variant=&quot;secondary&quot;&gt;${description}&lt;/mui-body&gt;<br />
       &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
       &nbsp;&nbsp;&lt;/mui-market-sparkline&gt;<br />
       &lt;/mui-card-body&gt;&lt;/mui-card&gt;`;

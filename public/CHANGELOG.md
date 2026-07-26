@@ -1,5 +1,39 @@
 ## Header [Start]
 
+## v24.0.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Added
+
+- `mui-card` now supports `size="none | small | medium | large"` and propagates that spacing density to direct Card Header, Body, and Footer sections.
+- Card Header and Card Footer now expose the same size scale as Card Body, while Button Group footers continue to remove their top padding.
+- `mui-card usage="grid | h-stack"` now gives Card Body the flexible row in equal-height Grid and H Stack compositions while preserving direct-child order and auto-sized elements such as `mui-rule`.
+- `mui-table` now supports `size="xx-small | x-small | small | medium | large"` and propagates it to owned heading and body rows.
+- Accordion Block now supports `xx-small` and `x-small` alongside its existing sizes, with size-aware heading typography, disclosure icons, and detail spacing while retaining medium as the default baseline and keeping heading level semantic.
+- `mui-slat` now supports `x-small | small | medium | large`; Action Slats pass their size to the internal Button so action height and typography follow the same scale.
+- `mui-market-sparkline` now supports `scale="both | time | price | none"`, keeping its bottom time scale and right-side value scale hidden by default while allowing either or both to be shown when needed.
+- Added shared, composable chart-header guidance for Market Sparkline, Financial Bar Chart, and Comparison Chart JSON trees, including named-slot placement and adaptable Muibook header compositions.
+
+### Improved
+
+- Tables, Accordions, and Slats composed in Card Body now use Card-size-aware insets, including edge-to-edge `size="none"` treatment.
+- Card, Accordion, Table, and Slat stories now include size comparisons for reviewing density and Card offsets.
+- Market Sparkline stories now compare all four scale treatments, and the chart API guidance consistently identifies the bottom time scale and right-side value scale.
+- Structured chart-data knowledge now documents exact JSON contracts, finite numeric values, chronological and unique times, valid OHLC relationships, Financial Bar Chart units and signed values, and raw-series requirements for Comparison Chart modes.
+- Generated Muibook and Redactd Canvas knowledge now treats chart headers as adaptable compositions rather than fixed anatomy and includes the shared chart data and header rules in the relevant build outputs.
+
+### Fixed
+
+- Badge documentation, JSON rules, and generated skills now use only the supported `neutral | positive | warning | attention | overlay` variants and explicitly reject `secondary`, `default`, and `error`; unsupported runtime values safely fall back to neutral.
+- `mui-avatar-chip` now supports `background` and `background-color`, forwarding named treatments or custom CSS colors to its internal avatar and documenting both options in a dedicated story.
+
+---
+
+## Header [Start]
+
 ## v23.0.0
 
 _Status: Released_

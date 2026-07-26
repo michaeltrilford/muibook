@@ -18,9 +18,30 @@ class MuiCardFooter extends HTMLElement {
           padding: var(--space-400) var(--space-500);
         }
 
+        :host([size="none"][inner-space]) {
+          padding: var(--space-000);
+        }
+
+        :host([size="small"][inner-space]) {
+          padding: var(--space-200) var(--space-300);
+        }
+
+        :host([size="medium"][inner-space]) {
+          padding: var(--space-400) var(--space-500);
+        }
+
+        :host([size="large"][inner-space]) {
+          padding: var(--space-600) var(--space-700);
+        }
+
         @media (min-width: 768px) {
-          :host([inner-space]) {
+          :host([inner-space]),
+          :host([size="medium"][inner-space]) {
             padding: var(--space-500) var(--space-600);
+          }
+
+          :host([size="large"][inner-space]) {
+            padding: var(--space-600) var(--space-800);
           }
         }
 
@@ -33,7 +54,7 @@ class MuiCardFooter extends HTMLElement {
           border-bottom-left-radius: calc(var(--card-radius) - 1px);
         }
 
-        :host([has-button-group]) {
+        :host([inner-space][has-button-group]) {
           padding-top: 0;
         }
 

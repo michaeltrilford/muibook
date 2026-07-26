@@ -121,6 +121,7 @@ ${JSON.stringify(composition)}
   .join("\n\n");
 
 const chartData = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-data.md"), "utf8");
+const chartComposition = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-composition.md"), "utf8");
 const designAssets = fs.readFileSync(path.join(root, "src/knowledge/fragments/design-assets.md"), "utf8");
 
 const skill = `---
@@ -164,6 +165,7 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
 - Put named slot placement on the child through its documented native \`slot\` attribute. In Redactd trees, store that value in \`props.slot\`; never add slot as a top-level node field.
 - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+- Badge variants are exactly \`neutral\`, \`positive\`, \`warning\`, \`attention\`, and \`overlay\`. Omit variant for the default neutral treatment. Never use \`secondary\`, \`default\`, or \`error\` for Badge, even though \`secondary\` is valid on components such as Body and Button.
 - Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in \`slot="start"\` and trailing metadata/action in \`slot="end"\`. Always explicitly set \`variant="row"\` on standard Slat items unless creating a section header (\`variant="header"\`), interactive row (\`variant="action"\`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit \`variant\` ("row", "header", or "action") for correct automatic alignment and card/group styles.
 - Use \`col="1fr auto"\` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
 - For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set \`fill\` or \`height\` on VStack and apply \`style="align-self: end;"\` to the slotted child. Use \`fill\` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use \`height\` when specifying an explicit length (e.g. \`height="300px"\`).
@@ -171,13 +173,17 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - For Grid, never leave \`col\` empty. It defaults to two columns (\`1fr 1fr\`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit \`width\` and \`height\` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
 - For Drawer, use \`open\` plus \`side\` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Do not use \`left-open\`, \`right-open\`, \`left-width\`, \`right-width\`, or the \`left\`/\`right\`/\`page\` slots unless \`variant="workspace"\`; those controls are workspace-only.
-- In Drawer navigation, compose nav items as Button or Link with \`align="start"\`, \`variant="tertiary"\` as the default (non-prominent) emphasis, and a \`slot="before"\` _Icon matching the item's meaning. Use mui-icon-rectangle as a generic placeholder icon only when no semantically matching icon exists.
+- Before assigning an icon, inspect the available \`mui-icon-*\` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd \`_Icon\` with \`icon="mui-icon-rectangle"\` as the neutral fallback. Never invent an icon component or icon name.
+- In Drawer navigation, compose nav items as Button or Link with \`align="start"\`, \`variant="tertiary"\` as the default (non-prominent) emphasis, and a \`slot="before"\` _Icon matching the item's meaning.
 - When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with \`variant="secondary"\` and \`slot="action"\`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
 - For equal Grid columns, use \`col: "repeat(N, minmax(0, 1fr))"\`. Do not use numeric counts or repeated bare \`1fr\` tracks.
 - Layout spacing values must use complete CSS token references such as \`var(--space-400)\`; never use \`space-400\`, \`400\`, or another bare scale value. Use \`var(--space-000)\` for zero spacing.
 - CSS length props and style values must include valid units or CSS functions. For \`height\`, \`width\`, \`max-height\`, \`min-height\`, padding, margin, gap, and similar CSS lengths, use values such as \`320px\`, \`20rem\`, \`100%\`, \`100vh\`, \`auto\`, or \`var(--space-500)\`; never output bare numeric strings such as \`320\` or \`20\` unless the component API explicitly documents a number scale for that prop.
 - Prefer container-based responsiveness for reusable components and compositions. Use viewport responsiveness only for page-level or app-shell decisions that genuinely depend on browser width.
-- Card has no size scale. Its width comes from Grid, Container, the parent layout, or an explicit constrained style. Card Body \`size\` controls internal padding only: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Let Grid size repeated Cards rather than styling each Card width independently.
+- Use Grid for repeated Cards, page regions, forms, and other primary layout structure. When a collection should naturally reduce its column count as its container narrows, use intrinsic tracks such as \`col="repeat(auto-fit, minmax(min(100%, 18rem), 1fr))"\` and choose the minimum width to suit the content. Use \`repeat(N, minmax(0, 1fr))\` only when the requested number of columns must remain fixed.
+- Use HStack \`wrap\` only for compact inline relationships such as actions, chips, metadata, legends, and small toolbar groups that remain meaningful across multiple horizontal lines. Wrapping does not turn HStack into VStack. Do not use a wrapping HStack as the default for main page regions, card collections, forms, or a deliberate horizontal-to-vertical layout change.
+- When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive \`variant="container"\` with HStack in \`show-above\` and VStack in \`show-below\` only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate IDs, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
+- Card has no width size scale. Its width comes from Grid, Container, the parent layout, or an explicit constrained style. Set \`size\` on Card to propagate internal padding density to its direct Card Header, Body, and Footer sections: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Set size directly on an individual section only when Card has no size. Card-aware Tables, Accordions, and Slats remain edge-to-edge inside Card Body and inherit the per-size content inset. Treat that inset as alignment behavior, not a requirement to derive child density from Card size. Choose Table, Accordion, or Slat size from the content, available width, readability, and touch-target needs. Card Body size-offset stories are diagnostic references rather than canonical compositions. Medium is the safe default for complete Slat groups; avoid none or small Cards for them unless the content has been validated. Tables and Accordions can work across Card sizes when their content remains usable. Use \`usage="grid"\` on repeated Cards when their headers and footers should align; direct children retain document order, Card Body receives the flexible row, and composed elements such as Rule remain auto-sized. Let Grid size repeated Cards rather than styling each Card width independently.
 - Use Heading levels 1-6 for document structure. Use \`level="none"\` only for prominent display text, such as a metric value, that must not enter the heading outline.
 - Compose forms with Form Section, Form Group, Field, and the appropriate form control. Keep labels, messages, validation, and control behavior in those components instead of rebuilding them from generic text and layout primitives.
 
@@ -191,6 +197,10 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 ## Structured Chart Data
 
 ${chartData}
+
+## Composable Chart Headers
+
+${chartComposition}
 
 ${designAssets}
 
