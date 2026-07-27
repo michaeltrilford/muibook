@@ -2,7 +2,9 @@
 
 ## v25.0.0
 
-_Status: Upcoming_
+_Status: Released_
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/25.0.0)
 
 ## Header [End]
 
