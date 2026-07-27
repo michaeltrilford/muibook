@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-26T03:37:01.860Z",
+  "generatedAt": "2026-07-27T02:30:53.563Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -134,6 +134,16 @@
         }
       ]
     },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-rule",
+          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
+        }
+      ]
+    },
     "mui-form-section": {
       "version": 1,
       "destinationOnly": true,
@@ -145,16 +155,6 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
-        }
-      ]
-    },
-    "mui-form-section-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-rule",
-          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
         }
       ]
     },

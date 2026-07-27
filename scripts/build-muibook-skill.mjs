@@ -122,6 +122,7 @@ ${JSON.stringify(composition)}
 
 const chartData = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-data.md"), "utf8");
 const chartComposition = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-composition.md"), "utf8");
+const shellComposition = fs.readFileSync(path.join(root, "src/knowledge/fragments/json-shells.md"), "utf8");
 const designAssets = fs.readFileSync(path.join(root, "src/knowledge/fragments/design-assets.md"), "utf8");
 
 const skill = `---
@@ -165,14 +166,15 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
 - Put named slot placement on the child through its documented native \`slot\` attribute. In Redactd trees, store that value in \`props.slot\`; never add slot as a top-level node field.
 - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
-- Badge variants are exactly \`neutral\`, \`positive\`, \`warning\`, \`attention\`, and \`overlay\`. Omit variant for the default neutral treatment. Never use \`secondary\`, \`default\`, or \`error\` for Badge, even though \`secondary\` is valid on components such as Body and Button.
+- Every Badge must have a non-empty \`props.text\` string after trimming. Use a concise visible label; omit the Badge entirely when no meaningful label is available. Badge variants are exactly \`neutral\`, \`positive\`, \`warning\`, \`attention\`, and \`overlay\`. Omit variant for the default neutral treatment. Never use \`secondary\`, \`default\`, or \`error\` for Badge, even though \`secondary\` is valid on components such as Body and Button.
 - Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in \`slot="start"\` and trailing metadata/action in \`slot="end"\`. Always explicitly set \`variant="row"\` on standard Slat items unless creating a section header (\`variant="header"\`), interactive row (\`variant="action"\`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit \`variant\` ("row", "header", or "action") for correct automatic alignment and card/group styles.
 - Use \`col="1fr auto"\` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
 - For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set \`fill\` or \`height\` on VStack and apply \`style="align-self: end;"\` to the slotted child. Use \`fill\` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use \`height\` when specifying an explicit length (e.g. \`height="300px"\`).
 - Explicitly define layout boundaries to prevent unpredictable canvas rendering. For VStack and HStack, always output \`width="auto"\` and \`height="auto"\` unless a specific dimension or \`fill\` is required.
 - For Grid, never leave \`col\` empty. It defaults to two columns (\`1fr 1fr\`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit \`width\` and \`height\` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
-- For Drawer, use \`open\` plus \`side\` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Do not use \`left-open\`, \`right-open\`, \`left-width\`, \`right-width\`, or the \`left\`/\`right\`/\`page\` slots unless \`variant="workspace"\`; those controls are workspace-only.
+- For Drawer, use \`open\` plus \`side\` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Push and persistent drawers use \`slot="page"\` for adjacent page content; \`left-open\`, \`right-open\`, \`left-width\`, \`right-width\`, and the \`left\`/\`right\` slots are workspace-only.
+- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with a two-column Grid header first and Drawer second. Preserve an explicit Drawer width and apply the same value to the Grid's first track and Drawer-aligned first child, keep the page in a direct plain wrapper with \`props.slot="page"\`, and size the Drawer to the remaining shell height. Follow the Top Header With Drawer Region fragment below.
 - Before assigning an icon, inspect the available \`mui-icon-*\` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd \`_Icon\` with \`icon="mui-icon-rectangle"\` as the neutral fallback. Never invent an icon component or icon name.
 - In Drawer navigation, compose nav items as Button or Link with \`align="start"\`, \`variant="tertiary"\` as the default (non-prominent) emphasis, and a \`slot="before"\` _Icon matching the item's meaning.
 - When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with \`variant="secondary"\` and \`slot="action"\`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
@@ -201,6 +203,8 @@ ${chartData}
 ## Composable Chart Headers
 
 ${chartComposition}
+
+${shellComposition}
 
 ${designAssets}
 

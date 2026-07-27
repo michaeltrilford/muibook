@@ -39,14 +39,15 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
 - Put named slot placement on the child through its documented native `slot` attribute. In Redactd trees, store that value in `props.slot`; never add slot as a top-level node field.
 - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
-- Badge variants are exactly `neutral`, `positive`, `warning`, `attention`, and `overlay`. Omit variant for the default neutral treatment. Never use `secondary`, `default`, or `error` for Badge, even though `secondary` is valid on components such as Body and Button.
+- Every Badge must have a non-empty `props.text` string after trimming. Use a concise visible label; omit the Badge entirely when no meaningful label is available. Badge variants are exactly `neutral`, `positive`, `warning`, `attention`, and `overlay`. Omit variant for the default neutral treatment. Never use `secondary`, `default`, or `error` for Badge, even though `secondary` is valid on components such as Body and Button.
 - Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in `slot="start"` and trailing metadata/action in `slot="end"`. Always explicitly set `variant="row"` on standard Slat items unless creating a section header (`variant="header"`), interactive row (`variant="action"`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit `variant` ("row", "header", or "action") for correct automatic alignment and card/group styles.
 - Use `col="1fr auto"` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
 - For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set `fill` or `height` on VStack and apply `style="align-self: end;"` to the slotted child. Use `fill` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use `height` when specifying an explicit length (e.g. `height="300px"`).
 - Explicitly define layout boundaries to prevent unpredictable canvas rendering. For VStack and HStack, always output `width="auto"` and `height="auto"` unless a specific dimension or `fill` is required.
 - For Grid, never leave `col` empty. It defaults to two columns (`1fr 1fr`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit `width` and `height` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
-- For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Do not use `left-open`, `right-open`, `left-width`, `right-width`, or the `left`/`right`/`page` slots unless `variant="workspace"`; those controls are workspace-only.
+- For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Push and persistent drawers use `slot="page"` for adjacent page content; `left-open`, `right-open`, `left-width`, `right-width`, and the `left`/`right` slots are workspace-only.
+- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with a two-column Grid header first and Drawer second. Preserve an explicit Drawer width and apply the same value to the Grid's first track and Drawer-aligned first child, keep the page in a direct plain wrapper with `props.slot="page"`, and size the Drawer to the remaining shell height. Follow the Top Header With Drawer Region fragment below.
 - Before assigning an icon, inspect the available `mui-icon-*` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd `_Icon` with `icon="mui-icon-rectangle"` as the neutral fallback. Never invent an icon component or icon name.
 - In Drawer navigation, compose nav items as Button or Link with `align="start"`, `variant="tertiary"` as the default (non-prominent) emphasis, and a `slot="before"` _Icon matching the item's meaning.
 - When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with `variant="secondary"` and `slot="action"`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
@@ -566,6 +567,234 @@ Example Comparison Chart with a compact legend composed into the header:
 ```
 
 
+## Top Header With Drawer Region
+
+Treat a global top header plus side drawer as an app-shell fragment. The top header and Drawer are
+siblings inside one vertical shell so opening a push Drawer affects only the Drawer page region, not
+the global header above it.
+
+- Use a `VStack` shell with zero spacing when the header spans the full application width.
+- Place the top header first as a two-column `Grid`. When the Drawer has an explicit width such as
+  `320px`, use that same width for the header's first Grid track and its Drawer-aligned first child.
+  Keep the same explicit value on Drawer; do not omit or replace the configured Drawer width.
+- Use the header Grid's first child as the Drawer-aligned header region, commonly containing the
+  menu (or “hamburger”) action and product identity. Use its second child as the page-aligned header
+  region for the current page title, search, context, or actions.
+- Use `var(--header-min-height-medium)` for the header height and `var(--border-thin)` for the
+  separating border unless the product supplies another semantic shell treatment.
+- Place the `Drawer` second. When the shell fills the viewport, set Drawer height to
+  `calc(100dvh - var(--header-min-height-medium))` so the combined header and drawer region do not
+  exceed the viewport.
+- Keep Drawer navigation in its default slot. For navigation items, use tertiary Button or Link
+  actions with `align: "start"` and exact Muibook icons in `props.slot: "before"` when icons are
+  useful.
+- Wrap adjacent page content in a plain direct `Div` child with `props.slot: "page"`; compose
+  Container, Stack, Grid, and product content inside that wrapper.
+- Use `hide-header: true` when the global header owns the shell chrome and the Drawer does not need
+  its built-in title/close row. Do not also generate a hidden Drawer `title` child.
+- Keep every slot only in `props.slot`; never add `slot` beside `id`, `type`, `props`, or `children`.
+- If the header should move with or belong only to the page region, place it inside the Drawer page
+  wrapper instead. If there is no global header, Drawer can remain the root node.
+
+Reference fragment (adapt the labels and page content to the requested product):
+
+```json
+{
+  "id": "application_shell",
+  "type": "VStack",
+  "props": {
+    "space": "var(--space-000)",
+    "alignX": "stretch",
+    "width": "100%",
+    "height": "100dvh"
+  },
+  "children": [
+    {
+      "id": "application_header",
+      "type": "Grid",
+      "props": {
+        "col": "320px minmax(0, 1fr)",
+        "space": "var(--space-000)",
+        "alignY": "center",
+        "width": "auto",
+        "height": "var(--header-min-height-medium)",
+        "style": "border-bottom: var(--border-thin); background: var(--surface-elevated-100);"
+      },
+      "children": [
+        {
+          "id": "application_drawer_header",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-200)",
+            "alignX": "start",
+            "alignY": "center",
+            "width": "320px",
+            "height": "100%",
+            "style": "padding-inline: var(--space-400); border-right: var(--border-thin);"
+          },
+          "children": [
+            {
+              "id": "application_menu_action",
+              "type": "Button",
+              "props": {
+                "variant": "tertiary",
+                "aria-label": "Toggle navigation"
+              },
+              "children": [
+                {
+                  "id": "application_menu_icon",
+                  "type": "_Icon",
+                  "props": {
+                    "icon": "mui-icon-menu",
+                    "size": "medium"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "application_name",
+              "type": "Heading",
+              "props": {
+                "text": "Application",
+                "size": "4",
+                "level": "1"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "application_page_header",
+          "type": "HStack",
+          "props": {
+            "space": "var(--space-300)",
+            "alignX": "space-between",
+            "alignY": "center",
+            "width": "auto",
+            "height": "100%",
+            "style": "padding-inline: var(--space-500);"
+          },
+          "children": [
+            {
+              "id": "application_page_header_title",
+              "type": "Heading",
+              "props": {
+                "text": "Page title",
+                "size": "4",
+                "level": "2"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "application_navigation_drawer",
+      "type": "Drawer",
+      "props": {
+        "open": true,
+        "variant": "push",
+        "side": "left",
+        "width": "320px",
+        "hide-header": true,
+        "height": "calc(100dvh - var(--header-min-height-medium))",
+        "panel-padding": "none",
+        "style": "background: var(--surface);"
+      },
+      "children": [
+        {
+          "id": "application_navigation",
+          "type": "VStack",
+          "props": {
+            "space": "var(--space-100)",
+            "padding": "var(--space-300)",
+            "alignX": "stretch",
+            "width": "auto",
+            "height": "auto"
+          },
+          "children": [
+            {
+              "id": "application_home_link",
+              "type": "Button",
+              "props": {
+                "text": "Home",
+                "variant": "tertiary",
+                "align": "start"
+              },
+              "children": []
+            },
+            {
+              "id": "application_settings_link",
+              "type": "Button",
+              "props": {
+                "text": "Settings",
+                "variant": "tertiary",
+                "align": "start"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "application_page_region",
+          "type": "Div",
+          "props": {
+            "slot": "page"
+          },
+          "children": [
+            {
+              "id": "application_page_container",
+              "type": "Container",
+              "props": {
+                "center": true,
+                "size": "fluid",
+                "style": "padding-block: var(--space-600);"
+              },
+              "children": [
+                {
+                  "id": "application_page_content",
+                  "type": "VStack",
+                  "props": {
+                    "space": "var(--space-300)",
+                    "alignX": "stretch",
+                    "width": "auto",
+                    "height": "auto"
+                  },
+                  "children": [
+                    {
+                      "id": "application_page_heading",
+                      "type": "Heading",
+                      "props": {
+                        "text": "Page content",
+                        "size": "2",
+                        "level": "3"
+                      },
+                      "children": []
+                    },
+                    {
+                      "id": "application_page_description",
+                      "type": "Body",
+                      "props": {
+                        "text": "Compose the requested page content in this region.",
+                        "variant": "secondary"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+
 ## Spacing Values
 
 000, 025, 050, 100, 200, 300, 400, 500, 600, 700, 800
@@ -621,7 +850,7 @@ Use real Muibook asset paths:
 - `mui-date-picker` — A composed date and time picker input. Attributes: value, type, label, hide-label, optional, size, variant, menu-slot, padding-block, padding-inline, surface. Slots: none.
 - `mui-date-picker-popover` — MuiDatePickerPopover Attributes: none. Slots: none.
 - `mui-dialog` — Presents modal content and optional actions in a native dialog surface. Attributes: open, width, content-max-height, close-size, hide-header, content-padding. Slots: default, title, actions.
-- `mui-drawer` — Displays supplementary content as an overlay, push layout, persistent adjacent panel, or workspace shell. Attributes: open, width, height, side, variant, left-open, right-open, left-width, right-width, z-index, drawer-space, hide-header, close-size, breakpoint, mobile-presentation, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, contained. Slots: default, title, actions, page, left, right.
+- `mui-drawer` — Displays supplementary content as an overlay, push layout, persistent adjacent panel, or workspace shell. Attributes: open, width, height, side, variant, left-open, right-open, left-width, right-width, z-index, panel-padding, hide-header, close-size, breakpoint, mobile-presentation, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, contained. Slots: default, title, actions, page, left, right.
 - `mui-dropdown` — Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour. Attributes: zindex, position, vertical-position, persistent, size, offset. Slots: action, default.
 - `mui-field` — Wraps a form control with shared label, sizing, and message feedback behavior. Attributes: variant, message, label, hide-label, size, optional. Slots: default, message.
 - `mui-file-diff` — A component representing a file and its diff stats. Attributes: filename, filepath, additions, deletions, result-slot, card-slot, result-slot-last. Slots: icon.

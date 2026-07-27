@@ -225,7 +225,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
     breakpoint="960"
     resize-rail
     resize-min-page-width="596"
-    drawer-space
+    panel-padding="none"
   >
   <app-navbar></app-navbar>
   <app-container slot="page"></app-container>

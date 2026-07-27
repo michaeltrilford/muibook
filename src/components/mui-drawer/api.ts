@@ -65,10 +65,10 @@ export const muiApi = {
         description: "Overlay stacking value; the drawer surface is rendered one level above it.",
       },
       {
-        name: "drawer-space",
-        type: { text: "boolean" },
-        default: "false",
-        description: "Removes default padding from the drawer content region when present.",
+        name: "panel-padding",
+        type: { text: '"default" | "none"' },
+        default: "default",
+        description: "Controls padding inside the drawer panel without affecting the adjacent page region.",
       },
       {
         name: "hide-header",

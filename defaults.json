@@ -507,8 +507,8 @@
       "default": "10"
     },
     {
-      "name": "drawer-space",
-      "default": "false"
+      "name": "panel-padding",
+      "default": "default"
     },
     {
       "name": "hide-header",

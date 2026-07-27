@@ -915,7 +915,7 @@ export const compositions = {
               {
                 type: "Drawer",
                 id: "sidebar_drawer",
-                slot: "show-above", props: { width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
+                slot: "show-above", props: { width: "240px", variant: "push", open: true, side: "left", "panel-padding": "none" },
                 children: [
                   {
                     type: "VStack",
@@ -1020,7 +1020,7 @@ export const compositions = {
                   {
                     type: "Drawer",
                     id: "sidebar_drawer_mobile",
-                    props: { variant: "overlay", width: "260px", side: "left", "z-index": "200", "drawer-space": "none" },
+                    props: { variant: "overlay", width: "260px", side: "left", "z-index": "200", "panel-padding": "none" },
                     children: [
                       {
                         type: "VStack",

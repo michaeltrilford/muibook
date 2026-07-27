@@ -521,7 +521,7 @@ class compMuiTube extends HTMLElement {
           </mui-h-stack>
         </mui-h-stack>
         <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-          <mui-drawer contained width="240px" variant="push" drawer-space="none" open side="left" slot="show-above" data-drawer-toggle="video-header-toggle">
+          <mui-drawer contained width="240px" variant="push" panel-padding="none" open side="left" slot="show-above" data-drawer-toggle="video-header-toggle">
             ${videoMenuItems}
             ${videoPageContent}
           </mui-drawer>
@@ -532,7 +532,7 @@ class compMuiTube extends HTMLElement {
               side="left"
               z-index="200"
               data-drawer="video-header-overlay"
-              drawer-space="none"
+              panel-padding="none"
             >
             <mui-h-stack style="min-height: var(--header-min-height); padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color); box-sizing: border-box;" alignx="space-between" aligny="center">
               <mui-h-stack alignx="start" aligny="center" space="var(--space-000)">

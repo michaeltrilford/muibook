@@ -63,7 +63,7 @@ class MuiDrawer extends HTMLElement {
       "left-width",
       "right-width",
       "z-index",
-      "drawer-space",
+      "panel-padding",
       "hide-header",
       "close-size",
       "breakpoint",
@@ -222,9 +222,9 @@ class MuiDrawer extends HTMLElement {
     return `${leftColumn} ${leftRail} minmax(0, 1fr) ${rightRail} ${rightColumn}`;
   }
 
-  private syncDrawerSpace() {
+  private syncPanelPadding() {
     if (!this.shadowRoot) return;
-    const noPadding = this.hasAttribute("drawer-space");
+    const noPadding = this.getAttribute("panel-padding") === "none";
     this.shadowRoot.querySelectorAll<HTMLElement>(".content").forEach((el) => {
       if (el.closest(".workspace-panel")) return;
       el.classList.toggle("no-padding", noPadding);
@@ -317,7 +317,7 @@ class MuiDrawer extends HTMLElement {
   }
 
   private getDrawerTemplate(hasCloseButton = true) {
-    const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
+    const noPadding = this.getAttribute("panel-padding") === "none" ? "no-padding" : "";
     const closeSize = this.getCloseSize();
     const closeButtonSize = this.getCloseButtonSize();
     const partMap = getPartMap("visual");
@@ -1133,7 +1133,7 @@ class MuiDrawer extends HTMLElement {
     // Template selection
     let template = "";
 
-    const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
+    const noPadding = this.getAttribute("panel-padding") === "none" ? "no-padding" : "";
 
     if (variant === "workspace") {
       template = /*html*/ `
@@ -1342,8 +1342,8 @@ class MuiDrawer extends HTMLElement {
       this.syncWorkspaceState();
       return;
     }
-    if (name === "drawer-space") {
-      this.syncDrawerSpace();
+    if (name === "panel-padding") {
+      this.syncPanelPadding();
     }
     if (name === "hide-header") {
       this.updateHeaderVisibility();

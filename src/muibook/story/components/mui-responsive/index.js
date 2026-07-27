@@ -206,7 +206,7 @@ class storyResponsive extends HTMLElement {
               contained
               variant="push"
               resize-rail
-              drawer-space
+              panel-padding="none"
               width="320px"
               resize-min-drawer-width="320"
               resize-min-page-width="380"

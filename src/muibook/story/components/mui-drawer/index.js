@@ -1016,7 +1016,7 @@ class storyDrawer extends HTMLElement {
             contained
             variant="push"
             resize-rail
-            drawer-space
+            panel-padding="none"
             resize-min-drawer-width="240"
             resize-min-page-width="320"
             resize-close-threshold="96"
@@ -1124,7 +1124,7 @@ class storyDrawer extends HTMLElement {
             contained
             variant="persistent"
             resize-rail
-            drawer-space
+            panel-padding="none"
             resize-min-drawer-width="240"
             resize-min-page-width="320"
             height="45rem"
@@ -1320,7 +1320,7 @@ class storyDrawer extends HTMLElement {
           <mui-drawer
             contained
             variant="push"
-            drawer-space
+            panel-padding="none"
             resize-rail
             resize-min-drawer-width="240"
             resize-min-page-width="320"
@@ -1427,7 +1427,7 @@ class storyDrawer extends HTMLElement {
           <mui-drawer
             contained
             variant="persistent"
-            drawer-space
+            panel-padding="none"
             resize-rail
             resize-min-drawer-width="240"
             resize-min-page-width="320"
@@ -1574,7 +1574,7 @@ class storyDrawer extends HTMLElement {
         usage="${storyMeta["drawer-menu"].usage}"
       >
         <div class="canvas" slot="body">
-          <mui-drawer contained variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
+          <mui-drawer contained variant="push" width="260px" side="left" data-drawer="hook" panel-padding="none" height="45dvh">
             <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
@@ -1597,7 +1597,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer="hook" drawer-space="none"&gt;<br>
+          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer="hook" panel-padding="none"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1639,7 +1639,7 @@ class storyDrawer extends HTMLElement {
               width="260px"
               side="left"
               data-drawer-toggle="custom-header-toggle"
-              drawer-space="none"
+              panel-padding="none"
               height="45dvh"
             >
               ${menuItems}
@@ -1657,7 +1657,7 @@ class storyDrawer extends HTMLElement {
                 width="260px"
                 side="left"
                 data-drawer="custom-header-overlay"
-                drawer-space="none"
+                panel-padding="none"
               >
 
               <mui-h-stack space="var(--space-300)" alignY="center" style="padding: var(--space-300) var(--space-500) var(--space-300) var(--space-400)">
@@ -1683,7 +1683,7 @@ class storyDrawer extends HTMLElement {
 
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer-toggle="hook" drawer-space="none"&gt;<br>
+          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer-toggle="hook" panel-padding="none"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>

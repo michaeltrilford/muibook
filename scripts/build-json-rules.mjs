@@ -21,7 +21,7 @@ CRITICAL RULES:
 6. Container components can have children.
 7. Leaf components use children: [].
 8. Props must match the component API.
-9. Root additions use Container with center=true and size=medium.
+9. Root additions normally use Container with center=true and size=medium. A Drawer-only app shell may use Drawer as the root. When a global top header spans above a Drawer region, use a zero-space VStack shell with a two-column Grid header first and Drawer second. If Drawer width is explicit, preserve that value on Drawer and apply the same value to the header's first Grid track and Drawer-aligned first child; follow the Top Header With Drawer Region fragment.
 10. Button and Link text stays on the component; do not wrap in Body.
 11. Put visual backgrounds on layout style or SmartCard bg props.
 12. SmartCard props use kebab-case: bg-image, bg-color, logo-height.
@@ -38,7 +38,7 @@ CRITICAL RULES:
 23. When composing Muibook charts in Redactd, populate the structured Data field through props.data, or the Series field through props.series for ComparisonChart. Redactd owns passing that value to the Muibook component. FinancialChart uses { time, open, high, low, close, volume? }. MarketSparkline and FinancialBarChart use { time, value }. ComparisonChart uses { id, label, color?, data: [{ time, value }] }. Use finite JSON numbers, unique chronological times, and coherent illustrative values. FinancialChart high/low values must contain open and close. ComparisonChart series ids must be unique; indexed and percent modes receive raw values with a non-zero first value. Follow the Structured Chart Data section for component-specific structures and examples.
 24. Use slots for content projection, not as the only control for significant chrome or layout decisions in generated/editor output. When a component exposes an explicit public attr such as hide-header, use that attr instead of relying only on omitted or present slotted content. Runtime attrs such as has-header and has-footer are dynamic metadata, not authored source props.
 25. Use col="1fr auto" as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
-26. For a single side drawer opened from a menu or hamburger icon, prefer Drawer variant="push" with open and side. The side property (left or right) should match the position of the menu icon trigger. Persistent drawers are for content that stays adjacent/visible and usually do not need a menu trigger. Use workspace only for advanced editor or canvas shells with independent left/right panels around a central page. Do not use left-open, right-open, left-width, right-width, page, left, or right for overlay, push, or persistent drawers; those controls and slots are workspace-only.
+26. For a single side drawer opened from a menu or hamburger icon, prefer Drawer variant="push" with open and side. The side property (left or right) should match the position of the menu icon trigger. Persistent drawers are for content that stays adjacent/visible and usually do not need a menu trigger. Push and persistent drawers use slot="page" for adjacent page content; left-open, right-open, left-width, right-width, and the left/right slots are workspace-only. Use workspace only for advanced editor or canvas shells with independent left/right panels around a central page. Drawer is the root only when it owns the whole shell. If a global top header must remain full-width above it, make the header Grid and Drawer siblings in a zero-space VStack root and size the Drawer to the remaining shell height. When Drawer width is explicit, preserve it and copy the same width to the header's first Grid track and Drawer-aligned first child so the regions align.
 27. CSS length props and style values must include valid units or CSS functions. For height, width, max-height, min-height, padding, margin, gap, and similar CSS lengths, output values such as "320px", "20rem", "100%", "100vh", "auto", or "var(--space-500)"; never output bare numeric strings such as "320" or "20" unless the component API explicitly documents a number scale for that prop.
 28. Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in slot="start" and trailing metadata/action in slot="end". Always explicitly set variant="row" on standard Slat items unless creating a section header (variant="header"), interactive row (variant="action"), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit variant ("row", "header", or "action") for correct automatic alignment and card/group styles.
 29. For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set fill or height on VStack and apply style="align-self: end;" to the slotted child. Use fill when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use height when specifying an explicit length (e.g. height="300px").
@@ -46,7 +46,7 @@ CRITICAL RULES:
 31. For Grid, never leave col empty. It defaults to two columns (1fr 1fr), so omitting it can lead to unexpected layouts.
 32. For Dialog and Drawer, omit width and height properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
 33. When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with variant="secondary" and slot="action") inside a Dropdown, and use Menu with Buttons for the dropdown actions.
-34. Badge variants are exactly neutral, positive, warning, attention, and overlay. Never output Badge variant="secondary", variant="default", or variant="error". Omit variant for the default neutral treatment. Secondary remains valid for components that explicitly document it, such as Body or Button, but not Badge.
+34. Every Badge must have a non-empty props.text string after trimming. Use a concise visible label; if no meaningful label is available, omit the Badge node entirely. Badge variants are exactly neutral, positive, warning, attention, and overlay. Never output Badge variant="secondary", variant="default", or variant="error". Omit variant for the default neutral treatment. Secondary remains valid for components that explicitly document it, such as Body or Button, but not Badge.
 35. Use Grid for repeated Cards, page regions, forms, and other primary layout structure. When a collection should naturally reduce its column count as its container narrows, use intrinsic tracks such as col="repeat(auto-fit, minmax(min(100%, 18rem), 1fr))" and choose the minimum width to suit the content. Use col="repeat(N, minmax(0, 1fr))" only when the requested number of columns must remain fixed.
 36. Use HStack wrap only for compact inline relationships such as actions, chips, metadata, legends, and small toolbar groups that remain meaningful across multiple horizontal lines. Wrapping does not turn HStack into VStack. Do not use a wrapping HStack as the default for main page regions, card collections, forms, or a deliberate horizontal-to-vertical layout change.
 37. When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive variant="container" with HStack in show-above and VStack in show-below only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate ids, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
@@ -78,7 +78,7 @@ const muiscanRules = `MUI SCAN NORMALIZATION RULES:
   - slot=before -> props.slot = "before"
   - slot=after -> props.slot = "after"
   - if an icon is the only child of Button, Link, or Chip, keep it as the default child
-- For Badge: valid output variants are neutral, positive, warning, attention, and overlay. Preserve neutral and never convert it to secondary. Omit variant for the default neutral treatment; do not output secondary, default, or error.
+- For Badge: always output a non-empty props.text string after trimming; omit the Badge if no meaningful visible label is available. Valid output variants are neutral, positive, warning, attention, and overlay. Preserve neutral and never convert it to secondary. Omit variant for the default neutral treatment; do not output secondary, default, or error.
 
 TEXT NODE RULES FOR MUISCAN:
 - TEXT is input-only; collapse into the nearest valid Redactd text model
@@ -94,7 +94,7 @@ TEXT NODE RULES FOR MUISCAN:
   - consume direct TEXT into Span.props.text
   - keep inline children such as Link nested inside the same Span
 - Exceptions:
-  - mui-badge: consume TEXT as the badge's direct rendered text; preserve before/after slot children; do not invent Body
+  - mui-badge: consume non-empty TEXT as Badge.props.text; preserve before/after slot children; do not invent Body; omit the Badge rather than outputting it with missing, empty, or whitespace-only text
   - mui-status: consume TEXT as the status's direct rendered text; preserve before/after icon slot children; do not invent Body, Badge, or Message inside Status
   - mui-chip: consume TEXT as the chip's direct rendered text; preserve before/after slot children; do not invent Body
   - mui-alert: preserve variant/label, convert default content to Span, consume TEXT into Span.props.text, keep inline children such as Link, do not invent Body
@@ -109,6 +109,9 @@ const chartData = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragmen
 
 // Read the shared chart composition guidance
 const chartComposition = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/chart-composition.md'), 'utf8');
+
+// Read shared app-shell composition guidance
+const shellComposition = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/json-shells.md'), 'utf8');
 
 // Read the shared design assets
 const designAssets = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/design-assets.md'), 'utf8');
@@ -139,6 +142,8 @@ ${escapeTemplate(chartData)}
 
 ## Composable Chart Headers
 ${escapeTemplate(chartComposition)}
+
+${escapeTemplate(shellComposition)}
 
 ${escapeTemplate(designAssets)}
 \`;
@@ -188,6 +193,8 @@ ${chartData}
 ## Composable Chart Headers
 
 ${chartComposition}
+
+${shellComposition}
 
 ${designAssets}
 `;

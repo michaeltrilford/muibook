@@ -1,5 +1,19 @@
 ## Header [Start]
 
+## v25.0.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Breaking Changes
+
+- Replaced the inverted `mui-drawer` boolean attribute `drawer-space` with `panel-padding="default | none"`. Use `panel-padding="none"` to remove padding from the drawer panel without affecting the adjacent page region.
+
+---
+
+## Header [Start]
+
 ## v24.0.0
 
 _Status: Released_
