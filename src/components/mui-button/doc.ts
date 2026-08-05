@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   Button: {
     namedSlots: {
       description: "Use these names on items slotted inside this component.",
-      list: ["before","after"],
+      list: ["before","after","badge"],
     },
     title: "Button",
     description:
@@ -33,6 +33,16 @@ export const muiDocs: MuiDocs = {
         "Use pending to block repeat activation during async work without applying disabled styling.",
         "Use variant='unstyled' when Button wraps structured, non-interactive content such as Card and that content must own all visible surface, spacing, and typography.",
         "Do not place links, buttons, or other interactive controls inside an unstyled Button.",
+        "Use slot='badge' with numeric count values inside mui-badge for top-right notification placement.",
+        "Badge variant - Attention red: Use for urgent or unread alerts requiring immediate attention.",
+        "Badge variant - Positive green: Use for active or completed status notifications.",
+        "Badge variant - Warning amber: Use for pending review items.",
+        "Badge variant - Neutral grey: Use for routine metadata counts and non-urgent status.",
+        "When Button is used in a drawer scenario or sidebar action group, set width='100%' on the action buttons.",
+        "For medium-sized align='start' buttons in drawers or navigation panels, use gap='var(--space-200)' for optimal icon-to-label spacing.",
+        "When a Button wraps mui-avatar-chip with mui-icon-down-chevron in slot='after', omit the icon size so it inherits from Button; Button applies the shared trailing inset across all action sizes.",
+        "Use usage='header-bar' for standard non-circular Header Bar actions that should fill the bar height, remove corner radius, and map Avatar or Avatar Chip content to the matching action-size footprint. Avatar-only actions remain compact.",
+        "Buttons with shape='circle' keep their normal action footprint when Header Bar context is applied.",
       ],
     },
 
@@ -60,6 +70,7 @@ export const muiDocs: MuiDocs = {
         "LABEL: Text describing the button action. Use action verbs or phrases to tell the user what will happen next, and follow the button label content guidelines.",
         "BEFORE: An optional area to include an icon before the label. Use an icon to add additional affordance where the icon has a clear and well-established meaning. Most buttons don't require an icon, so be consistent and deliberate when you do.",
         "AFTER: An optional area to include an icon after the label, often used for a chevron-down-arrow icon to indicate a dropdown menu or accordion experiences where the placement is on the far right of the button.",
+        "BADGE: An optional area to slot a notification badge (mui-badge) positioned at the top-right corner of the button.",
         "ICON ONLY: Use when the action is easily understood and space is limited. For example: close, add, or menu toggle. Avoid for unfamiliar or complex actions.",
       ],
     },
@@ -367,10 +378,10 @@ export const muiDocs: MuiDocs = {
         {
           "key": "avatar-only-button",
           "title": "Avatar-only Button",
-          "description": "When a button only contains an Avatar, it collapses to a primitive interactive wrapper and the avatar drives the final size.",
+          "description": "When a button only contains an Avatar, it collapses to a primitive interactive wrapper and the Button size controls the final footprint.",
           "list": [
             "Use this when the avatar itself is the visible action target",
-            "The button keeps semantics and interaction states while the avatar controls the footprint"
+            "Set size on the Button; the Avatar adopts the matching action size automatically"
           ]
         },
         {
@@ -398,6 +409,48 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Use medium size icon when the icon-only action appears on its own. E.g. Menu",
             "Use small (default) size icon when paired with text-based action is used in a button group."
+          ]
+        },
+        {
+          "key": "notification-badges",
+          "title": "Notification Badges",
+          "description": "Slot an mui-badge element into slot='badge' to position top-right notification indicators on standard or icon-only buttons.",
+          "list": [
+            "Use slot='badge' with numeric count values inside mui-badge for notification indicators on action buttons",
+            "Attention red variant: Use for urgent or unread alerts requiring immediate attention",
+            "Positive green variant: Use for active or completed status notifications",
+            "Warning amber variant: Use for pending review items",
+            "Neutral grey variant: Use for routine metadata counts and non-urgent status",
+            "Automatic scaling adjusts badge size relative to button scale",
+            "Circular buttons use a tighter base badge offset so the indicator sits closer to the curved action edge",
+            "X-small Buttons place notification badges at translate(40%, -40%); small Buttons use translate(32%, -32%)"
+          ]
+        },
+        {
+          "key": "width",
+          "title": "Width",
+          "description": "Applies custom width sizing to the button, defaulting to auto with support for any metric such as 100% or fixed units.",
+          "list": [
+            "Use width='100%' for full-width action buttons or sidebar navigation items",
+            "Use explicit width metrics when buttons require fixed sizes across layouts"
+          ]
+        },
+        {
+          "key": "custom-gap",
+          "title": "Custom Gap",
+          "description": "Overrides spacing between before, label, and after slots, ideal for align='start' buttons where a tighter icon-to-label gap is preferred.",
+          "list": [
+            "Use gap to override internal slot spacing inside the button",
+            "Applies to the button's internal layout, not spacing between buttons"
+          ]
+        },
+        {
+          "key": "shape-circle",
+          "title": "Shape: Circle",
+          "description": "Renders a fully circular action button with equal width and height, primarily for icon-only toolbar actions.",
+          "list": [
+            "Render a fully circular button for icon-only toolbar actions",
+            "Maintains equal width and height and requires an accessible label when icon-only"
           ]
         }
       ],

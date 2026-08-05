@@ -34,12 +34,12 @@ class MuiVStack extends HTMLElement {
         justify-items: var(--alignX);
         align-items: var(--alignY);
       }
-      :host([height]) slot,
+      :host([height]:not([height="auto"])) slot,
       :host([viewport]) slot,
       :host([fill]) slot {
         height: 100%;
       }
-      :host([width]) slot,
+      :host([width]:not([width="auto"])) slot,
       :host([fill]) slot {
         width: 100%;
       }

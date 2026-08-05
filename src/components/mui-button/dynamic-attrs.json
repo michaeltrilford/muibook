@@ -11,6 +11,10 @@
       "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
     },
     {
+      "name": "has-badge",
+      "description": "Set when badge slot content exists, allowing the component to position and present a notification badge at the top-right corner of the button."
+    },
+    {
       "name": "has-video",
       "description": "Set when video thumbnail content exists, allowing the action to clear default chrome and let the media card own the visual surface."
     },

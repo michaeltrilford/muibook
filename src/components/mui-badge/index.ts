@@ -111,34 +111,41 @@ class MuiBadge extends HTMLElement {
     const border = borderMap[variant];
     const ariaLive = ariaLiveMap[variant];
 
-    const sizeMap: Record<Size, { fontSize: string; lineHeight: string; padding: string; minHeight?: string }> = {
+    const sizeMap: Record<Size, { fontSize: string; lineHeight: string; padding: string; minHeight: string; minWidth: string }> = {
       "xx-small": {
         fontSize: "var(--font-size-10)",
         lineHeight: "1",
         padding: "0 var(--space-050)",
         minHeight: "1.8rem",
+        minWidth: "1.8rem",
       },
       "x-small": {
         fontSize: "var(--font-size-15)",
         lineHeight: "1",
         padding: "0 var(--space-100)",
         minHeight: "2rem",
+        minWidth: "2rem",
       },
       small: {
         fontSize: "var(--font-size-15)",
         lineHeight: "1",
         padding: "0 var(--space-200)",
         minHeight: "2.2rem",
+        minWidth: "2.2rem",
       },
       medium: {
         fontSize: "var(--text-font-size-xs)",
         lineHeight: "1",
-        padding: "var(--space-100) var(--space-200)",
+        padding: "var(--space-050) var(--space-200)",
+        minHeight: "2.4rem",
+        minWidth: "2.4rem",
       },
       large: {
         fontSize: "var(--font-size-50)",
         lineHeight: "1",
         padding: "var(--space-100) var(--space-300)",
+        minHeight: "2.8rem",
+        minWidth: "2.8rem",
       },
     };
 
@@ -153,6 +160,8 @@ class MuiBadge extends HTMLElement {
       .badge {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
         border-radius: var(--badge-radius);
         background: ${background};
         border: ${border};
@@ -161,7 +170,9 @@ class MuiBadge extends HTMLElement {
         font-weight: var(--badge-font-weight);
         color: ${textColor};
         padding: ${badgeSize.padding};
-        min-height: ${badgeSize.minHeight || "auto"};
+        min-height: ${badgeSize.minHeight};
+        min-width: ${badgeSize.minWidth};
+        text-align: center;
       }
 
       :host([usage="slat-end"]) {

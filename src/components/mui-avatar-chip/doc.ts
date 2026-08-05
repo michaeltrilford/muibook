@@ -64,7 +64,10 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Wrap Avatar Chip in the dropdown action when the visible trigger should carry avatar and profile copy.",
             "Keep dropdown behavior in the parent composition; Avatar Chip remains responsible for the identity layout only.",
-            "Match the Avatar Chip size to the surrounding action size so the trigger density stays consistent."
+            "Outside Header Bar, set Dropdown size when deliberate density is required; Dropdown passes it to the action Button and Menu, while Button keeps Avatar Chip density aligned.",
+            "Add mui-icon-down-chevron in the Button after slot when the profile trigger needs an explicit menu affordance; omit its size so it inherits from Button.",
+            "Button automatically applies size-aware logical edge spacing to Avatar Chip and its trailing chevron.",
+            "In Header Bar Dropdown triggers, Avatar Chip inherits Button size and its internal Avatar maps to the matching action-size footprint."
           ]
         },
         {
@@ -109,6 +112,8 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         { name: "Avatar", link: "https://guides.muibook.com/avatar" },
+        { name: "Button", link: "https://guides.muibook.com/button" },
+        { name: "Dropdown", link: "https://guides.muibook.com/dropdown" },
         { name: "Media Player", link: "https://guides.muibook.com/media-player" },
       ],
     },

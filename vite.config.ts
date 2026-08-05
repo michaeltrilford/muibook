@@ -84,6 +84,7 @@ export default defineConfig({
         "components/mui-dialog": path.resolve(__dirname, "src/components/mui-dialog"),
         // DRAWER
         "components/mui-drawer": path.resolve(__dirname, "src/components/mui-drawer"),
+        "components/mui-header-bar": path.resolve(__dirname, "src/components/mui-header-bar"),
         // ICONS
         "components/mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
         "components/mui-illustrations": path.resolve(__dirname, "src/components/mui-illustrations"),

@@ -9,7 +9,7 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 # Muibook Components
 
-Use this single-file snapshot of Muibook 25.0.0 when the full knowledge MCP is unavailable or unnecessary.
+Use this single-file snapshot of Muibook 25.1.0 when the full knowledge MCP is unavailable or unnecessary.
 
 This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
 owns the Redactd tree contract, validation, browser transport, and paste workflow.
@@ -47,10 +47,10 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - For Grid, never leave `col` empty. It defaults to two columns (`1fr 1fr`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit `width` and `height` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
 - For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Push and persistent drawers use `slot="page"` for adjacent page content; `left-open`, `right-open`, `left-width`, `right-width`, and the `left`/`right` slots are workspace-only.
-- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with a two-column Grid header first and Drawer second. Preserve an explicit Drawer width and apply the same value to the Grid's first track and Drawer-aligned first child, keep the page in a direct plain wrapper with `props.slot="page"`, and size the Drawer to the remaining shell height. Follow the Top Header With Drawer Region fragment below.
+- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with HeaderBar first and Drawer second. Preserve an explicit Drawer width and apply the same value to HeaderBar `left-width`, keep the page in a direct plain wrapper with `props.slot="page"`, and size the Drawer to the remaining shell height. Do not reconstruct HeaderBar with Grid or manual height, border, and surface styles. Follow the Header Bar With Drawer Region fragment and Header Bar Composition Density Guide below.
 - Before assigning an icon, inspect the available `mui-icon-*` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd `_Icon` with `icon="mui-icon-rectangle"` as the neutral fallback. Never invent an icon component or icon name.
 - In Drawer navigation, compose nav items as Button or Link with `align="start"`, `variant="tertiary"` as the default (non-prominent) emphasis, and a `slot="before"` _Icon matching the item's meaning.
-- When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with `variant="secondary"` and `slot="action"`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
+- When composing a user profile or avatar pattern, use AvatarChip rather than constructing a custom avatar layout. For profile menus, follow the Avatar Chip Profile Actions fragment: Dropdown contains an action Button plus a direct Menu; AvatarChip belongs inside Button. Secondary is a useful standalone treatment, while tertiary is the demonstrated quieter HeaderBar treatment.
 - For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not use numeric counts or repeated bare `1fr` tracks.
 - Layout spacing values must use complete CSS token references such as `var(--space-400)`; never use `space-400`, `400`, or another bare scale value. Use `var(--space-000)` for zero spacing.
 - CSS length props and style values must include valid units or CSS functions. For `height`, `width`, `max-height`, `min-height`, padding, margin, gap, and similar CSS lengths, use values such as `320px`, `20rem`, `100%`, `100vh`, `auto`, or `var(--space-500)`; never output bare numeric strings such as `320` or `20` unless the component API explicitly documents a number scale for that prop.
@@ -567,34 +567,103 @@ Example Comparison Chart with a compact legend composed into the header:
 ```
 
 
-## Top Header With Drawer Region
+## Header Bar With Drawer Region
 
 Treat a global top header plus side drawer as an app-shell fragment. The top header and Drawer are
 siblings inside one vertical shell so opening a push Drawer affects only the Drawer page region, not
 the global header above it.
 
 - Use a `VStack` shell with zero spacing when the header spans the full application width.
-- Place the top header first as a two-column `Grid`. When the Drawer has an explicit width such as
-  `320px`, use that same width for the header's first Grid track and its Drawer-aligned first child.
-  Keep the same explicit value on Drawer; do not omit or replace the configured Drawer width.
-- Use the header Grid's first child as the Drawer-aligned header region, commonly containing the
-  menu (or “hamburger”) action and product identity. Use its second child as the page-aligned header
-  region for the current page title, search, context, or actions.
-- Use `var(--header-min-height-medium)` for the header height and `var(--border-thin)` for the
-  separating border unless the product supplies another semantic shell treatment.
+- Place `HeaderBar` first. When the Drawer has an explicit width such as `320px`, use that same value
+  for `HeaderBar.props.left-width`. Keep the explicit value on Drawer; do not omit or replace the
+  configured Drawer width.
+- Use a child with `props.slot: "left"` as the Drawer-aligned header region, commonly containing the
+  menu (or “hamburger”) action button with circular shape (`shape: "circle"`, `variant: "tertiary"`)
+  and product identity. Use icon-only buttons with `shape: "circle"` for top header bar actions such as
+  menu toggle, search, settings, and notifications.
+- Set `HeaderBar.props.size` instead of manually assigning height tokens. Use `bottom-border: true`
+  when the shell needs the standard separator and let HeaderBar own its surface and column borders.
+- Put search, page identity, and primary actions in HeaderBar's default region. Use `props.slot: "right"`
+  only for a separately aligned right panel region. Follow the Header Bar Composition Density Guide
+  for action, SearchInput, Dropdown, AvatarChip, and responsive choices.
 - Place the `Drawer` second. When the shell fills the viewport, set Drawer height to
   `calc(100dvh - var(--header-min-height-medium))` so the combined header and drawer region do not
   exceed the viewport.
-- Keep Drawer navigation in its default slot. For navigation items, use tertiary Button or Link
-  actions with `align: "start"` and exact Muibook icons in `props.slot: "before"` when icons are
-  useful.
+- Keep Drawer navigation in its default slot. When using `panel-padding="none"` on Drawer (recommended for custom action stacks), add `padding="var(--space-400)"` to the `VStack` housing the action items so navigation links/buttons have proper inset. For navigation items, use tertiary Button or Link actions with `align: "start"`, `gap: "var(--space-200)"` (for medium buttons), and exact Muibook icons in `props.slot: "before"` when icons are useful. Do not add redundant section titles like "Navigation".
 - Wrap adjacent page content in a plain direct `Div` child with `props.slot: "page"`; compose
   Container, Stack, Grid, and product content inside that wrapper.
 - Use `hide-header: true` when the global header owns the shell chrome and the Drawer does not need
   its built-in title/close row. Do not also generate a hidden Drawer `title` child.
 - Keep every slot only in `props.slot`; never add `slot` beside `id`, `type`, `props`, or `children`.
-- If the header should move with or belong only to the page region, place it inside the Drawer page
+- If the HeaderBar should move with or belong only to the page region, place it inside the Drawer page
   wrapper instead. If there is no global header, Drawer can remain the root node.
+
+## Header Bar Composition Density Guide
+
+Treat these as starting points for coherent sizing, not fixed recipes. Header Bar content density can
+change with the product, available width, action priority, input purpose, and whether identity copy
+needs to remain visible. Components inside HeaderBar keep their own public size APIs; HeaderBar size
+controls the bar height but does not require every child to use the same size.
+
+### Standard application shell
+
+- Start with `HeaderBar size="medium"` and a primary `SearchInput size="medium"`.
+- Use circular icon-only Buttons for menu, search, settings, and notification actions. Tertiary is a
+  quiet default; secondary is useful when an action needs a clearer boundary, especially a
+  notification action carrying a Badge.
+- A common notification composition is a `Button variant="secondary" shape="circle"` with an exact
+  notification icon and `Badge slot="badge" variant="attention"`. Badge size and placement are
+  inherited from Button; do not set them manually unless the design deliberately departs from the
+  automatic scale.
+- A common profile composition is an unsized Dropdown containing a tertiary action Button, an
+  unsized AvatarChip, and a down-chevron in `slot="after"`. HeaderBar applies `usage="header-bar"`;
+  Dropdown inherits HeaderBar size and passes it to Button, which passes it to AvatarChip. Let the
+  chevron inherit its size. Follow the Avatar Chip Profile Actions fragment for the complete tree.
+  Use `gap="var(--space-400)"` when the identity copy and chevron need the demonstrated Header Bar
+  spacing.
+- Group the notification Button and profile Dropdown in an `HStack` with
+  `space="var(--space-500)"` for the demonstrated standard composition. This is a recommended
+  separation between distinct controls, not a required HeaderBar spacing value.
+- When that full-height profile Dropdown is the final control in HeaderBar's main region, keep only
+  the main region's left inset and let the profile action meet the right edge. If the Dropdown is the
+  terminal content of `slot="right"`, its wrapper does not need additional padding.
+
+### Compact shell or constrained main column
+
+- Use `HeaderBar size="x-small"` or `size="small"` when the whole shell is intentionally dense.
+- Search may use `SearchInput size="small"`, an icon-only circular search Button, or move into a
+  separate surface. Choose based on whether search must remain immediately editable.
+- Keep supporting actions at x-small or small density. Tertiary actions reduce visual weight;
+  secondary actions retain a visible boundary.
+- Use `Dropdown size="x-small"` or `size="small"` with a matching AvatarChip when profile copy still
+  fits. Use an avatar-only circular trigger when the compact layout cannot support both identity
+  lines.
+
+### Spacious or workspace shell
+
+- Use `HeaderBar size="large"` when the header carries workspace context, larger identity, or a more
+  prominent command region.
+- Search can remain medium for familiar control density or increase to large when it is the dominant
+  task. Do not enlarge it solely because HeaderBar is large.
+- Actions and profile controls may remain medium while HeaderBar supplies the extra surrounding
+  space. Increase AvatarChip or Dropdown size only when the identity treatment benefits from the
+  added emphasis.
+
+### Responsive composition choices
+
+- Use Responsive around complete HeaderBar alternatives when the app-shell structure changes at a
+  viewport breakpoint.
+- Use nested `Responsive variant="container"` inside the main HeaderBar region when only search and
+  action composition should react to the available main-column width.
+- A compact alternative can replace an editable SearchInput with a search action and replace an
+  AvatarChip Dropdown trigger with an avatar-only trigger. These are options, not mandatory mobile
+  substitutions.
+- Prefer one live control tree when state must be preserved. Do not duplicate stateful search,
+  menus, form controls, IDs, or other state merely to create a visual breakpoint.
+
+Composition options can be mixed. For example, a medium HeaderBar can explicitly use a small profile Dropdown,
+a medium SearchInput, and medium circular actions; another valid product may use tertiary actions,
+an avatar-only profile trigger, or no search at all.
 
 Reference fragment (adapt the labels and page content to the requested product):
 
@@ -611,14 +680,11 @@ Reference fragment (adapt the labels and page content to the requested product):
   "children": [
     {
       "id": "application_header",
-      "type": "Grid",
+      "type": "HeaderBar",
       "props": {
-        "col": "320px minmax(0, 1fr)",
-        "space": "var(--space-000)",
-        "alignY": "center",
-        "width": "auto",
-        "height": "var(--header-min-height-medium)",
-        "style": "border-bottom: var(--border-thin); background: var(--surface-elevated-100);"
+        "size": "medium",
+        "left-width": "320px",
+        "bottom-border": true
       },
       "children": [
         {
@@ -628,9 +694,10 @@ Reference fragment (adapt the labels and page content to the requested product):
             "space": "var(--space-200)",
             "alignX": "start",
             "alignY": "center",
-            "width": "320px",
-            "height": "100%",
-            "style": "padding-inline: var(--space-400); border-right: var(--border-thin);"
+            "width": "auto",
+            "height": "auto",
+            "padding": "0 var(--space-400)",
+            "slot": "left"
           },
           "children": [
             {
@@ -638,6 +705,7 @@ Reference fragment (adapt the labels and page content to the requested product):
               "type": "Button",
               "props": {
                 "variant": "tertiary",
+                "shape": "circle",
                 "aria-label": "Toggle navigation"
               },
               "children": [
@@ -672,8 +740,8 @@ Reference fragment (adapt the labels and page content to the requested product):
             "alignX": "space-between",
             "alignY": "center",
             "width": "auto",
-            "height": "100%",
-            "style": "padding-inline: var(--space-500);"
+            "height": "auto",
+            "padding": "0 var(--space-500)"
           },
           "children": [
             {
@@ -721,9 +789,20 @@ Reference fragment (adapt the labels and page content to the requested product):
               "props": {
                 "text": "Home",
                 "variant": "tertiary",
-                "align": "start"
+                "align": "start",
+                "gap": "var(--space-200)"
               },
-              "children": []
+              "children": [
+                {
+                  "id": "application_home_icon",
+                  "type": "_Icon",
+                  "props": {
+                    "icon": "mui-icon-home",
+                    "slot": "before"
+                  },
+                  "children": []
+                }
+              ]
             },
             {
               "id": "application_settings_link",
@@ -731,9 +810,20 @@ Reference fragment (adapt the labels and page content to the requested product):
               "props": {
                 "text": "Settings",
                 "variant": "tertiary",
-                "align": "start"
+                "align": "start",
+                "gap": "var(--space-200)"
               },
-              "children": []
+              "children": [
+                {
+                  "id": "application_settings_icon",
+                  "type": "_Icon",
+                  "props": {
+                    "icon": "mui-icon-gear",
+                    "slot": "before"
+                  },
+                  "children": []
+                }
+              ]
             }
           ]
         },
@@ -795,6 +885,172 @@ Reference fragment (adapt the labels and page content to the requested product):
 ```
 
 
+## Header Bar And Drawer Coordination
+
+HeaderBar and Drawer deliberately remain independent components. The application shell owns their
+shared state: Drawer is the source of truth for whether navigation is open and for its current
+width, while HeaderBar reflects that state and can emit resize intent back to Drawer.
+
+This is runtime integration guidance, not part of a static Redactd JSON tree. A generated tree
+should describe the initial HeaderBar and Drawer composition; the consuming application should add
+the event and state wiring appropriate to its framework.
+
+### Open and close state
+
+- Connect every menu action to the Drawer's public `open()` and `close()` methods.
+- Derive each trigger's `aria-expanded` value from the Drawer's `open` attribute. Re-sync from
+  `mui-drawer-open` and `mui-drawer-close` so programmatic and user-driven changes remain aligned.
+- When the left HeaderBar region only exists for an open Drawer, keep the identity group in the DOM
+  and add or remove `slot="left"` from that group. Removing the slot moves the same live content into
+  HeaderBar's main region and lets the unused side column collapse; restoring the slot re-establishes
+  drawer alignment without recreating the content.
+- Apply the same pattern to `slot="right"` for a right-side Drawer.
+
+### Width and resize state
+
+- Treat Drawer `width` as the shared persisted width. Mirror it to HeaderBar `left-width` or
+  `right-width`, including width changes made outside the HeaderBar.
+- When HeaderBar has `resize-rail`, listen for `mui-header-bar-resize` and write `event.detail.width`
+  to the aligned Drawer. Check `event.detail.side` before updating a side.
+- During `mui-header-bar-resize-start`, mark the Drawer as resizing so its normal width transition
+  does not lag behind pointer movement. Clear that state on `mui-header-bar-resize-end`.
+- Avoid separate competing width state in both components. One shared value prevents drift and
+  feedback loops.
+
+Framework-neutral example:
+
+```js
+const drawer = document.querySelector("#navigation-drawer");
+const header = document.querySelector("#application-header");
+const headerLeft = header.querySelector("[data-header-left]");
+const toggles = document.querySelectorAll("[data-drawer-toggle]");
+
+const syncDrawerState = () => {
+  const isOpen = drawer.hasAttribute("open");
+  toggles.forEach((toggle) => toggle.setAttribute("aria-expanded", isOpen.toString()));
+  if (isOpen) headerLeft.setAttribute("slot", "left");
+  else headerLeft.removeAttribute("slot");
+};
+
+const syncWidth = () => header.setAttribute("left-width", drawer.getAttribute("width"));
+
+toggles.forEach((toggle) => {
+  toggle.addEventListener("click", () => {
+    drawer.hasAttribute("open") ? drawer.close() : drawer.open();
+  });
+});
+
+drawer.addEventListener("mui-drawer-open", syncDrawerState);
+drawer.addEventListener("mui-drawer-close", syncDrawerState);
+new MutationObserver(syncWidth).observe(drawer, {
+  attributes: true,
+  attributeFilter: ["width"],
+});
+
+header.addEventListener("mui-header-bar-resize", (event) => {
+  if (event.detail.side === "left") drawer.setAttribute("width", event.detail.width);
+});
+header.addEventListener("mui-header-bar-resize-start", () => drawer.setAttribute("resizing", ""));
+header.addEventListener("mui-header-bar-resize-end", () => drawer.removeAttribute("resizing"));
+
+syncDrawerState();
+syncWidth();
+```
+
+
+## Avatar Chip Profile Actions
+
+Use AvatarChip when avatar, primary identity, and optional secondary identity should travel as one
+profile trigger. AvatarChip owns identity layout; Button owns interaction, Dropdown owns disclosure,
+and Menu owns account actions.
+
+### Owned by AvatarChip
+
+- Internal Avatar rendering, including image, initials fallback, label, and background treatment.
+- Primary and secondary identity layout, whether supplied through the simple `primary` and
+  `secondary` props or the matching named slots.
+- The internal gap and alignment between Avatar and identity copy.
+- Coordinated Avatar, primary text, and secondary text scaling from AvatarChip size.
+
+### Composed by the consumer
+
+- Button semantics, accessible action label, visual variant, action size, and interaction states.
+- Dropdown placement, disclosure state, and propagation of density to its action Button and Menu.
+- The optional down-chevron in Button's `after` slot. It is not part of AvatarChip.
+- Menu structure and its Profile, Settings, Sign out, or product-specific actions.
+- Layout around the control, including its relationship to notification and search actions.
+- Responsive replacement with an Avatar-only trigger when the identity copy no longer fits.
+
+Do not add custom HStacks, Avatars, or text wrappers inside Button to reproduce the identity row that
+AvatarChip already owns. Conversely, do not expect AvatarChip itself to provide Button, Dropdown,
+chevron, Menu, or responsive disclosure behavior.
+
+### Composition rules
+
+- A profile Dropdown must contain one Button with `props.slot: "action"` and one direct Menu child.
+  Put AvatarChip inside the action Button; never place AvatarChip directly inside Dropdown.
+- Add a down-chevron with `props.slot: "after"` when the trigger needs an explicit menu affordance.
+  Omit chevron size so Button can apply its scale.
+- Outside HeaderBar, set Dropdown size when a deliberate density is required. Dropdown passes its
+  size to the trigger Button and Menu. AvatarChip may match that size explicitly; Button also keeps
+  composed AvatarChip density aligned.
+- `variant: "secondary"` gives a standalone profile action a visible boundary. `variant: "tertiary"`
+  is a valid quieter option and is the demonstrated HeaderBar treatment. Choose emphasis from the
+  surrounding action hierarchy rather than treating either variant as mandatory.
+- Inside HeaderBar, prefer leaving Dropdown, Button, AvatarChip, chevron, and Menu unsized when they
+  should inherit HeaderBar density. HeaderBar applies the contextual usage, Dropdown propagates size,
+  and AvatarChip maps its internal Avatar footprint to the matching action token.
+- In the demonstrated HeaderBar composition, use `gap: "var(--space-400)"` on the profile Button.
+  Button supplies size-aware logical edge spacing for AvatarChip and its trailing chevron.
+- When identity copy does not fit, use an Avatar-only action Button inside Dropdown. The Button size
+  remains authoritative and the Avatar adopts the matching action footprint. Avatar-only HeaderBar
+  actions stay compact rather than stretching to the full HeaderBar height.
+
+General profile Dropdown:
+
+```json
+{
+  "id": "profile_dropdown",
+  "type": "Dropdown",
+  "props": { "position": "right", "size": "medium" },
+  "children": [
+    {
+      "id": "profile_action",
+      "type": "Button",
+      "props": { "slot": "action", "variant": "secondary", "aria-label": "Open profile menu" },
+      "children": [
+        {
+          "id": "profile_identity",
+          "type": "AvatarChip",
+          "props": { "label": "Alex", "primary": "Alex Hurt", "secondary": "Product Designer" },
+          "children": []
+        },
+        {
+          "id": "profile_chevron",
+          "type": "_Icon",
+          "props": { "icon": "mui-icon-down-chevron", "slot": "after" },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "profile_menu",
+      "type": "Menu",
+      "props": { "width": "16rem" },
+      "children": [
+        { "id": "profile_item", "type": "Button", "props": { "text": "Profile", "variant": "tertiary", "align": "start" }, "children": [] },
+        { "id": "settings_item", "type": "Button", "props": { "text": "Settings", "variant": "tertiary", "align": "start" }, "children": [] },
+        { "id": "sign_out_item", "type": "Button", "props": { "text": "Sign out", "variant": "tertiary", "align": "start" }, "children": [] }
+      ]
+    }
+  ]
+}
+```
+
+Within HeaderBar, use the same tree without authored sizes and normally change the action Button to
+`variant: "tertiary"` with `gap: "var(--space-400)"`.
+
+
 ## Spacing Values
 
 000, 025, 050, 100, 200, 300, 400, 500, 600, 700, 800
@@ -828,7 +1084,7 @@ Use real Muibook asset paths:
 - `mui-avatar-group` — Stacks multiple avatars with controlled overlap and a separating ring. Attributes: size, overlap, label, fan. Slots: default.
 - `mui-badge` — Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record. Use Status for state values in tables and slats. Attributes: variant, size, color, usage. Slots: default.
 - `mui-body` — Renders body text with semantic size, weight and feedback color treatments. Attributes: size, weight, variant, truncate, clamp. Slots: default, before, after.
-- `mui-button` — Triggers an action with semantic button behaviour, visual emphasis variants, and optional leading or trailing content. Attributes: onclick, type, aria-label, disabled, pending, variant, stroke, stroke-ring-size, focus-ring, size, usage, align. Slots: default, before, after.
+- `mui-button` — Triggers an action with semantic button behaviour, visual emphasis variants, and optional leading or trailing content. Attributes: onclick, type, aria-label, disabled, pending, variant, stroke, stroke-ring-size, focus-ring, size, usage, width, shape, gap, align. Slots: default, before, after, badge.
 - `mui-button-group` — Arranges related buttons horizontally or as full-width stacked actions. Attributes: layout, align, right. Slots: default.
 - `mui-calendar` — A flexible, accessible calendar grid for selecting dates. Attributes: value, view, min-date, max-date. Slots: none.
 - `mui-card` — Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card size controls section padding; Card width comes from the parent layout or an explicit constrained style. Attributes: footer, borderless, size, usage. Slots: default.
@@ -851,7 +1107,7 @@ Use real Muibook asset paths:
 - `mui-date-picker-popover` — MuiDatePickerPopover Attributes: none. Slots: none.
 - `mui-dialog` — Presents modal content and optional actions in a native dialog surface. Attributes: open, width, content-max-height, close-size, hide-header, content-padding. Slots: default, title, actions.
 - `mui-drawer` — Displays supplementary content as an overlay, push layout, persistent adjacent panel, or workspace shell. Attributes: open, width, height, side, variant, left-open, right-open, left-width, right-width, z-index, panel-padding, hide-header, close-size, breakpoint, mobile-presentation, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, contained. Slots: default, title, actions, page, left, right.
-- `mui-dropdown` — Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour. Attributes: zindex, position, vertical-position, persistent, size, offset. Slots: action, default.
+- `mui-dropdown` — Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour. Attributes: zindex, position, vertical-position, persistent, size, offset, usage. Slots: action, default.
 - `mui-field` — Wraps a form control with shared label, sizing, and message feedback behavior. Attributes: variant, message, label, hide-label, size, optional. Slots: default, message.
 - `mui-file-diff` — A component representing a file and its diff stats. Attributes: filename, filepath, additions, deletions, result-slot, card-slot, result-slot-last. Slots: icon.
 - `mui-file-icon` — Renders a pinned VSCode Icons file-type SVG from the vscode-icons CDN. Attributes: icon, type, size, label, decorative. Slots: none.
@@ -864,6 +1120,7 @@ Use real Muibook asset paths:
 - `mui-form-section-footer` — Provides consistent spacing for actions and optional divider content in a form section footer. Attributes: none. Slots: default.
 - `mui-grid` — Arranges slotted content in a configurable grid with token-based spacing and alignment controls. Attributes: col, space, alignx, aligny, padding, height, width, viewport, fill. Slots: default.
 - `mui-h-stack` — Arranges slotted content horizontally with token-based spacing and alignment controls. Attributes: space, aligny, alignx, padding, height, width, viewport, fill, wrap. Slots: default.
+- `mui-header-bar` — A standalone Web Component for top application shell and workspace page headers, with drawer-aligned side columns, token-bound heights, surface variants, and optional resize rails. Attributes: size, left-width, right-width, bottom-border, surface, resize-rail, resize-min-column-width, resize-min-main-width. Slots: left, default, right.
 - `mui-heading` — Renders heading typography with an independently configurable visual size and semantic level. Attributes: size, level, truncate, clamp. Slots: default.
 - `mui-hint` — Displays contextual tooltip content when its trigger receives hover or keyboard focus. Attributes: placement, open, delay, initial-delay, size, disable-on-touch. Slots: default, trigger.
 - `mui-icon-accessibility` — MuiIconAccessibility Attributes: size, color. Slots: none.

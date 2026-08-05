@@ -100,6 +100,7 @@ import "../components/mui-chip";
 import "../components/mui-chip-rail";
 import "../components/mui-dialog";
 import "../components/mui-drawer";
+import "../components/mui-header-bar";
 import "../components/mui-responsive";
 import "../components/mui-stack/hstack";
 import "../components/mui-stack/vstack";
@@ -199,6 +200,7 @@ import "./local-components/story-template";
 import "./local-components/story-token-slat";
 import "./local-components/story-token-types";
 import "./local-components/story-types";
+import "./story/components/mui-header-bar";
 import "./local-components/changelog";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `

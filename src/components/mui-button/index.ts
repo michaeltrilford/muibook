@@ -3,6 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Button */
 class MuiButton extends HTMLElement {
   private autoSizedIcons = new WeakMap<HTMLElement, string>();
+  private hasAuthoredSize = this.hasAttribute("size");
 
   static get observedAttributes() {
     return [
@@ -17,7 +18,55 @@ class MuiButton extends HTMLElement {
       "focus-ring",
       "size",
       "usage",
+      "width",
+      "shape",
+      "gap",
+      "align",
     ];
+  }
+
+  get width(): string | null {
+    return this.getAttribute("width");
+  }
+  set width(val: string | null) {
+    if (val) {
+      this.setAttribute("width", val);
+    } else {
+      this.removeAttribute("width");
+    }
+  }
+
+  get shape(): string | null {
+    return this.getAttribute("shape");
+  }
+  set shape(val: string | null) {
+    if (val) {
+      this.setAttribute("shape", val);
+    } else {
+      this.removeAttribute("shape");
+    }
+  }
+
+  get gap(): string | null {
+    return this.getAttribute("gap");
+  }
+  set gap(val: string | null) {
+    if (val) {
+      this.setAttribute("gap", val);
+    } else {
+      this.removeAttribute("gap");
+    }
+  }
+
+  get align(): string | null {
+    return this.getAttribute("align");
+  }
+  set align(val: string | null) {
+    if (val) {
+      this.setAttribute("align", val);
+    } else {
+      this.removeAttribute("align");
+    }
   }
 
   constructor() {
@@ -37,6 +86,7 @@ class MuiButton extends HTMLElement {
   async connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.syncRingSizeAttribute();
+    this.syncWidth();
 
     await this.waitForPartMap();
 
@@ -50,13 +100,14 @@ class MuiButton extends HTMLElement {
 
     :host {
       display: inline-block;
-      width: auto;
+      width: var(--button-width, auto);
       text-align: center;
       --action-focus-outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
       --action-focus-outline-inset-offset: var(--stroke-size-400);
       --action-focus-outline-offset: calc(-1 * var(--action-focus-outline-inset-offset));
     }
     button {
+      position: relative;
       vertical-align: baseline;
       border: none;
       cursor: pointer;
@@ -528,6 +579,27 @@ class MuiButton extends HTMLElement {
     }
 
     /* Badge Spacing */
+    :host button ::slotted([slot="badge"]) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    :host([shape="circle"]) button ::slotted([slot="badge"]) {
+      transform: translate(25%, -25%);
+    }
+
+    :host([size="x-small"]) button ::slotted([slot="badge"]) {
+      transform: translate(40%, -40%);
+    }
+
+    :host([size="small"]) button ::slotted([slot="badge"]) {
+      transform: translate(32%, -32%);
+    }
+
     :host([has-before]) button ::slotted(mui-badge[slot="before"]) {
       margin-right: var(--space-025);
     }
@@ -559,7 +631,7 @@ class MuiButton extends HTMLElement {
     :host([has-after][has-before]) button { 
       display: grid; 
       align-items: center; 
-      gap: var(--space-100);
+      gap: var(--button-gap, var(--space-100));
     }
 
     :host([has-after][has-before]) button {
@@ -722,7 +794,7 @@ class MuiButton extends HTMLElement {
     :host([size="xx-small"][has-after]) button,
     :host([size="xx-small"][has-before]) button,
     :host([size="xx-small"][has-after][has-before]) button { 
-      gap: var(--space-050);
+      gap: var(--button-gap, var(--space-050));
     }
     
     :host([size="xx-small"][has-after][has-before]) button {
@@ -741,7 +813,7 @@ class MuiButton extends HTMLElement {
     :host([size="x-small"][has-after]) button,
     :host([size="x-small"][has-before]) button,
     :host([size="x-small"][has-after][has-before]) button { 
-      gap: var(--space-050);
+      gap: var(--button-gap, var(--space-050));
     }
     
     :host([size="x-small"][has-after][has-before]) button {
@@ -760,7 +832,7 @@ class MuiButton extends HTMLElement {
     :host([size="small"][has-after]) button,
     :host([size="small"][has-before]) button,
     :host([size="small"][has-after][has-before]) button { 
-      gap: var(--space-100);
+      gap: var(--button-gap, var(--space-100));
     }
     
     :host([size="small"][has-after][has-before]) button {
@@ -779,7 +851,7 @@ class MuiButton extends HTMLElement {
     :host([size="large"][has-after]) button,
     :host([size="large"][has-before]) button,
     :host([size="large"][has-after][has-before]) button { 
-      gap: var(--space-200);
+      gap: var(--button-gap, var(--space-200));
     }
     
     :host([size="large"][has-after][has-before]) button {
@@ -856,6 +928,11 @@ class MuiButton extends HTMLElement {
     :host([avatar-only]) button ::slotted(mui-avatar) {
       margin-right: var(--space-000);
       margin-left: var(--space-000);
+      --avatar-xx-small: var(--action-size-xx-small);
+      --avatar-x-small: var(--action-size-x-small);
+      --avatar-small: var(--action-size-small);
+      --avatar-medium: var(--action-size-medium);
+      --avatar-large: var(--action-size-large);
     }
 
     :host([has-avatar-chip]) {
@@ -871,6 +948,47 @@ class MuiButton extends HTMLElement {
       align-items: center;
       justify-content: flex-start;
       text-align: left;
+    }
+
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) {
+      height: var(--header-bar-current-height);
+    }
+
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) button,
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) button:hover,
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) button:focus,
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) button:focus-visible,
+    :host([usage="header-bar"]:not([shape="circle"]):not([avatar-only])) button:disabled {
+      height: 100%;
+      border-radius: var(--radius-000);
+    }
+
+    :host([usage="header-bar"]) button ::slotted(mui-avatar),
+    :host([usage="header-bar"]) button ::slotted(mui-avatar-chip) {
+      --avatar-x-small: var(--action-size-x-small);
+      --avatar-small: var(--action-size-small);
+      --avatar-medium: var(--action-size-medium);
+      --avatar-large: var(--action-size-large);
+    }
+
+    :host([usage="header-bar"]) button ::slotted(mui-avatar-chip) {
+      margin-inline-start: var(--space-100);
+    }
+
+    :host([usage="header-bar"][has-avatar-chip][size="small"]) button ::slotted(mui-avatar-chip) {
+      margin-inline-start: var(--space-200);
+    }
+
+    :host([has-avatar-chip][has-after]) button ::slotted(mui-icon-down-chevron[slot="after"]) {
+      margin-inline-end: var(--space-100);
+    }
+
+    :host([has-avatar-chip][has-after][size="x-small"]) button ::slotted(mui-icon-down-chevron[slot="after"]) {
+      margin-inline-end: var(--space-300);
+    }
+
+    :host([has-avatar-chip][has-after][size="small"]) button ::slotted(mui-icon-down-chevron[slot="after"]) {
+      margin-inline-end: var(--space-200);
     }
 
     :host([has-avatar-chip][size="x-small"]) button {
@@ -967,6 +1085,80 @@ class MuiButton extends HTMLElement {
       outline-offset: var(--action-focus-outline-outset-offset, var(--stroke-size-200));
     }
 
+    /* Shape: Circle
+    ========================================= */
+    :host([shape="circle"]) {
+      display: inline-block;
+      width: var(--button-width, auto);
+      height: var(--button-width, auto);
+    }
+
+    :host([shape="circle"]) button,
+    :host([shape="circle"]) button:hover,
+    :host([shape="circle"]) button:focus,
+    :host([shape="circle"]) button:focus-visible,
+    :host([shape="circle"]) button:disabled {
+      border-radius: var(--radius-full, 9999px) !important;
+      aspect-ratio: 1 / 1;
+      padding: var(--space-000) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: var(--button-width, var(--action-size-medium));
+      height: var(--button-width, var(--action-size-medium));
+      min-width: var(--action-size-medium);
+      min-height: var(--action-size-medium);
+    }
+
+    :host([shape="circle"][size="xx-small"]) button,
+    :host([shape="circle"][size="xx-small"]) button:hover,
+    :host([shape="circle"][size="xx-small"]) button:focus,
+    :host([shape="circle"][size="xx-small"]) button:disabled {
+      width: var(--button-width, var(--action-size-xx-small));
+      height: var(--button-width, var(--action-size-xx-small));
+      min-width: var(--action-size-xx-small);
+      min-height: var(--action-size-xx-small);
+    }
+
+    :host([shape="circle"][size="x-small"]) button,
+    :host([shape="circle"][size="x-small"]) button:hover,
+    :host([shape="circle"][size="x-small"]) button:focus,
+    :host([shape="circle"][size="x-small"]) button:disabled {
+      width: var(--button-width, var(--action-size-x-small));
+      height: var(--button-width, var(--action-size-x-small));
+      min-width: var(--action-size-x-small);
+      min-height: var(--action-size-x-small);
+    }
+
+    :host([shape="circle"][size="small"]) button,
+    :host([shape="circle"][size="small"]) button:hover,
+    :host([shape="circle"][size="small"]) button:focus,
+    :host([shape="circle"][size="small"]) button:disabled {
+      width: var(--button-width, var(--action-size-small));
+      height: var(--button-width, var(--action-size-small));
+      min-width: var(--action-size-small);
+      min-height: var(--action-size-small);
+    }
+
+    :host([shape="circle"][size="medium"]) button,
+    :host([shape="circle"][size="medium"]) button:hover,
+    :host([shape="circle"][size="medium"]) button:focus,
+    :host([shape="circle"][size="medium"]) button:disabled {
+      width: var(--button-width, var(--action-size-medium));
+      height: var(--button-width, var(--action-size-medium));
+      min-width: var(--action-size-medium);
+      min-height: var(--action-size-medium);
+    }
+
+    :host([shape="circle"][size="large"]) button,
+    :host([shape="circle"][size="large"]) button:hover,
+    :host([shape="circle"][size="large"]) button:focus,
+    :host([shape="circle"][size="large"]) button:disabled {
+      width: var(--button-width, var(--action-size-large));
+      height: var(--button-width, var(--action-size-large));
+      min-width: var(--action-size-large);
+      min-height: var(--action-size-large);
+    }
 
     </style>
 
@@ -981,6 +1173,7 @@ class MuiButton extends HTMLElement {
       <slot name="before"></slot>
       <slot></slot>
       <slot name="after"></slot>
+      <slot name="badge"></slot>
     </button>
 
     `;
@@ -1016,6 +1209,7 @@ class MuiButton extends HTMLElement {
       this.shadowRoot.querySelector("slot:not([name])"),
       this.shadowRoot.querySelector('slot[name="before"]'),
       this.shadowRoot.querySelector('slot[name="after"]'),
+      this.shadowRoot.querySelector('slot[name="badge"]'),
     ] as (HTMLSlotElement | null)[];
 
     slots.forEach((slot) => slot?.addEventListener("slotchange", () => this.syncButtonState()));
@@ -1042,13 +1236,42 @@ class MuiButton extends HTMLElement {
       }
     }
 
-    if (name === "size" && oldValue !== newValue && this.shadowRoot) {
+    if ((name === "size" || name === "usage") && oldValue !== newValue && this.shadowRoot) {
       requestAnimationFrame(() => this.syncButtonState());
     }
 
     if (name === "stroke-ring-size" && oldValue !== newValue) {
       this.syncRingSizeAttribute();
     }
+
+    if (name === "width" && oldValue !== newValue) {
+      this.syncWidth();
+    }
+
+    if (name === "gap" && oldValue !== newValue) {
+      this.syncGap();
+    }
+  }
+
+  private syncWidth(): void {
+    const raw = this.getAttribute("width")?.trim();
+    if (!raw) {
+      this.style.removeProperty("--button-width");
+      return;
+    }
+    this.style.setProperty("--button-width", raw);
+  }
+
+  private syncGap(): void {
+    const raw = this.getAttribute("gap")?.trim();
+    const button = this.shadowRoot?.querySelector("button");
+    if (!raw) {
+      this.style.removeProperty("--button-gap");
+      button?.style.removeProperty("--button-gap");
+      return;
+    }
+    this.style.setProperty("--button-gap", raw);
+    button?.style.setProperty("--button-gap", raw);
   }
 
   private syncRingSizeAttribute(): void {
@@ -1067,10 +1290,12 @@ class MuiButton extends HTMLElement {
   syncButtonState(): void {
     const shadow = this.shadowRoot;
     if (!shadow) return;
+    this.syncGap();
 
     const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
     const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
     const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+    const slotBadge = shadow.querySelector('slot[name="badge"]') as HTMLSlotElement | null;
 
     const hasAssignedContent = (slot: HTMLSlotElement | null): boolean => {
       if (!slot) return false;
@@ -1081,9 +1306,11 @@ class MuiButton extends HTMLElement {
 
     const hasBefore = hasAssignedContent(slotBefore);
     const hasAfter = hasAssignedContent(slotAfter);
+    const hasBadge = hasAssignedContent(slotBadge);
 
     this.toggleAttribute("has-before", hasBefore);
     this.toggleAttribute("has-after", hasAfter);
+    this.toggleAttribute("has-badge", hasBadge);
 
     const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
     const assignedElements = slotDefault?.assignedElements({ flatten: true }) ?? [];
@@ -1125,19 +1352,18 @@ class MuiButton extends HTMLElement {
       this.setAttribute("icon-only", "");
       this.updateIconSizes(assignedNodes, true);
       this.updateComposedControlSizes(assignedNodes);
-      return;
+    } else {
+      this.removeAttribute("icon-only");
     }
 
-    this.removeAttribute("icon-only");
-
-    const allSlots = [slotBefore, slotDefault, slotAfter];
+    const allSlots = [slotBefore, slotDefault, slotAfter, slotBadge];
     allSlots.forEach((slot) => {
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
-      this.updateIconSizes(nodes, false);
-      if (!avatarOnly) {
-        this.updateAvatarSizes(nodes);
+      if (!iconOnly) {
+        this.updateIconSizes(nodes, false);
       }
+      this.updateAvatarSizes(nodes);
       this.updateBadgeSizes(nodes);
       this.updateComposedControlSizes(nodes);
     });
@@ -1186,13 +1412,24 @@ class MuiButton extends HTMLElement {
     nodes.forEach((node: Node) => {
       if (node.nodeType === Node.ELEMENT_NODE) {
         const el = node as HTMLElement;
-        const isAvatar = el.tagName.toLowerCase() === "mui-avatar";
+        const tagName = el.tagName.toLowerCase();
+        const isAvatar = tagName === "mui-avatar";
+        const isAvatarChip = tagName === "mui-avatar-chip";
 
-        if (isAvatar) {
+        if ((this.getAttribute("usage") === "header-bar" || this.hasAttribute("avatar-only")) && (isAvatar || isAvatarChip)) {
+          el.setAttribute("size", buttonSize);
+        } else if (isAvatar) {
           el.setAttribute("size", targetAvatarSize);
         }
       }
     });
+  }
+
+  applyHeaderBarContext(size: string): void {
+    this.setAttribute("usage", "header-bar");
+    if (!this.hasAuthoredSize && ["x-small", "small", "medium", "large"].includes(size)) {
+      this.setAttribute("size", size);
+    }
   }
 
   updateIconSizes(nodes: Node[], isIconOnly: boolean): void {
@@ -1233,20 +1470,29 @@ class MuiButton extends HTMLElement {
 
   updateBadgeSizes(nodes: Node[]): void {
     const buttonSize = this.getAttribute("size") || "medium";
-    const badgeSizeMap: Record<string, string> = {
+    const inlineBadgeSizeMap: Record<string, string> = {
       "xx-small": "x-small",
       "x-small": "x-small",
       small: "small",
       medium: "medium",
       large: "large",
     };
-    const targetBadgeSize = badgeSizeMap[buttonSize] || "medium";
+    const notifBadgeSizeMap: Record<string, string> = {
+      "xx-small": "xx-small",
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "x-small",
+      large: "small",
+    };
 
     nodes.forEach((node: Node) => {
       if (node.nodeType === Node.ELEMENT_NODE) {
         const el = node as HTMLElement;
         if (el.tagName.toLowerCase() === "mui-badge") {
-          // Enforce host-driven badge sizing for consistency.
+          const isNotificationSlot = el.getAttribute("slot") === "badge";
+          const targetBadgeSize = isNotificationSlot
+            ? (notifBadgeSizeMap[buttonSize] || "x-small")
+            : (inlineBadgeSizeMap[buttonSize] || "medium");
           el.setAttribute("size", targetBadgeSize);
         }
       }

@@ -1,5 +1,58 @@
 ## Header [Start]
 
+## v25.1.0
+
+_Status: Upcoming_
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/25.1.0)
+
+## Header [End]
+
+### Added
+
+- Added `slot="badge"` to `mui-button` for positioning notification badges (`mui-badge`) at the top-right corner of standard and icon-only buttons.
+- `mui-button` automatically tracks `has-badge` destination attribute when content is slotted into `slot="badge"`.
+- `mui-button` automatically scales slotted notification badges relative to button size (`xx-small`, `x-small`, `small`, `medium`, `large`).
+- Added `width` attribute to `mui-button` (defaults to `auto`, accepts custom metric values such as `100%`, `200px`, `16rem`).
+- Added `shape="circle"` attribute to `mui-button` for rendering fully circular icon-only action buttons (`aspect-ratio: 1 / 1`).
+- Added `gap` attribute to `mui-button` for overriding internal slot spacing between `before`, `label`, and `after` slots (e.g. `gap="var(--space-200)"`).
+- Added standalone `mui-header-bar` (`HeaderBar`) component for top application shell and workspace headers with automatic drawer column alignment (`left-width`, `right-width`), height token binding (`size="x-small | small | medium | large"`), surface variants (`default | transparent`), and bottom border toggle (`bottom-border`).
+- Added optional keyboard-accessible `resize-rail` controls to `mui-header-bar`, including minimum column/main widths, shared Drawer rail tokens, and resize start/update/end events for synchronized shell layouts.
+- Added dedicated Storybook story page for `mui-header-bar` featuring responsive 2-column and 3-column headers, custom right sections, height size scales, responsive container-query alternatives, Push Drawer Shell, and synchronized Push Rail Drawer Shell examples.
+
+### Fixed & Improved
+
+- Updated `:host([height])` and `:host([width])` selectors in `mui-v-stack`, `mui-h-stack`, and `mui-grid` to exclude `auto` (`:not([height="auto"])`, `:not([width="auto"])`), preventing intrinsic shrink-wrapping from breaking when explicit `auto` is set.
+- Fixed `shape="circle"` CSS specificity so circular border-radius and padding win over size-variant rules.
+- Updated size-specific gap CSS rules (`xx-small`, `x-small`, `small`, `large`) in `mui-button` to fallback to `var(--button-gap, ...)` so `gap="..."` works dynamically across all button sizes.
+- Updated `MuiTube` composition header toolbar buttons with `shape="circle"` and sidebar navigation actions with `align="start"` and custom slot gaps (`gap="var(--space-200)"` and `gap="var(--space-300)"`).
+- Removed `default-open` condition from Component navigation accordion sections in navbar for improved tab navigation order.
+- `mui-badge` now enforces equal `min-width` and `min-height` with flex centering and text alignment (`box-sizing: border-box`, `justify-content: center`, `text-align: center`), ensuring single-digit count indicators render as crisp, centered circles.
+- Button story page now includes a dedicated **Notification Badges** story card demonstrating variant selection guidelines and scale auto-sizing across action types.
+- Avatar Chip Dropdown examples now include x-small through large profile actions with trailing chevrons.
+- Buttons containing an Avatar Chip and trailing down-chevron now apply size-aware logical edge spacing, with more space at x-small and small; the chevron inherits its size from Button.
+- Avatar-only Buttons now use the Button `size` as the source of truth and resize their Avatar to the matching action footprint; the Button story demonstrates x-small through large options.
+- Header Bar now applies the explicit `usage="header-bar"` composition context: unsized Dropdowns inherit Header Bar size, pass it to their trigger and Menu, and profile Buttons pass matching density to Avatar Chip or Avatar content while chevrons inherit action size.
+- Standard non-circular Header Bar Buttons fill the bar height with square edges; circular and Avatar-only actions retain their normal action-size footprint. Header Bar Avatar and Avatar Chip content maps its avatar footprint to the matching action-size token (for example medium uses `4.4rem` rather than the standalone medium Avatar’s `4.8rem`).
+- Header Bar now reapplies Dropdown and Button composition context after their custom-element definitions are upgraded, ensuring full-height profile actions and action-sized avatars activate reliably regardless of component registration order.
+- Header Bar notification actions now demonstrate attention badges through the Button `badge` slot.
+- Header Bar stories now use medium Search Inputs and secondary circular notification actions consistently.
+- Standard Header Bar action groups now use `var(--space-500)` between the notification action and profile Dropdown.
+- Full-height profile Dropdown examples now meet the Header Bar’s right edge: main-region compositions retain only their left inset, while the terminal right-slot wrapper uses no padding.
+- Header Bar’s **Size Scale** story now pairs matching Search Inputs and inherited secondary notification actions with separate x-small through large comparisons for Avatar Chip and Avatar-only profile Dropdown actions.
+- Header Bar’s **Size Scale** Responsive wrappers now observe their own available story width and use complete compact Header Bar alternatives instead of placeholder text-only fallback bars.
+- In the Header Bar **Size Scale**, the x-small bar now composes small Search Input, notification Button/icon, and profile Dropdown controls for a more usable compact action density.
+- Circular Buttons now use a tighter base notification badge placement, with `x-small` Buttons tuned to `translate(40%, -40%)` and `small` Buttons to `translate(32%, -32%)`; the full comparison is demonstrated in the **Notification Badges** story.
+- Header Bar shell stories now demonstrate complete responsive alternatives, container-aware main actions, Drawer toggle synchronization, left-slot reassignment when navigation closes, and immediate bidirectional width updates between Header Bar and Drawer.
+- Added a non-prescriptive Header Bar composition-density knowledge fragment covering compact, standard, and spacious sizing options for search, circular actions, notification badges, profile Dropdowns, Avatar Chips, and responsive alternatives.
+- Retired the legacy hand-built Grid header from Drawer shell knowledge. Global app shells now compose `HeaderBar` and Drawer as siblings, synchronize Drawer width through `HeaderBar.left-width`, and defer header sizing, borders, surfaces, profile actions, and responsive choices to Header Bar behavior and its composition-density guide.
+- Added a canonical Avatar Chip Profile Actions knowledge fragment covering valid Dropdown anatomy, standalone and Header Bar emphasis, inherited sizing, chevron behavior, Avatar-only alternatives, and complete JSON composition. Header Bar and Avatar Chip story code examples were audited against their rendered examples.
+- Fixed `mui-field` success and error message icons by mapping its public validation variants to the renamed Body semantic treatments (`positive` and `attention`).
+
+---
+
+## Header [Start]
+
 ## v25.0.0
 
 _Status: Released_

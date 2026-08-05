@@ -823,13 +823,13 @@ export const compositions = {
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_desktop",
-                        slot: "show-above", props: { variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
+                        slot: "show-above", props: { variant: "tertiary", shape: "circle", "aria-label": "Toggle menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_desktop", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_mobile",
-                        slot: "show-below", props: { variant: "tertiary", "aria-label": "Open menu", size: "medium" },
+                        slot: "show-below", props: { variant: "tertiary", shape: "circle", "aria-label": "Open menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_mobile", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                     ],
@@ -871,7 +871,7 @@ export const compositions = {
                       {
                         type: "Button",
                         id: "settings_btn",
-                        props: { variant: "tertiary", "aria-label": "Settings" },
+                        props: { variant: "tertiary", shape: "circle", "aria-label": "Settings" },
                         children: [{ type: "_Icon", id: "settings_icon", props: { icon: "mui-icon-gear", size: "medium" }, children: [] }],
                       },
                     ],
@@ -892,7 +892,7 @@ export const compositions = {
                       {
                         type: "Button",
                         id: "create_mobile",
-                        slot: "show-below", props: { variant: "primary", "aria-label": "Create" },
+                        slot: "show-below", props: { variant: "primary", shape: "circle", "aria-label": "Create" },
                         children: [{ type: "_Icon", id: "create_mobile_icon", props: { icon: "mui-icon-add", size: "medium" }, children: [] }],
                       },
                     ],
@@ -900,7 +900,7 @@ export const compositions = {
                   {
                     type: "Button",
                     id: "notifications",
-                    props: { variant: "tertiary", "aria-label": "Notifications" },
+                    props: { variant: "tertiary", shape: "circle", "aria-label": "Notifications" },
                     children: [{ type: "_Icon", id: "notification_icon", props: { icon: "mui-icon-notification", size: "medium" }, children: [] }],
                   },
                 ],
@@ -922,9 +922,24 @@ export const compositions = {
                     id: "sidebar_menu",
                     props: { space: "var(--space-000)" },
                     children: [
-                      { type: "Button", id: "menu_home", props: { text: "Home", variant: "tertiary" }, children: [] },
-                      { type: "Button", id: "menu_shorts", props: { text: "Shorts", variant: "tertiary" }, children: [] },
-                      { type: "Button", id: "menu_subscriptions", props: { text: "Subscriptions", variant: "tertiary" }, children: [] },
+                      {
+                        type: "Button",
+                        id: "menu_home",
+                        props: { text: "Home", variant: "tertiary", align: "start", gap: "var(--space-200)" },
+                        children: [{ type: "_Icon", id: "home_icon", props: { icon: "mui-icon-home", slot: "before" }, children: [] }],
+                      },
+                      {
+                        type: "Button",
+                        id: "menu_shorts",
+                        props: { text: "Shorts", variant: "tertiary", align: "start", gap: "var(--space-200)" },
+                        children: [{ type: "_Icon", id: "shorts_icon", props: { icon: "mui-icon-play-stack", slot: "before" }, children: [] }],
+                      },
+                      {
+                        type: "Button",
+                        id: "menu_subscriptions",
+                        props: { text: "Subscriptions", variant: "tertiary", align: "start", gap: "var(--space-200)" },
+                        children: [{ type: "_Icon", id: "subscriptions_icon", props: { icon: "mui-icon-list-and-film", slot: "before" }, children: [] }],
+                      },
                     ],
                   },
                   {
@@ -1098,18 +1113,36 @@ export const compositions = {
               {
                 type: "Dropdown",
                 id: "account_dropdown",
-                props: {},
+                props: { position: "right" },
                 children: [
                   {
-                    type: "AvatarChip",
-                    id: "user_avatar",
-                    props: {
-                      primary: "Mike Trilford",
-                      secondary: "Creator",
-                      image: "https://muibook.com/images/mui/avatar-mike.jpg",
-                      label: "Mike Trilford",
-                    },
-                    children: [],
+                    type: "Button",
+                    id: "account_action",
+                    props: { slot: "action", variant: "secondary", "aria-label": "Open account menu" },
+                    children: [
+                      {
+                        type: "AvatarChip",
+                        id: "user_avatar",
+                        props: {
+                          primary: "Mike Trilford",
+                          secondary: "Creator",
+                          image: "https://muibook.com/images/mui/avatar-mike.jpg",
+                          label: "Mike Trilford",
+                        },
+                        children: [],
+                      },
+                      { type: "_Icon", id: "account_chevron", props: { icon: "mui-icon-down-chevron", slot: "after" }, children: [] },
+                    ],
+                  },
+                  {
+                    type: "Menu",
+                    id: "account_menu",
+                    props: { width: "16rem" },
+                    children: [
+                      { type: "Button", id: "account_profile", props: { text: "Profile", variant: "tertiary", align: "start" }, children: [] },
+                      { type: "Button", id: "account_settings", props: { text: "Settings", variant: "tertiary", align: "start" }, children: [] },
+                      { type: "Button", id: "account_sign_out", props: { text: "Sign out", variant: "tertiary", align: "start" }, children: [] },
+                    ],
                   },
                 ],
               },

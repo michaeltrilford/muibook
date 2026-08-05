@@ -119,11 +119,19 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "vertical-viewport-with-nested-stacks",
-          "title": "Vertical: Viewport With Nested Stacks",
-          "description": "Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.",
+          "key": "vertical-fill-with-nested-stacks",
+          "title": "Vertical: Fill With Nested Stacks",
+          "description": "Use fill on a stack that fills its parent container height. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.",
           "list": [
             "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "vertical-sidebar-navigation",
+          "title": "Vertical: Sidebar Navigation",
+          "description": "A full-height sidebar composition using nested vertical and horizontal stacks with top navigation buttons and a pinned bottom action.",
+          "list": [
+            "Use fill on the outer container stack to span parent height while keeping inner stacks intrinsically sized."
           ]
         }
       ],

@@ -9,6 +9,11 @@ export const muiApi = {
         description: "Enforces a shared size on the trigger action and slotted `mui-menu` surface.",
       },
       {
+        name: "usage",
+        type: { text: '"header-bar"' },
+        description: "Inherits Header Bar size when size is not explicitly authored and applies Header Bar usage to the trigger Button.",
+      },
+      {
         name: "zindex",
         type: { text: "string | number" },
         default: "1",

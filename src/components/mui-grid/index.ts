@@ -45,12 +45,12 @@ class MuiGrid extends HTMLElement {
         align-items: var(--alignY);
         justify-items: var(--alignX);
       }
-      :host([height]) div,
+      :host([height]:not([height="auto"])) div,
       :host([viewport]) div,
       :host([fill]) div {
         height: 100%;
       }
-      :host([width]) div,
+      :host([width]:not([width="auto"])) div,
       :host([fill]) div {
         width: 100%;
       }

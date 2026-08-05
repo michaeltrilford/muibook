@@ -12,6 +12,7 @@ class MuiDropdown extends HTMLElement {
   private positionFrameId: number | null = null;
   private positionTimeoutIds: number[] = [];
   private menuResizeObserver: ResizeObserver | null = null;
+  private hasAuthoredSize = this.hasAttribute("size");
 
   private get activeMenu() {
     return this.portalMenu || this.menu;
@@ -194,7 +195,7 @@ class MuiDropdown extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["zindex", "position", "vertical-position", "persistent", "size", "offset"];
+    return ["zindex", "position", "vertical-position", "persistent", "size", "offset", "usage"];
   }
 
   get persistent() {
@@ -211,7 +212,7 @@ class MuiDropdown extends HTMLElement {
       this.adjustPosition();
     }
 
-    if (name === "size") this.syncSize();
+    if (name === "size" || name === "usage") this.syncSize();
   }
 
   constructor() {
@@ -322,9 +323,18 @@ class MuiDropdown extends HTMLElement {
       return;
     }
     this.button?.setAttribute("size", size);
+    if (this.getAttribute("usage") === "header-bar") this.button?.setAttribute("usage", "header-bar");
     Array.from(this.children).forEach((child) => {
       if (child.tagName.toLowerCase() === "mui-menu") child.setAttribute("size", size);
     });
+  }
+
+  applyHeaderBarContext(size: string) {
+    this.setAttribute("usage", "header-bar");
+    if (!this.hasAuthoredSize && ["x-small", "small", "medium", "large"].includes(size)) {
+      this.setAttribute("size", size);
+    }
+    this.syncSize();
   }
 
   disconnectedCallback() {

@@ -173,6 +173,7 @@ export default {
               }
               decl.slots = mergeNamedDocs(decl.slots, api.slots);
               decl.events = mergeNamedDocs(decl.events, api.events);
+              decl.cssParts = mergeNamedDocs(decl.cssParts, api.cssParts);
               decl.cssProperties = mergeNamedDocs(decl.cssProperties, api.cssProperties);
             }
 

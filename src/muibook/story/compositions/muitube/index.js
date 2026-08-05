@@ -172,11 +172,11 @@ const videoMenuItems = /*html*/ `
         Skip Menu
       </mui-button>
 
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Home">
         <mui-icon-home slot="before"></mui-icon-home>
         Home
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Shorts">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Shorts">
         <mui-icon-play-stack slot="before"></mui-icon-play-stack>
         Shorts
       </mui-button>
@@ -185,35 +185,35 @@ const videoMenuItems = /*html*/ `
     <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
-      <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+      <mui-button variant="tertiary" size="small" align="start" class="video-menu-group-heading" aria-label="Subscriptions">
         Subscriptions
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">
+      <mui-button variant="tertiary" align="start" class="video-menu-item" aria-label="Real Estate">
         <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
         Real Estate
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">
+      <mui-button variant="tertiary" align="start" class="video-menu-item" aria-label="Jazz Beats">
         <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
         Jazz Beats
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
+      <mui-button variant="tertiary" align="start" class="video-menu-item" aria-label="Julie Cooks">
         <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
         Julie Cooks
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">
+      <mui-button variant="tertiary" align="start" class="video-menu-item" aria-label="Sidebar Court">
         <mui-avatar slot="before" size="small" label="Sidebar Court">
           <mui-icon-left-sidebar></mui-icon-left-sidebar>
         </mui-avatar>
         Sidebar Court
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">
+      <mui-button variant="tertiary" align="start" class="video-menu-item" aria-label="Hot Grill">
         <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
           <mui-icon-sun></mui-icon-sun>
         </mui-avatar>
         Hot Grill
       </mui-button>
-      <mui-button variant="tertiary" size="small" class="video-menu-more video-menu-more_hero" aria-label="Show more">
+      <mui-button variant="tertiary" size="small" align="start" gap="var(--space-300)" class="video-menu-more video-menu-more_hero" aria-label="Show more">
         <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
         Show more
       </mui-button>
@@ -222,23 +222,23 @@ const videoMenuItems = /*html*/ `
     <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
-      <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+      <mui-button variant="tertiary" size="small" align="start" class="video-menu-group-heading" aria-label="Subscriptions">
         You
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Playlists">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Playlists">
         <mui-icon-list-and-film slot="before"></mui-icon-list-and-film>
         Playlists
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Your videos">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Your videos">
         <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
         Your videos
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Downloads">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Downloads">
         <mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle>
         Downloads
       </mui-button>
-      <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+      <mui-button variant="tertiary" size="small" align="start" gap="var(--space-300)" class="video-menu-more" aria-label="Show more">
         <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
         Show more
       </mui-button>
@@ -247,23 +247,23 @@ const videoMenuItems = /*html*/ `
     <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
-      <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Explore">
+      <mui-button variant="tertiary" size="small" align="start" class="video-menu-group-heading" aria-label="Explore">
         Explore
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Music">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Music">
         <mui-icon-music-microphone slot="before"></mui-icon-music-microphone>
         Music
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Movies & TV">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Movies & TV">
         <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
         Movies & TV
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Gaming">
+      <mui-button variant="tertiary" align="start" gap="var(--space-200)" class="video-menu-item" aria-label="Gaming">
         <mui-icon-game-controller slot="before"></mui-icon-game-controller>
         Gaming
       </mui-button>
-      <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+      <mui-button variant="tertiary" size="small" align="start" gap="var(--space-300)" class="video-menu-more" aria-label="Show more">
         <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
         Show more
       </mui-button>
@@ -303,10 +303,6 @@ const styles = /*css*/ `
     background: var(--surface);
     overflow-y: scroll;
   }
-
-  .video-menu-item,
-  .video-menu-more,
-  .video-menu-group-heading { text-align: left; }
 
   .video-menu-more {
     margin: var(--space-100);
@@ -486,10 +482,10 @@ class compMuiTube extends HTMLElement {
         <mui-h-stack style="min-height: var(--header-min-height); padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color); box-sizing: border-box;" alignx="space-between" aligny="center">
           <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-              <mui-button slot="show-above" variant="tertiary" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
+              <mui-button slot="show-above" variant="tertiary" shape="circle" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
                 <mui-icon-menu size="medium"></mui-icon-menu>
               </mui-button>
-              <mui-button slot="show-below" variant="tertiary" aria-label="Open menu" size="medium" data-drawer="video-header-overlay">
+              <mui-button slot="show-below" variant="tertiary" shape="circle" aria-label="Open menu" size="medium" data-drawer="video-header-overlay">
                 <mui-icon-menu size="medium"></mui-icon-menu>
               </mui-button>
             </mui-responsive>
@@ -505,7 +501,7 @@ class compMuiTube extends HTMLElement {
                   <mui-icon-search size="medium"></mui-icon-search>
                 </mui-button>
               </mui-input>
-              <mui-button variant="tertiary" aria-label="Settings">
+              <mui-button variant="tertiary" shape="circle" aria-label="Settings">
                 <mui-icon-gear size="medium"></mui-icon-gear>
               </mui-button>
             </mui-h-stack>
@@ -513,9 +509,9 @@ class compMuiTube extends HTMLElement {
           <mui-h-stack alignx="start" aligny="center" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
               <mui-button variant="primary" slot="show-above">Create</mui-button>
-              <mui-button variant="primary" slot="show-below"><mui-icon-add size="medium"></mui-icon-add></mui-button>
+              <mui-button variant="primary" shape="circle" slot="show-below" aria-label="Create"><mui-icon-add size="medium"></mui-icon-add></mui-button>
             </mui-responsive>
-            <mui-button variant="tertiary" aria-label="Notifications">
+            <mui-button variant="tertiary" shape="circle" aria-label="Notifications">
               <mui-icon-notification size="medium"></mui-icon-notification>
             </mui-button>
           </mui-h-stack>

@@ -16,7 +16,9 @@ class StoryAvatarChip extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Avatar Chip"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host {
@@ -211,25 +213,121 @@ class StoryAvatarChip extends HTMLElement {
                 <mui-button size="large">Log out</mui-button>
               </mui-menu>
             </mui-dropdown>
+
+            <mui-dropdown position="right" size="x-small">
+              <mui-button
+                slot="action"
+                variant="tertiary"
+                size="x-small"
+                gap="var(--space-400)"
+                aria-label="Open profile menu">
+                <mui-avatar-chip
+                  label="Alex"
+                  size="x-small"
+                  background="blue"
+                  primary="Alex Hurt"
+                  secondary="Product Designer">
+                </mui-avatar-chip>
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-menu size="x-small" width="16rem">
+                <mui-button variant="tertiary" align="start" size="x-small" weight="regular">Profile</mui-button>
+                <mui-button variant="tertiary" align="start" size="x-small" weight="regular">Settings</mui-button>
+                <mui-button variant="tertiary" align="start" size="x-small" weight="regular">Sign out</mui-button>
+              </mui-menu>
+            </mui-dropdown>
+
+            <mui-dropdown position="right" size="small">
+              <mui-button
+                slot="action"
+                variant="tertiary"
+                size="small"
+                gap="var(--space-400)"
+                aria-label="Open profile menu">
+                <mui-avatar-chip
+                  label="Alex"
+                  size="small"
+                  background="blue"
+                  primary="Alex Hurt"
+                  secondary="Product Designer">
+                </mui-avatar-chip>
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-menu size="small" width="16rem">
+                <mui-button variant="tertiary" align="start" size="small" weight="regular">Profile</mui-button>
+                <mui-button variant="tertiary" align="start" size="small" weight="regular">Settings</mui-button>
+                <mui-button variant="tertiary" align="start" size="small" weight="regular">Sign out</mui-button>
+              </mui-menu>
+            </mui-dropdown>
+
+            <mui-dropdown position="right" size="medium">
+              <mui-button
+                slot="action"
+                variant="tertiary"
+                size="medium"
+                gap="var(--space-400)"
+                aria-label="Open profile menu">
+                <mui-avatar-chip
+                  label="Alex"
+                  size="medium"
+                  background="blue"
+                  primary="Alex Hurt"
+                  secondary="Product Designer">
+                </mui-avatar-chip>
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-menu size="medium" width="16rem">
+                <mui-button variant="tertiary" align="start" size="medium" weight="regular">Profile</mui-button>
+                <mui-button variant="tertiary" align="start" size="medium" weight="regular">Settings</mui-button>
+                <mui-button variant="tertiary" align="start" size="medium" weight="regular">Sign out</mui-button>
+              </mui-menu>
+            </mui-dropdown>
+
+            <mui-dropdown position="right" size="large">
+              <mui-button
+                slot="action"
+                variant="tertiary"
+                size="large"
+                gap="var(--space-400)"
+                aria-label="Open profile menu">
+                <mui-avatar-chip
+                  label="Alex"
+                  size="large"
+                  background="blue"
+                  primary="Alex Hurt"
+                  secondary="Product Designer">
+                </mui-avatar-chip>
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-menu size="large" width="16rem">
+                <mui-button variant="tertiary" align="start" size="large" weight="regular">Profile</mui-button>
+                <mui-button variant="tertiary" align="start" size="large" weight="regular">Settings</mui-button>
+                <mui-button variant="tertiary" align="start" size="large" weight="regular">Sign out</mui-button>
+              </mui-menu>
+            </mui-dropdown>
           </div>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="action" size="small" variant="secondary"&gt;<br />
+          &lt;mui-dropdown position=&quot;right&quot; size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;slot=&quot;action&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;variant=&quot;tertiary&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;size=&quot;medium&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;gap=&quot;var(--space-400)&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;aria-label=&quot;Open profile menu&quot;&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar-chip<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image="avatar-mike.jpg"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size="small"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Mike Trilford&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;Product Designer&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label=&quot;Alex&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size=&quot;medium&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background=&quot;blue&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primary=&quot;Alex Hurt&quot;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;secondary=&quot;Product Designer&quot;&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-menu&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-button size="small"&gt;Profile&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button size="small"&gt;Settings&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button size="small"&gt;Log out&lt;/mui-button&gt;<br />
-
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-down-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-down-chevron&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-menu size=&quot;medium&quot; width=&quot;16rem&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot; align=&quot;start&quot; size=&quot;medium&quot; weight=&quot;regular&quot;&gt;Profile&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot; align=&quot;start&quot; size=&quot;medium&quot; weight=&quot;regular&quot;&gt;Settings&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot; align=&quot;start&quot; size=&quot;medium&quot; weight=&quot;regular&quot;&gt;Sign out&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>

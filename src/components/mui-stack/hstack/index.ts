@@ -38,12 +38,12 @@ class MuiHStack extends HTMLElement {
         justify-content: var(--alignX);
         flex-wrap: var(--wrap);
       }
-      :host([height]) slot,
+      :host([height]:not([height="auto"])) slot,
       :host([viewport]) slot,
       :host([fill]) slot {
         height: 100%;
       }
-      :host([width]) slot,
+      :host([width]:not([width="auto"])) slot,
       :host([fill]) slot {
         width: 100%;
       }

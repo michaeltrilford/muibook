@@ -123,6 +123,11 @@ ${JSON.stringify(composition)}
 const chartData = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-data.md"), "utf8");
 const chartComposition = fs.readFileSync(path.join(root, "src/knowledge/fragments/chart-composition.md"), "utf8");
 const shellComposition = fs.readFileSync(path.join(root, "src/knowledge/fragments/json-shells.md"), "utf8");
+const headerBarDrawerCoordination = fs.readFileSync(
+  path.join(root, "src/knowledge/fragments/header-bar-drawer-coordination.md"),
+  "utf8",
+);
+const profileActions = fs.readFileSync(path.join(root, "src/knowledge/fragments/json-profile-actions.md"), "utf8");
 const designAssets = fs.readFileSync(path.join(root, "src/knowledge/fragments/design-assets.md"), "utf8");
 
 const skill = `---
@@ -174,10 +179,10 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - For Grid, never leave \`col\` empty. It defaults to two columns (\`1fr 1fr\`), so omitting it can lead to unexpected layouts.
 - For Dialog and Drawer, omit \`width\` and \`height\` properties to inherit their design system defaults (350px and 320px respectively) unless explicitly overriding them for a specific use case.
 - For Drawer, use \`open\` plus \`side\` for overlay, push, and persistent drawers. The side property (left or right) should match the position of the menu icon trigger. Push and persistent drawers use \`slot="page"\` for adjacent page content; \`left-open\`, \`right-open\`, \`left-width\`, \`right-width\`, and the \`left\`/\`right\` slots are workspace-only.
-- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with a two-column Grid header first and Drawer second. Preserve an explicit Drawer width and apply the same value to the Grid's first track and Drawer-aligned first child, keep the page in a direct plain wrapper with \`props.slot="page"\`, and size the Drawer to the remaining shell height. Follow the Top Header With Drawer Region fragment below.
+- A Drawer-only app shell may use Drawer as the root. When a global top header must remain full-width above the Drawer region, use a zero-space VStack root with HeaderBar first and Drawer second. Preserve an explicit Drawer width and apply the same value to HeaderBar \`left-width\`, keep the page in a direct plain wrapper with \`props.slot="page"\`, and size the Drawer to the remaining shell height. Do not reconstruct HeaderBar with Grid or manual height, border, and surface styles. Follow the Header Bar With Drawer Region fragment and Header Bar Composition Density Guide below.
 - Before assigning an icon, inspect the available \`mui-icon-*\` component names in this reference or the selected component knowledge and use an exact existing name. If none semantically matches the requested concept, use Redactd \`_Icon\` with \`icon="mui-icon-rectangle"\` as the neutral fallback. Never invent an icon component or icon name.
 - In Drawer navigation, compose nav items as Button or Link with \`align="start"\`, \`variant="tertiary"\` as the default (non-prominent) emphasis, and a \`slot="before"\` _Icon matching the item's meaning.
-- When composing a user profile or avatar pattern, use AvatarChip (with image, label, and primary/secondary slotted Body) rather than constructing a custom avatar layout. If the profile pattern requires a menu or dropdown, wrap the AvatarChip inside a Button (with \`variant="secondary"\` and \`slot="action"\`) inside a Dropdown, and use Menu with Buttons for the dropdown actions.
+- When composing a user profile or avatar pattern, use AvatarChip rather than constructing a custom avatar layout. For profile menus, follow the Avatar Chip Profile Actions fragment: Dropdown contains an action Button plus a direct Menu; AvatarChip belongs inside Button. Secondary is a useful standalone treatment, while tertiary is the demonstrated quieter HeaderBar treatment.
 - For equal Grid columns, use \`col: "repeat(N, minmax(0, 1fr))"\`. Do not use numeric counts or repeated bare \`1fr\` tracks.
 - Layout spacing values must use complete CSS token references such as \`var(--space-400)\`; never use \`space-400\`, \`400\`, or another bare scale value. Use \`var(--space-000)\` for zero spacing.
 - CSS length props and style values must include valid units or CSS functions. For \`height\`, \`width\`, \`max-height\`, \`min-height\`, padding, margin, gap, and similar CSS lengths, use values such as \`320px\`, \`20rem\`, \`100%\`, \`100vh\`, \`auto\`, or \`var(--space-500)\`; never output bare numeric strings such as \`320\` or \`20\` unless the component API explicitly documents a number scale for that prop.
@@ -205,6 +210,10 @@ ${chartData}
 ${chartComposition}
 
 ${shellComposition}
+
+${headerBarDrawerCoordination}
+
+${profileActions}
 
 ${designAssets}
 

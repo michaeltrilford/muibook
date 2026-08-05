@@ -68,14 +68,31 @@ export const muiApi = {
       },
       {
         name: "usage",
-        type: { text: '"input"' },
-        description: "Uses field-compatible styling when the button is slotted before or after an input.",
+        type: { text: '"input" | "header-bar"' },
+        description: "Uses field-compatible styling for input composition or full-height, square-edged Header Bar styling with action-sized Avatar and Avatar Chip content.",
+      },
+      {
+        name: "width",
+        type: { text: "string" },
+        default: "auto",
+        description: "Custom button width metric, such as `100%`, `200px`, or `16rem`.",
+      },
+      {
+        name: "shape",
+        type: { text: '"circle"' },
+        description: "Renders a fully circular button, primarily for icon-only toolbar actions.",
+      },
+      {
+        name: "gap",
+        type: { text: "string" },
+        description: "Overrides the internal spacing between before, label, and after slots.",
       },
     ],
     slots: [
       { name: "", description: "Action label or a single icon or avatar for a compact action." },
       { name: "before", description: "Leading icon, avatar, badge, or other supporting content." },
       { name: "after", description: "Trailing icon, avatar, badge, Switch, or other supporting content. Activating the Button toggles a direct slotted Switch." },
+      { name: "badge", description: "Notification badge anchored to the top-right corner with automatic badge sizing and size-aware placement, including tighter offsets for circular Buttons." },
     ],
     cssProperties: [
       {

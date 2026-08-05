@@ -41,6 +41,15 @@ class storyStack extends HTMLElement {
         background: var(--surface-recessed-100);
       }
 
+      .sidebar-preview {
+        position: relative;
+        height: 66rem;
+        overflow: hidden;
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface-recessed-100);
+      }
+
       .viewport-shell {
         position: absolute;
         inset: 0;
@@ -135,13 +144,13 @@ class storyStack extends HTMLElement {
       </div>
     `;
 
-    const VStackViewportChildren = /*html*/ `
+    const VStackFillChildren = /*html*/ `
       <div class="viewport-preview" slot="body">
-        <mui-v-stack class="viewport-shell" viewport padding="var(--space-300)" space="var(--space-300)" alignx="stretch" aligny="start">
+        <mui-v-stack class="viewport-shell" fill padding="var(--space-300)" space="var(--space-300)" alignx="stretch" aligny="start">
           <mui-v-stack space="var(--space-300)">
             <mui-v-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)">
               <mui-body size="small" weight="bold">Nested VStack</mui-body>
-              <mui-body size="x-small" variant="secondary">Intrinsic height inside an outer viewport stack.</mui-body>
+              <mui-body size="x-small" variant="secondary">Intrinsic height inside an outer fill stack.</mui-body>
             </mui-v-stack>
             <mui-h-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)" aligny="center">
               <mui-v-stack class="viewport-child-nested" padding="var(--space-200)" space="var(--space-100)">
@@ -167,6 +176,49 @@ class storyStack extends HTMLElement {
           <mui-badge>Accessibility</mui-badge>
           <mui-badge>Builder Runtime</mui-badge>
         </mui-h-stack>
+      </div>
+    `;
+
+    const VStackSidebarNav = /*html*/ `
+      <div class="sidebar-preview" slot="body">
+        <mui-v-stack class="viewport-shell" fill width="24rem" padding="var(--space-400)" space="var(--space-200)" alignx="stretch" style="border-right: var(--border-thin); background: var(--surface-elevated-100);">
+          <mui-v-stack space="var(--space-100)" alignx="stretch" width="auto" height="auto" aligny="start">
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              Dashboard
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-grid slot="before"></mui-icon-grid>
+              Analytics
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-text-below-folder slot="before"></mui-icon-text-below-folder>
+              Projects
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-accessibility slot="before"></mui-icon-accessibility>
+              Team
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-calendar slot="before"></mui-icon-calendar>
+              Calendar
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>
+              Documents
+            </mui-button>
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)">
+              <mui-icon-gear slot="before"></mui-icon-gear>
+              Settings
+            </mui-button>
+          </mui-v-stack>
+          <mui-h-stack space="var(--space-000)" alignx="stretch" aligny="center" width="auto" height="auto" style="align-self: end; width: 100%;">
+            <mui-button variant="tertiary" align="start" gap="var(--space-200)" style="width: 100%;">
+              <mui-icon-left-arrow slot="before"></mui-icon-left-arrow>
+              Sign out
+            </mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
       </div>
     `;
 
@@ -267,10 +319,10 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="vertical-viewport-with-nested-stacks" title="${storyMeta["vertical-viewport-with-nested-stacks"].title}" description="${storyMeta["vertical-viewport-with-nested-stacks"].description}" usage="${storyMeta["vertical-viewport-with-nested-stacks"].usage}">
-        ${VStackViewportChildren}
+      <story-card id="vertical-fill-with-nested-stacks" title="${storyMeta["vertical-fill-with-nested-stacks"].title}" description="${storyMeta["vertical-fill-with-nested-stacks"].description}" usage="${storyMeta["vertical-fill-with-nested-stacks"].usage}">
+        ${VStackFillChildren}
         <story-code-block slot="footer" scrollable>
-          &lt;mui-v-stack viewport aligny="start" padding="var(--space-300)"&gt;
+          &lt;mui-v-stack fill aligny="start" padding="var(--space-300)"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-v-stack&gt;
           <br />
@@ -283,6 +335,39 @@ class storyStack extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;
+          <br />
+          &lt;/mui-v-stack&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="vertical-sidebar-navigation" title="${storyMeta["vertical-sidebar-navigation"].title}" description="${storyMeta["vertical-sidebar-navigation"].description}" usage="${storyMeta["vertical-sidebar-navigation"].usage}">
+        ${VStackSidebarNav}
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-v-stack fill width="24rem" padding="var(--space-400)" space="var(--space-200)" alignx="stretch" style="border-right: var(--border-thin); background: var(--surface-elevated-100);"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-100)" alignx="stretch" width="auto" height="auto" aligny="start"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-home slot="before"&gt;&lt;/mui-icon-home&gt;Dashboard&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-grid slot="before"&gt;&lt;/mui-icon-grid&gt;Analytics&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-text-below-folder slot="before"&gt;&lt;/mui-icon-text-below-folder&gt;Projects&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-accessibility slot="before"&gt;&lt;/mui-icon-accessibility&gt;Team&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-calendar slot="before"&gt;&lt;/mui-icon-calendar&gt;Calendar&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-rectangle-media-text slot="before"&gt;&lt;/mui-icon-rectangle-media-text&gt;Documents&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)"&gt;&lt;mui-icon-gear slot="before"&gt;&lt;/mui-icon-gear&gt;Settings&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-h-stack space="var(--space-000)" alignx="stretch" aligny="center" width="auto" height="auto" style="align-self: end; width: 100%;"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" align="start" gap="var(--space-200)" style="width: 100%;"&gt;&lt;mui-icon-left-arrow slot="before"&gt;&lt;/mui-icon-left-arrow&gt;Sign out&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;
           <br />
           &lt;/mui-v-stack&gt;
         </story-code-block>

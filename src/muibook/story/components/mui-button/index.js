@@ -18,7 +18,7 @@ class storyButton extends HTMLElement {
     const attrsReference = JSON.stringify([
       {
         component: "mui-button",
-        parentAttrs: ["has-before", "has-after", "icon-only", "avatar-only"],
+        parentAttrs: ["has-before", "has-after", "has-badge", "icon-only", "avatar-only"],
         childAttrs: [],
       },
     ]);
@@ -796,12 +796,20 @@ class storyButton extends HTMLElement {
 
       <story-card id="avatar-only-button" title="${storyMeta["avatar-only-button"].title}" description="${storyMeta["avatar-only-button"].description}" usage="${storyMeta["avatar-only-button"].usage}">
         <mui-h-stack slot="body" space="var(--space-200)" alignY="center">
-          <mui-button data-dialog="button-avatar-dialog" aria-label="Open Mike profile dialog">
-            <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+          <mui-button size="x-small" data-dialog="button-avatar-dialog" aria-label="Open Mike profile dialog">
+            <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
           </mui-button>
 
-          <mui-button data-dialog="button-avatar-dialog-2" aria-label="Open Mike profile dialog">
-            <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+          <mui-button size="small" data-dialog="button-avatar-dialog-2" aria-label="Open Mike profile dialog">
+            <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+          </mui-button>
+
+          <mui-button size="medium" data-dialog="button-avatar-dialog-2" aria-label="Open Mike profile dialog">
+            <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+          </mui-button>
+
+          <mui-button size="large" data-dialog="button-avatar-dialog-2" aria-label="Open Mike profile dialog">
+            <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
           </mui-button>
         </mui-h-stack>
 
@@ -834,8 +842,8 @@ class storyButton extends HTMLElement {
         </mui-dialog>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button data-dialog=&quot;button-avatar-dialog&quot; aria-label=&quot;Open Mike profile dialog&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-button size=&quot;medium&quot; data-dialog=&quot;button-avatar-dialog&quot; aria-label=&quot;Open Mike profile dialog&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;/mui-button&gt;<br />
           <br />
           &lt;mui-dialog data-dialog=&quot;button-avatar-dialog&quot; width=&quot;400px&quot; aria-labelledby=&quot;button-avatar-dialog-title&quot; aria-describedby=&quot;button-avatar-dialog-desc&quot;&gt;<br />
@@ -1226,6 +1234,220 @@ class storyButton extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
           &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="notification-badges" title="${storyMeta["notification-badges"].title}" description="${storyMeta["notification-badges"].description}" usage="${storyMeta["notification-badges"].usage}">
+        <mui-v-stack slot="body" alignx="start" space="var(--space-600)">
+          <mui-h-stack aligny="center" space="var(--space-200)">
+            <mui-button variant="primary" aria-label="Notifications" icon-only>
+              <mui-icon-notification size="small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">3</mui-badge>
+            </mui-button>
+
+            <mui-button variant="secondary" aria-label="Messages" icon-only>
+              <mui-icon-message size="small"></mui-icon-message>
+              <mui-badge slot="badge" variant="positive">12</mui-badge>
+            </mui-button>
+
+            <mui-button variant="tertiary" aria-label="Updates" icon-only>
+              <mui-icon-info size="small"></mui-icon-info>
+              <mui-badge slot="badge" variant="warning">8</mui-badge>
+            </mui-button>
+
+            <mui-button variant="tertiary" aria-label="Items" icon-only>
+              <mui-icon-gear size="small"></mui-icon-gear>
+              <mui-badge slot="badge" variant="neutral">5</mui-badge>
+            </mui-button>
+
+            <mui-button variant="overlay" aria-label="Alerts" icon-only>
+              <mui-icon-attention size="small"></mui-icon-attention>
+              <mui-badge slot="badge" variant="attention">99+</mui-badge>
+            </mui-button>
+          </mui-h-stack>
+
+          <mui-h-stack aligny="center" space="var(--space-200)">
+            <mui-button variant="primary" size="medium">
+              Notifications
+              <mui-badge slot="badge" variant="attention">5</mui-badge>
+            </mui-button>
+
+            <mui-button variant="secondary" size="medium">
+              Inbox
+              <mui-badge slot="badge" variant="positive">24</mui-badge>
+            </mui-button>
+
+            <mui-button variant="tertiary" size="small">
+              Tasks
+              <mui-badge slot="badge" variant="neutral">7</mui-badge>
+            </mui-button>
+          </mui-h-stack>
+
+          <mui-h-stack aligny="center" space="var(--space-200)">
+            <mui-button size="x-small" variant="secondary" icon-only aria-label="Notifications x-small">
+              <mui-icon-notification size="xx-small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">1</mui-badge>
+            </mui-button>
+            <mui-button size="small" variant="secondary" icon-only aria-label="Notifications small">
+              <mui-icon-notification size="x-small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">2</mui-badge>
+            </mui-button>
+            <mui-button size="medium" variant="secondary" icon-only aria-label="Notifications medium">
+              <mui-icon-notification size="small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">3</mui-badge>
+            </mui-button>
+            <mui-button size="large" variant="secondary" icon-only aria-label="Notifications large">
+              <mui-icon-notification size="medium"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">4</mui-badge>
+            </mui-button>
+          </mui-h-stack>
+
+          <mui-h-stack aligny="center" space="var(--space-200)">
+            <mui-button size="x-small" variant="secondary" shape="circle" aria-label="Circular notifications x-small">
+              <mui-icon-notification size="xx-small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">1</mui-badge>
+            </mui-button>
+            <mui-button size="small" variant="secondary" shape="circle" aria-label="Circular notifications small">
+              <mui-icon-notification size="x-small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">2</mui-badge>
+            </mui-button>
+            <mui-button size="medium" variant="secondary" shape="circle" aria-label="Circular notifications medium">
+              <mui-icon-notification size="small"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">3</mui-badge>
+            </mui-button>
+            <mui-button size="large" variant="secondary" shape="circle" aria-label="Circular notifications large">
+              <mui-icon-notification size="medium"></mui-icon-notification>
+              <mui-badge slot="badge" variant="attention">4</mui-badge>
+            </mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Icon-only button with urgent unread notification badge (Attention Red) --&gt;<br />
+          &lt;mui-button variant="primary" icon-only aria-label="Notifications"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-notification size="small"&gt;&lt;/mui-icon-notification&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" variant="attention"&gt;3&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Icon-only button with active status badge (Positive Green) --&gt;<br />
+          &lt;mui-button variant="secondary" icon-only aria-label="Messages"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-message size="small"&gt;&lt;/mui-icon-message&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" variant="positive"&gt;12&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Icon-only button with routine item count badge (Neutral Grey) --&gt;<br />
+          &lt;mui-button variant="tertiary" icon-only aria-label="Items"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-gear size="small"&gt;&lt;/mui-icon-gear&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" variant="neutral"&gt;5&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Labeled text button with notification badge --&gt;<br />
+          &lt;mui-button variant="secondary" size="medium"&gt;<br />
+          &nbsp;&nbsp;Inbox<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" variant="positive"&gt;24&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Compact action button with explicit xx-small badge sizing --&gt;<br />
+          &lt;mui-button size="x-small" variant="secondary" icon-only aria-label="Compact notifications"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-notification size="xx-small"&gt;&lt;/mui-icon-notification&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" size="xx-small" variant="attention"&gt;1&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Circular action uses the tighter badge offset --&gt;<br />
+          &lt;mui-button size="medium" variant="secondary" shape="circle" aria-label="Circular notifications"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-notification size="small"&gt;&lt;/mui-icon-notification&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="badge" variant="attention"&gt;3&lt;/mui-badge&gt;<br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="width" title="${storyMeta["width"].title}" description="${storyMeta["width"].description}" usage="${storyMeta["width"].usage}">
+        <mui-v-stack slot="body" space="var(--space-200)" alignx="stretch">
+          <mui-button variant="primary" width="100%">Continue to Checkout</mui-button>
+          <mui-h-stack space="var(--space-200)">
+            <mui-button variant="secondary" width="200px">Save Draft</mui-button>
+            <mui-button variant="tertiary" width="16rem">Cancel Request</mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Full-width action button --&gt;<br />
+          &lt;mui-button variant="primary" width="100%"&gt;Continue to Checkout&lt;/mui-button&gt;<br /><br />
+          &lt;!-- Fixed pixel/rem metric buttons --&gt;<br />
+          &lt;mui-button variant="secondary" width="200px"&gt;Save Draft&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="tertiary" width="16rem"&gt;Cancel Request&lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="custom-gap" title="${storyMeta["custom-gap"].title}" description="${storyMeta["custom-gap"].description}" usage="${storyMeta["custom-gap"].usage}">
+        <mui-v-stack slot="body" space="var(--space-300)" alignx="stretch" style="width: 100%;">
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start" wrap="wrap">
+            <mui-button size="xx-small" variant="secondary" gap="var(--space-050)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              XX-Small
+            </mui-button>
+            <mui-button size="x-small" variant="secondary" gap="var(--space-050)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              X-Small
+            </mui-button>
+            <mui-button size="small" variant="secondary" gap="var(--space-100)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              Small
+            </mui-button>
+            <mui-button size="medium" variant="secondary" gap="var(--space-150)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              Medium
+            </mui-button>
+            <mui-button size="large" variant="secondary" gap="var(--space-200)">
+              <mui-icon-home slot="before"></mui-icon-home>
+              Large
+            </mui-button>
+          </mui-h-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-v-stack space="var(--space-150)" alignx="stretch" style="max-width: 24rem; width: 100%;">
+            <mui-button size="medium" variant="tertiary" align="start" gap="var(--space-200)" width="100%">
+              <mui-icon-home slot="before"></mui-icon-home>
+              Dashboard
+            </mui-button>
+          </mui-v-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Button size range with custom slot gaps --&gt;<br />
+          &lt;mui-button size="xx-small" variant="secondary" gap="var(--space-050)"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-home slot="before"&gt;&lt;/mui-icon-home&gt;<br />
+          &nbsp;&nbsp;XX-Small<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;mui-button size="small" variant="secondary" gap="var(--space-100)"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-home slot="before"&gt;&lt;/mui-icon-home&gt;<br />
+          &nbsp;&nbsp;Small<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;!-- Medium size drawer action with align="start", width="100%", and custom gap="var(--space-200)" --&gt;<br />
+          &lt;mui-button size="medium" variant="tertiary" align="start" gap="var(--space-200)" width="100%"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-home slot="before"&gt;&lt;/mui-icon-home&gt;<br />
+          &nbsp;&nbsp;Dashboard<br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="shape-circle" title="${storyMeta["shape-circle"].title}" description="${storyMeta["shape-circle"].description}" usage="${storyMeta["shape-circle"].usage}">
+        <mui-h-stack slot="body" space="var(--space-200)" aligny="center">
+          <mui-button variant="primary" shape="circle" aria-label="Add item">
+            <mui-icon-add></mui-icon-add>
+          </mui-button>
+          <mui-button variant="secondary" shape="circle" aria-label="Settings">
+            <mui-icon-gear></mui-icon-gear>
+          </mui-button>
+          <mui-button variant="tertiary" shape="circle" aria-label="Notifications">
+            <mui-icon-notification></mui-icon-notification>
+          </mui-button>
+          <mui-button variant="primary" shape="circle" size="small" aria-label="Small add item">
+            <mui-icon-add></mui-icon-add>
+          </mui-button>
+        </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Circular action buttons --&gt;<br />
+          &lt;mui-button variant="primary" shape="circle" aria-label="Add item"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;mui-button variant="secondary" shape="circle" aria-label="Settings"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-gear&gt;&lt;/mui-icon-gear&gt;<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;mui-button variant="tertiary" shape="circle" aria-label="Notifications"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-notification&gt;&lt;/mui-icon-notification&gt;<br />
           &lt;/mui-button&gt;
         </story-code-block>
       </story-card>

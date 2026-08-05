@@ -142,6 +142,7 @@ export class AppContainer extends HTMLElement {
       "/chip-rail": "story-chip-rail",
       "/dialog": "story-dialog",
       "/drawer": "story-drawer",
+      "/header-bar": "story-header-bar",
       "/progress": "story-progress",
       "/progress-ring": "story-progress-ring",
       "/container": "story-container",

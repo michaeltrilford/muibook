@@ -62,6 +62,7 @@ export * from "./components/mui-slide-frame";
 export * from "./components/mui-slide-section";
 export * from "./components/mui-dialog";
 export * from "./components/mui-drawer";
+export * from "./components/mui-header-bar";
 export * from "./components/mui-avatar";
 export * from "./components/mui-avatar-group";
 export * from "./components/mui-image";

@@ -135,6 +135,7 @@ class MuiField extends HTMLElement {
     if (!fallback || !messageSlot) return;
 
     const variant = this.variant;
+    const messageVariant = variant === "success" ? "positive" : variant === "error" ? "attention" : variant;
     const message = this.message;
 
     let icon = "";
@@ -159,7 +160,7 @@ class MuiField extends HTMLElement {
 
     const infoTextColor = variant === "info" ? ` style="--text-color: var(--feedback-info-text);"` : "";
     fallback.innerHTML = message
-      ? `<mui-body size="${this.size}" variant="${variant}"${infoTextColor}>${icon}${message}</mui-body>`
+      ? `<mui-body size="${this.size}" variant="${messageVariant}"${infoTextColor}>${icon}${message}</mui-body>`
       : "";
     if (message) this.setAttribute("has-message", "");
     else this.removeAttribute("has-message");
