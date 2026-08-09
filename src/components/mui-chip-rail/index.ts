@@ -257,12 +257,12 @@ class MuiChipRail extends HTMLElement {
           </div>
         </div>
         <div class="edge edge-end" hidden>
-          <mui-button class="rail-action rail-action-end" variant="tertiary" size="${size}" icon-only aria-label="Next items">
+          <mui-button class="rail-action rail-action-end" variant="tertiary" shape="circle" size="${size}" aria-label="Next items">
             <mui-icon-right-chevron class="mui-icon" size="${iconSize}"></mui-icon-right-chevron>
           </mui-button>
         </div>
         <div class="edge edge-start" hidden>
-          <mui-button class="rail-action rail-action-start" variant="tertiary" size="${size}" icon-only aria-label="Previous items">
+          <mui-button class="rail-action rail-action-start" variant="tertiary" shape="circle" size="${size}" aria-label="Previous items">
             <mui-icon-left-chevron class="mui-icon" size="${iconSize}"></mui-icon-left-chevron>
           </mui-button>
         </div>

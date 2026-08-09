@@ -48,6 +48,10 @@ _Status: Upcoming_
 - Retired the legacy hand-built Grid header from Drawer shell knowledge. Global app shells now compose `HeaderBar` and Drawer as siblings, synchronize Drawer width through `HeaderBar.left-width`, and defer header sizing, borders, surfaces, profile actions, and responsive choices to Header Bar behavior and its composition-density guide.
 - Added a canonical Avatar Chip Profile Actions knowledge fragment covering valid Dropdown anatomy, standalone and Header Bar emphasis, inherited sizing, chevron behavior, Avatar-only alternatives, and complete JSON composition. Header Bar and Avatar Chip story code examples were audited against their rendered examples.
 - Fixed `mui-field` success and error message icons by mapping its public validation variants to the renamed Body semantic treatments (`positive` and `attention`).
+- Added Header Bar destination metadata for the runtime `has-left` and `has-right` attributes so generated dynamic-attribute knowledge matches its slotted column behavior.
+- Added an Icons story showing every icon inside circular secondary Buttons across the full Button size scale, with left, right, up, and down chevrons listed first.
+- Reduced the shared `xx-small` icon footprint from `1.3rem` to `1.2rem` across standalone icons, Icon Toggle, and the shared icon helper.
+- Updated Chip Rail overflow actions to use circular Buttons while continuing to inherit the rail size and automatic icon sizing.
 
 ---
 

@@ -33,7 +33,7 @@ class MuiIconAccessibility extends HTMLElement {
 
     // Map size to actual values
     const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
-      "xx-small": "1.3rem",
+      "xx-small": "1.2rem",
       "x-small": "1.6rem",
       small: "2.1rem",
       medium: "2.4rem",

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "has-left",
+      "description": "Set when left slot content exists, allowing the component to render and size the left header column and its optional resize rail."
+    },
+    {
+      "name": "has-right",
+      "description": "Set when right slot content exists, allowing the component to render and size the right header column and its optional resize rail."
+    }
+  ]
+}

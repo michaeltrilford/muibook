@@ -1,5 +1,71 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
+const circularButtonSizes = ["xx-small", "x-small", "small", "medium", "large"];
+const circularButtonIcons = [
+  "left-chevron",
+  "right-chevron",
+  "up-chevron",
+  "down-chevron",
+  "accessibility",
+  "add",
+  "ai",
+  "attention",
+  "calendar",
+  "check",
+  "checkmark",
+  "close",
+  "copy",
+  "down-arrow-circle",
+  "ellipsis",
+  "exclamationmark",
+  "fullscreen",
+  "game-controller",
+  "gear",
+  "globe",
+  "grid",
+  "home",
+  "info",
+  "left-arrow",
+  "left-sidebar",
+  "list-and-film",
+  "menu",
+  "message",
+  "moon",
+  "movie-clapper",
+  "music-microphone",
+  "music-quarter-note",
+  "notification",
+  "panel",
+  "pause",
+  "picture-in-picture",
+  "pin",
+  "pin-slash",
+  "play-fill",
+  "play-rectangle",
+  "play-stack",
+  "rectangle",
+  "rectangle-dashed",
+  "rectangle-left-drawer",
+  "rectangle-media-text",
+  "rectangle-right-drawer",
+  "reload",
+  "search",
+  "speaker-mute",
+  "speaker-one-wave",
+  "speaker-two-wave",
+  "spinner",
+  "stop",
+  "stop-fill",
+  "subtract",
+  "sun",
+  "text-below-folder",
+  "timer",
+  "translate",
+  "up-arrow",
+  "vertical-ellipsis",
+  "warning",
+];
+
 class storyIcon extends HTMLElement {
   constructor() {
     super();
@@ -14,6 +80,18 @@ class storyIcon extends HTMLElement {
       return;
     }
     const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const circularButtonGroups = circularButtonSizes.map((size) => /*html*/ `
+      <mui-v-stack space="var(--space-300)" width="auto" height="auto">
+        <mui-heading level="3" size="6">${size}</mui-heading>
+        <mui-h-stack space="var(--space-300)" width="auto" height="auto" wrap>
+          ${circularButtonIcons.map((icon) => /*html*/ `
+            <mui-button variant="secondary" shape="circle" size="${size}" aria-label="${icon.replaceAll("-", " ")}">
+              <mui-icon-${icon}></mui-icon-${icon}>
+            </mui-button>
+          `).join("")}
+        </mui-h-stack>
+      </mui-v-stack>
+    `).join("");
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -85,6 +163,17 @@ class storyIcon extends HTMLElement {
 
         </mui-grid>
 
+      </story-card>
+
+      <story-card id="circle-buttons" title="${storyMeta["circle-buttons"].title}" description="${storyMeta["circle-buttons"].description}" usage="${storyMeta["circle-buttons"].usage}">
+        <mui-v-stack slot="body" space="var(--space-600)" width="auto" height="auto">
+          ${circularButtonGroups}
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="secondary" shape="circle" size="medium" aria-label="Move left"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-left-chevron&gt;&lt;/mui-icon-left-chevron&gt;<br />
+          &lt;/mui-button&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="icon-toggle-default" title="${storyMeta["icon-toggle-default"].title}" description="${storyMeta["icon-toggle-default"].description}" usage="${storyMeta["icon-toggle-default"].usage}">

@@ -63,6 +63,15 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
+          "key": "circle-buttons",
+          "title": "Circular Icon Buttons",
+          "description": "Places every icon inside circular Buttons across the full Button size scale, with directional chevrons listed first.",
+          "list": [
+            "Let Button automatically size an icon-only child instead of setting the icon size directly.",
+            "Give every icon-only Button a concise aria-label that describes its action."
+          ]
+        },
+        {
           "key": "icon-toggle-default",
           "title": "Icon Toggle: Default",
           "description": "Switches between two icon states without additional motion.",
