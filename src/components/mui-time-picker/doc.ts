@@ -14,6 +14,7 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.",
         "Use the Time Picker when you need users to input a time in a form.",
       ],
     },

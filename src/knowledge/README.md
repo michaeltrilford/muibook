@@ -22,6 +22,7 @@ This helps clients such as Codex, Antigravity, Claude Code, and OpenCode choose 
 - `skill-index.json` — machine-readable index of authored skill guides.
 - `knowledge-map.md` — the recommended front door for agents and humans exploring the bundle.
 - `mcp-instructions.md` — short MCP routing instructions for agent clients.
+- `CHANGELOG.md` — package release history, upcoming change notes, and released version summaries.
 - `json-rules.ts` — global Muibook component-tree generation rules for AI tools.
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples and composition-story metadata that show realistic Muibook patterns.
@@ -129,6 +130,7 @@ During local development, prefer the absolute local path so the MCP server reads
 - Ask for compositions when you need realistic page, app, or workflow examples.
 - Ask for design guidance when making token, theme, layout, or visual decisions.
 - Ask for skill guides when you need authored guidance on creating, composing, styling, or documenting Web Components.
+- Ask for the changelog when you need recent, upcoming, or released package change context.
 
 ## Source Of Truth
 

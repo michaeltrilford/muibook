@@ -24,6 +24,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Acts as a parent wrapper for form elements such as Input, Select, Textarea, and Radio Group.",
         "Use size='x-small|small|medium|large' on Field and let it inherit size to the slotted control.",
+        "Use description on Field to forward persistent neutral guidance to the slotted control above its input surface.",
+        "For rich supporting content, place mui-body slot='description' directly inside the slotted control so that control owns its accessible description relationship.",
         "Use slot='message' for rich helper/validation content (for example, mui-form-message with icons); Field inherits size to message content.",
         "Use optional on Field and let it inherit to the slotted form control label treatment.",
         "Inside Form Group, keep helper/validation content attached to each related Field via slot='message'.",
@@ -39,6 +41,7 @@ export const muiDocs: MuiDocs = {
         "A visible or hidden label is required to describe the input’s purpose for screen readers.",
         "Using hide-label keeps the label accessible via aria-label while hiding it visually.",
         "The label and input are linked using for and id; an id is auto-generated if not provided.",
+        "A forwarded description is associated by the slotted control through its internal aria-describedby target.",
         "Clear focus styles are shown to support keyboard navigation.",
       ],
       engineerList: [
@@ -55,6 +58,7 @@ export const muiDocs: MuiDocs = {
         "https://images.ctfassets.net/i5uwscj4pkk2/5nW3j8xOoMpTGLTljUAqPI/6ea6a47139a044feaa63697a40753cf2/Field_-_Anatomy.png",
       list: [
         "Label: The Field component supports a label, useful for grouping multiple inputs or when applying the label at the parent level is preferred.",
+        "Description: Field forwards plain persistent guidance to the slotted control; rich description content remains a slot of that control.",
         "Message: Supports rendering static text or dynamic messages that reflect the field’s state, such as success, warning, or error.",
         "Slot: Allows insertion of related form components like Input or Select as children within the Field.",
         "Message Slot: Supports custom helper content using slot='message'.",
@@ -127,6 +131,16 @@ export const muiDocs: MuiDocs = {
           "description": "Field forwards size to the slotted control.",
           "list": [
             "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "supporting-description",
+          "title": "Supporting Description",
+          "description": "Field forwards plain supporting guidance while the slotted control continues to own rich description content and accessibility.",
+          "list": [
+            "Use description on Field for plain persistent guidance shared with the primary slotted control.",
+            "Place mui-body slot='description' inside the control when the guidance contains an inline Link or other rich content.",
+            "Keep validation and status feedback in Field message below the control."
           ]
         },
         {

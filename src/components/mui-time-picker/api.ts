@@ -19,6 +19,7 @@ export const muiApi = {
         type: { text: "string" },
         description: "The label for the input field.",
       },
+      { name: "description", type: { text: "string" }, description: "Supporting text forwarded to the internal Input." },
       {
         name: "hide-label",
         type: { text: "boolean" },
@@ -45,7 +46,7 @@ export const muiApi = {
       },
       { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." }
     ],
-    slots: [],
+    slots: [{ name: "description", description: "Rich supporting content forwarded to the internal Input." }],
     events: [
       { name: "change", description: "Composed, bubbling event dispatched when the selected time value changes with `detail.value`." },
     ],

@@ -7,6 +7,7 @@ export const muiApi = {
       { name: "value", type: { text: "string" }, default: "", description: "Value of the selected option." },
       { name: "id", type: { text: "string" }, description: "Select identifier used to associate the visible label." },
       { name: "label", type: { text: "string" }, description: "Accessible select label." },
+      { name: "description", type: { text: "string" }, description: "Persistent supporting text displayed between the label and select." },
       {
         name: "options",
         type: { text: "string" },
@@ -82,6 +83,7 @@ export const muiApi = {
         description: "Visual surface style. Seamless removes borders and backgrounds.",
       },
     ],
+    slots: [{ name: "description", description: "Rich supporting content that replaces the description attribute fallback." }],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched during selection updates with `detail.value`." },
       { name: "change", description: "Composed, bubbling event dispatched when the selected option changes with `detail.value`." },

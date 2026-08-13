@@ -7,6 +7,7 @@ class MuiSearchInput extends HTMLElement {
     return [
       "id",
       "label",
+      "description",
       "placeholder",
       "value",
       "name",
@@ -266,6 +267,8 @@ class MuiSearchInput extends HTMLElement {
   private render() {
     const id = this.getAttribute("id") || `mui-search-input-${Math.random().toString(36).slice(2, 9)}`;
     const label = this.getAttribute("label") || "Search";
+    const description = this.getAttribute("description") || "";
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const placeholder = this.getAttribute("placeholder") || "Search...";
     const name = this.getAttribute("name") || "";
     const value = this.value;
@@ -431,6 +434,7 @@ class MuiSearchInput extends HTMLElement {
               name="${name}"
               size="${size}"
               label="${label}"
+              ${description ? `description="${description}"` : ""}
               hide-label
               placeholder="${placeholder}"
               value="${value}"
@@ -441,6 +445,7 @@ class MuiSearchInput extends HTMLElement {
               ${disabled ? "disabled" : ""}
               ${this.hasAttribute("autofocus") ? "autofocus" : ""}
             >
+              ${hasDescription ? '<slot name="description" slot="description"></slot>' : ""}
               <mui-icon-search slot="inside-before"></mui-icon-search>
             </mui-input>
           </div>

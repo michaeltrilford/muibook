@@ -1,3 +1,5 @@
+import "../mui-body";
+
 class MuiInput extends HTMLElement {
   static get observedAttributes() {
     return [
@@ -7,6 +9,7 @@ class MuiInput extends HTMLElement {
       "placeholder",
       "id",
       "label",
+      "description",
       "disabled",
       "hide-label",
       "variant",
@@ -24,6 +27,7 @@ class MuiInput extends HTMLElement {
 
   _changeHandler?: (e: Event) => void;
   _slotResizeObserver?: ResizeObserver;
+  private _inputId = `mui-input-${Math.random().toString(36).slice(2, 11)}`;
   private _documentPointerDownHandler = (event: PointerEvent) => {
     if (event.composedPath().includes(this)) return;
     const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
@@ -99,8 +103,10 @@ class MuiInput extends HTMLElement {
     if (
       [
         "type",
+        "id",
         "placeholder",
         "label",
+        "description",
         "hide-label",
         "variant",
         "optional",
@@ -167,6 +173,31 @@ class MuiInput extends HTMLElement {
     const countEl = this.shadowRoot?.querySelector(".char-count") as HTMLElement | null;
     if (!inputEl || !countEl || inputEl.maxLength <= 0) return;
     countEl.textContent = `${inputEl.value.length}/${inputEl.maxLength}`;
+  }
+
+  private syncDescriptionState() {
+    const labelEl = this.shadowRoot?.querySelector("label");
+    const descriptionEl = this.shadowRoot?.querySelector(".input-description") as HTMLElement | null;
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    const inputEl = this.shadowRoot?.querySelector("input");
+    if (!descriptionEl || !descriptionSlot || !inputEl) return;
+
+    const hasSlottedDescription = descriptionSlot.assignedNodes({ flatten: true }).some((node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) return true;
+      return Boolean(node.textContent?.trim());
+    });
+    const hasDescription = Boolean(this.getAttribute("description")?.trim() || hasSlottedDescription);
+
+    descriptionEl.hidden = !hasDescription;
+    labelEl?.classList.toggle("label-with-description", hasDescription);
+    if (hasDescription) inputEl.setAttribute("aria-describedby", descriptionEl.id);
+    else inputEl.removeAttribute("aria-describedby");
+  }
+
+  private setupDescriptionSlot() {
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    descriptionSlot?.addEventListener("slotchange", () => this.syncDescriptionState());
+    this.syncDescriptionState();
   }
 
   updateSlottedButtons(): void {
@@ -365,8 +396,12 @@ class MuiInput extends HTMLElement {
     const name = this.getAttribute("name") || "";
     const value = this.getAttribute("value") || "";
     const placeholder = this.getAttribute("placeholder") || "";
-    const id = this.getAttribute("id") || `mui-input-${Math.random().toString(36).substr(2, 9)}`;
+    const id = this.getAttribute("id") || this._inputId;
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const descriptionId = `${id}-description`;
+    const hasSlottedDescription = this.querySelector('[slot="description"]') !== null;
+    const hasDescription = Boolean(description.trim() || hasSlottedDescription);
     const optional = this.hasAttribute("optional");
     const hideLabel = this.hasAttribute("hide-label");
     const disabled = this.hasAttribute("disabled");
@@ -376,6 +411,12 @@ class MuiInput extends HTMLElement {
     const size = this.getAttribute("size") || "medium";
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const descriptionSize = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    }[normalizedSize];
     const autofocus = this.hasAttribute("autofocus");
     const paddingBlock = this.getAttribute("padding-block") || "";
     const paddingInline = this.getAttribute("padding-inline") || "";
@@ -461,6 +502,16 @@ class MuiInput extends HTMLElement {
         :host([size="large"]) label {
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
+        }
+        label.label-with-description {
+          margin-block-end: var(--space-000);
+        }
+        .input-description {
+          margin-block-end: var(--space-100);
+        }
+        :host([size="medium"]) .input-description,
+        :host([size="large"]) .input-description {
+          margin-block-end: var(--space-200);
         }
         .label-with-optional {
           display: flex;
@@ -942,6 +993,11 @@ class MuiInput extends HTMLElement {
             }</label>`
           : ""
       }
+      <div id="${descriptionId}" class="input-description"${hasDescription ? "" : " hidden"}>
+        <slot name="description">${
+          description ? `<mui-body variant="secondary" size="${descriptionSize}">${description}</mui-body>` : ""
+        }</slot>
+      </div>
     <div class="${wrapperClass}">
       <div class="before-slot">
         <slot name="before"></slot>
@@ -960,6 +1016,7 @@ class MuiInput extends HTMLElement {
           placeholder="${placeholder}"
           ${disabled ? 'disabled aria-disabled="true"' : ""}
           ${maxLength ? `maxlength="${maxLength}"` : ""}
+          ${hasDescription ? `aria-describedby="${descriptionId}"` : ""}
           ${ariaLabel}
           ${autofocus ? "autofocus" : ""}
         />
@@ -994,6 +1051,7 @@ class MuiInput extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = html;
 
+      this.setupDescriptionSlot();
       this.updateSlottedButtons();
     }
   }

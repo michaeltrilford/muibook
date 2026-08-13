@@ -1,3 +1,5 @@
+import "../mui-body";
+
 class MuiTextarea extends HTMLElement {
   static get observedAttributes() {
     return [
@@ -6,6 +8,7 @@ class MuiTextarea extends HTMLElement {
       "placeholder",
       "id",
       "label",
+      "description",
       "disabled",
       "hide-label",
       "variant",
@@ -20,6 +23,30 @@ class MuiTextarea extends HTMLElement {
   }
 
   private _changeHandler?: (e: Event) => void;
+  private _textareaId = `mui-textarea-${Math.random().toString(36).slice(2, 11)}`;
+
+  private setupDescriptionSlot() {
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    descriptionSlot?.addEventListener("slotchange", () => this.syncDescriptionState());
+    this.syncDescriptionState();
+  }
+
+  private syncDescriptionState() {
+    const description = this.shadowRoot?.querySelector(".textarea-description") as HTMLElement | null;
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    const label = this.shadowRoot?.querySelector("label");
+    const textarea = this.shadowRoot?.querySelector("textarea");
+    if (!description || !descriptionSlot || !textarea) return;
+
+    const hasSlottedDescription = descriptionSlot.assignedNodes({ flatten: true }).some((node) =>
+      node.nodeType === Node.ELEMENT_NODE || Boolean(node.textContent?.trim()),
+    );
+    const hasDescription = Boolean(this.getAttribute("description")?.trim() || hasSlottedDescription);
+    description.hidden = !hasDescription;
+    label?.classList.toggle("label-with-description", hasDescription);
+    if (hasDescription) textarea.setAttribute("aria-describedby", description.id);
+    else textarea.removeAttribute("aria-describedby");
+  }
   private _documentPointerDownHandler = (event: PointerEvent) => {
     if (event.composedPath().includes(this)) return;
     const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
@@ -87,7 +114,7 @@ class MuiTextarea extends HTMLElement {
       return;
     }
 
-    if (["placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline", "surface"].includes(name)) {
+    if (["id", "placeholder", "label", "description", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline", "surface"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -141,12 +168,11 @@ class MuiTextarea extends HTMLElement {
     const name = this.getAttribute("name") || "";
     const value = this.getAttribute("value") || "";
     const placeholder = this.getAttribute("placeholder") || "";
-    const id =
-      this.getAttribute("id") ||
-      `mui-textarea-${Math.random()
-        .toString(36)
-        .substr(2, 9)}`;
+    const id = this.getAttribute("id") || this._textareaId;
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const descriptionId = `${id}-description`;
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const optional = this.hasAttribute("optional");
     const hideLabel = this.hasAttribute("hide-label");
     const disabled = this.hasAttribute("disabled");
@@ -156,6 +182,7 @@ class MuiTextarea extends HTMLElement {
     const size = this.getAttribute("size") || "medium";
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const descriptionSize = { "x-small": "xx-small", small: "x-small", medium: "small", large: "medium" }[normalizedSize];
     const ariaLabel = hideLabel && label ? `aria-label="${label}"` : "";
     const paddingBlock = this.getAttribute("padding-block") || "";
     const paddingInline = this.getAttribute("padding-inline") || "";
@@ -200,6 +227,10 @@ class MuiTextarea extends HTMLElement {
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
         }
+        label.label-with-description { margin-block-end: var(--space-000); }
+        .textarea-description { margin-block-end: var(--space-100); }
+        :host([size="medium"]) .textarea-description,
+        :host([size="large"]) .textarea-description { margin-block-end: var(--space-200); }
 
         textarea {
           width: 100%;
@@ -398,13 +429,16 @@ class MuiTextarea extends HTMLElement {
 
       ${
         label
-          ? `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}${
+          ? `<label for="${id}" class="${[hideLabel ? "vh" : "", hasDescription ? "label-with-description" : ""].filter(Boolean).join(" ")}">${label}${
               optional
                 ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
                 : ""
             }</label>`
           : ""
       }
+      <div id="${descriptionId}" class="textarea-description"${hasDescription ? "" : " hidden"}>
+        <slot name="description">${description ? `<mui-body variant="secondary" size="${descriptionSize}">${description}</mui-body>` : ""}</slot>
+      </div>
 
         <textarea
         id="${id}"
@@ -415,12 +449,14 @@ class MuiTextarea extends HTMLElement {
         placeholder="${placeholder}"
         ${maxLength ? `maxlength="${maxLength}"` : ""}
         ${disabled ? "disabled" : ""}
+        ${hasDescription ? `aria-describedby="${descriptionId}"` : ""}
         ${ariaLabel}
       >${value}</textarea>
       ${maxLength ? '<div class="meta"><span class="char-count"></span></div>' : ""}
     `;
 
     this.shadowRoot!.innerHTML = html;
+    this.setupDescriptionSlot();
 
     if (!label) {
       console.warn("mui-textarea: Missing required 'label' attribute for accessibility.");

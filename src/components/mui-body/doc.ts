@@ -25,6 +25,7 @@ export const muiDocs: MuiDocs = {
         "Match the body size to the layout’s overall design and readability.",
         "Adjust the size by selecting x-small, small, medium or large.",
         "Use before/after slots to compose inline icons, badges, or helper UI with body text.",
+        "Direct mui-link children automatically match the Body size so inline prose keeps one typography scale.",
       ],
     },
 
@@ -107,6 +108,16 @@ export const muiDocs: MuiDocs = {
           "description": "Compares the supported Body size scale.",
           "list": [
             "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "inline-links",
+          "title": "Inline Links",
+          "description": "Keeps direct inline Links aligned with the surrounding Body size.",
+          "list": [
+            "Place mui-link directly inside Body when a phrase in the prose needs navigation.",
+            "Body automatically applies its size to direct Link children, so a repeated Link size is not required.",
+            "Author normal prose whitespace before and after an inline Link; Body does not add Link margins. Keep punctuation outside when it is not part of the linked phrase."
           ]
         },
         {

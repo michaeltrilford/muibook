@@ -1,5 +1,36 @@
 ## Header [Start]
 
+## v26.0.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Breaking Changes
+
+- Removed Dialog `content-max-height` and its implicit `60vh` body cap. Use `max-height` to constrain the complete Dialog surface; the body scrolls within the remaining space.
+
+### Added
+
+- Added viewport-safe `max-height` support to `mui-dialog` for capping the complete surface while keeping header and actions fixed around a flexible content region.
+- Added opt-in Media Player `no-radius` for flush and edge-to-edge surfaces; Prompt media previews use it inside their unpadded internal Dialog.
+- Added focused Dropdown intrinsic-width, Prompt-in-native-dialog, and Dialog content-sizing stories.
+- Added Input `description` and a richer `description` slot for size-aware persistent supporting text, automatically associated with the native control through an internal `aria-describedby` target.
+- Extended the same supporting-description attribute, rich slot, stepped typography, spacing, and accessible association to Select, Textarea, and Radio Group.
+- Date Picker, Time Picker, Search Input, and Chip Input now forward their supporting `description` attribute and rich `description` slot to their internal Input.
+- Field now forwards its `description` attribute to the primary slotted control, matching its existing label, size, optional, and validation-state forwarding; a focused story demonstrates plain and rich supporting guidance.
+
+### Fixed & Improved
+
+- Body now synchronizes direct inline Link children to its own text size, keeping composed prose on one typography scale without repeated Link size attributes; a focused size-scale story covers the composition.
+- Fixed the portaled Dropdown intrinsic-width ResizeObserver loop by separating initial width measurement from guarded, position-only resize updates.
+- Dropdown now resolves an open ancestor native dialog, promotes its Menu into the browser top layer, and cleans up the portal when that dialog closes.
+- Dialog backdrop handling now ignores clicks originating from descendants such as a top-layer Dropdown Menu, and native Escape dismissal keeps the host `open` state in sync.
+
+---
+
+## Header [Start]
+
 ## v25.1.0
 
 _Status: Released_
@@ -51,6 +82,7 @@ _Status: Released_
 - Added Header Bar destination metadata for the runtime `has-left` and `has-right` attributes so generated dynamic-attribute knowledge matches its slotted column behavior.
 - Added an Icons story showing every icon inside circular secondary Buttons across the full Button size scale, with left, right, up, and down chevrons listed first.
 - Reduced the shared `xx-small` icon footprint from `1.3rem` to `1.2rem` across standalone icons, Icon Toggle, and the shared icon helper.
+- Aligned slotted icons in `xx-small` Body text with a dedicated vertical offset while preserving the existing `x-small` alignment.
 - Updated Chip Rail overflow actions to use circular Buttons while continuing to inherit the rail size and automatic icon sizing.
 
 ---

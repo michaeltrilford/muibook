@@ -1062,12 +1062,6 @@ class MuiPrompt extends HTMLElement {
 
     if (title) title.textContent = dialogTitle;
 
-    if (hasMedia) {
-      dialog?.setAttribute("content-max-height", "none");
-    } else {
-      dialog?.removeAttribute("content-max-height");
-    }
-
     if (hasImage) {
       if (mediaUrlLabel) mediaUrlLabel.setAttribute("hidden", "");
       if (image) {
@@ -2122,7 +2116,6 @@ class MuiPrompt extends HTMLElement {
           display: block;
           width: 100%;
           height: auto;
-          border-radius: var(--radius-100);
         }
         .auto-preview-media-url {
           display: inline-flex;
@@ -2304,7 +2297,7 @@ class MuiPrompt extends HTMLElement {
         <mui-code id="promptAutoPreviewCode" size="x-small" wrap hidden></mui-code>
         <img id="promptAutoPreviewImage" class="auto-preview-image" alt="Pasted preview" hidden />
         <mui-link id="promptAutoPreviewMediaUrl" class="auto-preview-media-url" size="x-small" variant="tertiary" weight="regular" hidden></mui-link>
-        <mui-media-player id="promptAutoPreviewMedia" hidden></mui-media-player>
+        <mui-media-player id="promptAutoPreviewMedia" no-radius hidden></mui-media-player>
       </mui-dialog>
     `;
     this.setDebugState("Idle: no submit yet.");

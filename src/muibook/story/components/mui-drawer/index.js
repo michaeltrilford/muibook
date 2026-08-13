@@ -769,6 +769,48 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="drawer-dropdown-portal" title="${storyMeta["drawer-dropdown-portal"].title}" description="${storyMeta["drawer-dropdown-portal"].description}" usage="${storyMeta["drawer-dropdown-portal"].usage}">
+        <mui-button variant="primary" data-drawer="drawer-dropdown-portal" slot="body">Open</mui-button>
+
+        <mui-drawer variant="overlay" data-drawer="drawer-dropdown-portal" z-index="100" side="right" slot="body">
+          <mui-heading size="4" level="4" slot="title">Dropdown portal</mui-heading>
+          <mui-v-stack space="var(--space-400)" alignX="start">
+            <mui-body variant="secondary">Open either Menu to verify body and footer Dropdown portals remain above the Drawer surface.</mui-body>
+            <mui-dropdown position="left" size="medium">
+              <mui-button slot="action" variant="secondary">Open Menu<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+              <mui-menu inset width="min(100%, 18rem)">
+                <mui-button>View details</mui-button>
+                <mui-button>Duplicate item</mui-button>
+                <mui-link variant="tertiary" href="#">Open settings</mui-link>
+              </mui-menu>
+            </mui-dropdown>
+          </mui-v-stack>
+          <mui-dropdown slot="actions" position="right" vertical-position="up" size="small">
+            <mui-button slot="action" variant="secondary">More actions<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+            <mui-menu inset width="min(100%, 14rem)">
+              <mui-button>Save draft</mui-button>
+              <mui-button>Duplicate</mui-button>
+              <mui-link variant="tertiary" href="#">Open settings</mui-link>
+            </mui-menu>
+          </mui-dropdown>
+        </mui-drawer>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant=&quot;overlay&quot; z-index=&quot;100&quot; side=&quot;right&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot;&gt;Dropdown portal&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;Open Menu&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset width=&quot;min(100%, 18rem)&quot;&gt;...&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&lt;mui-dropdown slot=&quot;actions&quot; position=&quot;right&quot; vertical-position=&quot;up&quot; size=&quot;small&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;More actions&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset width=&quot;min(100%, 14rem)&quot;&gt;...&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &lt;/mui-drawer&gt;<br /><br />
+          &lt;!-- Dropdown automatically layers its body portal above the Drawer. --&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="drawer-overlay-no-header" title="${storyMeta["drawer-overlay-no-header"].title}" description="${storyMeta["drawer-overlay-no-header"].description}" usage="${storyMeta["drawer-overlay-no-header"].usage}">
         <mui-button variant="primary" data-drawer="overlay-no-header" slot="body">Open</mui-button>
 

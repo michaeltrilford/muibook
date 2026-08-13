@@ -82,6 +82,23 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
+          <story-card id="inline-links" title="${storyMeta["inline-links"].title}" description="${storyMeta["inline-links"].description}" usage="${storyMeta["inline-links"].usage}">
+            <mui-v-stack slot="body" space="var(--space-500)">
+              <mui-body size="xx-small">Read the <mui-link href="#body-inline-links">component guidance</mui-link> before continuing.</mui-body>
+              <mui-body size="x-small">Read the <mui-link href="#body-inline-links">component guidance</mui-link> before continuing.</mui-body>
+              <mui-body size="small">Read the <mui-link href="#body-inline-links">component guidance</mui-link> before continuing.</mui-body>
+              <mui-body size="medium">Read the <mui-link href="#body-inline-links">component guidance</mui-link> before continuing.</mui-body>
+              <mui-body size="large">Read the <mui-link href="#body-inline-links">component guidance</mui-link> before continuing.</mui-body>
+            </mui-v-stack>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-body size="small"&gt;<br />
+              &nbsp;&nbsp;Read the<br />
+              &nbsp;&nbsp;&lt;mui-link href="/guidance"&gt;component guidance&lt;/mui-link&gt;<br />
+              &nbsp;&nbsp;before continuing.<br />
+              &lt;/mui-body&gt;
+            </story-code-block>
+          </story-card>
+
           <story-card id="variants" title="${storyMeta["variants"].title}" description="${storyMeta["variants"].description}" usage="${storyMeta["variants"].usage}">
 
             <div slot="body">

@@ -41,6 +41,24 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card canvas-bleed id="no-radius" title="${storyMeta["no-radius"].title}" description="${storyMeta["no-radius"].description}" usage="${storyMeta["no-radius"].usage}">
+        <mui-media-player
+          slot="body"
+          type="video"
+          no-radius
+          poster="${videoPosterSrc}"
+          src="${videoSrc}">
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;no-radius<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card canvas-bleed id="center-action" title="${storyMeta["center-action"].title}" description="${storyMeta["center-action"].description}" usage="${storyMeta["center-action"].usage}">
         <mui-media-player
           slot="body"

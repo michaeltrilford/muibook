@@ -16,6 +16,7 @@ class MuiChipInput extends HTMLElement {
     return [
       "id",
       "label",
+      "description",
       "hide-label",
       "placeholder",
       "options",
@@ -480,6 +481,8 @@ class MuiChipInput extends HTMLElement {
   render() {
     const id = this.getAttribute("id") || "";
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const placeholder = this.getAttribute("placeholder") || "Type to add";
     const hideLabel = this.hasAttribute("hide-label");
     const isMobileStack = this.useStackLayout;
@@ -655,6 +658,7 @@ class MuiChipInput extends HTMLElement {
           "
           id="${id}"
           label="${label}"
+          ${description ? `description="${description}"` : ""}
           ${hideLabel ? "hide-label" : ""}
           size="${this.normalizedSize}"
           placeholder="${placeholder}"
@@ -668,6 +672,7 @@ class MuiChipInput extends HTMLElement {
           aria-controls="${listId}"
           aria-autocomplete="list"
         >
+          ${hasDescription ? '<slot name="description" slot="description"></slot>' : ""}
           ${chipsMarkup}
         </mui-input>
 

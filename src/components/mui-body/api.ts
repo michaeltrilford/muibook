@@ -9,13 +9,14 @@ export const muiApi = {
       { name: "clamp", type: { text: "number" }, description: "Limits body text to the provided number of lines. Ignored when truncate is present." },
     ],
     slots: [
-      { name: "", description: "Body text content." },
+      { name: "", description: "Body text content. Direct inline `mui-link` children automatically match the Body size." },
       { name: "before", description: "Leading icon or badge, automatically aligned to the text size." },
       { name: "after", description: "Trailing icon or badge, automatically aligned to the text size." },
     ],
     cssParts: [{ name: "content", description: "The internal span wrapping the default body text slot." }],
     cssProperties: [
       { name: "--body-inline-icon-offset", description: "Shared vertical alignment offset for slotted inline icons." },
+      { name: "--body-inline-icon-offset-xx-small", description: "Vertical alignment offset for icons in xx-small text." },
       { name: "--body-inline-icon-offset-x-small", description: "Vertical alignment offset for icons in x-small text." },
       { name: "--body-inline-icon-offset-small", description: "Vertical alignment offset for icons in small text." },
       { name: "--body-inline-icon-offset-medium", description: "Vertical alignment offset for icons in medium text." },

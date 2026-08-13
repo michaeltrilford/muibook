@@ -3,6 +3,10 @@ import type { MuiDocs } from '../../types/guidelines';
 export const muiDocs: MuiDocs = {
   Select: {
     title: "Select",
+    namedSlots: {
+      description: "Use this name on rich supporting content placed between the label and Select control.",
+      list: ["description"],
+    },
     description:
       "A versatile dropdown component for selecting from a list of options, supporting customisable styles and accessibility features.",
 
@@ -20,6 +24,8 @@ export const muiDocs: MuiDocs = {
         "Use for single or multiple selections from predefined options.",
         "Ideal for forms, filters, or settings where space is limited.",
         "Use size='x-small|small|medium|large' to align select scale with surrounding form controls.",
+        "Use description for plain supporting guidance or slot='description' with mui-body when the guidance contains rich inline content.",
+        "Description typography follows Select size one step down: xx-small, x-small, small, then medium.",
         "Use the optional attribute when a field is not required to show a clear (optional) marker in the label.",
         "Use appearance='custom' only when native customizable select support is acceptable and options need richer composed content.",
         "Custom appearance uses grid layout by default; use col and space to tune picker columns and gaps.",
@@ -35,6 +41,7 @@ export const muiDocs: MuiDocs = {
         "A label is required for screen reader support, describing the purpose of the select.",
         "If hide-label is used, the label is visually hidden but still accessible via aria-label.",
         "The label and select are linked using for and id attributes. If no id is provided, one is generated.",
+        "When supporting guidance is present, Select owns its generated ID and associates it with the native control through aria-describedby.",
         "Optional fields can be explicitly communicated with the optional attribute without changing label association.",
         "Custom appearance relies on native customizable select behaviour and should use real option children so the browser retains selection semantics.",
         "Keyboard users see a clear focus style when navigating.",
@@ -154,6 +161,15 @@ export const muiDocs: MuiDocs = {
           "description": "Use size to align the select with adjacent form controls.",
           "list": [
             "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "supporting-description",
+          "title": "Supporting Description",
+          "description": "Adds persistent guidance between the Select label and control.",
+          "list": [
+            "Use description for plain supporting copy or slot='description' with mui-body for rich inline content.",
+            "Select owns spacing, the generated description ID, and the native aria-describedby association."
           ]
         },
         {

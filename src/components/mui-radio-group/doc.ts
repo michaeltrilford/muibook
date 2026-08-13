@@ -3,6 +3,10 @@ import type { MuiDocs } from '../../types/guidelines';
 export const muiDocs: MuiDocs = {
   RadioGroup: {
     title: "Radio Group",
+    namedSlots: {
+      description: "Use this name on rich supporting content placed between the group label and its options.",
+      list: ["description"],
+    },
     description: "Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.",
 
     hero: [""],
@@ -16,6 +20,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use mui-radio-group when a user must select exactly one option from a known set.",
         "Set label when the group needs a visible question or section prompt.",
+        "Use description for persistent group guidance or slot='description' with mui-body for rich inline content.",
+        "Description typography follows Radio Group size one step down: xx-small, x-small, small, then medium.",
         "Use hide-label when nearby context already explains the group but an accessible label is still required.",
         "Use optional when the user may leave the group unselected.",
         "Set value on the group to control which radio is selected across the entire set.",
@@ -31,6 +37,7 @@ export const muiDocs: MuiDocs = {
       engineerList: [
         "mui-radio-group provides radiogroup semantics and forwards a shared name to child radios.",
         "Use the group label or aria-labelledby so assistive technology can announce the question before the options.",
+        "When supporting guidance is present, Radio Group owns its generated ID and exposes it through aria-describedby.",
         "Emit and listen to the group change event when app state should update from the selected value.",
       ],
     },

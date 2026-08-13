@@ -17,7 +17,7 @@ export const muiApi = {
         name: "zindex",
         type: { text: "string | number" },
         default: "1",
-        description: "Stacking level applied to the dropdown menu surface.",
+        description: "Stacking level applied within the resolved portal root. Dropdowns in an open native dialog are promoted to the browser top layer; z-index only orders content within that context.",
       },
       {
         name: "position",
@@ -45,7 +45,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "action", description: "Dropdown trigger, typically a `mui-button`." },
-      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content. Menus without an explicit width use min(100%, 18rem) while portaled." },
+      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content. Width is optional; a portaled Menu without it uses a viewport-safe 18rem fallback that preserves its usable measure when inset padding is present." },
     ],
     events: [
       { name: "dropdown-toggle", description: "Dispatched when the dropdown opens or closes with `detail.open`." },

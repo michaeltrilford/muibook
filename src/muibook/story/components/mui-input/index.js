@@ -55,6 +55,45 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="supporting-description" title="${storyMeta["supporting-description"].title}" description="${storyMeta["supporting-description"].description}" usage="${storyMeta["supporting-description"].usage}">
+        <mui-v-stack slot="body" space="var(--space-500)">
+          <mui-input size="x-small" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"></mui-input>
+          <mui-input size="small" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"></mui-input>
+          <mui-input size="medium" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"></mui-input>
+          <mui-input size="large" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"></mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="x-small" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="small" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="medium" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="large" type="email" label="Email" description="Used for account updates and sign-in recovery." placeholder="you@example.com"&gt;&lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="slotted-supporting-description" title="${storyMeta["slotted-supporting-description"].title}" description="${storyMeta["slotted-supporting-description"].description}" usage="${storyMeta["slotted-supporting-description"].usage}">
+        <mui-v-stack slot="body" space="var(--space-500)">
+          <mui-input size="x-small" type="email" label="Email" placeholder="you@example.com">
+            <mui-body slot="description" variant="secondary" size="xx-small">Used for account updates. Read our <mui-link href="#privacy-policy">privacy policy</mui-link>.</mui-body>
+          </mui-input>
+          <mui-input size="small" type="email" label="Email" placeholder="you@example.com">
+            <mui-body slot="description" variant="secondary" size="x-small">Used for account updates. Read our <mui-link href="#privacy-policy">privacy policy</mui-link>.</mui-body>
+          </mui-input>
+          <mui-input size="medium" type="email" label="Email" placeholder="you@example.com">
+            <mui-body slot="description" variant="secondary" size="small">Used for account updates. Read our <mui-link href="#privacy-policy">privacy policy</mui-link>.</mui-body>
+          </mui-input>
+          <mui-input size="large" type="email" label="Email" placeholder="you@example.com">
+            <mui-body slot="description" variant="secondary" size="medium">Used for account updates. Read our <mui-link href="#privacy-policy">privacy policy</mui-link>.</mui-body>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="medium" type="email" label="Email" placeholder="you@example.com"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="description" variant="secondary" size="small"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Used for account updates. Read our &lt;mui-link href="/privacy"&gt;privacy policy&lt;/mui-link&gt;.<br />
+          &nbsp;&nbsp;&lt;/mui-body&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="variant-success" title="${storyMeta["variant-success"].title}" description="${storyMeta["variant-success"].description}" usage="${storyMeta["variant-success"].usage}">
         <div slot="body">
           <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>

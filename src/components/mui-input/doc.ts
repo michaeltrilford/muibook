@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   Input: {
     namedSlots: {
       description: "Use these names on items slotted inside this component.",
-      list: ["before","after","inside-before","inside-after","hint"],
+      list: ["description","before","after","inside-before","inside-after","hint"],
     },
     title: "Input",
     description: "An input component for capturing user text, styled for consistency across your UI.",
@@ -23,6 +23,9 @@ export const muiDocs: MuiDocs = {
         "Ensure the experience has clear focus states to support keyboard accessibility.",
         "Select the appropriate input types for the specific use case. E.g. Text, Email, Password.",
         "Use size='x-small|small|medium|large' to align inputs with surrounding form controls.",
+        "Use description for persistent supporting text between the label and control. Its text size follows the Input density one step down.",
+        "Use slot='description' with mui-body when supporting text needs rich content such as an inline mui-link. Body automatically applies its size to direct Link children.",
+        "Keep validation and status feedback below the control in Field; description is neutral guidance that remains available before and during entry.",
         "Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.",
         "Use mui-chip in before/after slots for tag-style contextual input patterns.",
         "Use placeholder text to provide context of the input use; avoid using them as primary labels.",
@@ -39,6 +42,7 @@ export const muiDocs: MuiDocs = {
         "A label is required for screen reader support to describe the input's purpose.",
         "If hide-label is used, the label is visually hidden but accessible via aria-label.",
         "The label and input are linked via for and id. If no id is provided, one is generated.",
+        "When the description attribute or slot is provided, the native input references an internal description wrapper with aria-describedby; consumers do not need to coordinate IDs across shadow DOM.",
         "Clear focus styles are shown for keyboard users.",
         "The native disabled attribute is fully supported by assistive tech.",
         "Optional fields can be explicitly communicated with the optional attribute without changing label association.",
@@ -129,6 +133,25 @@ export const muiDocs: MuiDocs = {
           "description": "Compares the supported Input size scale.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "supporting-description",
+          "title": "Supporting Description",
+          "description": "Compares persistent supporting text across the Input size scale.",
+          "list": [
+            "Use description for neutral guidance that should remain visible while a value is entered.",
+            "Supporting text maps to xx-small, x-small, small, and medium Body text across the Input size scale."
+          ]
+        },
+        {
+          "key": "slotted-supporting-description",
+          "title": "Slotted Supporting Description",
+          "description": "Uses a slotted Body when supporting text needs richer inline content.",
+          "list": [
+            "Use slot='description' for supporting copy that contains an inline Link or other composed text content.",
+            "Input owns the description wrapper, spacing, generated ID, and aria-describedby association.",
+            "Body automatically keeps its direct inline Link at the same text size."
           ]
         },
         {

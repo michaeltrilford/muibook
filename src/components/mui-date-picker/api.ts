@@ -19,6 +19,7 @@ export const muiApi = {
         type: { text: "string" },
         description: "Label for the input field.",
       },
+      { name: "description", type: { text: "string" }, description: "Supporting text forwarded to the internal Input." },
       {
         name: "size",
         type: { text: '"x-small" | "small" | "medium" | "large"' },
@@ -29,7 +30,7 @@ export const muiApi = {
       { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
       { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." }
     ],
-    slots: [],
+    slots: [{ name: "description", description: "Rich supporting content forwarded to the internal Input." }],
     events: [
       { name: "change", description: "Composed, bubbling event dispatched when the selected date or date-time value changes with `detail.value`." },
     ],

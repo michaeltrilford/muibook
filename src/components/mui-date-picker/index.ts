@@ -66,6 +66,7 @@ class MuiDatePicker extends HTMLElement {
       "value",
       "type",
       "label",
+      "description",
       "hide-label",
       "optional",
       "size",
@@ -257,6 +258,8 @@ class MuiDatePicker extends HTMLElement {
     const displayValue = this.formatDisplayValue(value);
     const type = this.getAttribute("type") || "date";
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const hideLabel = this.hasAttribute("hide-label") ? "hide-label" : "";
     const optional = this.hasAttribute("optional") ? "optional" : "";
     const size = this.getAttribute("size") || "medium";
@@ -288,6 +291,7 @@ class MuiDatePicker extends HTMLElement {
           slot="action" 
           value="${displayValue}"
           label="${label}"
+          ${description ? `description="${description}"` : ""}
           size="${size}"
           variant="${variant}"
           ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
@@ -297,6 +301,7 @@ class MuiDatePicker extends HTMLElement {
           ${hideLabel}
           ${optional}
           readonly>
+          ${hasDescription ? '<slot name="description" slot="description"></slot>' : ""}
           ${showDate ? '<mui-button slot="after"><mui-icon-calendar></mui-icon-calendar></mui-button>' : ""}
         </mui-input>
         <mui-menu width="max-content">

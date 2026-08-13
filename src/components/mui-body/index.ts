@@ -152,7 +152,10 @@ class MuiBody extends HTMLElement {
       }
 
       :host([size="xx-small"]) ::slotted([slot="before"]),
-      :host([size="xx-small"]) ::slotted([slot="after"]),
+      :host([size="xx-small"]) ::slotted([slot="after"]) {
+        margin-top: var(--body-inline-icon-offset-xx-small, var(--body-inline-icon-offset, var(--stroke-size-200)));
+      }
+
       :host([size="x-small"]) ::slotted([slot="before"]),
       :host([size="x-small"]) ::slotted([slot="after"]) {
         margin-top: var(--body-inline-icon-offset-x-small, var(--body-inline-icon-offset, var(--stroke-size-100)));
@@ -260,10 +263,12 @@ class MuiBody extends HTMLElement {
   private setupSlotBehavior() {
     if (!this.shadowRoot) return;
 
+    const contentSlot = this.shadowRoot.querySelector("slot:not([name])") as HTMLSlotElement | null;
     const beforeSlot = this.shadowRoot.querySelector('slot[name="before"]') as HTMLSlotElement | null;
     const afterSlot = this.shadowRoot.querySelector('slot[name="after"]') as HTMLSlotElement | null;
 
     const update = () => {
+      const contentEls = contentSlot?.assignedElements({ flatten: true }) ?? [];
       const beforeEls = beforeSlot?.assignedElements({ flatten: true }) ?? [];
       const afterEls = afterSlot?.assignedElements({ flatten: true }) ?? [];
 
@@ -274,8 +279,10 @@ class MuiBody extends HTMLElement {
       else this.removeAttribute("has-after");
 
       this.syncInlineSlotSizes([...beforeEls, ...afterEls]);
+      this.syncInlineLinkSizes(contentEls);
     };
 
+    contentSlot?.addEventListener("slotchange", update);
     beforeSlot?.addEventListener("slotchange", update);
     afterSlot?.addEventListener("slotchange", update);
     update();
@@ -307,6 +314,14 @@ class MuiBody extends HTMLElement {
       if (el.tagName === "MUI-BADGE") {
         el.setAttribute("size", badgeSize);
       }
+    });
+  }
+
+  private syncInlineLinkSizes(elements: Element[]) {
+    const bodySize = this.getAttribute("size") || "medium";
+
+    elements.forEach((el) => {
+      if (el.tagName === "MUI-LINK") el.setAttribute("size", bodySize);
     });
   }
 

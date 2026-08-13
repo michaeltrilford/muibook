@@ -6,6 +6,29 @@ class storyDropdown extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.handleWindowError = this.handleWindowError.bind(this);
+  }
+
+  handleWindowError(event) {
+    if (!String(event.message || "").includes("ResizeObserver")) return;
+    if (this.shadowRoot?.querySelector("#intrinsicWidthStatus")) return;
+
+    const story = this.shadowRoot?.querySelector("#intrinsicWidthStory");
+    if (!story) return;
+
+    const status = document.createElement("mui-body");
+    status.id = "intrinsicWidthStatus";
+    status.setAttribute("size", "small");
+    status.setAttribute("variant", "attention");
+
+    const icon = document.createElement("mui-icon-attention");
+    icon.setAttribute("slot", "before");
+    status.append(icon, "ResizeObserver error detected");
+    story.appendChild(status);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("error", this.handleWindowError);
   }
 
   async connectedCallback() {
@@ -166,6 +189,35 @@ class storyDropdown extends HTMLElement {
 
           &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="intrinsic-width" title="${storyMeta["intrinsic-width"].title}" description="${storyMeta["intrinsic-width"].description}" usage="${storyMeta["intrinsic-width"].usage}">
+        <mui-v-stack id="intrinsicWidthStory" slot="body" space="var(--space-300)" alignX="start">
+          <mui-h-stack space="var(--space-300)" alignY="center" wrap>
+            <mui-dropdown position="left" size="medium">
+              <mui-button slot="action" variant="secondary">Open Menu<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+              <mui-menu id="intrinsicWidthMenu" inset>
+                <mui-button>Short action</mui-button>
+                <mui-button>A longer action label that uses the fallback measure</mui-button>
+                <mui-link variant="tertiary" href="#">Open related settings</mui-link>
+              </mui-menu>
+            </mui-dropdown>
+            <mui-button id="intrinsicWidthAdd" variant="secondary">Add item</mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-h-stack space=&quot;var(--space-300)&quot; alignY=&quot;center&quot; wrap&gt;<br />
+          &nbsp;&nbsp;&lt;mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;Open Menu&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Short action&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;A longer action label&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant=&quot;secondary&quot;&gt;Add item&lt;/mui-button&gt;<br />
+          &lt;/mui-h-stack&gt;<br /><br />
+          &lt;!-- Menu width is intentionally omitted; inset padding is included in the measured width. --&gt;
         </story-code-block>
       </story-card>
 
@@ -636,6 +688,14 @@ class storyDropdown extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    window.addEventListener("error", this.handleWindowError);
+    const intrinsicWidthMenu = this.shadowRoot.querySelector("#intrinsicWidthMenu");
+    this.shadowRoot.querySelector("#intrinsicWidthAdd")?.addEventListener("click", () => {
+      const item = document.createElement("mui-button");
+      item.textContent = "Dynamically added action with a longer label";
+      intrinsicWidthMenu?.appendChild(item);
+    });
 
     // === Persistent Toggle Logic ===
     this.shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) => {

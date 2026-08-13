@@ -2,7 +2,7 @@ import "../mui-icons/info";
 
 class MuiField extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "message", "label", "hide-label", "size", "optional"];
+    return ["variant", "message", "label", "description", "hide-label", "size", "optional"];
   }
 
   constructor() {
@@ -69,6 +69,13 @@ class MuiField extends HTMLElement {
     this.setAttribute("label", val);
   }
 
+  get description() {
+    return this.getAttribute("description") || "";
+  }
+  set description(val: string) {
+    this.setAttribute("description", val);
+  }
+
   get hideLabel() {
     return this.hasAttribute("hide-label");
   }
@@ -103,7 +110,7 @@ class MuiField extends HTMLElement {
   }
 
   attributeChangedCallback(name: string) {
-    if (["variant", "message", "label", "hide-label", "size", "optional"].includes(name)) {
+    if (["variant", "message", "label", "description", "hide-label", "size", "optional"].includes(name)) {
       this.renderMessage();
       this.passAttributesToChild();
       this.syncMessageSlotSizing();
@@ -119,7 +126,7 @@ class MuiField extends HTMLElement {
     const slotted = slot?.assignedElements?.()[0]; // assumes only one
     if (!slotted) return;
 
-    ["variant", "label", "hide-label", "size", "optional"].forEach((attr) => {
+    ["variant", "label", "description", "hide-label", "size", "optional"].forEach((attr) => {
       if (this.hasAttribute(attr)) {
         slotted.setAttribute(attr, this.getAttribute(attr) || "");
       } else {

@@ -31,6 +31,21 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="supporting-description" title="${storyMeta["supporting-description"].title}" description="${storyMeta["supporting-description"].description}" usage="${storyMeta["supporting-description"].usage}">
+        <mui-v-stack slot="body" space="var(--space-500)">
+          <mui-textarea label="Summary" description="Keep the summary concise and outcome focused." placeholder="Describe the outcome..."></mui-textarea>
+          <mui-textarea label="Summary" placeholder="Describe the outcome...">
+            <mui-body slot="description" variant="secondary" size="small">Review the <mui-link href="#writing-guidance">writing guidance</mui-link> before submitting.</mui-body>
+          </mui-textarea>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-textarea label="Summary" description="Keep the summary concise and outcome focused."&gt;&lt;/mui-textarea&gt;<br /><br />
+          &lt;mui-textarea label="Summary"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="description" variant="secondary" size="small"&gt;Review the &lt;mui-link href="/writing"&gt;writing guidance&lt;/mui-link&gt; before submitting.&lt;/mui-body&gt;<br />
+          &lt;/mui-textarea&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="rows" title="${storyMeta["rows"].title}" description="${storyMeta["rows"].description}" usage="${storyMeta["rows"].usage}">
         <div slot="body">
           <mui-textarea label="Summary" rows="6" placeholder="6 visible rows"></mui-textarea>

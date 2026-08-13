@@ -57,6 +57,7 @@ class MuiTimePicker extends HTMLElement {
       "value",
       "type",
       "label",
+      "description",
       "hide-label",
       "optional",
       "size",
@@ -150,6 +151,8 @@ class MuiTimePicker extends HTMLElement {
     const value = this.getAttribute("value") || "";
     const type = this.getAttribute("type") || "time"; // "time" or "timeslot"
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const hideLabel = this.hasAttribute("hide-label") ? "hide-label" : "";
     const optional = this.hasAttribute("optional") ? "optional" : "";
     const size = this.getAttribute("size") || "medium";
@@ -180,6 +183,7 @@ class MuiTimePicker extends HTMLElement {
           slot="action" 
           value="${value}"
           label="${label}"
+          ${description ? `description="${description}"` : ""}
           size="${size}"
           variant="${variant}"
           ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
@@ -189,6 +193,7 @@ class MuiTimePicker extends HTMLElement {
           ${hideLabel}
           ${optional}
           readonly>
+          ${hasDescription ? '<slot name="description" slot="description"></slot>' : ""}
           <mui-button slot="after"><mui-icon-timer></mui-icon-timer></mui-button>
         </mui-input>
         <mui-menu width="min(100%, 24rem)" style="overflow: hidden;">

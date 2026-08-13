@@ -14,6 +14,7 @@ const filesToCopy = [
   { src: "public/dynamic-attrs.json", dest: "dynamic-attrs.json" },
   { src: "public/resource-index.json", dest: "resource-index.json" },
   { src: "public/skill-index.json", dest: "skill-index.json" },
+  { src: "public/CHANGELOG.md", dest: "CHANGELOG.md" },
   { src: "AGENTS.md", dest: "AGENTS.md" },
   { src: "DESIGN.md", dest: "DESIGN.md" },
   { src: "src/knowledge/README.md", dest: "README.md" },

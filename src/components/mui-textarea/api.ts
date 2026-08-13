@@ -8,6 +8,7 @@ export const muiApi = {
       { name: "placeholder", type: { text: "string" }, description: "Hint displayed when no value is entered." },
       { name: "id", type: { text: "string" }, description: "Textarea identifier used to associate the visible label." },
       { name: "label", type: { text: "string" }, description: "Accessible textarea label." },
+      { name: "description", type: { text: "string" }, description: "Persistent supporting text displayed between the label and textarea." },
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables text entry." },
       { name: "hide-label", type: { text: "boolean" }, default: "false", description: "Visually hides the supplied label while preserving it as the accessible name." },
       { name: "variant", type: { text: '"default" | "success" | "warning" | "error"' }, default: "default", description: "Visual validation state." },
@@ -19,6 +20,7 @@ export const muiApi = {
       { name: "padding-inline", type: { text: "string" }, description: "Overrides native textarea inline padding with a CSS length or token." },
       { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." },
     ],
+    slots: [{ name: "description", description: "Rich supporting content that replaces the description attribute fallback." }],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched during value entry with `detail.value`." },
       { name: "change", description: "Composed, bubbling event dispatched when the native textarea change event occurs with `detail.value`." },

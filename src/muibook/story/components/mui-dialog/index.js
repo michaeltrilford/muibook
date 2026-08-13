@@ -6,6 +6,31 @@ class storyDialog extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.storyActionBindings = [];
+    this.handleStoryActionClick = this.handleStoryActionClick.bind(this);
+  }
+
+  handleStoryActionClick(event) {
+    const action = this.storyActionBindings.find(({ target }) => target === event.currentTarget)?.action;
+    if (!action) return;
+
+    const target = action.getAttribute("data-dialog");
+    if (target) {
+      const story = action.closest("story-card");
+      const dialog = story?.querySelector(`mui-dialog[data-dialog="${CSS.escape(target)}"]`);
+      dialog?.open();
+      return;
+    }
+
+    if (action.hasAttribute("data-close")) {
+      action.closest("mui-dialog")?.close();
+      return;
+    }
+  }
+
+  disconnectedCallback() {
+    this.storyActionBindings.forEach(({ target }) => target.removeEventListener("click", this.handleStoryActionClick));
+    this.storyActionBindings = [];
   }
 
   async connectedCallback() {
@@ -80,6 +105,245 @@ class storyDialog extends HTMLElement {
           &nbsp;&nbsp;});<br>
           });<br>
 
+        </story-code-block>
+      </story-card>
+
+      <story-card id="max-height" title="${storyMeta["max-height"].title}" description="${storyMeta["max-height"].description}" usage="${storyMeta["max-height"].usage}">
+        <mui-button variant="primary" data-dialog="hook-sizing" slot="body">Open</mui-button>
+        <mui-dialog data-dialog="hook-sizing" width="min(90vw, 60rem)" max-height="62.7rem" slot="body" aria-label="Product canvas">
+          <mui-tab-controller>
+            <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+              <mui-heading size="3" level="2">Product canvas</mui-heading>
+              <mui-body>Define, refine, and share product strategy in one place, with AI-assisted roadmap and objective generation.</mui-body>
+
+              <mui-tab-bar full-width active-inset usage="surface" aria-label="Product canvas sections">
+                <mui-tab-item active id="max-height-overview">Overview</mui-tab-item>
+                <mui-tab-item id="max-height-strategy">Strategy</mui-tab-item>
+                <mui-tab-item id="max-height-direction">Direction</mui-tab-item>
+                <mui-tab-item id="max-height-validation">Validation</mui-tab-item>
+              </mui-tab-bar>
+
+              <mui-tab-panel item="max-height-overview">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Overview</mui-heading>
+                  <mui-input label="Problem Title" placeholder="Freelancer Cash Flow Management"></mui-input>
+                  <mui-input label="Strategy tag" placeholder="Freelance Cash Flow"></mui-input>
+                  <mui-textarea label="Problem Description" placeholder="Explore how independent workers manage irregular income, plan expenses, and decide which financial tools are worth trusting." rows="3"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="max-height-strategy">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Customer &amp; Problem</mui-heading>
+                  <mui-textarea label="Target users or segments" placeholder="Freelancers with uneven monthly income" rows="2"></mui-textarea>
+                  <mui-textarea label="Problems and pain points" placeholder="Income arrives unpredictably, making bills, tax, and savings hard to plan." rows="2"></mui-textarea>
+                  <mui-textarea label="Context" placeholder="End of month planning, late invoices, and quarterly tax periods." rows="2"></mui-textarea>
+                  <mui-textarea label="Frequency and impact" placeholder="Monthly stress, missed savings goals, and reactive spending decisions." rows="2"></mui-textarea>
+                  <mui-textarea label="Current behaviours or workarounds" placeholder="Spreadsheets, bank balances, invoice reminders, and mental math." rows="2"></mui-textarea>
+                  <mui-textarea label="Key insights" placeholder="Trust grows when forecasts explain the assumptions behind them." rows="2"></mui-textarea>
+                  <mui-heading size="4" level="3">Outcomes &amp; Value</mui-heading>
+                  <mui-textarea label="Desired user outcomes" placeholder="Freelancers can see whether they are safe for the next 30 days." rows="2"></mui-textarea>
+                  <mui-textarea label="Business outcomes" placeholder="Increase activation and repeat use of planning features." rows="2"></mui-textarea>
+                  <mui-textarea label="Success metrics" placeholder="Weekly forecast views, completed plans, and retained active users." rows="2"></mui-textarea>
+                  <mui-textarea label="Value created" placeholder="Less manual planning, fewer surprises, and higher financial confidence." rows="2"></mui-textarea>
+                  <mui-textarea label="Leading indicators" placeholder="Users connect invoices, add recurring costs, and return within 7 days." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="max-height-direction">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Product Direction</mui-heading>
+                  <mui-textarea label="Product or initiative definition" placeholder="A cash flow forecast that combines invoices, bills, tax, and savings goals." rows="2"></mui-textarea>
+                  <mui-textarea label="Core value proposition" placeholder="Know what is safe to spend before the next payment arrives." rows="2"></mui-textarea>
+                  <mui-textarea label="Key experiences or journeys" placeholder="Invoice follow-up, monthly planning, tax set-aside, and emergency buffers." rows="2"></mui-textarea>
+                  <mui-textarea label="Differentiation" placeholder="Plain-language forecasts that show why a month looks risky." rows="2"></mui-textarea>
+                  <mui-textarea label="Non-goals or boundaries" placeholder="Full accounting, payroll, lending, or automated tax filing." rows="2"></mui-textarea>
+                  <mui-heading size="4" level="2">Confidence Check</mui-heading>
+                  <mui-textarea label="Viability" placeholder="Planning confidence could support premium conversion." rows="2"></mui-textarea>
+                  <mui-textarea label="Feasibility" placeholder="Forecast quality depends on invoice, bank, and recurring cost data." rows="2"></mui-textarea>
+                  <mui-textarea label="Usability" placeholder="Users need a clear forecast without needing finance expertise." rows="2"></mui-textarea>
+                  <mui-textarea label="Desirability" placeholder="Strong pull during tax season, late payment cycles, and quiet months." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="max-height-validation">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Risks &amp; Validation</mui-heading>
+                  <mui-textarea label="Key assumptions" placeholder="Freelancers trust forecasts if they can inspect and adjust assumptions." rows="2"></mui-textarea>
+                  <mui-textarea label="Risks and unknowns" placeholder="Poor data quality may make forecasts feel unreliable." rows="2"></mui-textarea>
+                  <mui-textarea label="Dependencies" placeholder="Invoice import, recurring cost capture, and bank connection coverage." rows="2"></mui-textarea>
+                  <mui-textarea label="Constraints" placeholder="Avoid regulated financial advice and keep guidance explainable." rows="2"></mui-textarea>
+                  <mui-textarea label="Smallest testable version" placeholder="Manual 30-day forecast from invoices and recurring expenses." rows="2"></mui-textarea>
+                  <mui-textarea label="Validation criteria" placeholder="Users return weekly and say the forecast changed a spending decision." rows="2"></mui-textarea>
+                  <mui-textarea label="Next steps" placeholder="Interview freelancers, prototype the forecast, and test with real invoice data." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+            </mui-v-stack>
+          </mui-tab-controller>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Save</mui-button>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dialog<br />
+          &nbsp;&nbsp;width=&quot;min(90vw, 60rem)&quot;<br />
+          &nbsp;&nbsp;max-height=&quot;62.7rem&quot;<br />
+          &nbsp;&nbsp;aria-label=&quot;Product canvas&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-tab-controller&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading&gt;Product canvas&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Define, refine, and share product strategy...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar full-width active-inset usage=&quot;surface&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id=&quot;overview&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;strategy&quot;&gt;Strategy&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;direction&quot;&gt;Direction&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;validation&quot;&gt;Validation&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;overview&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;strategy&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;direction&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;validation&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-tab-controller&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;secondary&quot;&gt;Cancel&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;primary&quot;&gt;Save&lt;/mui-button&gt;<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="default-height" title="${storyMeta["default-height"].title}" description="${storyMeta["default-height"].description}" usage="${storyMeta["default-height"].usage}">
+        <mui-button variant="primary" data-dialog="hook-default-height" slot="body">Open</mui-button>
+        <mui-dialog data-dialog="hook-default-height" width="min(90vw, 60rem)" slot="body" aria-label="Product canvas">
+          <mui-tab-controller>
+            <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+              <mui-heading size="3" level="2">Product canvas</mui-heading>
+              <mui-body>Define, refine, and share product strategy in one place, with AI-assisted roadmap and objective generation.</mui-body>
+
+              <mui-tab-bar full-width active-inset usage="surface" aria-label="Product canvas sections">
+                <mui-tab-item active id="default-height-overview">Overview</mui-tab-item>
+                <mui-tab-item id="default-height-strategy">Strategy</mui-tab-item>
+                <mui-tab-item id="default-height-direction">Direction</mui-tab-item>
+                <mui-tab-item id="default-height-validation">Validation</mui-tab-item>
+              </mui-tab-bar>
+
+              <mui-tab-panel item="default-height-overview">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Overview</mui-heading>
+                  <mui-input label="Problem Title" placeholder="Freelancer Cash Flow Management"></mui-input>
+                  <mui-input label="Strategy tag" placeholder="Freelance Cash Flow"></mui-input>
+                  <mui-textarea label="Problem Description" placeholder="Explore how independent workers manage irregular income, plan expenses, and decide which financial tools are worth trusting." rows="3"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="default-height-strategy">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Customer &amp; Problem</mui-heading>
+                  <mui-textarea label="Target users or segments" placeholder="Freelancers with uneven monthly income" rows="2"></mui-textarea>
+                  <mui-textarea label="Problems and pain points" placeholder="Income arrives unpredictably, making bills, tax, and savings hard to plan." rows="2"></mui-textarea>
+                  <mui-textarea label="Context" placeholder="End of month planning, late invoices, and quarterly tax periods." rows="2"></mui-textarea>
+                  <mui-textarea label="Frequency and impact" placeholder="Monthly stress, missed savings goals, and reactive spending decisions." rows="2"></mui-textarea>
+                  <mui-textarea label="Current behaviours or workarounds" placeholder="Spreadsheets, bank balances, invoice reminders, and mental math." rows="2"></mui-textarea>
+                  <mui-textarea label="Key insights" placeholder="Trust grows when forecasts explain the assumptions behind them." rows="2"></mui-textarea>
+                  <mui-heading size="4" level="3">Outcomes &amp; Value</mui-heading>
+                  <mui-textarea label="Desired user outcomes" placeholder="Freelancers can see whether they are safe for the next 30 days." rows="2"></mui-textarea>
+                  <mui-textarea label="Business outcomes" placeholder="Increase activation and repeat use of planning features." rows="2"></mui-textarea>
+                  <mui-textarea label="Success metrics" placeholder="Weekly forecast views, completed plans, and retained active users." rows="2"></mui-textarea>
+                  <mui-textarea label="Value created" placeholder="Less manual planning, fewer surprises, and higher financial confidence." rows="2"></mui-textarea>
+                  <mui-textarea label="Leading indicators" placeholder="Users connect invoices, add recurring costs, and return within 7 days." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="default-height-direction">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Product Direction</mui-heading>
+                  <mui-textarea label="Product or initiative definition" placeholder="A cash flow forecast that combines invoices, bills, tax, and savings goals." rows="2"></mui-textarea>
+                  <mui-textarea label="Core value proposition" placeholder="Know what is safe to spend before the next payment arrives." rows="2"></mui-textarea>
+                  <mui-textarea label="Key experiences or journeys" placeholder="Invoice follow-up, monthly planning, tax set-aside, and emergency buffers." rows="2"></mui-textarea>
+                  <mui-textarea label="Differentiation" placeholder="Plain-language forecasts that show why a month looks risky." rows="2"></mui-textarea>
+                  <mui-textarea label="Non-goals or boundaries" placeholder="Full accounting, payroll, lending, or automated tax filing." rows="2"></mui-textarea>
+                  <mui-heading size="4" level="2">Confidence Check</mui-heading>
+                  <mui-textarea label="Viability" placeholder="Planning confidence could support premium conversion." rows="2"></mui-textarea>
+                  <mui-textarea label="Feasibility" placeholder="Forecast quality depends on invoice, bank, and recurring cost data." rows="2"></mui-textarea>
+                  <mui-textarea label="Usability" placeholder="Users need a clear forecast without needing finance expertise." rows="2"></mui-textarea>
+                  <mui-textarea label="Desirability" placeholder="Strong pull during tax season, late payment cycles, and quiet months." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+
+              <mui-tab-panel item="default-height-validation">
+                <mui-v-stack space="var(--space-400)" width="auto" height="auto">
+                  <mui-heading size="4" level="3">Risks &amp; Validation</mui-heading>
+                  <mui-textarea label="Key assumptions" placeholder="Freelancers trust forecasts if they can inspect and adjust assumptions." rows="2"></mui-textarea>
+                  <mui-textarea label="Risks and unknowns" placeholder="Poor data quality may make forecasts feel unreliable." rows="2"></mui-textarea>
+                  <mui-textarea label="Dependencies" placeholder="Invoice import, recurring cost capture, and bank connection coverage." rows="2"></mui-textarea>
+                  <mui-textarea label="Constraints" placeholder="Avoid regulated financial advice and keep guidance explainable." rows="2"></mui-textarea>
+                  <mui-textarea label="Smallest testable version" placeholder="Manual 30-day forecast from invoices and recurring expenses." rows="2"></mui-textarea>
+                  <mui-textarea label="Validation criteria" placeholder="Users return weekly and say the forecast changed a spending decision." rows="2"></mui-textarea>
+                  <mui-textarea label="Next steps" placeholder="Interview freelancers, prototype the forecast, and test with real invoice data." rows="2"></mui-textarea>
+                </mui-v-stack>
+              </mui-tab-panel>
+            </mui-v-stack>
+          </mui-tab-controller>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Save</mui-button>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dialog<br />
+          &nbsp;&nbsp;width=&quot;min(90vw, 60rem)&quot;<br />
+          &nbsp;&nbsp;aria-label=&quot;Product canvas&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-tab-controller&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading&gt;Product canvas&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Define, refine, and share product strategy...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar full-width active-inset usage=&quot;surface&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id=&quot;overview&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;strategy&quot;&gt;Strategy&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;direction&quot;&gt;Direction&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;validation&quot;&gt;Validation&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;overview&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;strategy&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;direction&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;validation&quot;&gt;...&lt;/mui-tab-panel&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-tab-controller&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;secondary&quot;&gt;Cancel&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;primary&quot;&gt;Save&lt;/mui-button&gt;<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="dropdown-portal" title="${storyMeta["dropdown-portal"].title}" description="${storyMeta["dropdown-portal"].description}" usage="${storyMeta["dropdown-portal"].usage}">
+        <mui-button variant="primary" data-dialog="hook-dropdown-portal" slot="body">Open</mui-button>
+        <mui-dialog data-dialog="hook-dropdown-portal" width="min(90vw, 32rem)" slot="body" aria-labelledby="dialog-title-dropdown-portal">
+          <mui-heading size="4" level="2" slot="title" id="dialog-title-dropdown-portal">Dropdown portal</mui-heading>
+          <mui-v-stack space="var(--space-400)" alignX="start">
+            <mui-body variant="secondary">Open either Menu to verify body and footer Dropdowns remain visible and interactive above the modal surface.</mui-body>
+            <mui-dropdown position="left" size="medium">
+              <mui-button slot="action" variant="secondary">Open Menu<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+              <mui-menu inset width="min(100%, 18rem)">
+                <mui-button>View details</mui-button>
+                <mui-button>Duplicate item</mui-button>
+                <mui-link variant="tertiary" href="#">Open settings</mui-link>
+              </mui-menu>
+            </mui-dropdown>
+          </mui-v-stack>
+          <mui-dropdown slot="actions" position="right" vertical-position="up" size="small">
+            <mui-button slot="action" variant="secondary">More actions<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+            <mui-menu inset width="min(100%, 14rem)">
+              <mui-button>Save draft</mui-button>
+              <mui-button>Duplicate</mui-button>
+              <mui-link variant="tertiary" href="#">Open settings</mui-link>
+            </mui-menu>
+          </mui-dropdown>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dialog&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot;&gt;Dropdown portal&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;Open Menu&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset width=&quot;min(100%, 18rem)&quot;&gt;...&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&lt;mui-dropdown slot=&quot;actions&quot; position=&quot;right&quot; vertical-position=&quot;up&quot; size=&quot;small&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;More actions&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset width=&quot;min(100%, 14rem)&quot;&gt;...&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &lt;/mui-dialog&gt;<br /><br />
+          &lt;!-- Dropdown resolves mui-dialog's internal native dialog as its portal root. --&gt;
         </story-code-block>
       </story-card>
 
@@ -382,21 +646,22 @@ class storyDialog extends HTMLElement {
       </story-template>
     `;
 
-    // Open dialog buttons
-    this.shadowRoot.querySelectorAll("mui-button[data-dialog]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-dialog");
-        const dialog = this.shadowRoot.querySelector(`mui-dialog[data-dialog="${target}"]`);
-        if (dialog) dialog.setAttribute("open", "");
-      });
-    });
-
-    // Close buttons inside each dialog
-    this.shadowRoot.querySelectorAll("mui-dialog[data-dialog]").forEach((dialog) => {
-      dialog.querySelectorAll("mui-button[data-close]").forEach((btn) => {
-        btn.addEventListener("click", () => dialog.removeAttribute("open"));
-      });
-    });
+    this.storyActionBindings.forEach(({ target }) => target.removeEventListener("click", this.handleStoryActionClick));
+    const storyActions = Array.from(
+      this.shadowRoot.querySelectorAll("mui-button[data-dialog], mui-button[data-close]"),
+    );
+    await customElements.whenDefined("mui-button");
+    this.storyActionBindings = await Promise.all(
+      storyActions.map(async (action) => {
+        for (let frame = 0; frame < 10; frame += 1) {
+          const target = action.shadowRoot?.querySelector("button");
+          if (target) return { action, target };
+          await new Promise((resolve) => requestAnimationFrame(resolve));
+        }
+        return { action, target: action };
+      }),
+    );
+    this.storyActionBindings.forEach(({ target }) => target.addEventListener("click", this.handleStoryActionClick));
   }
 }
 

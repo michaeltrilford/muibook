@@ -15,6 +15,11 @@ export const muiApi = {
       { name: "id", type: { text: "string" }, description: "Input identifier used to associate the visible label." },
       { name: "label", type: { text: "string" }, description: "Accessible input label. Required for labelled form usage." },
       {
+        name: "description",
+        type: { text: "string" },
+        description: "Persistent supporting text displayed between the label and control and associated with the native input.",
+      },
+      {
         name: "disabled",
         type: { text: "boolean" },
         default: "false",
@@ -71,6 +76,10 @@ export const muiApi = {
       { name: "padding-inline", type: { text: "string" }, description: "Overrides native input inline padding with a CSS length or token." },
     ],
     slots: [
+      {
+        name: "description",
+        description: "Rich supporting content displayed between the label and control. Prefer `mui-body`; it replaces the description attribute fallback.",
+      },
       { name: "before", description: "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },
       { name: "after", description: "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },
       { name: "inside-before", description: "Leading content displayed inside the input edge, such as an icon or badge." },

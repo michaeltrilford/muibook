@@ -1,5 +1,6 @@
 import { getPartMap } from "../../utils/part-map";
 import "../mui-icons/down-chevron";
+import "../mui-body";
 
 class MuiSelect extends HTMLElement {
   partMap = "";
@@ -10,6 +11,7 @@ class MuiSelect extends HTMLElement {
       "value",
       "id",
       "label",
+      "description",
       "options",
       "disabled",
       "hide-label",
@@ -28,6 +30,30 @@ class MuiSelect extends HTMLElement {
   }
 
   _changeHandler?: (e: Event) => void;
+  private _selectId = `mui-select-${Math.random().toString(36).slice(2, 11)}`;
+
+  private setupDescriptionSlot() {
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    descriptionSlot?.addEventListener("slotchange", () => this.syncDescriptionState());
+    this.syncDescriptionState();
+  }
+
+  private syncDescriptionState() {
+    const description = this.shadowRoot?.querySelector(".select-description") as HTMLElement | null;
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    const label = this.shadowRoot?.querySelector("label");
+    const select = this.shadowRoot?.querySelector("select");
+    if (!description || !descriptionSlot || !select) return;
+
+    const hasSlottedDescription = descriptionSlot.assignedNodes({ flatten: true }).some((node) =>
+      node.nodeType === Node.ELEMENT_NODE || Boolean(node.textContent?.trim()),
+    );
+    const hasDescription = Boolean(this.getAttribute("description")?.trim() || hasSlottedDescription);
+    description.hidden = !hasDescription;
+    label?.classList.toggle("label-with-description", hasDescription);
+    if (hasDescription) select.setAttribute("aria-describedby", description.id);
+    else select.removeAttribute("aria-describedby");
+  }
   private _documentPointerDownHandler = (event: PointerEvent) => {
     if (event.composedPath().includes(this)) return;
     const select = this.shadowRoot?.querySelector("select") as HTMLSelectElement | null;
@@ -94,7 +120,9 @@ class MuiSelect extends HTMLElement {
     if (
       [
         "options",
+        "id",
         "label",
+        "description",
         "hide-label",
         "variant",
         "optional",
@@ -157,8 +185,11 @@ class MuiSelect extends HTMLElement {
     if (!this.shadowRoot) return;
 
     const name = this.getAttribute("name") || "";
-    const id = this.getAttribute("id") || `mui-select-${Math.random().toString(36).substr(2, 9)}`;
+    const id = this.getAttribute("id") || this._selectId;
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
+    const descriptionId = `${id}-description`;
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const value = this.getAttribute("value") || "";
     const hideLabel = this.hasAttribute("hide-label");
     const optional = this.hasAttribute("optional");
@@ -174,6 +205,7 @@ class MuiSelect extends HTMLElement {
     const paddingInline = this.getAttribute("padding-inline") || "";
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const descriptionSize = { "x-small": "xx-small", small: "x-small", medium: "small", large: "medium" }[normalizedSize];
     const chevronSizeMap: Record<string, string> = {
       "x-small": "xx-small",
       small: "x-small",
@@ -279,6 +311,10 @@ class MuiSelect extends HTMLElement {
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
         }
+        label.label-with-description { margin-block-end: var(--space-000); }
+        .select-description { margin-block-end: var(--space-100); }
+        :host([size="medium"]) .select-description,
+        :host([size="large"]) .select-description { margin-block-end: var(--space-200); }
         select {
           min-height: 4.4rem;
           line-height: var(--text-line-height);
@@ -620,15 +656,18 @@ class MuiSelect extends HTMLElement {
       </style>
       ${
         label
-          ? /*html*/ `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}${
+          ? /*html*/ `<label for="${id}" class="${[hideLabel ? "vh" : "", hasDescription ? "label-with-description" : ""].filter(Boolean).join(" ")}">${label}${
               optional
                 ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
                 : ""
             }</label>`
           : ""
       }
+      <div id="${descriptionId}" class="select-description"${hasDescription ? "" : " hidden"}>
+        <slot name="description">${description ? `<mui-body variant="secondary" size="${descriptionSize}">${description}</mui-body>` : ""}</slot>
+      </div>
       <div style="position: relative; ${chevronStyle}">
-        <select class="${[variantClass, `size-${normalizedSize}`, `appearance-${appearance}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} style="${customStyle}"
+        <select class="${[variantClass, `size-${normalizedSize}`, `appearance-${appearance}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${hasDescription ? `aria-describedby="${descriptionId}"` : ""} style="${customStyle}"
         ${disabled ? "disabled" : ""}>
           ${selectedContent}
           ${optionsHTML}
@@ -638,6 +677,7 @@ class MuiSelect extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+    this.setupDescriptionSlot();
   }
   waitForPartMap(): Promise<void> {
     return new Promise((resolve) => {

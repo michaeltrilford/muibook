@@ -7,6 +7,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `custom-elements.json`: generated Custom Elements Manifest for public component APIs, attributes, properties, methods, events, slots, CSS custom properties, CSS parts, and component UX documentation.
 - `dynamic-attrs.json`: runtime and destination-only structural attributes used by wrappers, builders, canvases, exporters, and integration tools. These attrs are not the public API surface.
 - `DESIGN.md`: design language, token architecture, surface usage, theme layers, typography, spacing, radius, and layout guidance.
+- `CHANGELOG.md`: package release history, upcoming change notes, and released version summaries.
 - `json-rules.ts`: global rules for generating valid Muibook component trees.
 - `keywords.ts`: natural-language routing from user intent to likely components.
 - `compositions.ts`: curated component-tree examples plus reusable composition-page story metadata for realistic layouts and workflows.
@@ -25,6 +26,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 6. Use `get_dynamic_attrs` when building wrappers, exporters, canvases, runtime integrations, or destination HTML.
 7. Use `get_design_system` and the styling skill for token, surface, and theme work.
 8. Use `get_skill_guide` for deeper architecture guidance.
+9. Use `get_changelog` when checking what recently changed, what is upcoming, or what a released package version included.
 
 ## Important Boundaries
 
@@ -42,3 +44,4 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - Style or theme components: read DESIGN.md, then use style-web-components skill.
 - Create a Web Component: use create-web-components skill, CEM expectations, dynamic attrs guidance, and part-map conventions.
 - Write UX guidelines: use create-ux-guidelines skill and the component docs shape.
+- Check release context: read CHANGELOG.md or call `get_changelog`.

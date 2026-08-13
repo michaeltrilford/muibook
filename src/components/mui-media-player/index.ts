@@ -79,6 +79,7 @@ class MuiMediaPlayer extends HTMLElement {
       "artwork",
       "media-title",
       "height",
+      "no-radius",
       "center-play",
       "loading",
       "controls",
@@ -1526,6 +1527,16 @@ class MuiMediaPlayer extends HTMLElement {
           display: grid;
           position: relative;
           --media-player-main-radius: 2rem;
+        }
+        :host([no-radius]) .frame {
+          --media-player-main-radius: 0;
+          border-radius: 0;
+        }
+        :host([no-radius]:focus-visible) {
+          border-radius: 0;
+        }
+        :host([no-radius]) .frame .media-shell {
+          border-radius: 0;
         }
         .frame.custom-controls {
           border-radius: var(--media-player-main-radius);

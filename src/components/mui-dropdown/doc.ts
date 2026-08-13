@@ -24,13 +24,15 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Compose one direct mui-menu child for the dropdown surface; direct button and link options are not supported.",
+        "Menu width is optional. Without width, Dropdown uses a viewport-safe 18rem fallback and adds inset padding around that usable measure; author Menu width when a composition needs a deliberate measure.",
         "Set size='x-small|small|medium|large' on Dropdown to enforce a shared size on its trigger, Menu, and direct Menu actions.",
         "Inside Header Bar, Dropdown receives usage='header-bar', inherits Header Bar size unless size is explicitly authored, and passes that context to its trigger Button.",
         "Use the offset attribute when a composition needs a custom distance between its trigger and Menu surface.",
         "Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.",
         "Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.",
         "Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.",
-        "Ensure dropdowns remain visible and are not covered by other interface elements. Adjust z-index as needed.",
+        "Dropdown resolves an open ancestor native dialog as its portal root and promotes the Menu into the browser top layer so modal content does not cover it.",
+        "Use zindex to order the Menu within its current portal or top-layer context. A large z-index alone cannot move an ordinary body portal above a native modal dialog.",
         "Ensure essential or frequently-used actions are not hidden within a dropdown visible outside the dropdown.",
       ],
     },
@@ -71,10 +73,11 @@ export const muiDocs: MuiDocs = {
 
     stories: {
       items: [
-        { key: "action-sizes", title: "Action Sizes", list: ["Set size on Dropdown; it keeps the trigger and direct Menu actions aligned.", "Choose the size that matches the surrounding controls and available space.", "A portaled Menu without an explicit width uses min(100%, 18rem); set width on Menu when the content needs a different measure."] },
+        { key: "action-sizes", title: "Action Sizes", list: ["Set size on Dropdown; it keeps the trigger and direct Menu actions aligned.", "Choose the size that matches the surrounding controls and available space.", "A portaled Menu without an explicit width uses a viewport-safe 18rem fallback; set width on Menu when the composition needs a deliberate measure."] },
+        { key: "intrinsic-width", title: "Intrinsic Menu Width", description: "Exercises the viewport-safe Menu fallback without an authored width.", list: ["Menu width is optional; the Dropdown measures it once when opening and keeps ResizeObserver updates position-only.", "Author Menu width only when the content needs a deliberate measure.", "Use the status and dynamic-item control to check the window-level ResizeObserver regression."] },
         { key: "z-index", title: "Z-Index Customisation", description: "Control the portaled menu layer when it must appear above other positioned content.", list: ["Set zindex only when the default overlay layer conflicts with application chrome or another overlay.", "Keep application layer values documented and consistent."] },
         { key: "custom-offset", title: "Custom Offset", description: "Adjust the space between the trigger and its menu.", list: ["Set offset when the default gap does not suit the trigger or surrounding layout.", "Pass any valid CSS length, including a system spacing token or calc() expression."] },
-        { key: "menu-width", title: "Menu Width", description: "Set an explicit width for the composed Menu surface.", list: ["Dropdown gives a Menu without an explicit width a stable min(100%, 18rem) portaled width.", "Pass any valid CSS width to Menu using the width attribute when the composition needs a different width.", "Use min(100%, value) to cap the preferred width within its available viewport space."] },
+        { key: "menu-width", title: "Menu Width", description: "Set an explicit width for the composed Menu surface.", list: ["Dropdown gives a Menu without an explicit width a stable 18rem usable measure, adds inset padding around it, then caps and locks the portaled surface to the available viewport.", "Pass any valid CSS width to Menu using the width attribute when the composition needs a different width.", "Use min(100%, value) to cap the preferred width within its available viewport space."] },
         { key: "with-icon", title: "Dropdown w/ Icon", list: ["Use a chevron to indicate that a labelled action opens additional choices.", "Place Dropdown beside related primary actions when it contains secondary commands."] },
         { key: "dropdown-position-left", title: "Position: Left", list: ["Use left alignment when the menu should share its leading edge with the trigger.", "Add persistent when the menu contains form controls that require continued interaction."] },
         { key: "position-up", title: "Position: Up", list: ["Open upward when space below the trigger is constrained or the trigger sits near the bottom of a view.", "Use persistent for adjustable controls such as Range Input."] },

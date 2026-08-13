@@ -21,6 +21,7 @@ export const muiDocs: MuiDocs = {
         "Rely on auto-detection for YouTube, SoundCloud, mp4/webm, and mp3/wav links.",
         "Set type only when you need to force a specific renderer.",
         "Use the default Muibook controls backed by the native audio or video element.",
+        "Use no-radius only when the player is intentionally flush with the edges of a containing surface, such as an unpadded Dialog preview.",
         "Use thumbnail to opt into a richer audio presentation.",
         "Use waveform as an opt-in audio enhancement when the source can be fetched and decoded by the browser.",
         "Slotted metadata content receives contextual text, link, and action tokens where possible so composed content follows the underlying surface or image-overlay theme.",
@@ -66,6 +67,15 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Use center-play when the preview needs an obvious primary playback action before the user explores the bottom controls.",
             "The centered action toggles between play and pause while the native video element remains the playback engine underneath the UI."
+          ]
+        },
+        {
+          "key": "no-radius",
+          "title": "No Radius",
+          "description": "Removes the video surface radius for a flush embedded composition.",
+          "list": [
+            "Keep the default radius for standalone players.",
+            "Use no-radius when the containing surface owns the exposed corner treatment."
           ]
         },
         {

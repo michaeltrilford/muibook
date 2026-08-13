@@ -28,7 +28,7 @@ This repo builds the Muibook component library: framework-agnostic, accessible W
 - `npm run preview:create-mui-app` — preview scaffold build
 - `npm run token-build` — Style Dictionary tokens
 - `npm run cem` — generate `public/custom-elements.json`
-- `npm run copy-knowledge` — copy CEM, dynamic attrs, root docs, and `src/knowledge/*` into `../muibook-knowledge`
+- `npm run copy-knowledge` — copy CEM, dynamic attrs, changelog, root docs, and `src/knowledge/*` into `../muibook-knowledge`
 - `npm run copy-knowledge:redactd-canvas` — copy the Redactd-specific CEM, dynamic attrs, design, rules, keywords, and compositions subset into `../RedactdCanvas/plugins/assets/muibook-knowledge`
 
 ## Adding A New Component

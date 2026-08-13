@@ -10,7 +10,7 @@ class MuiDialog extends HTMLElement {
   private titleSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
-    return ["open", "width", "content-max-height", "close-size", "hide-header"];
+    return ["open", "width", "max-height", "close-size", "hide-header"];
   }
 
   constructor() {
@@ -35,7 +35,6 @@ class MuiDialog extends HTMLElement {
   connectedCallback() {
     if (!this.shadowRoot) return;
 
-    const width = this.getAttribute("width") || "350px";
     const closeSize = this.getCloseSize();
     const closeButtonSize = this.getCloseButtonSize();
 
@@ -46,8 +45,9 @@ class MuiDialog extends HTMLElement {
 
       dialog {
         border: var(--dialog-border);
-        width: ${width};
+        width: 350px;
         max-width: 90vw;
+        max-height: 90dvh;
         padding: 0;
         box-sizing: border-box;
         overflow: hidden;
@@ -65,6 +65,11 @@ class MuiDialog extends HTMLElement {
         background: var(--backdrop-overlay);
       }
 
+      dialog[open] {
+        display: flex;
+        flex-direction: column;
+      }
+
       .header {
         display: flex;
         min-height: var(--header-min-height-${closeSize});
@@ -73,17 +78,14 @@ class MuiDialog extends HTMLElement {
         padding: var(--space-400) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
+        flex: 0 0 auto;
       }
 
       .content {
-        max-height: 60vh;
+        flex: 1 1 auto;
+        min-height: 0;
         overflow-y: auto;
         padding: var(--space-500);
-      }
-
-      :host([content-max-height="none"]) .content {
-        max-height: none;
-        overflow-y: visible;
       }
 
       :host([content-padding="none"]) .content {
@@ -96,6 +98,7 @@ class MuiDialog extends HTMLElement {
         padding: var(--space-400) var(--space-500);
         border-top: var(--border-thin);
         gap: var(--space-300);
+        flex: 0 0 auto;
       }
 
       .actions[hidden] {
@@ -129,6 +132,8 @@ class MuiDialog extends HTMLElement {
     this.headerEl = this.shadowRoot.querySelector(".header");
     this.titleSlot = this.shadowRoot.querySelector('slot[name="title"]');
 
+    this.syncDialogDimensions();
+
     applySurfaceUsage(this);
 
     const closeBtn = this.shadowRoot.querySelector(".close");
@@ -136,6 +141,7 @@ class MuiDialog extends HTMLElement {
 
     // Backdrop click logic
     this.dialogEl.addEventListener("click", (event) => {
+      if (event.target !== this.dialogEl) return;
       const rect = this.dialogEl.getBoundingClientRect();
       const inside =
         event.clientX >= rect.left &&
@@ -146,6 +152,12 @@ class MuiDialog extends HTMLElement {
       if (!inside) {
         this.close();
       }
+    });
+
+    this.dialogEl.addEventListener("close", () => {
+      if (!this.hasAttribute("open")) return;
+      this.removeAttribute("open");
+      this.dispatchEvent(new CustomEvent("mui-dialog-close", { bubbles: true, composed: true }));
     });
 
     // Show/hide footer depending on slot content
@@ -183,11 +195,9 @@ class MuiDialog extends HTMLElement {
     });
   }
 
-  attributeChangedCallback(name: string, _old: string | null, value: string | null) {
+  attributeChangedCallback(name: string, _old: string | null, _value: string | null) {
     if (name === "open") this.syncOpenState();
-    if (name === "width" && this.dialogEl) {
-      this.dialogEl.style.width = value || "350px";
-    }
+    if ((name === "width" || name === "max-height") && this.dialogEl) this.syncDialogDimensions();
     if (name === "close-size" && this.shadowRoot) {
       const closeSize = this.getCloseSize();
       this.shadowRoot.querySelector(".header")?.setAttribute("style", `min-height: var(--header-min-height-${closeSize})`);
@@ -195,6 +205,20 @@ class MuiDialog extends HTMLElement {
       this.shadowRoot.querySelector("mui-icon-close")?.setAttribute("size", closeSize);
     }
     if (name === "hide-header") this.updateHeaderVisibility();
+  }
+
+  private supportsCssValue(property: string, value: string) {
+    return typeof CSS !== "undefined" && CSS.supports(property, value);
+  }
+
+  private syncDialogDimensions() {
+    if (!this.dialogEl) return;
+
+    const width = this.getAttribute("width")?.trim() || "350px";
+    this.dialogEl.style.width = this.supportsCssValue("width", width) ? width : "350px";
+
+    const maxHeight = this.getAttribute("max-height")?.trim() || "90dvh";
+    this.dialogEl.style.maxHeight = this.supportsCssValue("max-height", maxHeight) ? maxHeight : "90dvh";
   }
 
   private syncOpenState() {

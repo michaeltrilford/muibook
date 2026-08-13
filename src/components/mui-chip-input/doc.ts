@@ -15,6 +15,7 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.",
         "Use for email recipient entry where users add multiple addresses.",
         "Use for tagging content, products, or tasks with descriptors.",
         "Use for search filters where active selections are shown as chips.",

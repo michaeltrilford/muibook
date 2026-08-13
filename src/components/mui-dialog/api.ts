@@ -8,7 +8,7 @@ export const muiApi = {
     attributes: [
       { name: "open", type: { text: "boolean" }, default: "false", description: "Controls whether the dialog is open." },
       { name: "width", type: { text: "string" }, default: "350px", description: "Dialog width. Accepts any valid CSS width value." },
-      { name: "content-max-height", type: { text: '"none" | string' }, description: "Use `none` to disable the default scrollable content maximum height." },
+      { name: "max-height", type: { text: "string" }, default: "90dvh", description: "Maximum height of the complete Dialog surface, including header and actions. Accepts any valid CSS max-height value." },
       { name: "content-padding", type: { text: '"none" | string' }, description: "Use `none` to remove default content padding." },
       { name: "close-size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the built-in header close icon scale and matching header minimum height. Medium uses a small Button; large uses a medium Button." },
       { name: "hide-header", type: { text: "boolean" }, default: "false", description: "Hides the built-in header even when title slot content is present. Use for unified/headerless dialogs such as confirmations, or when custom body content provides the heading and dismissal path." },

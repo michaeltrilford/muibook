@@ -6,6 +6,7 @@ export const muiApi = {
     attributes: [
       { name: "id", type: { text: "string" }, description: "Identifier forwarded to the internal search input." },
       { name: "label", type: { text: "string" }, default: "Search", description: "Accessible label for the search input." },
+      { name: "description", type: { text: "string" }, description: "Supporting text forwarded to the internal Input." },
       {
         name: "placeholder",
         type: { text: "string" },
@@ -49,6 +50,7 @@ export const muiApi = {
       },
     ],
     slots: [
+      { name: "description", description: "Rich supporting content forwarded to the internal Input." },
       {
         name: "action",
         description: "Optional compact action that opens the revealed search view. Defaults to an icon-only tertiary search button.",

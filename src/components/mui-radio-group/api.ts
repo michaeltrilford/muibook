@@ -7,10 +7,14 @@ export const muiApi = {
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables all descendant radios." },
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Size forwarded to descendant radios." },
       { name: "label", type: { text: "string" }, description: "Accessible group label." },
+      { name: "description", type: { text: "string" }, description: "Persistent supporting text displayed between the group label and options." },
       { name: "hide-label", type: { text: "boolean" }, default: "false", description: "Visually hides the group label while retaining its association." },
       { name: "optional", type: { text: "boolean" }, default: "false", description: "Displays an optional marker beside the group label." },
     ],
-    slots: [{ name: "", description: "The `mui-radio` options owned by this group." }],
+    slots: [
+      { name: "", description: "The `mui-radio` options owned by this group." },
+      { name: "description", description: "Rich supporting content that replaces the description attribute fallback." },
+    ],
     events: [{ name: "change", description: "Dispatched when group selection changes with `detail.value` and `detail.name`." }],
   },
 };

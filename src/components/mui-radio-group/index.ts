@@ -1,9 +1,33 @@
+import "../mui-body";
+
 class MuiRadioGroup extends HTMLElement {
   static get observedAttributes() {
-    return ["name", "value", "disabled", "size", "label", "hide-label", "optional"];
+    return ["name", "value", "disabled", "size", "label", "description", "hide-label", "optional"];
   }
 
   private _groupName = "";
+
+  private setupDescriptionSlot() {
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    descriptionSlot?.addEventListener("slotchange", () => this.syncDescriptionState());
+    this.syncDescriptionState();
+  }
+
+  private syncDescriptionState() {
+    const description = this.shadowRoot?.querySelector(".group-description") as HTMLElement | null;
+    const descriptionSlot = this.shadowRoot?.querySelector('slot[name="description"]') as HTMLSlotElement | null;
+    const label = this.shadowRoot?.querySelector("label");
+    if (!description || !descriptionSlot) return;
+
+    const hasSlottedDescription = descriptionSlot.assignedNodes({ flatten: true }).some((node) =>
+      node.nodeType === Node.ELEMENT_NODE || Boolean(node.textContent?.trim()),
+    );
+    const hasDescription = Boolean(this.getAttribute("description")?.trim() || hasSlottedDescription);
+    description.hidden = !hasDescription;
+    label?.classList.toggle("label-with-description", hasDescription);
+    if (hasDescription) this.setAttribute("aria-describedby", description.id);
+    else this.removeAttribute("aria-describedby");
+  }
 
   constructor() {
     super();
@@ -28,6 +52,7 @@ class MuiRadioGroup extends HTMLElement {
     if (name === "name" && newValue) {
       this._groupName = newValue;
     }
+    if (["label", "description", "hide-label", "optional", "size"].includes(name) && this.shadowRoot?.hasChildNodes()) this.render();
     this.syncRadios();
   }
 
@@ -92,9 +117,14 @@ class MuiRadioGroup extends HTMLElement {
   private render() {
     if (!this.shadowRoot) return;
     const label = this.getAttribute("label") || "";
+    const description = this.getAttribute("description") || "";
     const hideLabel = this.hasAttribute("hide-label");
     const optional = this.hasAttribute("optional");
     const labelId = `mui-radio-group-label-${this._groupName}`;
+    const descriptionId = `mui-radio-group-description-${this._groupName}`;
+    const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
+    const size = this.getAttribute("size") || "medium";
+    const descriptionSize = { "x-small": "xx-small", small: "x-small", medium: "small", large: "medium" }[size] || "small";
     const optionalMarkup = optional
       ? `<span class="optional"><span class="optional-dot">&bull;</span><span class="optional-text">Optional</span></span>`
       : "";
@@ -112,6 +142,10 @@ class MuiRadioGroup extends HTMLElement {
           color: var(--text-color);
           display: block;
         }
+        label.label-with-description { margin-block-end: var(--space-000); }
+        .group-description { margin-block-end: var(--space-100); }
+        :host([size="medium"]) .group-description,
+        :host([size="large"]) .group-description { margin-block-end: var(--space-200); }
         .label-with-optional {
           display: flex;
           align-items: center;
@@ -149,11 +183,14 @@ class MuiRadioGroup extends HTMLElement {
       </style>
       ${
         label
-          ? `<label id="${labelId}" class="${hideLabel ? "vh" : ""}">
+          ? `<label id="${labelId}" class="${[hideLabel ? "vh" : "", hasDescription ? "label-with-description" : ""].filter(Boolean).join(" ")}">
                <span class="label-with-optional">${label}${optionalMarkup}</span>
              </label>`
           : ""
       }
+      <div id="${descriptionId}" class="group-description"${hasDescription ? "" : " hidden"}>
+        <slot name="description">${description ? `<mui-body variant="secondary" size="${descriptionSize}">${description}</mui-body>` : ""}</slot>
+      </div>
       <slot></slot>
     `;
 
@@ -162,6 +199,9 @@ class MuiRadioGroup extends HTMLElement {
     } else {
       this.removeAttribute("aria-labelledby");
     }
+    if (hasDescription) this.setAttribute("aria-describedby", descriptionId);
+    else this.removeAttribute("aria-describedby");
+    this.setupDescriptionSlot();
   }
 }
 

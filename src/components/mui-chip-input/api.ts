@@ -7,6 +7,7 @@ export const muiApi = {
     attributes: [
       { name: "id", type: { text: "string" }, description: "Identifier linked with the internal labelled input." },
       { name: "label", type: { text: "string" }, description: "Visible and accessible field label." },
+      { name: "description", type: { text: "string" }, description: "Supporting text forwarded to the internal Input." },
       { name: "hide-label", type: { text: "boolean" }, default: "false", description: "Visually hides the label while preserving accessibility." },
       { name: "placeholder", type: { text: "string" }, default: "Type to add", description: "Placeholder displayed in the entry field." },
       {
@@ -37,6 +38,7 @@ export const muiApi = {
       { name: "mobile-stack", type: { text: "boolean" }, default: "false", description: "Always stacks chip content and entry field." },
       { name: "breakpoint", type: { text: "number | string" }, description: "Pixel breakpoint at which the layout stacks." },
     ],
+    slots: [{ name: "description", description: "Rich supporting content forwarded to the internal Input." }],
     events: [
       { name: "chip-input-query-change", description: "Composed, bubbling event dispatched while query text changes with `detail.query`." },
       {

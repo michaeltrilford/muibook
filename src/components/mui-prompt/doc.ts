@@ -24,6 +24,8 @@ export const muiDocs: MuiDocs = {
         "Press Enter to submit and Shift+Enter to add a newline.",
         "Set enter-submit='false' to disable Enter submit behavior.",
         "Use slot='actions' for utility actions (attach, source, tools).",
+        "Prompt accepts Dropdowns in its action slots. Dropdown owns Menu portal positioning and resolves an ancestor native modal dialog, while Prompt only lays out the slotted trigger.",
+        "When Prompt is hosted by a non-native custom overlay, keep that overlay's portal and z-index scale coordinated at the application level; an arbitrarily large Dropdown z-index cannot cross an unrelated top-layer context.",
         "Prompt includes a default submit control in actions-right; override by slotting your own actions-right control when needed.",
         "All utility actions are intended to be slotted so product teams can wire behavior from app state.",
         "A default fan trigger is included out-of-the-box for action fan behavior.",
@@ -79,6 +81,7 @@ export const muiDocs: MuiDocs = {
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
     stories: { items: [
       { key: "preview-data", title: "Interactive Prompt", description: "Canonical interactive setup for this page: paste and upload previews, context toggle, submit, and Prompt event telemetry.", list: [] },
+      { key: "prompt-in-dialog", title: "Prompt in Custom Dialog", description: "Hosts Prompt in a lightweight custom native dialog.", list: ["Use the native dialog element when a full Dialog component is not required.", "Style the backdrop with available design tokens.", "Ensure backdrop interaction and Escape close the custom dialog."] },
       { key: "context", title: "Context", description: "Prompt provides dedicated context slots above and below its surface when product state has context to show.", list: ["Use slot='context-above' or slot='context-below' for feature-owned Prompt context such as steering, persona, constraints, selected context, examples, or attachments.", "Use mui-context-bar directly or wrap it with related content in a Stack.", "Prompt applies the correct attached radius to nested Context Bars based on the chosen slot.", "Omit the slotted context entirely when there is no active context."] },
       { key: "default", title: "Empty", list: ["Use this shared Prompt primitive across products."] },
       { key: "glowing-ring", title: "Glowing Ring", description: "Enable ring for an animated glowing stroke. Use ring-start, ring-mid, and ring-end to define the color sweep.", list: [] },

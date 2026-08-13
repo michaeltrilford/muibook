@@ -52,6 +52,21 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card id="supporting-description" title="${storyMeta["supporting-description"].title}" description="${storyMeta["supporting-description"].description}" usage="${storyMeta["supporting-description"].usage}">
+          <mui-v-stack slot="body" space="var(--space-500)">
+            <mui-select label="Region" description="Used to localise dates, currency, and content." options='[{"value":"au","label":"Australia"},{"value":"nz","label":"New Zealand"}]'></mui-select>
+            <mui-select label="Region" options='[{"value":"au","label":"Australia"},{"value":"nz","label":"New Zealand"}]'>
+              <mui-body slot="description" variant="secondary" size="small">See the <mui-link href="#region-guidance">region guidance</mui-link> before choosing.</mui-body>
+            </mui-select>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-select label="Region" description="Used to localise dates, currency, and content." options='[...]'&gt;&lt;/mui-select&gt;<br /><br />
+            &lt;mui-select label="Region" options='[...]'&gt;<br />
+            &nbsp;&nbsp;&lt;mui-body slot="description" variant="secondary" size="small"&gt;See the &lt;mui-link href="/regions"&gt;region guidance&lt;/mui-link&gt; before choosing.&lt;/mui-body&gt;<br />
+            &lt;/mui-select&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card id="optional-label" title="${storyMeta["optional-label"].title}" description="${storyMeta["optional-label"].description}" usage="${storyMeta["optional-label"].usage}">
           <div slot="body">
             <mui-select

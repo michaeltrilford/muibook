@@ -3,6 +3,10 @@ import type { MuiDocs } from '../../types/guidelines';
 export const muiDocs: MuiDocs = {
   Textarea: {
     title: "Textarea",
+    namedSlots: {
+      description: "Use this name on rich supporting content placed between the label and Textarea control.",
+      list: ["description"],
+    },
     description: "A multiline text input for longer-form content such as notes, comments, and descriptions.",
 
     hero: [""],
@@ -16,6 +20,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use textarea when users need to enter multiple lines of text.",
         "Use size='x-small|small|medium|large' to align textarea scale with surrounding form controls.",
+        "Use description for plain supporting guidance or slot='description' with mui-body when the guidance contains rich inline content.",
+        "Description typography follows Textarea size one step down: xx-small, x-small, small, then medium.",
         "Provide a clear label and helpful placeholder for expected content.",
         "Use the optional attribute when a field is not required to show a clear (optional) marker in the label.",
         "Use max-length when limits matter; the component shows a live character count.",
@@ -28,6 +34,7 @@ export const muiDocs: MuiDocs = {
       engineerList: [
         "A label is required for screen reader support.",
         "If hide-label is used, an aria-label is generated from label.",
+        "When supporting guidance is present, Textarea owns its generated ID and associates it with the native control through aria-describedby.",
         "Optional fields can be explicitly communicated with the optional attribute without changing label association.",
         "When max-length is set, users get visible character progress while native maxlength enforcement remains intact.",
         "The native disabled attribute is supported.",
@@ -72,6 +79,15 @@ export const muiDocs: MuiDocs = {
           "description": "Compares the supported Textarea size scale.",
           "list": [
             "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "supporting-description",
+          "title": "Supporting Description",
+          "description": "Adds persistent guidance between the Textarea label and control.",
+          "list": [
+            "Use description for plain supporting copy or slot='description' with mui-body for rich inline content.",
+            "Textarea owns spacing, the generated description ID, and the native aria-describedby association."
           ]
         },
         {

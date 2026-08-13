@@ -125,6 +125,47 @@ class StoryPrompt extends HTMLElement {
       </story-card>
 
       <story-card
+        id="prompt-in-dialog"
+        title="${storyMeta["prompt-in-dialog"].title}"
+        description="${storyMeta["prompt-in-dialog"].description || ""}"
+        usage="${storyMeta["prompt-in-dialog"].usage}"
+      >
+        <mui-button id="promptDialogOpen" slot="body" variant="primary">Open</mui-button>
+        <dialog id="promptNativeDialog" slot="body" aria-label="Prompt dialog" style="width: min(90vw, 48rem); max-width: 90vw; padding: var(--space-500); border: none; background: transparent;">
+          <mui-prompt id="promptInDialog" placeholder="Describe what you want to create..." enter-submit>
+            <mui-dropdown slot="actions" position="left" vertical-position="up" size="small">
+              <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="Add context">
+                <mui-icon-add size="small"></mui-icon-add>
+              </mui-button>
+              <mui-menu width="min(100%, 16rem)">
+                <mui-button size="small">Upload image</mui-button>
+                <mui-button size="small">Attach file</mui-button>
+                <mui-button size="small">Add from library</mui-button>
+              </mui-menu>
+            </mui-dropdown>
+            <mui-dropdown slot="actions" position="right" vertical-position="up" size="small">
+              <mui-button slot="action" variant="tertiary" size="small">MPT-4<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+              <mui-menu width="min(100%, 14rem)">
+                <mui-button size="small">MPT-4</mui-button>
+                <mui-button size="small">MPT-4 Mini</mui-button>
+                <mui-button size="small">MPT-Reasoning</mui-button>
+              </mui-menu>
+            </mui-dropdown>
+          </mui-prompt>
+        </dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;dialog&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot=&quot;actions&quot; vertical-position=&quot;up&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot;&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu width=&quot;min(100%, 16rem)&quot;&gt;...&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-prompt&gt;<br />
+          &lt;/dialog&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="context"
         title="${storyMeta["context"].title}"
         description="${storyMeta["context"].description || ""}"
@@ -1020,6 +1061,10 @@ class StoryPrompt extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
+        #promptNativeDialog::backdrop {
+          background: var(--backdrop-overlay);
+        }
+
         .prompt-story-shell {
           display: flex;
           flex-direction: column;
@@ -1060,8 +1105,21 @@ class StoryPrompt extends HTMLElement {
       </story-template>
     `;
 
+    const promptNativeDialog = this.shadowRoot.querySelector("#promptNativeDialog");
+    this.shadowRoot.querySelector("#promptDialogOpen")?.addEventListener("click", () => promptNativeDialog?.showModal());
+    promptNativeDialog?.addEventListener("click", (event) => {
+      if (event.target !== promptNativeDialog) return;
+
+      const rect = promptNativeDialog.getBoundingClientRect();
+      const clickedBackdrop = event.clientX < rect.left
+        || event.clientX > rect.right
+        || event.clientY < rect.top
+        || event.clientY > rect.bottom;
+      if (clickedBackdrop) promptNativeDialog.close();
+    });
+
     this.shadowRoot.querySelectorAll("mui-prompt").forEach((promptEl) => {
-      if (promptEl.closest(".prompt-story-shell")) return;
+      if (promptEl.closest(".prompt-story-shell, dialog")) return;
       const shell = document.createElement("div");
       shell.className = "prompt-story-shell";
       promptEl.parentElement.insertBefore(shell, promptEl);

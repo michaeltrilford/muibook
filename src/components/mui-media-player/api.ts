@@ -10,6 +10,7 @@ export const muiApi = {
       { name: "artwork", type: { text: "string" }, description: "Optional artwork image URL for audio artwork presentation." },
       { name: "media-title", type: { text: "string" }, description: "Fallback title displayed in audio presentations or video metadata when slot='meta-before' is not provided." },
       { name: "height", type: { text: "string" }, description: "Sets the audio metadata or artwork presentation height using any valid CSS height value. Maps to --media-player-audio-height." },
+      { name: "no-radius", type: { text: "boolean" }, default: "false", description: "Removes the corner radius from the main media frame and surface for flush or edge-to-edge compositions." },
       { name: "waveform", type: { text: "boolean" }, default: "false", description: "Opt-in generated waveform for audio presentations. The component fetches and decodes the source when possible; remote sources may not render a waveform if CORS blocks decoding." },
       { name: "center-play", type: { text: "boolean" }, default: "false", description: "Displays an always-visible centered play/pause action over native video." },
       { name: "loading", type: { text: "boolean" }, default: "false", description: "Forces the centered loading affordance for externally managed loading states, demos, or diagnostics." },

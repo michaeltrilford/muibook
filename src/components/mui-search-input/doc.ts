@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   "Search Input": {
     namedSlots: {
       description: "Use these names on items slotted inside this component.",
-      list: ["action","after"],
+      list: ["description","action","after"],
     },
     title: "Search Input",
     description:
@@ -19,6 +19,7 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.",
         "Use for filtering a nearby view, list, table, or navigation surface.",
         "Use the action slot only when the default compact search button needs to be replaced.",
         "Use the after slot for adjacent controls that should yield to search when the user activates it.",

@@ -43,6 +43,32 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card id="supporting-description" title="${storyMeta["supporting-description"].title}" description="${storyMeta["supporting-description"].description}" usage="${storyMeta["supporting-description"].usage}">
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-field label="Email" description="Used for account updates and sign-in recovery.">
+              <mui-input type="email" placeholder="you@example.com"></mui-input>
+            </mui-field>
+            <mui-field label="Region" description="Used to localise dates, currency, and content.">
+              <mui-select options='[{"value":"au","label":"Australia"},{"value":"nz","label":"New Zealand"}]'></mui-select>
+            </mui-field>
+            <mui-field label="Summary">
+              <mui-textarea placeholder="Describe the outcome...">
+                <mui-body slot="description" variant="secondary" size="small">Review the <mui-link href="#writing-guidance">writing guidance</mui-link> before submitting.</mui-body>
+              </mui-textarea>
+            </mui-field>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="Email" description="Used for account updates and sign-in recovery."&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@example.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br /><br />
+            &lt;mui-field label="Summary"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-textarea&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="description" variant="secondary" size="small"&gt;Review the &lt;mui-link href="/writing"&gt;writing guidance&lt;/mui-link&gt; before submitting.&lt;/mui-body&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-textarea&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card id="input-sizes" title="${storyMeta["input-sizes"].title}" description="${storyMeta["input-sizes"].description}" usage="${storyMeta["input-sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-field label="X-Small" size="x-small">

@@ -113,6 +113,13 @@ const resourceIndex = {
       useWhen: "Making token, theme, surface, typography, spacing, radius, or layout decisions.",
     },
     {
+      id: "changelog",
+      file: "CHANGELOG.md",
+      mcpUri: "muibook://changelog",
+      kind: "release-history",
+      useWhen: "Checking recent, upcoming, or released Muibook package changes.",
+    },
+    {
       id: "rules",
       file: "json-rules.ts",
       mcpUri: "muibook://rules",
