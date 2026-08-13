@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-13T13:25:39.459Z",
+  "generatedAt": "2026-08-13T13:28:21.997Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -372,17 +372,13 @@
         }
       ]
     },
-    "mui-tab-item": {
+    "mui-cell": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+          "name": "card-slot",
+          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
         }
       ]
     },
@@ -396,16 +392,6 @@
         }
       ]
     },
-    "mui-cell": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "card-slot",
-          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
-        }
-      ]
-    },
     "mui-table": {
       "version": 1,
       "destinationOnly": true,
@@ -413,6 +399,20 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in Card Body, allowing edge-to-edge table layout with content inset matched to the current Card size."
+        }
+      ]
+    },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }
