@@ -6,6 +6,21 @@ When the Muibook MCP server is available, use it before generating, reviewing, s
 
 Call `start_here` first. It returns the knowledge map, available files, available skill guides, and recommended next tool calls.
 
+## Framework integration: portalled Menu actions
+
+`mui-dropdown` portals its open `mui-menu` outside the authored DOM tree so the
+overlay can escape stacking contexts and overflow clipping. In framework
+integrations, delegated synthetic handlers (such as React `onClick` handlers)
+may therefore not receive clicks from Menu actions.
+
+When a portalled Menu action must call application logic, use a native listener
+on the host or an appropriate document boundary and inspect `event.composedPath()`
+for the clicked action. Mark each action with a stable action name and owning
+record ID, and ignore events for other records; otherwise every mounted card
+listener can respond to one portalled click. Clean up the listener on unmount.
+Keep Dropdown/Menu positioning, focus, dismissal, and portal behavior owned by
+Muibook rather than reimplementing them in the framework wrapper.
+
 ## Tool Routing
 
 - Use `find_component` when the user describes intent but does not name a component.

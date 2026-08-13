@@ -36,6 +36,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - Do not load the full CEM by default when a compact index or component lookup will answer the question.
 - Do not invent token escape hatches. Prefer existing foundation, theme, semantic, and component token layers.
 - Do not re-own Web Component behavior inside framework wrappers. Wrappers should pass attributes, events, refs, and host properties through.
+- Portalled Dropdown Menu actions may sit outside a framework component tree; use cleaned-up native delegation with stable action/record IDs when synthetic handlers cannot observe them.
 
 ## Common Tasks
 
