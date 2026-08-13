@@ -903,7 +903,6 @@ class MuiLink extends HTMLElement {
       :host([size="xx-small"][usage="input"]) a[aria-disabled="true"] {
         font-size: var(--text-font-size-xxs);
         line-height: var(--text-line-height-xxs);
-        font-weight: var(--font-weight-semi-bold);
         min-height: var(--action-size-xx-small);
         padding: var(--space-025) var(--space-100);
         border-width: var(--stroke-size-100);
@@ -920,7 +919,6 @@ class MuiLink extends HTMLElement {
       :host([size="x-small"][usage="input"]) a[aria-disabled="true"] {
         font-size: var(--text-font-size-xs);
         line-height: var(--text-line-height-xs);
-        font-weight: var(--font-weight-semi-bold);
         min-height: var(--action-size-x-small);
         padding: var(--action-padding-x-small);
         border-width: var(--stroke-size-100);

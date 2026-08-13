@@ -45,7 +45,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "action", description: "Dropdown trigger, typically a `mui-button`." },
-      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content. Width is optional; a portaled Menu without it uses a viewport-safe 18rem fallback that preserves its usable measure when inset padding is present." },
+      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content. Width is optional; without it, a portaled Menu sizes to its widest item and is clamped to the available viewport." },
     ],
     events: [
       { name: "dropdown-toggle", description: "Dispatched when the dropdown opens or closes with `detail.open`." },

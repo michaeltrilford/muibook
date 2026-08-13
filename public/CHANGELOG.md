@@ -1,5 +1,21 @@
 ## Header [Start]
 
+## v26.0.1
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Fixed & Improved
+
+- Dropdown menus without an authored width now measure their widest item, including icons, action gaps, padding, and Menu inset, before clamping the surface to the available viewport; guarded ResizeObserver updates remain position-only.
+- Removed the extra inset Menu bottom padding applied when Body content is present, keeping inset spacing consistent at every Menu size.
+- Removed the small-size Link semibold overrides so `xx-small` and `x-small` Links inherit the standard action weight.
+
+---
+
+## Header [Start]
+
 ## v26.0.0
 
 _Status: Released_

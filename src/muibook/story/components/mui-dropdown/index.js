@@ -6,29 +6,6 @@ class storyDropdown extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.handleWindowError = this.handleWindowError.bind(this);
-  }
-
-  handleWindowError(event) {
-    if (!String(event.message || "").includes("ResizeObserver")) return;
-    if (this.shadowRoot?.querySelector("#intrinsicWidthStatus")) return;
-
-    const story = this.shadowRoot?.querySelector("#intrinsicWidthStory");
-    if (!story) return;
-
-    const status = document.createElement("mui-body");
-    status.id = "intrinsicWidthStatus";
-    status.setAttribute("size", "small");
-    status.setAttribute("variant", "attention");
-
-    const icon = document.createElement("mui-icon-attention");
-    icon.setAttribute("slot", "before");
-    status.append(icon, "ResizeObserver error detected");
-    story.appendChild(status);
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener("error", this.handleWindowError);
   }
 
   async connectedCallback() {
@@ -55,6 +32,29 @@ class storyDropdown extends HTMLElement {
         childAttrs: ["menu-slot", "menu-slot-first", "menu-slot-last"],
       },
     ]);
+
+    const intrinsicSizes = ["x-small", "small", "medium", "large"];
+    const renderIntrinsicRow = ({ id, inset = false, icons = false }) => {
+      const menuIds = intrinsicSizes.map((size) => `${id}-${size}`);
+      const items = icons
+        ? `
+                <mui-button><mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>Create Roadmap</mui-button>
+                <mui-button><mui-icon-rectangle slot="before"></mui-icon-rectangle>Product Canvas</mui-button>`
+        : `
+                <mui-button>A longer action label that determines the intrinsic measure</mui-button>
+                <mui-link variant="tertiary" href="#">Open related settings</mui-link>`;
+
+      return /*html*/ `
+          <mui-h-stack space="var(--space-300)" alignY="center" wrap>
+            ${intrinsicSizes.map((size, index) => `
+            <mui-dropdown position="left" size="${size}">
+              <mui-button slot="action" variant="secondary">Open Menu<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+              <mui-menu id="${menuIds[index]}"${inset ? " inset" : ""}>${items}
+              </mui-menu>
+            </mui-dropdown>`).join("")}
+            <mui-button data-intrinsic-add="${menuIds.join(" ")}" variant="secondary">Add item</mui-button>
+          </mui-h-stack>`;
+    };
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -194,30 +194,24 @@ class storyDropdown extends HTMLElement {
 
       <story-card id="intrinsic-width" title="${storyMeta["intrinsic-width"].title}" description="${storyMeta["intrinsic-width"].description}" usage="${storyMeta["intrinsic-width"].usage}">
         <mui-v-stack id="intrinsicWidthStory" slot="body" space="var(--space-300)" alignX="start">
-          <mui-h-stack space="var(--space-300)" alignY="center" wrap>
-            <mui-dropdown position="left" size="medium">
-              <mui-button slot="action" variant="secondary">Open Menu<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
-              <mui-menu id="intrinsicWidthMenu" inset>
-                <mui-button>Short action</mui-button>
-                <mui-button>A longer action label that uses the fallback measure</mui-button>
-                <mui-link variant="tertiary" href="#">Open related settings</mui-link>
-              </mui-menu>
-            </mui-dropdown>
-            <mui-button id="intrinsicWidthAdd" variant="secondary">Add item</mui-button>
-          </mui-h-stack>
+          ${renderIntrinsicRow({ id: "intrinsicWidthInsetIcons", inset: true, icons: true })}
+          ${renderIntrinsicRow({ id: "intrinsicWidthInsetText", inset: true })}
+          ${renderIntrinsicRow({ id: "intrinsicWidthDefaultIcons", icons: true })}
+          ${renderIntrinsicRow({ id: "intrinsicWidthDefaultText" })}
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;!-- Repeat this composition for: inset icons, inset text/link, default icons, and default text/link. --&gt;<br />
           &lt;mui-h-stack space=&quot;var(--space-300)&quot; alignY=&quot;center&quot; wrap&gt;<br />
           &nbsp;&nbsp;&lt;mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;Open Menu&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;Open Menu&lt;mui-icon-down-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-down-chevron&gt;&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu inset&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Short action&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;A longer action label&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;&lt;mui-icon-rectangle-media-text slot=&quot;before&quot;&gt;&lt;/mui-icon-rectangle-media-text&gt;Create Roadmap&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;&lt;mui-icon-rectangle slot=&quot;before&quot;&gt;&lt;/mui-icon-rectangle&gt;Product Canvas&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;secondary&quot;&gt;Add item&lt;/mui-button&gt;<br />
           &lt;/mui-h-stack&gt;<br /><br />
-          &lt;!-- Menu width is intentionally omitted; inset padding is included in the measured width. --&gt;
+          &lt;!-- Menu width is intentionally omitted; the widest item, icons, gaps, and inset determine the viewport-clamped width. --&gt;
         </story-code-block>
       </story-card>
 
@@ -689,12 +683,15 @@ class storyDropdown extends HTMLElement {
       </story-template>
     `;
 
-    window.addEventListener("error", this.handleWindowError);
-    const intrinsicWidthMenu = this.shadowRoot.querySelector("#intrinsicWidthMenu");
-    this.shadowRoot.querySelector("#intrinsicWidthAdd")?.addEventListener("click", () => {
-      const item = document.createElement("mui-button");
-      item.textContent = "Dynamically added action with a longer label";
-      intrinsicWidthMenu?.appendChild(item);
+    this.shadowRoot.querySelectorAll("[data-intrinsic-add]").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.dataset.intrinsicAdd.split(" ").forEach((menuId) => {
+          const menu = this.shadowRoot.querySelector(`#${menuId}`);
+          const item = document.createElement("mui-button");
+          item.textContent = "Dynamically added action with a substantially longer label";
+          menu?.appendChild(item);
+        });
+      });
     });
 
     // === Persistent Toggle Logic ===

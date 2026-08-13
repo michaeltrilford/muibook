@@ -702,7 +702,7 @@ class MuiDropdown extends HTMLElement {
         max-width: 100%;
       }
       .mui-dropdown-portal .inner > mui-menu:not([width]) {
-        --menu-width-current: var(--dropdown-measured-menu-width, min(100%, 18rem));
+        --menu-width-current: var(--dropdown-measured-menu-width, max-content);
       }
       .mui-dropdown-portal mui-button,
       .mui-dropdown-portal mui-link {
@@ -762,9 +762,9 @@ class MuiDropdown extends HTMLElement {
     if (!this.portalMenu || !this.portalInner) return;
 
     // Percentage Menu widths need a definite available width while measuring.
-    // A Menu without an authored width starts from the stable 18rem fallback.
-    // Its computed inline inset is then added to that rendered measurement so
-    // padding does not reduce the usable action width.
+    // A Menu without an authored width temporarily resolves to max-content so
+    // its longest action, including icons, gaps, padding, and inset, determines
+    // the surface width before it is clamped to the available viewport.
     // The final width is written only once, before ResizeObserver position-only
     // updates, so the observer cannot alternate its own target's width.
     this.portalMenu.style.width = "";
@@ -773,20 +773,54 @@ class MuiDropdown extends HTMLElement {
     const menuSurface = this.portalInner.querySelector(":scope > mui-menu") as HTMLElement | null;
     menuSurface?.style.removeProperty("--dropdown-measured-menu-width");
 
-    const surfaceWidth = menuSurface?.getBoundingClientRect().width || 0;
-    if (surfaceWidth <= 0) return;
+    let surfaceWidth = 0;
+    if (menuSurface?.hasAttribute("width")) {
+      surfaceWidth = menuSurface.getBoundingClientRect().width;
+    } else if (menuSurface) {
+      const intrinsicItems = Array.from(menuSurface.children)
+        .filter((item): item is HTMLElement => item instanceof HTMLElement && item.tagName.toLowerCase() !== "mui-rule");
+      const itemWidths = intrinsicItems.map((item) => ({
+        item,
+        width: item.style.width,
+        maxWidth: item.style.maxWidth,
+        releaseWidth: !item.hasAttribute("width"),
+      }));
 
-    let inlineInset = 0;
-    if (menuSurface && !menuSurface.hasAttribute("width") && menuSurface.hasAttribute("inset")) {
-      const content = menuSurface.shadowRoot?.querySelector(".content") as HTMLElement | null;
-      if (content) {
-        const contentStyles = getComputedStyle(content);
-        inlineInset = (Number.parseFloat(contentStyles.paddingInlineStart) || 0)
-          + (Number.parseFloat(contentStyles.paddingInlineEnd) || 0);
+      let widestItem = 0;
+      try {
+        itemWidths.forEach(({ item, releaseWidth }) => {
+          if (!releaseWidth) return;
+          item.style.width = "max-content";
+          item.style.maxWidth = "none";
+        });
+        widestItem = itemWidths.reduce(
+          (widest, { item }) => Math.max(widest, item.getBoundingClientRect().width),
+          0,
+        );
+      } finally {
+        itemWidths.forEach(({ item, width, maxWidth, releaseWidth }) => {
+          if (!releaseWidth) return;
+          if (width) item.style.width = width;
+          else item.style.removeProperty("width");
+          if (maxWidth) item.style.maxWidth = maxWidth;
+          else item.style.removeProperty("max-width");
+        });
       }
+
+      const menuStyles = getComputedStyle(menuSurface);
+      const content = menuSurface.shadowRoot?.querySelector(".content") as HTMLElement | null;
+      const contentStyles = content ? getComputedStyle(content) : null;
+      const horizontalChrome = (Number.parseFloat(menuStyles.borderInlineStartWidth) || 0)
+        + (Number.parseFloat(menuStyles.borderInlineEndWidth) || 0)
+        + (Number.parseFloat(contentStyles?.paddingInlineStart || "") || 0)
+        + (Number.parseFloat(contentStyles?.paddingInlineEnd || "") || 0);
+      const minimumWidth = Number.parseFloat(menuStyles.minWidth) || 0;
+      surfaceWidth = Math.max(widestItem + horizontalChrome, minimumWidth);
     }
 
-    const resolvedWidth = Math.min(surfaceWidth + inlineInset, maxMenuWidth);
+    if (surfaceWidth <= 0) return;
+
+    const resolvedWidth = Math.min(surfaceWidth, maxMenuWidth);
     const resolvedValue = `${resolvedWidth}px`;
     if (menuSurface && !menuSurface.hasAttribute("width")) {
       menuSurface.style.setProperty("--dropdown-measured-menu-width", resolvedValue);

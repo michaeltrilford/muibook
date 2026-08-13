@@ -330,22 +330,6 @@ class MuiMenu extends HTMLElement {
           padding-inline: var(--menu-inset-padding-inline, var(--menu-inset));
         }
 
-        :host([inset][size="x-small"]) .content[has-body] {
-          padding-bottom: var(--space-200);
-        }
-
-        :host([inset][size="small"]) .content[has-body] {
-          padding-bottom: var(--space-300);
-        }
-
-        :host([inset][size="medium"]) .content[has-body] {
-          padding-bottom: var(--space-400);
-        }
-
-        :host([inset][size="large"]) .content[has-body] {
-          padding-bottom: var(--space-500);
-        }
-
         :host([inset]) ::slotted(mui-rule) {
           margin-block: var(--menu-inset);
         }
