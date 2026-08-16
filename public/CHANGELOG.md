@@ -1,5 +1,34 @@
 ## Header [Start]
 
+## v26.1.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Added
+
+- Added `mui-icon-drag`, a six-dot movement affordance with the standard Muibook icon size and colour API.
+- Added `mui-color-input`, a controlled colour picker aligned to the Muibook form input size scale (`x-small`, `small`, `medium`, `large`), featuring accessible labelling, persistent supporting descriptions (attribute and rich slot), contrast-aware hexadecimal text with one-click copy, before/after companion preview slots, `hide-value` solid swatch presentation, and composed `input`/`change`/`copy` events.
+- Added `space` and `aligny` attributes on `mui-row` for configurable cell gap tokens and vertical row item alignment.
+- Added `alignx` attribute on `mui-cell` (`start`, `center`, `end`, `space-between`) for explicit cell horizontal alignment.
+- Added `align` (`start`, `center`, `end`) and `input-mode` (`decimal`, `numeric`, `text`, etc.) attributes on `mui-input` for quantitative and right-aligned values with `tabular-nums` font spacing and automatic decimal/numeric keystroke and paste filtering, alongside `inside-start` and `inside-end` slot support for currency and unit affixes.
+- Enhanced `mui-hint` with multi-density size scaling (`x-small`, `small`, `medium`, `large`) across tooltips and portal overlays.
+- Added dedicated semantic state color presets for respective validation icons (`mui-icon-check` with `color="success"`, `mui-icon-warning` with `color="warning"`, `mui-icon-attention` with `color="error"`, and `mui-icon-info` with `color="info"`), alongside `default`, `inverted`, `secondary`, and custom CSS color support across all icon components.
+- Added dedicated badge normalization and placement logic in `mui-input`: slotted badges in `inside-before`, `inside-start`, `inside-after`, and `inside-end` automatically map to optimal badge sizes (`x-small` input $\rightarrow$ `xx-small` badge, `small` $\rightarrow$ `small`, `medium` $\rightarrow$ `medium`, `large` $\rightarrow$ `large`) and apply dedicated, snug cluster offsets (`var(--space-100)` for `x-small`, `var(--space-200)` for `small`) without altering standard icon, hint, or currency offsets.
+
+### Fixed & Improved
+
+- Refactored `mui-table` horizontal gutters to `mui-row` with automatic `card-slot` inset inheritance inside `mui-card-body`, and added `min-width: 0` to `mui-cell` to support body text truncation.
+- Balanced `mui-card` `size="small"` spacing: updated body padding and `--card-layout-inline-space` to `var(--space-400)`, and set header/footer padding to `var(--space-300) var(--space-400)`.
+- Added `overflow: hidden` and border radius clipping to `mui-card[size="none"]` and `mui-card-body[size="none"]` so edge-to-edge charts, canvases, and media cleanly respect the card's rounded boundary.
+- Updated `mui-input` and `mui-textarea` character count (`.char-count`) and `.meta` container with size-proportional typography (`xxs` through `m`), `tabular-nums` alignment, inline margins, and size-specific top spacing (`var(--space-200)` for large).
+- Added authoritative knowledge fragments and JSON rules for Card-Embedded Comparison Charts with dropdown timeframe actions and Slat multi-item progress rows with even column alignment.
+
+---
+
+## Header [Start]
+
 ## v26.0.1
 
 _Status: Released_

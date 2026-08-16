@@ -66,14 +66,23 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "disable-on-touch",
-          "title": "Disable On Touch",
-          "description": "Disables hint behaviour on coarse pointer devices.",
-          "list": [
+          key: "disable-on-touch",
+          title: "Disable On Touch",
+          description: "Disables hint behaviour on coarse pointer devices.",
+          list: [
             "Use this when the hint is a desktop enhancement and the trigger already communicates its action.",
-            "This avoids persistent tooltip states on touch devices, while preserving hover and keyboard hint behaviour on desktop."
-          ]
-        }
+            "This avoids persistent tooltip states on touch devices, while preserving hover and keyboard hint behaviour on desktop.",
+          ],
+        },
+        {
+          key: "sizes",
+          title: "Trigger Sizing",
+          description: "Shows how Hint's size attribute automatically scales unsized slotted trigger icons and badges.",
+          list: [
+            "Use size='x-small' | 'small' | 'medium' | 'large' to match surrounding typography and form scale.",
+            "Unsized slotted trigger icons and badges automatically receive corresponding sizes from the Hint container.",
+          ],
+        },
       ],
     },
 

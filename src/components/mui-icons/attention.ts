@@ -26,6 +26,8 @@ class MuiIconAttention extends HTMLElement {
     const colorMap: Record<string, string> = {
       default: "var(--icon-color-default)",
       inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
+      error: "var(--text-color-attention)",
     };
 
     // Resolve color based on the provided variant or color attribute

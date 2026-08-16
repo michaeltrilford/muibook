@@ -196,6 +196,7 @@ export default defineConfig({
         "components/mui-file-icon": path.resolve(__dirname, "src/components/mui-file-icon"),
         // INPUT
         "components/mui-input": path.resolve(__dirname, "src/components/mui-input"),
+        "components/mui-color-input": path.resolve(__dirname, "src/components/mui-color-input"),
         "components/mui-search-input": path.resolve(__dirname, "src/components/mui-search-input"),
         // CHIP INPUT
         "components/mui-chip-input": path.resolve(__dirname, "src/components/mui-chip-input"),

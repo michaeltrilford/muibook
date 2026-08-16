@@ -37,6 +37,21 @@ declare global {
         value?: string;
         placeholder?: string;
       };
+      "mui-color-input": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        value?: string;
+        name?: string;
+        id?: string;
+        label?: string;
+        description?: string;
+        size?: "x-small" | "small" | "medium" | "large";
+        disabled?: boolean;
+        "hide-label"?: boolean;
+        "hide-value"?: boolean;
+        "hide-text"?: boolean;
+        gap?: string;
+        copyable?: boolean;
+        "no-copy"?: boolean;
+      };
 
       "mui-checkbox": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         id?: string;
@@ -234,8 +249,14 @@ declare global {
 
       "mui-avatar": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         slot?: "accessory" | "start" | "end" | "before" | "after" | string;
-        size?: "small" | "medium" | "large" | string;
+        size?: "x-small" | "small" | "medium" | "large" | string;
         label?: string;
+        image?: string;
+        background?: string;
+        "background-color"?: string;
+        status?: string;
+        "status-label"?: string;
+        usage?: "color-input" | "input" | string;
         style?: React.CSSProperties;
         class?: string;
       };
@@ -350,7 +371,11 @@ declare global {
       };
 
       "mui-badge": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        variant?: "neutral" | "positive" | "warning" | "attention" | string;
+        variant?: "neutral" | "positive" | "warning" | "attention" | "overlay" | string;
+        color?: string;
+        text?: string;
+        size?: "xx-small" | "x-small" | "small" | "medium" | "large" | string;
+        slot?: "before" | "after" | string;
         style?: React.CSSProperties;
         class?: string;
       };
@@ -362,6 +387,7 @@ declare global {
       "mui-icon-check": MuiIconProps;
       "mui-icon-close": MuiIconProps;
       "mui-icon-down-chevron": MuiIconProps;
+      "mui-icon-drag": MuiIconProps;
       "mui-icon-globe": MuiIconProps;
       "mui-icon-grid": MuiIconProps;
       "mui-icon-info": MuiIconProps;

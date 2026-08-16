@@ -30,6 +30,7 @@ const filesToCopy = [
   { src: "skills/style-web-components/SKILL.md", dest: "skills/style-web-components/SKILL.md" },
   { src: "skills/redactd-canvas-muibook/SKILL.md", dest: "skills/redactd-canvas-muibook/SKILL.md" },
   { src: "skills/muibook-json-rules/SKILL.md", dest: "skills/muibook-json-rules/SKILL.md" },
+  { src: "src/types/react/typed-elements/index.d.ts", dest: "typed-elements.d.ts" },
 ];
 
 const legacyFiles = [

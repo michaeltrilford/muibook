@@ -2,7 +2,7 @@ class MuiRow extends HTMLElement {
   private tableObserver?: MutationObserver;
 
   static get observedAttributes() {
-    return ["columns", "size"];
+    return ["columns", "size", "aligny", "space"];
   }
 
   constructor() {
@@ -42,55 +42,66 @@ class MuiRow extends HTMLElement {
     });
 
     this.tableObserver.observe(table, {
-      subtree: true,
       childList: true,
+      subtree: true,
       attributes: true,
       attributeFilter: ["action"],
-      characterData: true,
     });
   }
 
-  private clearActionPlaceholderStyles(cell: Element) {
-    const htmlCell = cell as HTMLElement;
-    htmlCell.style.removeProperty("width");
-    htmlCell.style.removeProperty("height");
-    htmlCell.style.removeProperty("display");
-    htmlCell.style.removeProperty("align-items");
-    htmlCell.style.removeProperty("justify-content");
+  private getTableRows(table: HTMLElement) {
+    return Array.from(table.querySelectorAll("mui-row")).filter(
+      (row): row is HTMLElement => row.closest("mui-table") === table,
+    );
+  }
+
+  private getOwnCells() {
+    return Array.from(this.querySelectorAll("mui-cell")).filter(
+      (cell): cell is HTMLElement => cell.closest("mui-row") === this,
+    );
+  }
+
+  private hasActionCellInBody(table: HTMLElement) {
+    const rows = this.getTableRows(table);
+    return rows.some((row) => {
+      const isHeadingRow = Boolean(row.closest("mui-row-group[heading]"));
+      if (isHeadingRow) return false;
+      return Array.from(row.querySelectorAll("mui-cell")).some(
+        (cell) => cell.closest("mui-row") === row && cell.hasAttribute("action"),
+      );
+    });
+  }
+
+  private clearActionPlaceholderStyles(cell: HTMLElement) {
+    cell.removeAttribute("data-action-placeholder");
+    cell.style.removeProperty("width");
+    cell.style.removeProperty("height");
+    cell.style.removeProperty("display");
+    cell.style.removeProperty("align-items");
+    cell.style.removeProperty("justify-content");
   }
 
   private syncActionColumnState() {
-    const table = this.closest("mui-table");
-    if (!table) return;
-
-    const hasActionColumn = Boolean(table.querySelector("mui-cell[action]"));
-    this.toggleAttribute("has-action-column", hasActionColumn);
-
-    const directCells = Array.from(this.children).filter(
-      (child) => child.tagName.toLowerCase() === "mui-cell",
-    ) as HTMLElement[];
-    const lastCell = directCells[directCells.length - 1];
-
+    const isHeadingRow = Boolean(this.closest("mui-row-group[heading]"));
+    const cells = this.getOwnCells();
+    const lastCell = cells[cells.length - 1];
     if (!lastCell) return;
 
-    const rowHasExplicitAction = directCells.some((cell) => cell.hasAttribute("action"));
-
-    if (!hasActionColumn || rowHasExplicitAction) {
+    if (!isHeadingRow) {
       this.clearActionPlaceholderStyles(lastCell);
       return;
     }
 
-    const hasElementChildren = Array.from(lastCell.children).some((child) => child.nodeType === Node.ELEMENT_NODE);
-    const text = (lastCell.textContent || "").trim();
-    const isPlaceholder = !hasElementChildren && text.length === 0;
+    const table = this.closest("mui-table");
+    const hasActionInBody = Boolean(table instanceof HTMLElement && this.hasActionCellInBody(table));
+    const isPlaceholderCell = lastCell.children.length === 0 && lastCell.textContent?.trim() === "";
 
-    if (!isPlaceholder) {
+    if (!hasActionInBody || !isPlaceholderCell) {
       this.clearActionPlaceholderStyles(lastCell);
       return;
     }
 
-    // Reserve action-column space for empty last cells (e.g. heading rows)
-    // when body rows carry action controls.
+    lastCell.setAttribute("data-action-placeholder", "");
     lastCell.style.width = "var(--row-action-size)";
     lastCell.style.height = "var(--row-action-size)";
     lastCell.style.display = "inline-flex";
@@ -100,17 +111,35 @@ class MuiRow extends HTMLElement {
 
   private render() {
     if (!this.shadowRoot) return;
+    const alignY = this.getAttribute("align-y") || this.getAttribute("aligny") || "center";
+    const space = this.getAttribute("space") || "var(--space-500)";
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
       :host {
         display: grid;
         grid-template-columns: ${this.getAttribute("columns")};
-        grid-gap: var(--space-500);
+        grid-gap: ${space};
         margin-bottom: var(--space-000);
-        padding: var(--space-300) var(--space-000);
+        padding: var(--space-300) var(--space-400);
         border-top: var(--border-thin);
-        align-items: center;
+        align-items: ${alignY};
         min-height: var(--row-min-height, var(--row-action-size, var(--row-action-xs)));
+      }
+      @media (min-width: 768px) {
+        :host {
+          padding: var(--space-300) var(--space-600);
+        }
+      }
+      :host([in-card]),
+      :host([card-slot]) {
+        border-top-color: color-mix(in srgb, var(--border-color) 50%, transparent);
+        padding-inline: var(--card-layout-inline-space, var(--space-500));
+      }
+      @media (min-width: 768px) {
+        :host([in-card]),
+        :host([card-slot]) {
+          padding-inline: var(--card-layout-inline-space, var(--space-600));
+        }
       }
       :host(:not([size])) {
         --row-action-size: var(--row-action-m);

@@ -99,6 +99,30 @@ class MuiHint extends HTMLElement {
           top: 0;
           left: 0;
         }
+        :host([size="x-small"]) .tooltip {
+          font-size: var(--text-font-size-xxs);
+          line-height: var(--text-line-height-xxs);
+          padding: var(--space-025) var(--space-200);
+          border-radius: var(--radius-100);
+        }
+        :host([size="small"]) .tooltip {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+          padding: var(--space-050) var(--space-300);
+          border-radius: var(--radius-100);
+        }
+        :host([size="medium"]) .tooltip {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+          padding: var(--space-200) var(--space-300);
+          border-radius: var(--radius-200);
+        }
+        :host([size="large"]) .tooltip {
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+          padding: var(--space-200) var(--space-400);
+          border-radius: var(--radius-200);
+        }
         :host([closing-immediate]) .tooltip {
           transition-duration: 0ms;
         }
@@ -192,7 +216,9 @@ class MuiHint extends HTMLElement {
       return;
     }
 
-    const hasFocusableTrigger = triggerSlot.assignedElements({ flatten: true }).some((el) => this.isFocusableTrigger(el));
+    const hasFocusableTrigger = triggerSlot
+      .assignedElements({ flatten: true })
+      .some((el) => this.isFocusableTrigger(el));
     trigger.classList.toggle("is-interactive", hasFocusableTrigger);
 
     if (hasFocusableTrigger) {
@@ -269,7 +295,7 @@ class MuiHint extends HTMLElement {
     this.closeTimer = window.setTimeout(() => this.close(), 80);
   }
 
-  private open() {
+  open() {
     if (this.isDisabledOnCoarsePointer()) {
       this.close(true);
       return;
@@ -285,7 +311,7 @@ class MuiHint extends HTMLElement {
     document.addEventListener("pointerdown", this.boundDocPointer, true);
   }
 
-  private close(immediate = false) {
+  close(immediate = false) {
     if (this.openTimer) {
       window.clearTimeout(this.openTimer);
       this.openTimer = null;
@@ -310,14 +336,14 @@ class MuiHint extends HTMLElement {
 
     return Boolean(
       window.matchMedia?.("(pointer: coarse)").matches ||
-        window.matchMedia?.("(hover: none)").matches ||
-        navigator.maxTouchPoints > 0,
+      window.matchMedia?.("(hover: none)").matches ||
+      navigator.maxTouchPoints > 0,
     );
   }
 
   private portalTooltip() {
     const tooltip = this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null;
-    const contentSlot = this.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement | null;
+    const contentSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
     if (!tooltip || !contentSlot) return;
 
     this.ensurePortalStyles();
@@ -329,6 +355,7 @@ class MuiHint extends HTMLElement {
       document.body.appendChild(this.portalTooltipElement);
     }
 
+    this.portalTooltipElement.dataset.size = this.getAttribute("size") || "medium";
     this.portalTooltipElement.innerHTML = "";
     contentSlot.assignedNodes({ flatten: true }).forEach((node) => {
       this.portalTooltipElement?.appendChild(node.cloneNode(true));
@@ -371,6 +398,30 @@ class MuiHint extends HTMLElement {
         top: 0;
         left: 0;
       }
+      .mui-hint-portal[data-size="x-small"] {
+        font-size: var(--text-font-size-xxs);
+        line-height: var(--text-line-height-xxs);
+        padding: var(--space-025) var(--space-200);
+        border-radius: var(--radius-100);
+      }
+      .mui-hint-portal[data-size="small"] {
+        font-size: var(--text-font-size-xs);
+        line-height: var(--text-line-height-xs);
+        padding: var(--space-050) calc(var(--space-200) + var(--space-025));
+        border-radius: var(--radius-100);
+      }
+      .mui-hint-portal[data-size="medium"] {
+        font-size: var(--text-font-size-xs);
+        line-height: var(--text-line-height-xs);
+        padding: var(--space-100) var(--space-300);
+        border-radius: var(--radius-200);
+      }
+      .mui-hint-portal[data-size="large"] {
+        font-size: var(--text-font-size-s);
+        line-height: var(--text-line-height-s);
+        padding: var(--space-200) var(--space-400);
+        border-radius: var(--radius-200);
+      }
       .mui-hint-portal.is-open {
         opacity: 1;
         pointer-events: auto;
@@ -382,17 +433,17 @@ class MuiHint extends HTMLElement {
 
   private syncPortalStyles(tooltip: HTMLElement) {
     const styles = window.getComputedStyle(this);
-    ["--hint-background", "--hint-border-color", "--hint-max-width", "--hint-shadow", "--hint-text-color"].forEach((property) => {
-      const value = styles.getPropertyValue(property);
-      if (value) tooltip.style.setProperty(property, value);
-    });
+    ["--hint-background", "--hint-border-color", "--hint-max-width", "--hint-shadow", "--hint-text-color"].forEach(
+      (property) => {
+        const value = styles.getPropertyValue(property);
+        if (value) tooltip.style.setProperty(property, value);
+      },
+    );
   }
 
   private positionTooltip() {
     const triggerWrapper = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
-    const tooltip =
-      this.portalTooltipElement ||
-      (this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null);
+    const tooltip = this.portalTooltipElement || (this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null);
     if (!tooltip || !triggerWrapper) return;
 
     const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
@@ -435,9 +486,10 @@ class MuiHint extends HTMLElement {
       if (spaces[opposite] >= required[opposite]) {
         resolved = opposite;
       } else {
-        resolved = placementOrder.reduce((best, placement) =>
-          spaces[placement] > spaces[best] ? placement : best
-        , preferred);
+        resolved = placementOrder.reduce(
+          (best, placement) => (spaces[placement] > spaces[best] ? placement : best),
+          preferred,
+        );
       }
     }
 

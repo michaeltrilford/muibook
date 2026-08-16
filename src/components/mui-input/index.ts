@@ -16,6 +16,10 @@ class MuiInput extends HTMLElement {
       "optional",
       "max-length",
       "size",
+      "align",
+      "input-mode",
+      "pattern",
+      "step",
       "slot-layout",
       "autofocus",
       "menu-slot",
@@ -26,6 +30,8 @@ class MuiInput extends HTMLElement {
   }
 
   _changeHandler?: (e: Event) => void;
+  _beforeInputHandler?: (e: InputEvent) => void;
+  _pasteHandler?: (e: ClipboardEvent) => void;
   _slotResizeObserver?: ResizeObserver;
   private _inputId = `mui-input-${Math.random().toString(36).slice(2, 11)}`;
   private _documentPointerDownHandler = (event: PointerEvent) => {
@@ -100,6 +106,38 @@ class MuiInput extends HTMLElement {
       return;
     }
 
+    if (name === "align") {
+      inputEl.style.textAlign = newValue === "end" || newValue === "right" ? "right" : newValue === "center" ? "center" : "left";
+      return;
+    }
+
+    if (name === "input-mode") {
+      if (newValue) {
+        inputEl.setAttribute("inputmode", newValue);
+      } else {
+        inputEl.removeAttribute("inputmode");
+      }
+      return;
+    }
+
+    if (name === "pattern") {
+      if (newValue) {
+        inputEl.setAttribute("pattern", newValue);
+      } else {
+        inputEl.removeAttribute("pattern");
+      }
+      return;
+    }
+
+    if (name === "step") {
+      if (newValue) {
+        inputEl.setAttribute("step", newValue);
+      } else {
+        inputEl.removeAttribute("step");
+      }
+      return;
+    }
+
     if (
       [
         "type",
@@ -112,6 +150,7 @@ class MuiInput extends HTMLElement {
         "optional",
         "max-length",
         "size",
+        "align",
         "slot-layout",
         "padding-block",
         "padding-inline",
@@ -124,9 +163,17 @@ class MuiInput extends HTMLElement {
 
   cleanupListeners() {
     const inputEl = this.shadowRoot?.querySelector("input");
-    if (inputEl && this._changeHandler) {
-      inputEl.removeEventListener("change", this._changeHandler);
-      inputEl.removeEventListener("input", this._changeHandler);
+    if (inputEl) {
+      if (this._changeHandler) {
+        inputEl.removeEventListener("change", this._changeHandler);
+        inputEl.removeEventListener("input", this._changeHandler);
+      }
+      if (this._beforeInputHandler) {
+        inputEl.removeEventListener("beforeinput", this._beforeInputHandler as EventListener);
+      }
+      if (this._pasteHandler) {
+        inputEl.removeEventListener("paste", this._pasteHandler as EventListener);
+      }
     }
   }
 
@@ -139,9 +186,48 @@ class MuiInput extends HTMLElement {
     // Clean up old listeners
     this.cleanupListeners();
 
+    this._beforeInputHandler = (e: InputEvent) => {
+      const mode = this.getAttribute("input-mode");
+      if (!mode || (mode !== "decimal" && mode !== "numeric")) return;
+      if (e.data) {
+        const allowed = mode === "decimal" ? /^[0-9.,-]+$/ : /^[0-9]+$/;
+        if (!allowed.test(e.data)) {
+          e.preventDefault();
+        }
+      }
+    };
+
+    this._pasteHandler = (e: ClipboardEvent) => {
+      const mode = this.getAttribute("input-mode");
+      if (!mode || (mode !== "decimal" && mode !== "numeric")) return;
+      const text = e.clipboardData?.getData("text") || "";
+      if (!text) return;
+      const allowed = mode === "decimal" ? /^[0-9.,-]+$/ : /^[0-9]+$/;
+      if (!allowed.test(text)) {
+        e.preventDefault();
+        const cleaned = mode === "decimal" ? text.replace(/[^0-9.,-]/g, "") : text.replace(/[^0-9]/g, "");
+        if (cleaned) {
+          const start = inputEl.selectionStart ?? inputEl.value.length;
+          const end = inputEl.selectionEnd ?? inputEl.value.length;
+          const prev = inputEl.value;
+          inputEl.value = prev.slice(0, start) + cleaned + prev.slice(end);
+          inputEl.selectionStart = inputEl.selectionEnd = start + cleaned.length;
+          inputEl.dispatchEvent(new Event("input", { bubbles: true, composed: true }));
+        }
+      }
+    };
+
     // Change/Input handler - dispatching both for React compatibility
     this._changeHandler = (e: Event) => {
       const target = e.target as HTMLInputElement;
+
+      const mode = this.getAttribute("input-mode");
+      if (mode === "decimal" || mode === "numeric") {
+        const cleaned = mode === "decimal" ? target.value.replace(/[^0-9.,-]/g, "") : target.value.replace(/[^0-9]/g, "");
+        if (cleaned !== target.value) {
+          target.value = cleaned;
+        }
+      }
 
       // Update host attribute
       this.setAttribute("value", target.value);
@@ -159,6 +245,8 @@ class MuiInput extends HTMLElement {
     };
 
     // Attach listeners
+    inputEl.addEventListener("beforeinput", this._beforeInputHandler as EventListener);
+    inputEl.addEventListener("paste", this._pasteHandler as EventListener);
     inputEl.addEventListener("change", this._changeHandler);
     inputEl.addEventListener("input", this._changeHandler);
     this.updateCharacterCount();
@@ -209,7 +297,9 @@ class MuiInput extends HTMLElement {
       const beforeSlot = this.shadowRoot?.querySelector('slot[name="before"]') as HTMLSlotElement | null;
       const afterSlot = this.shadowRoot?.querySelector('slot[name="after"]') as HTMLSlotElement | null;
       const insideBeforeSlot = this.shadowRoot?.querySelector('slot[name="inside-before"]') as HTMLSlotElement | null;
+      const insideStartSlot = this.shadowRoot?.querySelector('slot[name="inside-start"]') as HTMLSlotElement | null;
       const insideAfterSlot = this.shadowRoot?.querySelector('slot[name="inside-after"]') as HTMLSlotElement | null;
+      const insideEndSlot = this.shadowRoot?.querySelector('slot[name="inside-end"]') as HTMLSlotElement | null;
       const hintSlot = this.shadowRoot?.querySelector('slot[name="hint"]') as HTMLSlotElement | null;
       const slotMinHeightMap: Record<string, string> = {
         "x-small": "var(--action-size-x-small)",
@@ -290,21 +380,25 @@ class MuiInput extends HTMLElement {
       };
       const inlineBadgeSizeMap: Record<string, string> = {
         "x-small": "xx-small",
-        small: "x-small",
-        medium: "small",
-        large: "medium",
+        small: "small",
+        medium: "medium",
+        large: "large",
       };
       const inlineIconSize = inlineIconSizeMap[normalizedSize] || "x-small";
-      const inlineBadgeSize = inlineBadgeSizeMap[normalizedSize] || "small";
+      const inlineBadgeSize = inlineBadgeSizeMap[normalizedSize] || "medium";
 
       const updateInlineSlot = (slot: HTMLSlotElement | null) => {
         if (!slot) return;
+        let slotHasBadge = false;
         slot.assignedNodes({ flatten: true }).forEach((node: Node) => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
           const el = node as HTMLElement;
           const tagName = el.tagName.toLowerCase();
           if (tagName === "mui-hint") {
             el.removeAttribute("aria-hidden");
+            if (el.querySelector("mui-badge") || el.getAttribute("trigger") === "badge") {
+              slotHasBadge = true;
+            }
             return;
           }
           if (tagName.startsWith("mui-icon-")) {
@@ -312,13 +406,34 @@ class MuiInput extends HTMLElement {
           }
           if (tagName === "mui-badge") {
             el.setAttribute("size", inlineBadgeSize);
+            slotHasBadge = true;
+          }
+          if (tagName === "mui-body") {
+            const bodySizeMap: Record<string, string> = {
+              "x-small": "x-small",
+              small: "small",
+              medium: "medium",
+              large: "large",
+            };
+            if (!el.hasAttribute("size")) {
+              el.setAttribute("size", bodySizeMap[normalizedSize] || "medium");
+            }
+            if (!el.hasAttribute("variant")) {
+              el.setAttribute("variant", "secondary");
+            }
           }
           el.setAttribute("aria-hidden", "true");
         });
+        if (slotHasBadge) {
+          const container = slot.closest(".inside-before-slot, .inside-after-cluster");
+          container?.classList.add("has-badge");
+        }
       };
 
       updateInlineSlot(insideBeforeSlot);
+      updateInlineSlot(insideStartSlot);
       updateInlineSlot(insideAfterSlot);
+      updateInlineSlot(insideEndSlot);
 
       if (hintSlot) {
         const hintIconSizeMap: Record<string, string> = {
@@ -329,18 +444,22 @@ class MuiInput extends HTMLElement {
         };
         const hintBadgeSizeMap: Record<string, string> = {
           "x-small": "xx-small",
-          small: "x-small",
-          medium: "small",
-          large: "medium",
+          small: "small",
+          medium: "medium",
+          large: "large",
         };
         const iconSize = hintIconSizeMap[normalizedSize] || "x-small";
-        const badgeSize = hintBadgeSizeMap[normalizedSize] || "small";
+        const badgeSize = hintBadgeSizeMap[normalizedSize] || "medium";
+        let hintHasBadge = false;
         hintSlot.assignedNodes({ flatten: true }).forEach((node: Node) => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
           const el = node as HTMLElement;
           const tagName = el.tagName.toLowerCase();
           if (tagName === "mui-hint") {
             el.removeAttribute("aria-hidden");
+            if (el.querySelector("mui-badge") || el.getAttribute("trigger") === "badge") {
+              hintHasBadge = true;
+            }
             return;
           }
           if (tagName.startsWith("mui-icon-") && !el.hasAttribute("size")) {
@@ -348,9 +467,13 @@ class MuiInput extends HTMLElement {
           }
           if (tagName === "mui-badge" && !el.hasAttribute("size")) {
             el.setAttribute("size", badgeSize);
+            hintHasBadge = true;
           }
           el.setAttribute("aria-hidden", "true");
         });
+        if (hintHasBadge) {
+          hintSlot.closest(".inside-after-cluster")?.classList.add("has-badge");
+        }
       }
 
       this._slotResizeObserver?.disconnect();
@@ -427,11 +550,16 @@ class MuiInput extends HTMLElement {
     const wrapperClass = slotLayout === "stack-mobile" ? "input-wrapper stack-mobile" : "input-wrapper";
 
     // ADD-ON
-    const hasBefore = this.querySelector('[slot="before"]') !== null;
-    const hasAfter = this.querySelector('[slot="after"]') !== null;
-    const hasInsideBefore = this.querySelector('[slot="inside-before"]') !== null;
-    const hasInsideAfter = this.querySelector('[slot="inside-after"]') !== null;
+    const hasBefore = this.querySelector('[slot="before"], [slot="start"]') !== null;
+    const hasAfter = this.querySelector('[slot="after"], [slot="end"]') !== null;
+    const hasInsideBefore = this.querySelector('[slot="inside-before"], [slot="inside-start"]') !== null;
+    const hasInsideAfter = this.querySelector('[slot="inside-after"], [slot="inside-end"]') !== null;
     const hasHint = this.querySelector('[slot="hint"]') !== null;
+    const align = this.getAttribute("align") || "start";
+    const textAlign = align === "end" || align === "right" ? "right" : align === "center" ? "center" : "left";
+    const inputMode = this.getAttribute("input-mode") || "";
+    const pattern = this.getAttribute("pattern") || "";
+    const step = this.getAttribute("step") || "";
     const inputClasses = [
       variantClass,
       hasBefore ? "before" : "",
@@ -449,6 +577,7 @@ class MuiInput extends HTMLElement {
           display: inline-block;
           width: 100%;
           container-type: inline-size;
+          text-align: left;
           --input-inline-offset: var(--space-300);
           --input-inline-gap: var(--space-100);
         }
@@ -486,6 +615,7 @@ class MuiInput extends HTMLElement {
           font-weight: var(--font-weight-medium);
           margin-bottom: var(--space-100);
           color: var(--text-color);
+          text-align: left;
         }
         :host([size="x-small"]) label {
           font-size: var(--text-font-size-xs);
@@ -508,6 +638,7 @@ class MuiInput extends HTMLElement {
         }
         .input-description {
           margin-block-end: var(--space-100);
+          text-align: left;
         }
         :host([size="medium"]) .input-description,
         :host([size="large"]) .input-description {
@@ -516,7 +647,9 @@ class MuiInput extends HTMLElement {
         .label-with-optional {
           display: flex;
           align-items: center;
+          justify-content: flex-start;
           gap: var(--space-100);
+          text-align: left;
         }
         .input-wrapper {
           display: flex;
@@ -579,6 +712,44 @@ class MuiInput extends HTMLElement {
           gap: var(--space-100);
           overflow: visible;
           flex: 0 0 auto;
+        }
+        .inside-after-slot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-100);
+          overflow: visible;
+          flex: 0 0 auto;
+        }
+        .inside-before-slot.has-badge {
+          left: var(--space-300);
+        }
+        .inside-after-cluster.has-badge {
+          right: var(--space-300);
+        }
+        :host([size="x-small"]) .inside-before-slot.has-badge {
+          left: var(--space-100);
+        }
+        :host([size="x-small"]) .inside-after-cluster.has-badge {
+          right: var(--space-100);
+        }
+        :host([size="small"]) .inside-before-slot.has-badge {
+          left: var(--space-200);
+        }
+        :host([size="small"]) .inside-after-cluster.has-badge {
+          right: var(--space-200);
+        }
+        :host([size="medium"]) .inside-before-slot.has-badge {
+          left: var(--space-300);
+        }
+        :host([size="medium"]) .inside-after-cluster.has-badge {
+          right: var(--space-300);
+        }
+        :host([size="large"]) .inside-before-slot.has-badge {
+          left: var(--space-400);
+        }
+        :host([size="large"]) .inside-after-cluster.has-badge {
+          right: var(--space-400);
         }
         .hint-slot {
           pointer-events: none;
@@ -657,14 +828,42 @@ class MuiInput extends HTMLElement {
         .meta {
           display: flex;
           justify-content: flex-end;
-          margin-top: var(--space-100);
           min-height: 1.8rem;
         }
+        :host([size="x-small"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="small"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="medium"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="large"]) .meta {
+          margin-top: var(--space-200);
+        }
         .char-count {
+          color: var(--text-color-secondary);
+          font-variant-numeric: tabular-nums;
+        }
+        :host([size="x-small"]) .char-count {
+          font-size: var(--text-font-size-xxs);
+          line-height: var(--text-line-height-xxs);
+        }
+        :host([size="small"]) .char-count {
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
-          color: var(--text-color);
-          opacity: 0.7;
+          margin-inline-end: var(--space-025);
+        }
+        :host([size="medium"]) .char-count {
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+          margin-inline-end: var(--space-050);
+        }
+        :host([size="large"]) .char-count {
+          font-size: var(--text-font-size-m);
+          line-height: var(--text-line-height-m);
+          margin-inline-end: var(--space-100);
         }
         .optional {
           color: var(--text-color-secondary);
@@ -715,6 +914,25 @@ class MuiInput extends HTMLElement {
           border-color: var(--form-default-border-color);
           color: var(--form-default-text-color);
           background: var(--input-background);
+          text-align: left;
+        }
+        :host([align="end"]) input,
+        :host([align="right"]) input {
+          text-align: right;
+        }
+        :host([align="center"]) input {
+          text-align: center;
+        }
+        :host([align="start"]) input,
+        :host([align="left"]) input {
+          text-align: left;
+        }
+        :host([input-mode="decimal"]) input,
+        :host([input-mode="numeric"]) input,
+        :host([type="number"]) input,
+        :host([align="end"]) input,
+        :host([align="right"]) input {
+          font-variant-numeric: tabular-nums;
         }
         input.size-x-small {
           --input-focus-outline-default: var(--outline-thin);
@@ -1005,15 +1223,19 @@ class MuiInput extends HTMLElement {
       <div class="input-shell" style="${paddingInline ? `--input-inline-offset: ${paddingInline};` : ""}">
         <div class="inside-before-slot">
           <slot name="inside-before"></slot>
+          <slot name="inside-start"></slot>
         </div>
         <input
-          style="${paddingBlock ? `--input-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--input-padding-inline: ${paddingInline};` : ""}"
+          style="${paddingBlock ? `--input-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--input-padding-inline: ${paddingInline};` : ""}${textAlign !== "left" ? `text-align: ${textAlign};` : ""}"
           class="${[inputClasses, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
           type="${type}"
           name="${name}"
           id="${id}"
           value="${value}"
           placeholder="${placeholder}"
+          ${inputMode ? `inputmode="${inputMode}"` : ""}
+          ${pattern ? `pattern="${pattern}"` : ""}
+          ${step ? `step="${step}"` : ""}
           ${disabled ? 'disabled aria-disabled="true"' : ""}
           ${maxLength ? `maxlength="${maxLength}"` : ""}
           ${hasDescription ? `aria-describedby="${descriptionId}"` : ""}
@@ -1027,6 +1249,7 @@ class MuiInput extends HTMLElement {
             hasInsideAfter
               ? `<div class="inside-after-slot">
             <slot name="inside-after"></slot>
+            <slot name="inside-end"></slot>
           </div>`
               : ""
           }

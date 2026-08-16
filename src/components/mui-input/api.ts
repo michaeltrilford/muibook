@@ -55,6 +55,27 @@ export const muiApi = {
         description: "Input and slotted affordance size scale.",
       },
       {
+        name: "align",
+        type: { text: '"start" | "center" | "end"' },
+        default: "start",
+        description: "Text alignment inside the input. Use 'end' for quantitative values like amounts, rates, balances, and quantities.",
+      },
+      {
+        name: "input-mode",
+        type: { text: '"decimal" | "numeric" | "text" | "email" | "url" | "search" | "tel" | "none"' },
+        description: "Virtual keyboard hint for mobile/touch devices. Use 'decimal' for monetary amounts and quantities.",
+      },
+      {
+        name: "pattern",
+        type: { text: "string" },
+        description: "Regex pattern for native input value validation.",
+      },
+      {
+        name: "step",
+        type: { text: "string | number" },
+        description: "Granularity/step constraint for numeric or decimal input values.",
+      },
+      {
         name: "slot-layout",
         type: { text: '"inline" | "stack-mobile"' },
         default: "inline",
@@ -82,8 +103,10 @@ export const muiApi = {
       },
       { name: "before", description: "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },
       { name: "after", description: "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },
-      { name: "inside-before", description: "Leading content displayed inside the input edge, such as an icon or badge." },
-      { name: "inside-after", description: "Trailing content displayed inside the input edge, such as an icon or badge." },
+      { name: "inside-before", description: "Leading content displayed inside the input edge, such as an icon, badge, or prefix text. Alias: `inside-start`." },
+      { name: "inside-start", description: "Leading content displayed inside the input edge, such as an icon, badge, or prefix text (e.g. currency symbol)." },
+      { name: "inside-after", description: "Trailing content displayed inside the input edge, such as an icon, badge, or suffix text. Alias: `inside-end`." },
+      { name: "inside-end", description: "Trailing content displayed inside the input edge, such as an icon, badge, or suffix text (e.g. currency code)." },
       { name: "hint", description: "Contextual hint content displayed inside the trailing input affordance area." },
     ],
     events: [

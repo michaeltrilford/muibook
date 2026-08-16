@@ -23,7 +23,7 @@ class MuiCardFooter extends HTMLElement {
         }
 
         :host([size="small"][inner-space]) {
-          padding: var(--space-200) var(--space-300);
+          padding: var(--space-300) var(--space-400);
         }
 
         :host([size="medium"][inner-space]) {

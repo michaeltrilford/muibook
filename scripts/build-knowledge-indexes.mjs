@@ -147,6 +147,13 @@ const resourceIndex = {
       kind: "skill-index",
       useWhen: "Choosing a deeper task-specific skill guide.",
     },
+    {
+      id: "typed-elements",
+      file: "typed-elements.d.ts",
+      mcpUri: "muibook://typed-elements",
+      kind: "framework-integration",
+      useWhen: "Typing and using Muibook Web Components directly in React/TSX projects via JSX IntrinsicElements augmentation.",
+    },
   ],
 };
 

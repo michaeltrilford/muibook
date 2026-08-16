@@ -26,6 +26,7 @@ class MuiIconRectangle extends HTMLElement {
     const colorMap: Record<string, string> = {
       default: "var(--icon-color-default)",
       inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
     };
 
     // Resolve color based on the provided variant or color attribute

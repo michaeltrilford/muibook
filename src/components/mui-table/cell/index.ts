@@ -1,6 +1,6 @@
 class MuiCell extends HTMLElement {
   static get observedAttributes() {
-    return ["align-y"];
+    return ["aligny", "alignx"];
   }
 
   constructor() {
@@ -18,16 +18,30 @@ class MuiCell extends HTMLElement {
   }
 
   render() {
+    const alignX = this.getAttribute("alignx") || this.getAttribute("align-x");
+    const justify =
+      alignX === "end" || alignX === "right"
+        ? "flex-end"
+        : alignX === "start" || alignX === "left"
+          ? "flex-start"
+          : alignX || "space-between";
+    const textAlign =
+      alignX === "end" || alignX === "right"
+        ? "right"
+        : alignX === "center"
+          ? "center"
+          : "left";
+
     this.shadowRoot!.innerHTML = /*html*/ `
     <style>
     :host {
       display: flex;
-      justify-content: space-between;
-      align-self: ${this.getAttribute("align-y") || "initial"};
-      text-align: left;
+      justify-content: ${justify};
+      align-self: ${this.getAttribute("aligny") || this.getAttribute("align-y") || "initial"};
+      text-align: ${textAlign};
       font-size: var(--row-cell-font-size, var(--text-font-size-m));
       line-height: var(--row-cell-line-height, var(--text-line-height-m));
-
+      min-width: 0;
     }
     .inner {
       display: inherit;
@@ -36,35 +50,6 @@ class MuiCell extends HTMLElement {
       align-items: inherit;
       justify-content: inherit;
     }
-    :host(*:first-of-type) {
-      padding-left: var(--space-400);
-    }
-    :host(*:last-of-type) {
-      padding-right: var(--space-400);
-    }
-
-    /* Card Slot (Supports: Table Cell, Accordion Block) */
-    :host([card-slot]:first-of-type) {
-      padding-left: var(--card-layout-inline-space, var(--space-500));
-    }
-    :host([card-slot]:last-of-type) {
-      padding-right: var(--card-layout-inline-space, var(--space-500));
-    }
-    @media (min-width: 768px) {
-      :host(*:first-of-type) {
-        padding-left: var(--space-600);
-      }
-      :host(*:last-of-type) {
-        padding-right: var(--space-600);
-      }
-      :host([card-slot]:first-of-type) {
-        padding-left: var(--card-layout-inline-space, var(--space-600));
-      }
-      :host([card-slot]:last-of-type) {
-        padding-right: var(--card-layout-inline-space, var(--space-600));
-      }
-    }
-
     :host([checkbox]) {
       width: auto;
       text-align: center;

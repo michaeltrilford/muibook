@@ -33,6 +33,7 @@ This helps clients such as Codex, Antigravity, Claude Code, and OpenCode choose 
 - `skills/style-web-components/SKILL.md` — installable guide for styling and theming Web Components.
 - `skills/style-web-components/SKILL.md` — public skill guide for theming Muibook components with tokens and CSS variables.
 - `skills/create-ux-guidelines/SKILL.md` — public skill guide for writing and reviewing component UX guidelines.
+- `typed-elements.d.ts` — React/TSX ambient declaration augmenting `JSX.IntrinsicElements` for native Web Component usage in React.
 - `AGENTS.md` — operating guidance for coding agents working with Muibook.
 - `DESIGN.md` — Muibook design language, token architecture, and theming guidance.
 - `index.ts` — convenience export for the knowledge files.

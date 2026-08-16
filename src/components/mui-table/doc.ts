@@ -190,6 +190,17 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
           ]
+        },
+        {
+          "key": "cell-content",
+          "title": "Cell content",
+          "description": "Shows one-line ellipsis truncation, two-line clamping, and right-aligned slotted content.",
+          "list": [
+            "Use truncate on mui-body for single-line overflow with ellipsis in table cells.",
+            "Use clamp on mui-body for bounded multi-line descriptions in table cells.",
+            "Use right-aligned slotted elements to anchor statuses or actions on the trailing edge.",
+            "Use space on mui-row to customize column gap spacing."
+          ]
         }
       ],
     },

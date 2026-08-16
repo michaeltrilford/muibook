@@ -382,14 +382,42 @@ class MuiTextarea extends HTMLElement {
         .meta {
           display: flex;
           justify-content: flex-end;
-          margin-top: var(--space-100);
           min-height: 1.8rem;
         }
+        :host([size="x-small"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="small"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="medium"]) .meta {
+          margin-top: var(--space-100);
+        }
+        :host([size="large"]) .meta {
+          margin-top: var(--space-200);
+        }
         .char-count {
+          color: var(--text-color-secondary);
+          font-variant-numeric: tabular-nums;
+        }
+        :host([size="x-small"]) .char-count {
+          font-size: var(--text-font-size-xxs);
+          line-height: var(--text-line-height-xxs);
+        }
+        :host([size="small"]) .char-count {
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
-          color: var(--text-color);
-          opacity: 0.7;
+          margin-inline-end: var(--space-025);
+        }
+        :host([size="medium"]) .char-count {
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+          margin-inline-end: var(--space-050);
+        }
+        :host([size="large"]) .char-count {
+          font-size: var(--text-font-size-m);
+          line-height: var(--text-line-height-m);
+          margin-inline-end: var(--space-100);
         }
         .optional {
           color: var(--text-color-secondary);

@@ -5,6 +5,10 @@
     {
       "name": "in-card",
       "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
+    },
+    {
+      "name": "card-slot",
+      "description": "Applied to a Table Row used in Card Body, allowing the row to use horizontal padding matched to the current Card size."
     }
   ]
 }

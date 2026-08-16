@@ -51,7 +51,8 @@ CRITICAL RULES:
 36. Use HStack wrap only for compact inline relationships such as actions, chips, metadata, legends, and small toolbar groups that remain meaningful across multiple horizontal lines. Wrapping does not turn HStack into VStack. Do not use a wrapping HStack as the default for main page regions, card collections, forms, or a deliberate horizontal-to-vertical layout change.
 37. When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive variant="container" with HStack in show-above and VStack in show-below only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate ids, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
 38. Before assigning any _Icon, inspect the available Muibook icon component names in the selected component knowledge or Custom Elements Manifest and use an exact existing mui-icon-* name. If no available icon semantically matches the requested concept, use _Icon with props.icon="mui-icon-rectangle" as the neutral Redactd fallback. Never invent an icon component or icon name.
-39. When composing page header bars, top app toolbars, or drawer headers with icon-only action triggers (such as Menu toggle, Search, Settings, Notifications, or circular action triggers), set shape="circle" on Button and provide an accessible aria-label. Tertiary is a quiet default, secondary provides a clearer action boundary (commonly useful for badged notifications), and primary is reserved for standout actions. Treat the Header Bar Composition Density Guide as starting-point guidance rather than a fixed recipe.`;
+39. When composing page header bars, top app toolbars, or drawer headers with icon-only action triggers (such as Menu toggle, Search, Settings, Notifications, or circular action triggers), set shape="circle" on Button and provide an accessible aria-label. Tertiary is a quiet default, secondary provides a clearer action boundary (commonly useful for badged notifications), and primary is reserved for standout actions. Treat the Header Bar Composition Density Guide as starting-point guidance rather than a fixed recipe.
+40. When embedding ComparisonChart or FinancialBarChart in a Card, use Card with size="none" and usage="grid", containing a direct child CardBody with size="none" wrapping the chart. Never use CardHeader or a table header above or inside the chart; ComparisonChart and FinancialBarChart provide their own native padded slot="header" region with divider strokes. Structure the chart header with an HStack (alignX="space-between", alignY="center", space="var(--space-300)"), placing the section Heading on the start/left and action controls (such as a small timeframe Dropdown with secondary Button trigger and Menu action items) on the end/right. Follow the Card-Embedded Comparison Chart fragment for the complete reference.`;
 
 const muiscanRules = `MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -62,6 +63,7 @@ const muiscanRules = `MUI SCAN NORMALIZATION RULES:
   - mui-button -> Button
   - mui-link -> Link
   - mui-input -> Input
+  - mui-color-input -> ColorInput
   - mui-select -> Select
   - mui-avatar-chip -> AvatarChip
   - mui-media-player -> MediaPlayer
@@ -119,6 +121,9 @@ const shellComposition = fs.readFileSync(path.join(__dirname, '../src/knowledge/
 // Read shared Avatar Chip profile action guidance
 const profileActions = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/json-profile-actions.md'), 'utf8');
 
+// Read shared Slat progress composition guidance
+const slatProgressComposition = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/slat-progress-composition.md'), 'utf8');
+
 // Read the shared design assets
 const designAssets = fs.readFileSync(path.join(__dirname, '../src/knowledge/fragments/design-assets.md'), 'utf8');
 
@@ -152,6 +157,8 @@ ${escapeTemplate(chartComposition)}
 ${escapeTemplate(shellComposition)}
 
 ${escapeTemplate(profileActions)}
+
+${escapeTemplate(slatProgressComposition)}
 
 ${escapeTemplate(designAssets)}
 \`;

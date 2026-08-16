@@ -256,6 +256,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Overlays">
           <app-navbar-link link="/dialog" title="Dialog"></app-navbar-link>
           <app-navbar-link link="/drawer" title="Drawer"></app-navbar-link>
+          <app-navbar-link link="/hint" title="Hint"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Forms">
@@ -264,6 +265,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/form-group" title="Form Group"></app-navbar-link>
           <app-navbar-link link="/field" title="Field"></app-navbar-link>
           <app-navbar-link link="/input" title="Input"></app-navbar-link>
+          <app-navbar-link link="/color-input" title="Color Input"></app-navbar-link>
           <app-navbar-link link="/textarea" title="Textarea"></app-navbar-link>
           <app-navbar-link link="/select" title="Select"></app-navbar-link>
           <app-navbar-link link="/checkbox" title="Checkbox"></app-navbar-link>
@@ -279,7 +281,6 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/file-upload" title="File Upload"></app-navbar-link>
           <app-navbar-link link="/addon" title="Add On"></app-navbar-link>
           <app-navbar-link link="/form-message" title="Form Message"></app-navbar-link>
-          <app-navbar-link link="/hint" title="Hint"></app-navbar-link>
           <app-navbar-link link="/progress" title="Progress"></app-navbar-link>
           <app-navbar-link link="/progress-ring" title="Progress Ring"></app-navbar-link>
         </app-navbar-section>

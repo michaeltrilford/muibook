@@ -28,6 +28,7 @@ export const muiDocs: MuiDocs = {
         "Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.",
         "In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.",
         "When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.",
+        "When used inside form inputs (such as Color Input), set usage='color-input' (or usage='input') to align the avatar dimensions and initials typography directly with action control sizes.",
       ],
     },
 
@@ -41,6 +42,7 @@ export const muiDocs: MuiDocs = {
         "Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.",
         "When using images, ensure they are clear and appropriately sized for the avatar component.",
         "For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.",
+        "When background-color is supplied as a hex code, the avatar automatically computes relative luminance and sets text initials to black (#000000) or white (#ffffff) for WCAG contrast.",
       ],
     },
 

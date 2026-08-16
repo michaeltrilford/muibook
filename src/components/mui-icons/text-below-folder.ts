@@ -25,6 +25,7 @@ class MuiIconTextBelowFolder extends HTMLElement {
     const colorMap: Record<string, string> = {
       default: "var(--icon-color-default)",
       inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
     };
 
     const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";

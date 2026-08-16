@@ -12,7 +12,7 @@ export const muiApi = {
         name: "color",
         type: { text: '"default" | "inverted" | string' },
         default: "default",
-        description: "Sets an icon color preset or accepts any valid CSS color.",
+        description: "Sets an icon color preset or accepts any valid CSS color. Respective validation icons accept their state preset; such as 'mui-icon-check' | 'mui-icon-warning' | 'mui-icon-attention'",
       },
     ],
   },

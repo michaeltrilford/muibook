@@ -17,6 +17,25 @@ type Color =
   | "blue"
   | "indigo";
 
+const normalizeHex = (value: string) => {
+  const trimmed = (value || "").trim();
+  if (/^#[0-9a-f]{6}$/i.test(trimmed)) return trimmed.toLowerCase();
+  if (/^#[0-9a-f]{3}$/i.test(trimmed)) {
+    return `#${trimmed[1]}${trimmed[1]}${trimmed[2]}${trimmed[2]}${trimmed[3]}${trimmed[3]}`.toLowerCase();
+  }
+  return "";
+};
+
+const readableText = (hex: string) => {
+  const value = normalizeHex(hex).slice(1);
+  if (!value) return "";
+  const channels = [0, 2, 4]
+    .map((offset) => parseInt(value.slice(offset, offset + 2), 16) / 255)
+    .map((channel) => (channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4));
+  const luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+  return luminance > 0.179 ? "#000000" : "#ffffff";
+};
+
 class MuiBadge extends HTMLElement {
   constructor() {
     super();
@@ -108,6 +127,8 @@ class MuiBadge extends HTMLElement {
         ? colorMap[namedColor]
         : colorAttr || "var(--badge-background, " + backgroundMap[variant] + ")";
     const textColor = textColorMap[variant];
+    const dynamicTextColor = colorAttr ? readableText(colorAttr) : "";
+    const finalTextColor = dynamicTextColor || textColor;
     const border = borderMap[variant];
     const ariaLive = ariaLiveMap[variant];
 
@@ -168,7 +189,7 @@ class MuiBadge extends HTMLElement {
         font-size: ${badgeSize.fontSize};
         line-height: ${badgeSize.lineHeight};
         font-weight: var(--badge-font-weight);
-        color: ${textColor};
+        color: var(--badge-text-color-override, ${finalTextColor});
         padding: ${badgeSize.padding};
         min-height: ${badgeSize.minHeight};
         min-width: ${badgeSize.minWidth};

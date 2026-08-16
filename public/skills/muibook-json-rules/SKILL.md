@@ -79,6 +79,7 @@ MUI SCAN NORMALIZATION RULES:
   - mui-button -> Button
   - mui-link -> Link
   - mui-input -> Input
+  - mui-color-input -> ColorInput
   - mui-select -> Select
   - mui-avatar-chip -> AvatarChip
   - mui-media-player -> MediaPlayer
@@ -187,6 +188,7 @@ FORMS AND INPUTS:
 - RadioGroup: name, value, label, description, size (x-small|small|medium|large), optional, hide-label, disabled; slot description supports rich Body content
 - Switch: label, checked, disabled, size (x-small|small|medium|large)
 - RangeInput: min, max, value, step, bubble, bubble-format (time), disabled
+- ColorInput: label, description, value, id, name, disabled, hide-label, hide-value, size (x-small|small|medium|large), gap, no-copy, copyable; slots description/before/after. Use for direct visual colour selection with a six-digit hexadecimal value. Slotted elements (such as mui-avatar, mui-badge, or custom swatches) automatically align to control height and inherit size.
 - ChipInput: label, placeholder, size (x-small|small|medium|large), placement (before|after), breakpoint, allow-custom, mobile-stack, hide-label, disabled, options, value, id
 - FileUpload: acceptedFileTypes, currentFileName
 - Addon: text, size (x-small|small|medium|large), slot (before|after), style

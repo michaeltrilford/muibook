@@ -13,7 +13,9 @@ class storyInput extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Input"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const attrsReference = JSON.stringify([
       {
         component: "mui-input",
@@ -155,232 +157,288 @@ class storyInput extends HTMLElement {
       </story-card>
 
       <story-card id="character-count" title="${storyMeta["character-count"].title}" description="${storyMeta["character-count"].description}" usage="${storyMeta["character-count"].usage}">
-        <div slot="body">
-          <mui-input label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
-        </div>
+        <mui-v-stack slot="body" space="var(--space-500)">
+          <mui-input size="x-small" label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
+          <mui-input size="small" label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
+          <mui-input size="medium" label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
+          <mui-input size="large" label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;
-          <br />
+          &lt;mui-input size="x-small" label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="small" label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="medium" label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="large" label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="before-add-on" title="${storyMeta["before-add-on"].title}" description="${storyMeta["before-add-on"].description}" usage="${storyMeta["before-add-on"].usage}">
-        <div slot="body">
+      <story-card id="slotted-add-on" title="${storyMeta["slotted-add-on"].title}" description="${storyMeta["slotted-add-on"].description}" usage="${storyMeta["slotted-add-on"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
           <mui-input label="Enter amount">
             <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-input label="Enter amount"&gt;
-          <br />
-
-          &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
-          <br />
-          &nbsp;&nbsp;&lt;/mui-addon&gt;
-          <br />
-
-          &lt;/mui-input&gt;
-          <br />
-        </story-code-block>
-      </story-card>
-
-      <story-card id="after-add-on" title="${storyMeta["after-add-on"].title}" description="${storyMeta["after-add-on"].description}" usage="${storyMeta["after-add-on"].usage}">
-        <div slot="body">
+          </mui-input>
           <mui-input label="Enter amount">
-            <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
-        </div>
+            <mui-addon slot="after"><mui-body>USD</mui-body></mui-addon>
+          </mui-input>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input label="Enter amount"&gt;
-          <br />
-
-          &nbsp;&nbsp;&lt;mui-addon slot="after"&gt;
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
-          <br />
-          &nbsp;&nbsp;&lt;/mui-addon&gt;
-          <br />
-
+          &lt;mui-input label="Enter amount"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-addon&gt;<br>
+          &lt;/mui-input&gt;<br><br>
+          &lt;mui-input label="Enter amount"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-addon slot="after"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-addon&gt;<br>
           &lt;/mui-input&gt;
-          <br />
         </story-code-block>
       </story-card>
 
-      <story-card id="before-select" title="${storyMeta["before-select"].title}" description="${storyMeta["before-select"].description}" usage="${storyMeta["before-select"].usage}">
-        <div slot="body">
+      <story-card id="slotted-select" title="${storyMeta["slotted-select"].title}" description="${storyMeta["slotted-select"].description}" usage="${storyMeta["slotted-select"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
           <mui-input type="search" label="Search">
             <mui-select
-              style="width: 120px;"
               slot="before"
               label="Filter"
               hide-label
-                options='[
-                {"value": "all", "label": "All"},
-                {"value": "images", "label": "Images"},
-                {"value": "video", "label": "Video"}
+              style="width: 100px;"
+              options='[
+                { "value": "all", "label": "All" },
+                { "value": "images", "label": "Images" },
+                { "value": "video", "label": "Video" }
               ]'>
             </mui-select>
-        </div>
+          </mui-input>
+
+          <mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Amount to transfer">
+            <mui-body slot="inside-start" variant="secondary" size="medium">$</mui-body>
+            <mui-select
+              slot="after"
+              label="Currency"
+              hide-label
+              value="aud"
+              style="width: 80px;"
+              options='[
+                { "value": "aud", "label": "AUD" },
+                { "value": "usd", "label": "USD" },
+                { "value": "jpy", "label": "JPY" }
+              ]'>
+            </mui-select>
+          </mui-input>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input type="search" label="Search"&gt;<br>
           &nbsp;&nbsp;&lt;mui-select<br>
           &nbsp;&nbsp;&nbsp;&nbsp;slot="before"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;label="Filter"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;hide-label<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;style="width: 120px;"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;style="width: 100px;"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;options='[<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "all", "label": "All" },<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "images", "label": "Images" },<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "video", "label": "Video" }<br>
           &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
           &nbsp;&nbsp;&lt;/mui-select&gt;<br>
-          &lt;/mui-input&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card id="after-select" title="${storyMeta["after-select"].title}" description="${storyMeta["after-select"].description}" usage="${storyMeta["after-select"].usage}">
-        <div slot="body">
-          <mui-input type="number" label="Amount to transfer">
-            <mui-select
-              style="width: 100px;"
-              slot="after"
-              label="Currency"
-              hide-label
-                options='[
-                {"value": "jpy", "label": "JPY"},
-                {"value": "usd", "label": "USD"}
-              ]'>
-            </mui-select>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-input type="number" label="Amount to transfer"&gt;<br>
+          &lt;/mui-input&gt;<br><br>
+          &lt;mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Amount to transfer"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-body slot="inside-start" variant="secondary" size="medium"&gt;$&lt;/mui-body&gt;<br>
           &nbsp;&nbsp;&lt;mui-select<br>
           &nbsp;&nbsp;&nbsp;&nbsp;slot="after"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;label="Currency"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;hide-label<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;style="width: 100px;"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;value="aud"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;style="width: 80px;"<br>
           &nbsp;&nbsp;&nbsp;&nbsp;options='[<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "jpy", "label": "JPY" },<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "usd", "label": "USD" }<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "aud", "label": "AUD" },<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "usd", "label": "USD" },<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "jpy", "label": "JPY" }<br>
           &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
           &nbsp;&nbsp;&lt;/mui-select&gt;<br>
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="button-before-and-after" title="${storyMeta["button-before-and-after"].title}" description="${storyMeta["button-before-and-after"].description}" usage="${storyMeta["button-before-and-after"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" type="search" label="Search docs">
-            <mui-button slot="before">Search</mui-button>
-          </mui-input>
-          <mui-input size="small" type="search" label="Search docs">
-            <mui-button slot="before">Search</mui-button>
-          </mui-input>
-          <mui-input size="medium" type="search" label="Search docs">
-            <mui-button slot="before">Search</mui-button>
-          </mui-input>
-          <mui-input size="large" type="search" label="Search docs">
-            <mui-button slot="before">Search</mui-button>
-          </mui-input>
-          <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-button slot="after">Copy</mui-button>
-          </mui-input>
-          <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-button slot="after">Copy</mui-button>
-          </mui-input>
-          <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-button slot="after">Copy</mui-button>
-          </mui-input>
-          <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-button slot="after">Copy</mui-button>
-          </mui-input>
+      <story-card id="slotted-button" title="${storyMeta["slotted-button"].title}" description="${storyMeta["slotted-button"].description}" usage="${storyMeta["slotted-button"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" type="search" label="Search docs">
+              <mui-button slot="before">Search</mui-button>
+            </mui-input>
+            <mui-input size="small" type="search" label="Search docs">
+              <mui-button slot="before">Search</mui-button>
+            </mui-input>
+            <mui-input size="medium" type="search" label="Search docs">
+              <mui-button slot="before">Search</mui-button>
+            </mui-input>
+            <mui-input size="large" type="search" label="Search docs">
+              <mui-button slot="before">Search</mui-button>
+            </mui-input>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-button slot="after">Copy</mui-button>
+            </mui-input>
+            <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-button slot="after">Copy</mui-button>
+            </mui-input>
+            <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-button slot="after">Copy</mui-button>
+            </mui-input>
+            <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-button slot="after">Copy</mui-button>
+            </mui-input>
+          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br>
-          &lt;/mui-input&gt;<br><br>
-          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br>
+          &lt;!-- Leading slotted button --&gt;<br />
+          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;!-- Trailing slotted button --&gt;<br />
+          &lt;mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="link-before-and-after" title="${storyMeta["link-before-and-after"].title}" description="${storyMeta["link-before-and-after"].description}" usage="${storyMeta["link-before-and-after"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" type="search" label="Search docs">
-            <mui-link href="/input" slot="before">Docs</mui-link>
-          </mui-input>
-          <mui-input size="small" type="search" label="Search docs">
-            <mui-link href="/input" slot="before">Docs</mui-link>
-          </mui-input>
-          <mui-input size="medium" type="search" label="Search docs">
-            <mui-link href="/input" slot="before">Docs</mui-link>
-          </mui-input>
-          <mui-input size="large" type="search" label="Search docs">
-            <mui-link href="/input" slot="before">Docs</mui-link>
-          </mui-input>
-          <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/input" slot="after">Help</mui-link>
-          </mui-input>
-          <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/input" slot="after">Help</mui-link>
-          </mui-input>
-          <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/input" slot="after">Help</mui-link>
-          </mui-input>
-          <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/input" slot="after">Help</mui-link>
-          </mui-input>
+      <story-card id="slotted-link" title="${storyMeta["slotted-link"].title}" description="${storyMeta["slotted-link"].description}" usage="${storyMeta["slotted-link"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" type="search" label="Search docs">
+              <mui-link href="/input" slot="before">Docs</mui-link>
+            </mui-input>
+            <mui-input size="small" type="search" label="Search docs">
+              <mui-link href="/input" slot="before">Docs</mui-link>
+            </mui-input>
+            <mui-input size="medium" type="search" label="Search docs">
+              <mui-link href="/input" slot="before">Docs</mui-link>
+            </mui-input>
+            <mui-input size="large" type="search" label="Search docs">
+              <mui-link href="/input" slot="before">Docs</mui-link>
+            </mui-input>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-link href="/input" slot="after">Help</mui-link>
+            </mui-input>
+            <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-link href="/input" slot="after">Help</mui-link>
+            </mui-input>
+            <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-link href="/input" slot="after">Help</mui-link>
+            </mui-input>
+            <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
+              <mui-link href="/input" slot="after">Help</mui-link>
+            </mui-input>
+          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br>
-          &lt;/mui-input&gt;<br><br>
-          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br>
+          &lt;!-- Leading slotted link --&gt;<br />
+          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" type="search" label="Search docs"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;!-- Trailing slotted link --&gt;<br />
+          &lt;mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="before-chip" title="${storyMeta["before-chip"].title}" description="${storyMeta["before-chip"].description}" usage="${storyMeta["before-chip"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" label="Search tags">
-            <mui-chip slot="before" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="small" label="Search tags">
-            <mui-chip slot="before" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="medium" label="Search tags">
-            <mui-chip slot="before" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="large" label="Search tags">
-            <mui-chip slot="before" dismiss>Tag</mui-chip>
-          </mui-input>
+      <story-card id="slotted-chip" title="${storyMeta["slotted-chip"].title}" description="${storyMeta["slotted-chip"].description}" usage="${storyMeta["slotted-chip"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Search tags">
+              <mui-chip slot="before" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="small" label="Search tags">
+              <mui-chip slot="before" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="medium" label="Search tags">
+              <mui-chip slot="before" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="large" label="Search tags">
+              <mui-chip slot="before" dismiss>Tag</mui-chip>
+            </mui-input>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Search tags">
+              <mui-chip slot="after" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="small" label="Search tags">
+              <mui-chip slot="after" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="medium" label="Search tags">
+              <mui-chip slot="after" dismiss>Tag</mui-chip>
+            </mui-input>
+            <mui-input size="large" label="Search tags">
+              <mui-chip slot="after" dismiss>Tag</mui-chip>
+            </mui-input>
+          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;!-- Leading slotted chip --&gt;<br />
           &lt;mui-input size="x-small" label="Search tags"&gt;<br />
           &nbsp;&nbsp;&lt;mui-chip slot="before" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
-          &lt;/mui-input&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card id="after-chip" title="${storyMeta["after-chip"].title}" description="${storyMeta["after-chip"].description}" usage="${storyMeta["after-chip"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" label="Search tags">
-            <mui-chip slot="after" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="small" label="Search tags">
-            <mui-chip slot="after" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="medium" label="Search tags">
-            <mui-chip slot="after" dismiss>Tag</mui-chip>
-          </mui-input>
-          <mui-input size="large" label="Search tags">
-            <mui-chip slot="after" dismiss>Tag</mui-chip>
-          </mui-input>
-        </mui-v-stack>
-        <story-code-block slot="footer" scrollable>
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="before" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="before" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="before" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;!-- Trailing slotted chip --&gt;<br />
           &lt;mui-input size="x-small" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="after" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="after" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="after" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Search tags"&gt;<br />
           &nbsp;&nbsp;&lt;mui-chip slot="after" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
@@ -430,46 +488,165 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="inside-before-icons" title="${storyMeta["inside-before-icons"].title}" description="${storyMeta["inside-before-icons"].description}" usage="${storyMeta["inside-before-icons"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" label="Search">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
+      <story-card id="aligned-end" title="${storyMeta["aligned-end"].title}" description="${storyMeta["aligned-end"].description}" usage="${storyMeta["aligned-end"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-input size="small" align="end" input-mode="decimal" label="Transfer Amount — s">
+            <mui-body slot="inside-start" variant="secondary" size="small">$</mui-body>
+            <mui-body slot="inside-end" variant="secondary" size="small">AUD</mui-body>
           </mui-input>
-          <mui-input size="small" label="Search">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
+          <mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Transfer Amount — m">
+            <mui-body slot="inside-start" variant="secondary" size="medium">$</mui-body>
+            <mui-body slot="inside-end" variant="secondary" size="medium">AUD</mui-body>
           </mui-input>
-          <mui-input size="medium" label="Search">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-input size="large" label="Search">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
+          <mui-input size="large" align="end" input-mode="decimal" value="1,250.00" label="Transfer Amount — l">
+            <mui-body slot="inside-start" variant="secondary" size="large">$</mui-body>
+            <mui-body slot="inside-end" variant="secondary" size="large">AUD</mui-body>
           </mui-input>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input size="medium" label="Search"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &lt;mui-input size="small" align="end" input-mode="decimal" label="Transfer Amount — s"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-start" variant="secondary" size="small"&gt;$&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-end" variant="secondary" size="small"&gt;AUD&lt;/mui-body&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Transfer Amount — m"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-start" variant="secondary" size="medium"&gt;$&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-end" variant="secondary" size="medium"&gt;AUD&lt;/mui-body&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" align="end" input-mode="decimal" value="1,250.00" label="Transfer Amount — l"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-start" variant="secondary" size="large"&gt;$&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="inside-end" variant="secondary" size="large"&gt;AUD&lt;/mui-body&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="inside-after-icons" title="${storyMeta["inside-after-icons"].title}" description="${storyMeta["inside-after-icons"].description}" usage="${storyMeta["inside-after-icons"].usage}">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-input size="x-small" label="Search">
-            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
-          </mui-input>
-          <mui-input size="small" label="Search">
-            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
-          </mui-input>
-          <mui-input size="medium" label="Search">
-            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
-          </mui-input>
-          <mui-input size="large" label="Search">
-            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
-          </mui-input>
+      <story-card id="inside-slotted-icons" title="${storyMeta["inside-slotted-icons"].title}" description="${storyMeta["inside-slotted-icons"].description}" usage="${storyMeta["inside-slotted-icons"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Search">
+              <mui-icon-search slot="inside-before"></mui-icon-search>
+              <mui-badge slot="inside-after" variant="neutral">⌘K</mui-badge>
+            </mui-input>
+            <mui-input size="small" label="Search">
+              <mui-icon-search slot="inside-before"></mui-icon-search>
+              <mui-badge slot="inside-after" variant="neutral">⌘K</mui-badge>
+            </mui-input>
+            <mui-input size="medium" label="Search">
+              <mui-icon-search slot="inside-before"></mui-icon-search>
+              <mui-badge slot="inside-after" variant="neutral">⌘K</mui-badge>
+            </mui-input>
+            <mui-input size="large" label="Search">
+              <mui-icon-search slot="inside-before"></mui-icon-search>
+              <mui-badge slot="inside-after" variant="neutral">⌘K</mui-badge>
+            </mui-input>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Search" variant="success">
+              <mui-icon-check color="success" slot="inside-after"></mui-icon-check>
+            </mui-input>
+            <mui-input size="small" label="Search" variant="warning">
+              <mui-icon-warning color="warning" slot="inside-after"></mui-icon-warning>
+            </mui-input>
+            <mui-input size="medium" label="Search" variant="error">
+              <mui-icon-attention color="error" slot="inside-after"></mui-icon-attention>
+            </mui-input>
+            <mui-input size="large" label="Search" variant="success">
+              <mui-icon-check color="success" slot="inside-after"></mui-icon-check>
+            </mui-input>
+          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;!-- Leading icon with trailing shortcut badge --&gt;<br />
+          &lt;mui-input size="x-small" label="Search"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="neutral"&gt;⌘K&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Search"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="neutral"&gt;⌘K&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
           &lt;mui-input size="medium" label="Search"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-icon-calendar slot="inside-after"&gt;&lt;/mui-icon-calendar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="neutral"&gt;⌘K&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Search"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="neutral"&gt;⌘K&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;!-- Trailing state validation icons --&gt;<br />
+          &lt;mui-input size="x-small" label="Search" variant="success"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-check color="success" slot="inside-after"&gt;&lt;/mui-icon-check&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Search" variant="warning"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-warning color="warning" slot="inside-after"&gt;&lt;/mui-icon-warning&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" label="Search" variant="error"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-attention color="error" slot="inside-after"&gt;&lt;/mui-icon-attention&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Search" variant="success"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-check color="success" slot="inside-after"&gt;&lt;/mui-icon-check&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="inside-slotted-badges" title="${storyMeta["inside-slotted-badges"].title}" description="${storyMeta["inside-slotted-badges"].description}" usage="${storyMeta["inside-slotted-badges"].usage}">
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Amount" align="end" input-mode="decimal" value="50.00">
+              <mui-badge slot="inside-before" variant="neutral">NZD</mui-badge>
+            </mui-input>
+            <mui-input size="small" label="Amount" align="end" input-mode="decimal" value="50.00">
+              <mui-badge slot="inside-before" variant="neutral">NZD</mui-badge>
+            </mui-input>
+            <mui-input size="medium" label="Amount" align="end" input-mode="decimal" value="50.00">
+              <mui-badge slot="inside-before" variant="neutral">NZD</mui-badge>
+            </mui-input>
+            <mui-input size="large" label="Amount" align="end" input-mode="decimal" value="50.00">
+              <mui-badge slot="inside-before" variant="neutral">NZD</mui-badge>
+            </mui-input>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-200)">
+            <mui-input size="x-small" label="Payment reference" value="INV-2026-0849">
+              <mui-badge slot="inside-after" variant="positive" color="green">Paid</mui-badge>
+            </mui-input>
+            <mui-input size="small" label="Payment reference" value="INV-2026-0849">
+              <mui-badge slot="inside-after" variant="positive" color="green">Paid</mui-badge>
+            </mui-input>
+            <mui-input size="medium" label="Payment reference" value="INV-2026-0849">
+              <mui-badge slot="inside-after" variant="positive" color="green">Paid</mui-badge>
+            </mui-input>
+            <mui-input size="large" label="Payment reference" value="INV-2026-0849">
+              <mui-badge slot="inside-after" variant="positive" color="green">Paid</mui-badge>
+            </mui-input>
+          </mui-v-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Leading currency/locale badge --&gt;<br />
+          &lt;mui-input size="x-small" label="Amount" align="end" input-mode="decimal" value="50.00"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-before" variant="neutral"&gt;NZD&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Amount" align="end" input-mode="decimal" value="50.00"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-before" variant="neutral"&gt;NZD&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" label="Amount" align="end" input-mode="decimal" value="50.00"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-before" variant="neutral"&gt;NZD&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Amount" align="end" input-mode="decimal" value="50.00"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-before" variant="neutral"&gt;NZD&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;!-- Trailing status badge --&gt;<br />
+          &lt;mui-input size="x-small" label="Payment reference" value="INV-2026-0849"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="positive" color="green"&gt;Paid&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="small" label="Payment reference" value="INV-2026-0849"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="positive" color="green"&gt;Paid&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="medium" label="Payment reference" value="INV-2026-0849"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="positive" color="green"&gt;Paid&lt;/mui-badge&gt;<br />
+          &lt;/mui-input&gt;<br /><br />
+          &lt;mui-input size="large" label="Payment reference" value="INV-2026-0849"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="inside-after" variant="positive" color="green"&gt;Paid&lt;/mui-badge&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
@@ -497,7 +674,9 @@ class storyInput extends HTMLElement {
 
       <story-card id="type-email" title="${storyMeta["type-email"].title}" description="${storyMeta["type-email"].description}" usage="${storyMeta["type-email"].usage}">
         <div slot="body">
-          <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com"></mui-input>
+          <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com">
+            <mui-button slot="after">Copy</mui-button>
+          </mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input
@@ -512,13 +691,17 @@ class storyInput extends HTMLElement {
           <br />
           &nbsp;&nbsp;value="user@example.com"
           <br />
-          &gt;&lt;/mui-input&gt;
+          &gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="type-password" title="${storyMeta["type-password"].title}" description="${storyMeta["type-password"].description}" usage="${storyMeta["type-password"].usage}">
         <div slot="body">
-          <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234"></mui-input>
+          <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234">
+            <mui-button slot="after">Show</mui-button>
+          </mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input
@@ -533,7 +716,9 @@ class storyInput extends HTMLElement {
           <br />
           &nbsp;&nbsp;value="abcde1234"
           <br />
-          &gt;&lt;/mui-input&gt;
+          &gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Show&lt;/mui-button&gt;<br />
+          &lt;/mui-input&gt;
           <br />
         </story-code-block>
       </story-card>
@@ -642,6 +827,52 @@ class storyInput extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    const slottedSelectCard = this.shadowRoot.querySelector("#slotted-select");
+    const selectEl = slottedSelectCard?.querySelector('mui-select[slot="after"]');
+    const symbolBody = slottedSelectCard?.querySelector('mui-body[slot="inside-start"]');
+
+    if (selectEl && symbolBody) {
+      const currencySymbolMap = {
+        aud: "$",
+        usd: "$",
+        jpy: "¥",
+      };
+      selectEl.addEventListener("change", (e) => {
+        const val = (e.detail?.value || selectEl.getAttribute("value") || "aud").toLowerCase();
+        symbolBody.textContent = currencySymbolMap[val] || "$";
+      });
+    }
+
+    const emailCard = this.shadowRoot.querySelector("#type-email");
+    const emailInput = emailCard?.querySelector("#email-input");
+    const copyBtn = emailCard?.querySelector('mui-button[slot="after"]');
+
+    if (emailInput && copyBtn) {
+      copyBtn.addEventListener("click", () => {
+        const innerInput = emailInput.shadowRoot?.querySelector("input");
+        const val = innerInput ? innerInput.value : emailInput.getAttribute("value") || "";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(val);
+        }
+        copyBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+        }, 2000);
+      });
+    }
+
+    const passwordCard = this.shadowRoot.querySelector("#type-password");
+    const passwordInput = passwordCard?.querySelector("#password-input");
+    const showBtn = passwordCard?.querySelector('mui-button[slot="after"]');
+
+    if (passwordInput && showBtn) {
+      showBtn.addEventListener("click", () => {
+        const isPassword = passwordInput.getAttribute("type") === "password";
+        passwordInput.setAttribute("type", isPassword ? "text" : "password");
+        showBtn.textContent = isPassword ? "Hide" : "Show";
+      });
+    }
   }
 }
 

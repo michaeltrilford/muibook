@@ -1,7 +1,26 @@
+const normalizeHex = (value: string) => {
+  const trimmed = (value || "").trim();
+  if (/^#[0-9a-f]{6}$/i.test(trimmed)) return trimmed.toLowerCase();
+  if (/^#[0-9a-f]{3}$/i.test(trimmed)) {
+    return `#${trimmed[1]}${trimmed[1]}${trimmed[2]}${trimmed[2]}${trimmed[3]}${trimmed[3]}`.toLowerCase();
+  }
+  return "";
+};
+
+const readableText = (hex: string) => {
+  const value = normalizeHex(hex).slice(1);
+  if (!value) return "";
+  const channels = [0, 2, 4]
+    .map((offset) => parseInt(value.slice(offset, offset + 2), 16) / 255)
+    .map((channel) => (channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4));
+  const luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+  return luminance > 0.179 ? "#000000" : "#ffffff";
+};
+
 class MuiAvatar extends HTMLElement {
   private _imageFailed?: boolean;
   static get observedAttributes() {
-    return ["label", "image", "size", "background", "background-color", "status", "status-label"];
+    return ["label", "image", "size", "background", "background-color", "status", "status-label", "usage"];
   }
 
   constructor() {
@@ -116,6 +135,8 @@ class MuiAvatar extends HTMLElement {
     const label = this.getAttribute("label");
     const image = this.getAttribute("image");
     const size = (this.getAttribute("size") || "medium").toLowerCase();
+    const usage = this.getAttribute("usage")?.toLowerCase() || "default";
+    const isInputUsage = usage === "color-input" || usage === "input";
     const background = this.getAttribute("background") || "neutral";
     const backgroundColorAttr = this.getAttribute("background-color");
     const status = this.getAttribute("status")?.trim().toLowerCase() || "";
@@ -136,7 +157,15 @@ class MuiAvatar extends HTMLElement {
       medium: "var(--avatar-medium)",
       large: "var(--avatar-large)",
     };
-    const resolvedSize = sizeMap[size] ?? sizeMap.medium;
+    const inputSizeMap: Record<string, string> = {
+      "x-small": "var(--action-size-x-small)",
+      small: "var(--action-size-small)",
+      medium: "var(--action-size-medium)",
+      large: "var(--action-size-large)",
+    };
+    const resolvedSize = isInputUsage
+      ? inputSizeMap[size] ?? inputSizeMap.medium
+      : sizeMap[size] ?? sizeMap.medium;
 
     // Font size map for initials
     const fontSizeMap: Record<string, string> = {
@@ -147,7 +176,15 @@ class MuiAvatar extends HTMLElement {
       medium: "var(--font-size-300)",
       large: "var(--font-size-400)",
     };
-    const resolvedFontSize = fontSizeMap[size] ?? fontSizeMap.medium;
+    const inputFontSizeMap: Record<string, string> = {
+      "x-small": "var(--font-size-100)",
+      small: "var(--font-size-200)",
+      medium: "var(--font-size-300)",
+      large: "var(--font-size-400)",
+    };
+    const resolvedFontSize = isInputUsage
+      ? inputFontSizeMap[size] ?? inputFontSizeMap.medium
+      : fontSizeMap[size] ?? fontSizeMap.medium;
 
     // Icon size map for slotted icons
     const iconSizeMap: Record<string, string> = {
@@ -171,6 +208,9 @@ class MuiAvatar extends HTMLElement {
         ? `var(--avatar-background-override, ${backgroundCSS})`
         : backgroundCSS;
 
+    const dynamicTextColor = backgroundColorAttr ? readableText(backgroundColorAttr) : "";
+    const fallbackTextColor = dynamicTextColor || "var(--text-color)";
+
     const styles = /*css*/ `
     :host {
       display: inline-flex;
@@ -188,7 +228,7 @@ class MuiAvatar extends HTMLElement {
       font-weight: var(--font-weight-bold);
       letter-spacing: -0.05rem;
       font-size: ${resolvedFontSize};
-      color: var(--avatar-text-color, var(--text-color));
+      color: var(--avatar-text-color, ${fallbackTextColor});
       background: ${finalBackground};
       overflow: hidden;
       align-items: center;

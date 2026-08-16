@@ -106,8 +106,9 @@ export const muiDocs: MuiDocs = {
         {
           "key": "color-options",
           "title": "Color Options",
-          "description": "The icons have default color of var(--black). The color can be inverted or a custom color applied.",
+          "description": "The icons have default color of var(--icon-color-default). The color can be inverted or a custom color applied.",
           "list": [
+            "Sets an icon color preset or accepts any valid CSS color. Respective validation icons accept their state preset; such as 'mui-icon-check' | 'mui-icon-warning' | 'mui-icon-attention'",
             "Prefer inherited semantic colour and use custom values only for specific visual meaning."
           ]
         }

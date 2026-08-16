@@ -900,12 +900,42 @@ class storyIcon extends HTMLElement {
           <story-icon-grid center theme="inverted">
             <mui-icon-menu slot="body" color="inverted"></mui-icon-menu>
             <mui-body size="x-small" weight="bold" class="color-options inverted" slot="body">Inverted Color</mui-body>
-            <mui-code slot="footer" scrollable> color="inverted"</mui-code>
+            <mui-code slot="footer" scrollable>color="inverted"</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-check slot="body" color="success"></mui-icon-check>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Success</mui-body>
+            <mui-code slot="footer" scrollable>color="success"</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-warning slot="body" color="warning"></mui-icon-warning>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Warning</mui-body>
+            <mui-code slot="footer" scrollable>color="warning"</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-attention slot="body" color="error"></mui-icon-attention>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Error</mui-body>
+            <mui-code slot="footer" scrollable>color="error"</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-info slot="body" color="info"></mui-icon-info>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Info</mui-body>
+            <mui-code slot="footer" scrollable>color="info"</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-search slot="body" color="secondary"></mui-icon-search>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Secondary</mui-body>
+            <mui-code slot="footer" scrollable>color="secondary"</mui-code>
           </story-icon-grid>
 
           <story-icon-grid center>
             <mui-icon-menu slot="body" color="var(--blue-500)"></mui-icon-menu>
-            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Custom Color</mui-body>
+            <mui-body size="x-small" weight="bold" class="color-options" slot="body">Custom Token</mui-body>
             <mui-code slot="footer" scrollable>color="var(--blue-500)"</mui-code>
           </story-icon-grid>
 

@@ -238,62 +238,64 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="before-select" title="${storyMeta["before-select"].title}" description="${storyMeta["before-select"].description}" usage="${storyMeta["before-select"].usage}">
-          <div slot="body">
+        <story-card id="slotted-select" title="${storyMeta["slotted-select"].title}" description="${storyMeta["slotted-select"].description}" usage="${storyMeta["slotted-select"].usage}">
+          <mui-v-stack slot="body" space="var(--space-400)">
             <mui-input type="search" label="Search">
               <mui-select
-                style="width: 120px;"
                 slot="before"
                 label="Filter"
                 hide-label
-                  options='[
-                  {"value": "all", "label": "All"},
-                  {"value": "images", "label": "Images"},
-                  {"value": "video", "label": "Video"}
+                style="width: 100px;"
+                options='[
+                  { "value": "all", "label": "All" },
+                  { "value": "images", "label": "Images" },
+                  { "value": "video", "label": "Video" }
                 ]'>
               </mui-select>
-          </div>
+            </mui-input>
+
+            <mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Amount to transfer">
+              <mui-body slot="inside-start" variant="secondary" size="medium">$</mui-body>
+              <mui-select
+                slot="after"
+                label="Currency"
+                hide-label
+                value="aud"
+                style="width: 80px;"
+                options='[
+                  { "value": "aud", "label": "AUD" },
+                  { "value": "usd", "label": "USD" },
+                  { "value": "jpy", "label": "JPY" }
+                ]'>
+              </mui-select>
+            </mui-input>
+          </mui-v-stack>
           <story-code-block slot="footer" scrollable>
             &lt;mui-input type="search" label="Search"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="before"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;label="Filter"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;hide-label<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;style="width: 120px;"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;style="width: 100px;"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;options='[<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "all", "label": "All" },<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "images", "label": "Images" },<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "video", "label": "Video" }<br>
             &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
             &nbsp;&nbsp;&lt;/mui-select&gt;<br>
-            &lt;/mui-input&gt;
-          </story-code-block>
-        </story-card>
-
-        <story-card id="after-select" title="${storyMeta["after-select"].title}" description="${storyMeta["after-select"].description}" usage="${storyMeta["after-select"].usage}">
-          <div slot="body">
-            <mui-input type="number" label="Amount to transfer">
-              <mui-select
-                style="width: 100px;"
-                slot="after"
-                label="Currency"
-                hide-label
-                  options='[
-                  {"value": "jpy", "label": "JPY"},
-                  {"value": "usd", "label": "USD"}
-                ]'>
-              </mui-select>
-          </div>
-          <story-code-block slot="footer" scrollable>
-            &lt;mui-input type="number" label="Amount to transfer"&gt;<br>
+            &lt;/mui-input&gt;<br><br>
+            &lt;mui-input size="medium" align="end" input-mode="decimal" value="1,250.00" label="Amount to transfer"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-body slot="inside-start" variant="secondary" size="medium"&gt;$&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="after"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;label="Currency"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;hide-label<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;style="width: 100px;"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;value="aud"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;style="width: 80px;"<br>
             &nbsp;&nbsp;&nbsp;&nbsp;options='[<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "jpy", "label": "JPY" },<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "usd", "label": "USD" }<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "aud", "label": "AUD" },<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "usd", "label": "USD" },<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ "value": "jpy", "label": "JPY" }<br>
             &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
             &nbsp;&nbsp;&lt;/mui-select&gt;<br>
             &lt;/mui-input&gt;
@@ -633,6 +635,22 @@ class storySelect extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    const slottedSelectCard = this.shadowRoot.querySelector("#slotted-select");
+    const selectEl = slottedSelectCard?.querySelector('mui-select[slot="after"]');
+    const symbolBody = slottedSelectCard?.querySelector('mui-body[slot="inside-start"]');
+
+    if (selectEl && symbolBody) {
+      const currencySymbolMap = {
+        aud: "$",
+        usd: "$",
+        jpy: "¥",
+      };
+      selectEl.addEventListener("change", (e) => {
+        const val = (e.detail?.value || selectEl.getAttribute("value") || "aud").toLowerCase();
+        symbolBody.textContent = currencySymbolMap[val] || "$";
+      });
+    }
   }
 }
 

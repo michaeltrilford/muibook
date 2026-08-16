@@ -115,6 +115,78 @@ class StoryHint extends HTMLElement {
           &lt;/mui-hint&gt;
         </story-code-block>
       </story-card>
+
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
+        <mui-v-stack slot="body" space="var(--space-500)" style="padding: var(--space-400);">
+          <mui-v-stack space="var(--space-300)">
+            <mui-heading level="none" size="4">Icon Triggers</mui-heading>
+            <mui-h-stack space="var(--space-400)" aligny="center">
+              <mui-hint size="large">
+                <mui-icon-info slot="trigger" color="default"></mui-icon-info>
+                Large trigger (medium icon)
+              </mui-hint>
+              <mui-hint size="medium">
+                <mui-icon-info slot="trigger" color="default"></mui-icon-info>
+                Medium trigger (small icon)
+              </mui-hint>
+              <mui-hint size="small">
+                <mui-icon-info slot="trigger" color="default"></mui-icon-info>
+                Small trigger (small icon)
+              </mui-hint>
+              <mui-hint size="x-small">
+                <mui-icon-info slot="trigger" color="default"></mui-icon-info>
+                X-small trigger (x-small icon)
+              </mui-hint>
+            </mui-h-stack>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-300)">
+            <mui-heading level="none" size="4">Badge Triggers</mui-heading>
+            <mui-h-stack space="var(--space-400)" aligny="center">
+              <mui-hint size="large">
+                <mui-badge slot="trigger">Large</mui-badge>
+                Large trigger (medium badge)
+              </mui-hint>
+              <mui-hint size="medium">
+                <mui-badge slot="trigger">Medium</mui-badge>
+                Medium trigger (small badge)
+              </mui-hint>
+              <mui-hint size="small">
+                <mui-badge slot="trigger">Small</mui-badge>
+                Small trigger (x-small badge)
+              </mui-hint>
+              <mui-hint size="x-small">
+                <mui-badge slot="trigger">XS</mui-badge>
+                X-small trigger (xx-small badge)
+              </mui-hint>
+            </mui-h-stack>
+          </mui-v-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Unsized icons inherit size from Hint --&gt;<br />
+          &lt;mui-hint size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot;&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;Large trigger<br />
+          &lt;/mui-hint&gt;<br /><br />
+          &lt;mui-hint size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot;&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;Medium trigger<br />
+          &lt;/mui-hint&gt;<br /><br />
+          &lt;mui-hint size=&quot;small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot;&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;Small trigger<br />
+          &lt;/mui-hint&gt;<br /><br />
+          &lt;mui-hint size=&quot;x-small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot;&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;X-small trigger<br />
+          &lt;/mui-hint&gt;<br /><br />
+          &lt;!-- Unsized badges inherit density from Hint --&gt;<br />
+          &lt;mui-hint size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot=&quot;trigger&quot;&gt;Large&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;Large badge trigger<br />
+          &lt;/mui-hint&gt;
+        </story-code-block>
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `

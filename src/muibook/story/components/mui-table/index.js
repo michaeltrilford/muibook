@@ -37,7 +37,8 @@ class storyTable extends HTMLElement {
 
     const Columns = `1fr 1fr 1fr`;
     const Columns_Action = `1fr 1fr auto`;
-    const Columns_ProgressTable = `1fr 1fr 1fr 126px`;
+    const Columns_ProgressTable = `1fr 1fr 1fr 10rem`;
+    const Columns_CellContent = `1fr 2fr 6rem`;
 
     const ProgressDesktopView = /*html*/ `
       <mui-table>
@@ -46,15 +47,15 @@ class storyTable extends HTMLElement {
             <mui-cell>File</mui-cell>
             <mui-cell>Due date</mui-cell>
             <mui-cell>Status</mui-cell>
-            <mui-cell>Automation</mui-cell>
+            <mui-cell alignx="center">Automation</mui-cell>
           </mui-row>
         </mui-row-group>
         <mui-row-group>
           <mui-row columns="${Columns_ProgressTable}">
-            <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell>
-            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
-            <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
-            <mui-cell align-y="center">
+            <mui-cell aligny="center"><mui-body size="small">Alison Max</mui-body></mui-cell>
+            <mui-cell aligny="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
+            <mui-cell aligny="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
+            <mui-cell aligny="center" alignx="center">
               <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="small"></mui-progress-ring>
             </mui-cell>
           </mui-row>
@@ -1106,6 +1107,82 @@ class storyTable extends HTMLElement {
               &lt;/mui-card&gt;
             </story-code-block>
           </story-card>
+
+          <story-card id="cell-content" title="${storyMeta["cell-content"].title}" description="${storyMeta["cell-content"].description}" usage="${storyMeta["cell-content"].usage}">
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_CellContent}" space="var(--space-800)">
+                    <mui-cell>Single-line truncation</mui-cell>
+                    <mui-cell>Two-line description</mui-cell>
+                    <mui-cell alignx="end">Status</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns_CellContent}" space="var(--space-800)">
+                    <mui-cell>
+                      <mui-body truncate>A long token value that should truncate with an ellipsis when space is constrained</mui-body>
+                    </mui-cell>
+                    <mui-cell>
+                      <mui-body clamp="2">This description can wrap, but it is limited to two lines so every row remains easy to scan.</mui-body>
+                    </mui-cell>
+                    <mui-cell aligny="center" alignx="end">
+                      <mui-status size="small" color="green">Active</mui-status>
+                    </mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns_CellContent}" space="var(--space-800)" aligny="start">
+                    <mui-cell>
+                      <mui-body truncate>A secondary token hash key that also truncates when cell width is narrow</mui-body>
+                    </mui-cell>
+                    <mui-cell>
+                      <mui-body clamp="2">This row aligns to the top using aligny="start", keeping multi-line copy and trailing status badges anchored to the first line.</mui-body>
+                    </mui-cell>
+                    <mui-cell alignx="end">
+                      <mui-status size="small" color="blue">Pending</mui-status>
+                    </mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              const Columns = &#96;1fr 2fr 6rem&#96;;<br>
+              <br>
+              &lt;mui-table&gt;<br>
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}" space="var(--space-800)"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Single-line truncation&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Two-line description&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell alignx="end"&gt;Status&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              &nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}" space="var(--space-800)"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body truncate&gt;A long token value that should truncate with an ellipsis when space is constrained&lt;/mui-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body clamp="2"&gt;This description can wrap, but it is limited to two lines so every row remains easy to scan.&lt;/mui-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell aligny="center" alignx="end"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size="small" color="green"&gt;Active&lt;/mui-status&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}" space="var(--space-800)" aligny="start"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body truncate&gt;A secondary token hash key that also truncates when cell width is narrow&lt;/mui-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body clamp="2"&gt;This row aligns to the top using aligny="start", keeping multi-line copy and trailing status badges anchored to the first line.&lt;/mui-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell alignx="end"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size="small" color="blue"&gt;Pending&lt;/mui-status&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              &lt;/mui-table&gt;
+            </story-code-block>
+          </story-card>
+
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `

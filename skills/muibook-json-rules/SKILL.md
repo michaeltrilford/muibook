@@ -67,6 +67,7 @@ CRITICAL RULES:
 37. When substantial side-by-side regions need a deliberate horizontal-to-vertical change based on available parent space, prefer a one-tree intrinsic Grid when the content can simply reflow. Use Responsive variant="container" with HStack in show-above and VStack in show-below only when the composition itself must change. Because the Responsive alternatives duplicate their child tree, do not use that swap for stateful controls, forms, duplicate ids, or content that must preserve one live instance; use a one-tree Grid or a purpose-built responsive component instead.
 38. Before assigning any _Icon, inspect the available Muibook icon component names in the selected component knowledge or Custom Elements Manifest and use an exact existing mui-icon-* name. If no available icon semantically matches the requested concept, use _Icon with props.icon="mui-icon-rectangle" as the neutral Redactd fallback. Never invent an icon component or icon name.
 39. When composing page header bars, top app toolbars, or drawer headers with icon-only action triggers (such as Menu toggle, Search, Settings, Notifications, or circular action triggers), set shape="circle" on Button and provide an accessible aria-label. Tertiary is a quiet default, secondary provides a clearer action boundary (commonly useful for badged notifications), and primary is reserved for standout actions. Treat the Header Bar Composition Density Guide as starting-point guidance rather than a fixed recipe.
+40. When embedding ComparisonChart or FinancialBarChart in a Card, use Card with size="none" and usage="grid", containing a direct child CardBody with size="none" wrapping the chart. Never use CardHeader or a table header above or inside the chart; ComparisonChart and FinancialBarChart provide their own native padded slot="header" region with divider strokes. Structure the chart header with an HStack (alignX="space-between", alignY="center", space="var(--space-300)"), placing the section Heading on the start/left and action controls (such as a small timeframe Dropdown with secondary Button trigger and Menu action items) on the end/right. Follow the Card-Embedded Comparison Chart fragment for the complete reference.
 
 ## MuiScan Normalization Rules
 
@@ -79,6 +80,7 @@ MUI SCAN NORMALIZATION RULES:
   - mui-button -> Button
   - mui-link -> Link
   - mui-input -> Input
+  - mui-color-input -> ColorInput
   - mui-select -> Select
   - mui-avatar-chip -> AvatarChip
   - mui-media-player -> MediaPlayer
@@ -142,7 +144,7 @@ SURFACES:
 - Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, height, z-index, panel-padding (default|none), hide-header, breakpoint, style. Use panel-padding="none" only when the drawer panel content owns its edge-to-edge spacing; when panel-padding="none" is used for custom action stacks, add padding="var(--space-400)" to the inner action VStack. It does not affect the adjacent page region. For overlay, push, and persistent drawers, use open plus side to control visibility and placement. Push and persistent drawers use a direct plain child wrapper in slot="page" for adjacent page content; left-open, right-open, left-width, right-width, and the left/right slots are workspace-only. Use hide-header when drawer body content or a global app header provides the shell chrome. For a single side panel opened by a menu icon, prefer variant="push"; do not use workspace unless the UI is an advanced editor/canvas shell with independent left and right panels. Drawer can be the root when it owns the full shell. When a global top header spans above it, make HeaderBar and Drawer siblings in a zero-space VStack root and size Drawer height to the remaining shell region. Preserve any explicit Drawer width and apply the same value to HeaderBar left-width so its menu/identity region aligns with the Drawer below; do not recreate HeaderBar layout with a Grid and manual shell styles.
 - Drawer workspace: variant=workspace, left-open, right-open, left-width, right-width, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, height; slots left/page/right. Use when an editor/canvas has independent left and right panels around a central page. The page slot is also valid for push and persistent drawers; left/right slots and the paired left/right controls are workspace-only. Keep direct slot wrappers plain in HTML exports when possible.
 - HeaderBar: size (x-small|small|medium|large), left-width, right-width, bottom-border, surface (default|transparent), resize-rail, resize-min-column-width, resize-min-main-width, style; slots left/default/right. Use for top application shell and workspace headers. Slot left for a drawer-aligned menu/branding column, slot right for a panel-aligned profile/action column, and the default slot for main page search/title/actions. When resize-rail is present, populated side columns receive keyboard-accessible rail tracks that update left-width or right-width and emit mui-header-bar-resize-start, mui-header-bar-resize, and mui-header-bar-resize-end. Synchronize adjacent Drawer width from these events and mirror Drawer width changes back to HeaderBar. Use Responsive around complete HeaderBar alternatives for viewport shell changes, and a nested Responsive variant=container in the main slot when search/actions should react to the main column's available width. HeaderBar applies usage=header-bar to descendant Buttons and Dropdowns. Unsized Dropdowns inherit HeaderBar size; standard profile Buttons fill the bar height with square edges; circular and Avatar-only Buttons keep their action footprint; and Avatar/AvatarChip content follows Button size with its avatar footprint mapped to the matching action token. Explicit child sizes remain valid overrides. Column padding is composable via slotted containers/stacks using their padding props. HeaderBar height does not otherwise prescribe child density; use the Header Bar Composition Density Guide for compact, standard, spacious, notification, search, Dropdown, and AvatarChip starting points.
-- Slat: variant (row|header|action), size (x-small|small|medium|large), col, space; child slots accessory/start/end. Medium is the default size. Action Slats pass size to their internal Button so the interactive row follows the matching action height. Always explicitly assign variant="row" for standard row slats unless creating a header (variant="header"), interactive row (variant="action"), or custom layout. When Slat is in SlatGroup or CardBody, variant ("row"|"header"|"action") is required to trigger automatic layout and alignment styles. Use col="1fr auto" by default; do not invent custom columns from an image prompt unless the source clearly requires non-default column tracks. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
+- Slat: variant (row|header|action), size (x-small|small|medium|large), col, space; child slots accessory/start/end. Medium is the default size. Action Slats pass size to their internal Button so the interactive row follows the matching action height. Always explicitly assign variant="row" for standard row slats unless creating a header (variant="header"), interactive row (variant="action"), or custom layout. When Slat is in SlatGroup or CardBody, variant ("row"|"header"|"action") is required to trigger automatic layout and alignment styles. Use col="1fr auto" by default; do not invent custom columns from an image prompt unless the source clearly requires non-default column tracks. For multi-item progress rows with even alignment across rows, set col="minmax(0, 1fr) 7.5rem" (fixed end column for Status), put leading icon in slot="accessory", and in slot="start" use an HStack with a min-width label (e.g. style="min-width: 6rem;"), full-width Progress (style="width: 100%;"), and percentage label. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
 - SlatGroup: usage. When SlatGroup is inside CardBody, leave CardBody size unset by default; CardBody detects SlatGroup and applies the correct card spacing automatically.
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
 
@@ -164,8 +166,8 @@ CONTENT:
 - Skeleton: loading, shape (line|rect|circle), size, animation (shimmer|pulse|none), lines, width, height, radius, gap, duration, line-widths, max-width, style
 - Table: size (xx-small|x-small|small|medium|large), slot default. Use for dense desktop data layouts. Setting size on Table propagates the density to its owned heading and body Rows; medium is the default.
 - RowGroup: heading; children Row.
-- Row: columns, size (xx-small|x-small|small|medium|large); children Cell.
-- Cell: action, align-y; children content or action controls.
+- Row: columns, space, aligny (start|center|end|stretch), size (xx-small|x-small|small|medium|large); children Cell.
+- Cell: action, alignx (start|center|end|space-between), aligny; children content or action controls.
 
 ACCORDION:
 - AccordionBlock: heading, level (1|2|3|4|5|6), size (xx-small|x-small|small|medium|large), detail-space. Level controls semantic document structure independently from size. Size controls heading typography, summary and detail spacing, and disclosure icon scale; medium is the default.
@@ -178,7 +180,7 @@ FORMS AND INPUTS:
 - FormGroup: heading, variant (vertical|horizontal), hide-label, style
 - Field: label, description, variant (default|success|warning|error), message, hide-label, size (x-small|small|medium|large), optional, style. Field forwards description to its primary slotted control; keep rich slot=description content inside that control.
 - FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (secondary|info|positive|warning|attention), style
-- Input: label, description, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), optional, max-length; slots description/before/after. Use description for persistent neutral guidance above the control. Use slot=description with mui-body when the copy needs rich inline content such as mui-link; Input owns the generated aria-describedby association. Use Field message for validation or status below the control.
+- Input: label, description, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), align (start|center|end), input-mode (decimal|numeric|text|email|url|search|tel|none), optional, max-length; slots description/before/after/inside-start/inside-end. Use align="end" and input-mode="decimal" for quantitative values (amounts, rates, balances, quantities) with currency/unit symbols in slot="inside-start" and slot="inside-end". Use description for persistent neutral guidance above the control. Use slot=description with mui-body when the copy needs rich inline content such as mui-link; Input owns the generated aria-describedby association. Use Field message for validation or status below the control.
 - Textarea: label, description, placeholder, value, name, id, variant (default|success|warning|error), size (x-small|small|medium|large), rows, optional, hide-label, max-length, disabled, style; slot description supports rich Body content
 - Select: label, description, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large), appearance (native|custom), selected-content (rich|label), col, space, max-height, padding-block, padding-inline; slot description supports rich Body content. Use options for simple data selects; use Option children only when appearance=custom needs rich composed native option content.
 - Option: value, label; children can contain layout/content for Select appearance=custom. Keep Option inside Select only.
@@ -187,6 +189,7 @@ FORMS AND INPUTS:
 - RadioGroup: name, value, label, description, size (x-small|small|medium|large), optional, hide-label, disabled; slot description supports rich Body content
 - Switch: label, checked, disabled, size (x-small|small|medium|large)
 - RangeInput: min, max, value, step, bubble, bubble-format (time), disabled
+- ColorInput: label, description, value, id, name, disabled, hide-label, hide-value, size (x-small|small|medium|large), gap, no-copy, copyable; slots description/before/after. Use for direct visual colour selection with a six-digit hexadecimal value. Slotted elements (such as mui-avatar, mui-badge, or custom swatches) automatically align to control height and inherit size.
 - ChipInput: label, placeholder, size (x-small|small|medium|large), placement (before|after), breakpoint, allow-custom, mobile-stack, hide-label, disabled, options, value, id
 - FileUpload: acceptedFileTypes, currentFileName
 - Addon: text, size (x-small|small|medium|large), slot (before|after), style
@@ -230,6 +233,12 @@ PROMPT COMPONENTS:
 
 PRESENTATION:
 - SlideFrame: title, footer-text, ratio (16:9|4:3|1:1|3:2|9:16), present, active-section, padding, variant (default|plain), radius, notes-open, hide-header, hide-footer, hide-counter, allow-add-section, fullscreen, scroll, style
+
+CHARTS:
+- ComparisonChart: mode (absolute|indexed|percent), label, scale (both|time|price|none), height, currency, value-format (currency|percent|decimal), interactive, attribution (logo|none), series; slots header/legend/footer. When embedding in a Card, always use Card size="none" usage="grid" > CardBody size="none" > ComparisonChart. Never use CardHeader or table headers above/inside charts; ComparisonChart provides its own native padded slot="header" region and plot divider strokes. Compose the chart header with an HStack (alignX="space-between", alignY="center", space="var(--space-300)") containing a section Heading on the start/left and action controls (such as a small secondary Button with trailing mui-icon-down-chevron) on the end/right.
+- FinancialBarChart: label, value-format (currency|percent|decimal), height, scale (both|time|price|none), interactive, data; slots header/footer. When embedding in a Card, use Card size="none" usage="grid" > CardBody size="none" > FinancialBarChart with slot="header".
+- FinancialChart: label, height, data; slot header. For candlestick/OHLC market data.
+- MarketSparkline: label, height, scale (none|both|time|price), interactive, data; slot header. Compact sparkline trend.
 
 
 ## Structured Chart Data
@@ -517,9 +526,13 @@ every child merely because it appears in an example.
   the header; use a separate child with `props.slot: "legend"` when the legend needs its own row or
   independent layout. Whichever placement is chosen, label every supplied series and keep legend
   colors consistent with the series.
-- `FinancialBarChart` and `ComparisonChart` provide their own padded header region. Add local
-  padding to a Market Sparkline header only when its surrounding Card or layout does not already
-  provide the needed inset. Do not copy example padding or spacing without considering the parent.
+- `FinancialBarChart` and `ComparisonChart` provide their own native padded header region and divider strokes.
+  **Never use `CardHeader` or a table header (`RowGroup[heading]`) above or inside the chart**.
+  Placing a `CardHeader` above a chart causes duplicate headers, conflicting borders, and mismatched padding.
+- When embedding a chart in a Card, use `Card` with `size: "none"` and `usage: "grid"`, containing a direct child `CardBody` with `size: "none"` wrapping the chart. Let the chart own the full card boundary, internal header padding, and plot divider.
+- Compose the chart header directly in `props.slot: "header"` using an `HStack` (or `Stack`) with `alignX: "space-between"`, `alignY: "center"`, and `space: "var(--space-300)"` or `"var(--space-400)"`:
+  - **Start (Left)**: Section `Heading` (e.g. `size="4"`, `level="2"`) or a title + subtitle stack.
+  - **End (Right)**: Interactive controls or range selector — such as a timeframe `Dropdown` (`position: "right"`, `size: "small"`) containing a trigger `Button` (`slot: "action"`, `size="small"`, `variant="secondary"`, e.g. text `"This week"`, with trailing dropdown `_Icon` `mui-icon-down-chevron` `size="x-small"` in `slot="after"`) and a `Menu` with action options ("Today", "This week", "Last 30 days", "Year to date").
 - Use `header-stroke` on Financial Bar Chart or Comparison Chart only when the requested composition
   should visually join the populated header to the plot without the default divider.
 
@@ -728,6 +741,131 @@ Example Comparison Chart with a compact legend composed into the header:
   ]
 }
 ```
+
+Example Card-Embedded Comparison Chart with section heading and trailing timeframe action:
+
+```json
+{
+  "id": "revenue_card",
+  "type": "Card",
+  "props": {
+    "size": "none",
+    "usage": "grid"
+  },
+  "children": [
+    {
+      "id": "revenue_card_body",
+      "type": "CardBody",
+      "props": {
+        "size": "none"
+      },
+      "children": [
+        {
+          "id": "revenue_comparison_chart",
+          "type": "ComparisonChart",
+          "props": {
+            "mode": "absolute",
+            "label": "Revenue for May 12 to May 18, 2024",
+            "scale": "both",
+            "height": "35rem",
+            "currency": "USD",
+            "attribution": "none",
+            "interactive": true,
+            "value-format": "currency",
+            "series": [
+              {
+                "id": "revenue",
+                "label": "Revenue",
+                "data": [
+                  { "time": "2024-05-12", "value": 12500 },
+                  { "time": "2024-05-13", "value": 19000 },
+                  { "time": "2024-05-14", "value": 16000 },
+                  { "time": "2024-05-15", "value": 24000 },
+                  { "time": "2024-05-16", "value": 17500 },
+                  { "time": "2024-05-17", "value": 14500 },
+                  { "time": "2024-05-18", "value": 27000 }
+                ]
+              }
+            ]
+          },
+          "children": [
+            {
+              "id": "revenue_chart_header",
+              "type": "HStack",
+              "props": {
+                "slot": "header",
+                "space": "var(--space-300)",
+                "width": "auto",
+                "height": "auto",
+                "alignX": "space-between",
+                "alignY": "center"
+              },
+              "children": [
+                {
+                  "id": "revenue_chart_title",
+                  "type": "Heading",
+                  "props": {
+                    "size": "4",
+                    "text": "Overview",
+                    "level": "2"
+                  },
+                  "children": []
+                },
+                {
+                  "id": "revenue_timeframe_dropdown",
+                  "type": "Dropdown",
+                  "props": {
+                    "position": "right",
+                    "size": "small"
+                  },
+                  "children": [
+                    {
+                      "id": "revenue_timeframe_button",
+                      "type": "Button",
+                      "props": {
+                        "slot": "action",
+                        "size": "small",
+                        "text": "This week",
+                        "variant": "secondary"
+                      },
+                      "children": [
+                        {
+                          "id": "revenue_timeframe_chevron",
+                          "type": "_Icon",
+                          "props": {
+                            "icon": "mui-icon-down-chevron",
+                            "size": "x-small",
+                            "slot": "after"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "revenue_timeframe_menu",
+                      "type": "Menu",
+                      "props": {
+                        "width": "12rem"
+                      },
+                      "children": [
+                        { "id": "timeframe_today", "type": "Button", "props": { "text": "Today", "variant": "tertiary", "align": "start" }, "children": [] },
+                        { "id": "timeframe_week", "type": "Button", "props": { "text": "This week", "variant": "tertiary", "align": "start" }, "children": [] },
+                        { "id": "timeframe_month", "type": "Button", "props": { "text": "Last 30 days", "variant": "tertiary", "align": "start" }, "children": [] },
+                        { "id": "timeframe_ytd", "type": "Button", "props": { "text": "Year to date", "variant": "tertiary", "align": "start" }, "children": [] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 
 
 ## Header Bar With Drawer Region

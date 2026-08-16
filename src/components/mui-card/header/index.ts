@@ -20,7 +20,7 @@ class MuiCardHeader extends HTMLElement {
       }
 
       :host([size="small"]) {
-        padding: var(--space-200) var(--space-300);
+        padding: var(--space-300) var(--space-400);
       }
 
       :host([size="medium"]) {

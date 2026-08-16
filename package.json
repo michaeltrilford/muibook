@@ -480,6 +480,10 @@
       "import": "./dist/esm/components/mui-icons/vertical-ellipsis/index.js",
       "types": "./dist/types/components/mui-icons/vertical-ellipsis/index.d.ts"
     },
+    "./mui-icons/drag": {
+      "import": "./dist/esm/components/mui-icons/drag/index.js",
+      "types": "./dist/types/components/mui-icons/drag/index.d.ts"
+    },
     "./mui-icons/timer": {
       "import": "./dist/esm/components/mui-icons/timer/index.js",
       "types": "./dist/types/components/mui-icons/timer/index.d.ts"
@@ -507,6 +511,10 @@
     "./mui-input": {
       "import": "./dist/esm/components/mui-input/index.js",
       "types": "./dist/types/components/mui-input/index.d.ts"
+    },
+    "./mui-color-input": {
+      "import": "./dist/esm/components/mui-color-input/index.js",
+      "types": "./dist/types/components/mui-color-input/index.d.ts"
     },
     "./mui-search-input": {
       "import": "./dist/esm/components/mui-search-input/index.js",

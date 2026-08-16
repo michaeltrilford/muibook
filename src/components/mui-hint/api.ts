@@ -6,7 +6,7 @@ export const muiApi = {
       { name: "open", type: { text: "boolean" }, default: "false", description: "Displays the hint content." },
       { name: "delay", type: { text: "number" }, default: "500", description: "Delay in milliseconds for subsequent openings, clamped between 250 and 2000." },
       { name: "initial-delay", type: { text: "number" }, default: "500", description: "Delay in milliseconds for the first opening, clamped between 250 and 2000." },
-      { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the inferred size for an unsized icon or badge trigger." },
+      { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the size scale for the hint tooltip (padding and typography) and any unsized trigger icons or badges." },
       { name: "disable-on-touch", type: { text: "boolean" }, default: "false", description: "Disables hint behaviour on touch-like devices, useful when the hint is a desktop-only enhancement." },
     ],
     slots: [

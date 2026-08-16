@@ -30,6 +30,8 @@ export const muiApi = {
     description: "Arranges table cells in a configurable column grid.",
     attributes: [
       { name: "columns", type: { text: "string" }, description: "Sets column sizing using any valid `grid-template-columns` value." },
+      { name: "space", type: { text: "string" }, default: "var(--space-500)", description: "Gap between table cells. Accepts any valid CSS gap value or design token." },
+      { name: "aligny", type: { text: '"start" | "center" | "end" | "stretch"' }, default: "center", description: "Sets vertical alignment for all cells in the row, mapped to grid `align-items`." },
       { name: "row-id", type: { text: "string" }, description: "Stable row identifier used by parent table features such as `highlight-row`." },
       { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets row cell typography and action-column sizing." },
     ],
@@ -40,9 +42,10 @@ export const muiApi = {
     ],
   },
   "mui-cell": {
-    description: "Displays content inside a table row with optional checkbox or action-column alignment.",
+    description: "Displays content inside a table row with optional checkbox, horizontal alignment, or action-column styling.",
     attributes: [
-      { name: "align-y", type: { text: "string" }, default: "initial", description: "Sets vertical alignment using any valid CSS `align-self` value." },
+      { name: "alignx", type: { text: '"start" | "center" | "end" | "space-between"' }, default: "space-between", description: "Horizontal content alignment, mapped to flex `justify-content`." },
+      { name: "aligny", type: { text: "string" }, default: "initial", description: "Sets vertical alignment using any valid CSS `align-self` value." },
       { name: "action", type: { text: "boolean" }, default: "false", description: "Aligns a final-column action control using the parent row action size." },
       { name: "checkbox", type: { text: "boolean" }, default: "false", description: "Applies compact alignment for a checkbox column." },
     ],

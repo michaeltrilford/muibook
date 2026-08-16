@@ -181,17 +181,9 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "before-select",
-          "title": "Before: Select",
-          "description": "The Select component is placed before the input area; use for supporting context like filter type. Select width should be defined in code to ensure layout consistency.",
-          "list": [
-            "Use Select when users must choose one value from a known option set."
-          ]
-        },
-        {
-          "key": "after-select",
-          "title": "After: Select",
-          "description": "The Select component is placed after the input area; use for complementary context like currency type. Select width should be defined in code to ensure layout consistency.",
+          "key": "slotted-select",
+          "title": "Slotted: Select",
+          "description": "The Select component is placed before or after the input area for supporting context like filter or currency type. Select width should be defined in code to ensure layout consistency.",
           "list": [
             "Use Select when users must choose one value from a known option set."
           ]

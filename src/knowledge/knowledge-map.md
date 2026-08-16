@@ -14,6 +14,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `resource-index.json`: machine-readable index of the knowledge files and when to use them.
 - `skill-index.json`: machine-readable index of authored skill guides.
 - `skills/*/SKILL.md`: installable instruction files for creating, composing, styling, and documenting Web Components.
+- `typed-elements.d.ts`: React/TSX ambient declaration for `JSX.IntrinsicElements` so React applications can use Muibook Web Components directly in JSX with full TypeScript validation and autocomplete.
 - `AGENTS.md`: operating guidance for coding agents working in the Muibook source repo.
 
 ## Recommended Agent Flow

@@ -21,6 +21,12 @@ export const muiApi = {
         description: "Named semantic or profile color background.",
       },
       { name: "background-color", type: { text: "string" }, description: "Custom CSS color overriding the named background treatment." },
+      {
+        name: "usage",
+        type: { text: '"default" | "input" | "color-input"' },
+        default: "default",
+        description: "Contextual usage scale. When set to `input` or `color-input`, avatar dimensions and typography match form input action sizes.",
+      },
     ],
     slots: [{ name: "", description: "Optional icon or custom visible avatar content." }],
     cssProperties: [

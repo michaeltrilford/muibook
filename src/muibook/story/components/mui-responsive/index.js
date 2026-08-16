@@ -39,7 +39,7 @@ class storyResponsive extends HTMLElement {
       }
     `;
 
-    const ProgressTableColumns = `1fr 1fr 1fr 126px`;
+    const ProgressTableColumns = `1fr 1fr 1fr 10rem`;
 
     const ProgressDesktopView = /*html*/ `
       <mui-table>
@@ -48,15 +48,15 @@ class storyResponsive extends HTMLElement {
             <mui-cell>File</mui-cell>
             <mui-cell>Due date</mui-cell>
             <mui-cell>Status</mui-cell>
-            <mui-cell>Automation</mui-cell>
+            <mui-cell alignx="center">Automation</mui-cell>
           </mui-row>
         </mui-row-group>
         <mui-row-group>
           <mui-row columns="${ProgressTableColumns}">
-            <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell>
-            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
-            <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
-            <mui-cell align-y="center">
+            <mui-cell aligny="center"><mui-body size="small">Alison Max</mui-body></mui-cell>
+            <mui-cell aligny="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
+            <mui-cell aligny="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
+            <mui-cell aligny="center" alignx="center">
               <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="small"></mui-progress-ring>
             </mui-cell>
           </mui-row>

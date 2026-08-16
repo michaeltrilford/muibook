@@ -57,5 +57,6 @@ import "./pin-slash";
 import "./text-below-folder";
 import "./spinner";
 import "./vertical-ellipsis";
+import "./drag";
 import "./timer";
 import "./copy";

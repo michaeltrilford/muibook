@@ -82,6 +82,11 @@ class MuiCardBody extends HTMLElement {
           if (table instanceof HTMLElement) {
             table.setAttribute("card-slot", "");
 
+            const rows = table.querySelectorAll("mui-row");
+            rows.forEach((row: Element) => {
+              (row as HTMLElement).setAttribute("card-slot", "");
+            });
+
             const cells = table.querySelectorAll("mui-cell");
             cells.forEach((cell: Element) => {
               (cell as HTMLElement).setAttribute("card-slot", "");
@@ -199,6 +204,8 @@ class MuiCardBody extends HTMLElement {
           --card-layout-inline-space: var(--space-000);
           --card-slat-inline-space: var(--space-400);
           --card-slat-offset: var(--space-000);
+          overflow: hidden;
+          border-radius: calc(var(--card-radius) - 1px);
         }
 
         :host([size="none"][inner-space]),
@@ -207,13 +214,13 @@ class MuiCardBody extends HTMLElement {
         }
 
         :host([size="small"]) {
-          --card-layout-inline-space: var(--space-300);
-          --card-slat-inline-space: var(--space-200);
+          --card-layout-inline-space: var(--space-400);
+          --card-slat-inline-space: var(--space-300);
         }
 
         :host([size="small"][inner-space]),
         :host([size="small"][has-card-slat-group]) {
-          padding: var(--space-300);
+          padding: var(--space-400);
         }
 
         :host([size="medium"]) {

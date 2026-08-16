@@ -26,9 +26,10 @@ export function defineMuiIcon(tagName: string, paths: string, viewBox = "0 0 28 
       const rawColor = this.getAttribute("color");
 
       const colorMap: Record<string, string> = {
-        default: "var(--icon-color-default)",
-        inverted: "var(--icon-color-inverted)",
-      };
+      default: "var(--icon-color-default)",
+      inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
+    };
 
       const iconColor = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
 

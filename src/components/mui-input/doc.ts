@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   Input: {
     namedSlots: {
       description: "Use these names on items slotted inside this component.",
-      list: ["description","before","after","inside-before","inside-after","hint"],
+      list: ["description","before","after","inside-before","inside-start","inside-after","inside-end","hint"],
     },
     title: "Input",
     description: "An input component for capturing user text, styled for consistency across your UI.",
@@ -211,65 +211,41 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "before-add-on",
-          "title": "Before: Add On",
-          "description": "Composes before: add on content with Input.",
+          "key": "slotted-add-on",
+          "title": "Slotted: Add On",
+          "description": "Composes before and after add-on containers with Input.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
         },
         {
-          "key": "after-add-on",
-          "title": "After: Add On",
-          "description": "Composes after: add on content with Input.",
+          "key": "slotted-select",
+          "title": "Slotted: Select",
+          "description": "Composes before and after select controls with Input.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
         },
         {
-          "key": "before-select",
-          "title": "Before: Select",
-          "description": "Composes before: select content with Input.",
+          "key": "slotted-button",
+          "title": "Slotted: Button",
+          "description": "Composes before and after button actions with Input across all densities.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
         },
         {
-          "key": "after-select",
-          "title": "After: Select",
-          "description": "Composes after: select content with Input.",
+          "key": "slotted-link",
+          "title": "Slotted: Link",
+          "description": "Composes before and after link affordances with Input across all densities.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
         },
         {
-          "key": "button-before-and-after",
-          "title": "Button: Before & After",
-          "description": "Demonstrates button: before & after with Input.",
-          "list": [
-            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
-          ]
-        },
-        {
-          "key": "link-before-and-after",
-          "title": "Link: Before & After",
-          "description": "Demonstrates link: before & after with Input.",
-          "list": [
-            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
-          ]
-        },
-        {
-          "key": "before-chip",
-          "title": "Before: Chip",
-          "description": "Composes before: chip content with Input.",
-          "list": [
-            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
-          ]
-        },
-        {
-          "key": "after-chip",
-          "title": "After: Chip",
-          "description": "Composes after: chip content with Input.",
+          "key": "slotted-chip",
+          "title": "Slotted: Chip",
+          "description": "Composes before and after chip affordances with Input across all densities.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
@@ -283,17 +259,26 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "inside-before-icons",
-          "title": "Inside Before: Icons",
-          "description": "Use slot='inside-before' for internal leading affordances. Slotted icon sizes are normalized to the input size.",
+          "key": "aligned-end",
+          "title": "Aligned: End",
+          "description": "Uses align='end' for quantitative values people compare or total, such as amounts, balances, rates, and quantities. Keep identifiers such as codes, account numbers, and telephone numbers start-aligned. Currency and unit affixes use TextInput.InsideSlot density='text'.",
+          "list": [
+            "Uses align='end' for quantitative values people compare or total, such as amounts, balances, rates, and quantities. Keep identifiers such as codes, account numbers, and telephone numbers start-aligned.",
+            "Currency and unit affixes use slot='inside-start' and slot='inside-end' (or inside-before/inside-after)."
+          ]
+        },
+        {
+          "key": "inside-slotted-icons",
+          "title": "Inside Slotted: Icons",
+          "description": "Use slot='inside-before' and slot='inside-after' for leading and trailing affordances. Form validation icons apply respective state colors (success, warning, error) with normalized sizing.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]
         },
         {
-          "key": "inside-after-icons",
-          "title": "Inside After: Icons",
-          "description": "Use slot='inside-after' for internal trailing affordances. Slotted icon sizes are normalized to the input size.",
+          "key": "inside-slotted-badges",
+          "title": "Inside Slotted: Badges",
+          "description": "Use slot='inside-before' and slot='inside-after' for leading and trailing badge indicators. Badge sizes and cluster offsets automatically adapt across all densities.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
           ]

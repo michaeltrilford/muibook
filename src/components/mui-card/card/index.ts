@@ -30,6 +30,9 @@ class MuiCard extends HTMLElement {
       :host([borderless]) {
         border: none;
       }
+      :host([size="none"]) {
+        overflow: hidden;
+      }
       :host([usage="grid"]),
       :host([usage="h-stack"]) {
         display: grid;
