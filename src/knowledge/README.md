@@ -4,6 +4,27 @@ This repo contains the exported Muibook knowledge bundle used by AI coding tools
 
 It is generated from [`@muibook/components`](https://github.com/michaeltrilford/muibook) and published separately at [`michaeltrilford/muibook-knowledge`](https://github.com/michaeltrilford/muibook-knowledge) so tools can read Muibook context without pulling the whole component source repo into every prompt.
 
+## Package Installation & Usage
+
+To use the components in a web application or project:
+
+```bash
+npm install @muibook/components
+```
+
+Import all components into your application bundle or entry point:
+
+```ts
+import "@muibook/components";
+```
+
+Or import individual components as needed:
+
+```ts
+import "@muibook/components/button";
+import "@muibook/components/card";
+```
+
 ## Agent Setup
 
 After installing the Muibook knowledge MCP in a project that uses Muibook components, add an instruction like this to that project's `AGENTS.md` or equivalent agent guidance file:

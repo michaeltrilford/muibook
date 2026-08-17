@@ -40,6 +40,12 @@ const MUIBOOK_JSON_RULES_SKILL_RAW =
   "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/muibook-json-rules/SKILL.md";
 const MUIBOOK_JSON_RULES_SKILL_INSTALL =
   "https://github.com/michaeltrilford/muibook/tree/main/skills/muibook-json-rules";
+const WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL =
+  "https://github.com/michaeltrilford/muibook/blob/main/skills/wireframe-to-muibook-components/SKILL.md";
+const WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL_RAW =
+  "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/wireframe-to-muibook-components/SKILL.md";
+const WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/muibook/tree/main/skills/wireframe-to-muibook-components";
 
 class PluginsPage extends HTMLElement {
   constructor() {
@@ -308,6 +314,28 @@ ${MUIBOOK_JSON_RULES_SKILL_INSTALL}</mui-code>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
                         <mui-link href="${MUIBOOK_JSON_RULES_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">GitHub</mui-link>
                         <mui-link href="${MUIBOOK_JSON_RULES_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">SKILL.md</mui-link>
+                      </mui-h-stack>
+                    </mui-v-stack>
+                  </mui-card-body>
+                </mui-card>
+              </div>
+
+              <div class="tool-card">
+                <mui-card class="skill-card">
+                  <mui-card-body>
+                    <mui-v-stack space="var(--space-600)">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-badge variant="attention">Skill</mui-badge>
+                        <mui-heading level="3" size="4">Wireframe To Muibook Components</mui-heading>
+                        <mui-body size="medium">
+                          Interpret sketches, wireframe drawings, design screenshots, and visual mockups into semantic Muibook Web Components, responsive layout primitives, and valid token-driven styling.
+                        </mui-body>
+                      </mui-v-stack>
+                      <mui-code size="x-small" scrollable>Install this skill:
+${WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL_INSTALL}</mui-code>
+                      <mui-h-stack wrap="wrap" space="var(--space-200)">
+                        <mui-link href="${WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">GitHub</mui-link>
+                        <mui-link href="${WIREFRAME_TO_MUIBOOK_COMPONENTS_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">SKILL.md</mui-link>
                       </mui-h-stack>
                     </mui-v-stack>
                   </mui-card-body>

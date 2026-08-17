@@ -8,22 +8,37 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 <!-- Content is compiled from src/knowledge/fragments and package components. -->
 
 # Muibook Components
-
+ 
 Use this single-file snapshot of Muibook 26.0.1 when the full knowledge MCP is unavailable or unnecessary.
-
+ 
 This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
 owns the Redactd tree contract, validation, browser transport, and paste workflow.
-
+ 
+## Installation & Setup
+ 
+Install the component library package:
+ 
+```bash
+npm install @muibook/components
+```
+ 
+Register the components in your project entry point:
+ 
+```ts
+import "@muibook/components";
+```
+ 
 ## Workflow
-
+ 
 1. Search the component reference below for relevant tag names and purposes.
 2. Use only the listed public attribute and slot names. Use the MCP when exact types, defaults, events, parts, or component tokens are required.
 3. Prefer the listed semantic tokens for meaningful UI styling; use base tokens for foundations.
 4. Adapt the embedded compositions when a selected example matches the requested interface.
-5. For Redactd Canvas work, hand the selected components or composition tree to
+5. When working from a wireframe, sketch, or screenshot, activate and follow the `wireframe-to-muibook-components` skill for visual interpretation rules.
+6. For Redactd Canvas work, hand the selected components or composition tree to
    `redactd-canvas-muibook`. The compositions below already use its canonical
    `{ id, type, props, children }` shape, including slot placement in `props.slot`.
-6. If the Muibook MCP is available, use its `start_here` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
+7. If the Muibook MCP is available, use its `start_here` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
 
 ## Boundaries
 

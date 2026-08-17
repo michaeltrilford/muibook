@@ -26,6 +26,10 @@ const filesToCopy = [
     src: "skills/muibook-json-rules/SKILL.md",
     dest: "public/skills/muibook-json-rules/SKILL.md",
   },
+  {
+    src: "skills/wireframe-to-muibook-components/SKILL.md",
+    dest: "public/skills/wireframe-to-muibook-components/SKILL.md",
+  },
 ];
 
 const legacyFiles = [

@@ -4,7 +4,7 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
+      "path": "src/components/mui-action-toggle/doc.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -12,7 +12,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Use Accordion Block size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large; medium is the default.\", \"Set level to match the surrounding document hierarchy; changing size does not change heading semantics.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, stories: { items: [ { \"key\": \"accordion-inline\", \"title\": \"Accordion Inline\", \"description\": \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block\", \"title\": \"Accordion Group & Block\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-block-sizes\", \"title\": \"Accordion Block Sizes\", \"description\": \"Compares heading typography, summary spacing, disclosure icon size, and detail spacing across the full Accordion Block size scale.\", \"list\": [ \"Use size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large.\", \"Use medium as the unchanged default baseline and smaller sizes for denser data-oriented layouts.\", \"Set level from the document hierarchy independently from the visual size.\" ] }, { \"key\": \"accordion-group-and-block-exclusive\", \"title\": \"Accordion Group & Block: Exclusive\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-button\", \"title\": \"Tab Behaviour: Button\", \"description\": \"A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-link\", \"title\": \"Tab Behaviour: Link\", \"description\": \"A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"detail-space-none\", \"title\": \"Detail Space: None\", \"description\": \"In accordion-block, you are able to turn off the space within the detail section.\", \"list\": [ \"Ideal for using the accordion block to contain navigation items\", \"Support full-bleed content such as images or documents.\" ] }, { \"key\": \"card-w-accordion\", \"title\": \"Card w/ Accordion\", \"description\": \"Demonstrates the Card w/ Accordion Accordion treatment.\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"card-header-w-accordion\", \"title\": \"Card Header w/ Accordion\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"accordion-slat-detection\", \"title\": \"Accordion: Slat Detection\", \"description\": \"Demonstrates the Accordion: Slat Detection Accordion treatment.\", \"list\": [ \"When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"card-slat-detection\", \"title\": \"Card: Slat Detection\", \"description\": \"Demonstrates the Card: Slat Detection Accordion treatment.\", \"list\": [ \"When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"accordion-core\", \"title\": \"Accordion Core\", \"description\": \"Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+          "default": "{ ActionToggle: { title: \"Action Toggle\", description: \"Action Toggle switches between compact prompt actions and expanded active content inside Prompt.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-action-toggle--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-action-toggle/index.ts\"], website: [\"https://muibook.com/action-toggle\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside mui-prompt when a compact action needs to expand into an active state, chip state, spinner, or close action.\", \"Use mode='icon' for the collapsed trigger state and mode='chip' for the expanded active state.\", \"Slot toggle content for the collapsed action and active or chip content for the expanded state.\", \"This pattern works well for context selectors, source pickers, tool toggles, or lightweight prompt-side dropdown triggers.\", \"Pair with Dropdown when the expanded state needs to reveal additional actions or menu choices.\", \"Use close or active controls when the expanded state should be dismissible without clearing the entire prompt.\", ], }, accessibility: { designerList: [ \"Keep the compact and expanded states visually related so users understand they represent the same prompt action.\", \"Use clear affordances for close or dismiss actions when expanded state can be exited independently.\", ], engineerList: [ \"Treat Action Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.\", \"Ensure slotted toggle and active controls expose their own accessible labels when they are icon-only.\", ], }, anatomy: { image: \"\", list: [\"Collapsed toggle content\", \"Expanded active or chip content\", \"Optional close or spinner content\"], }, variants: { items: [ { key: \"icon\", title: \"Icon\", description: \"Collapsed state showing the prompt action trigger.\", image: \"\", }, { key: \"chip\", title: \"Chip\", description: \"Expanded or active state showing the selected context, dismiss action, or loading state.\", image: \"\", }, ], }, stories: { items: [ { key: \"recommended-prompt\", title: \"Recommended Prompt Composition\", list: [\"Use mui-action-toggle only in slot='actions'.\", \"Prompt includes a default submit control in actions-right; override only when needed.\", \"Wire submit and context events from the parent mui-prompt.\"] }, { key: \"toggle-private\", title: \"Private Mode\", list: [\"Toggle into a private-mode chip and dismiss to return to icon mode.\"] }, { key: \"toggle-chip\", title: \"Button to Chip\", list: [\"Swap an icon action to a contextual chip state, then dismiss back.\"] }, { key: \"toggle-input\", title: \"Button to Input\", list: [\"Toggle into an input action with a close fallback.\"] }, { key: \"toggle-spinner\", title: \"Button to Spinner\", list: [\"Toggle into a spinner action with a Stop button.\"] }, { key: \"toggle-button\", title: \"Button to Button\", list: [\"Toggle to a custom action group, then close.\"] }, { key: \"toggle-calendar\", title: \"Button to Calendar\", list: [\"Toggle from a calendar icon into date-range actions with a close fallback.\", \"Selecting a range updates the Prompt value.\"] }, { key: \"toggle-dropdown\", title: \"Accessibility Tools\", list: [\"Toggle into accessibility controls and close back to icon mode.\", \"Menu actions apply live Prompt settings.\"] }, ] }, compositions: { description: \"Showcases prompt-side action patterns that transform from compact controls into richer active states.\", items: [ { key: \"context-toggle\", name: \"Prompt Context Toggle\", description: \"A compact prompt action that expands into an active chip with dismiss or close behavior.\", image: \"\", }, ], }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/prompt\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Use for stateful prompt actions\", description: \"Action Toggle is for prompt actions that need a compact state and a richer active state in the same position.\", doContent: [ { description: \"Use it for context, source, or tool actions that start as a small trigger and then become an active chip, dropdown launcher, or dismissible action.\", image: \"\", }, ], dontContent: [ { description: \"Do not use it for static prompt actions that never change shape or state.\", image: \"\", }, ], }, ], behaviour: { list: [ \"mode='icon' shows toggle content and hides active, chip, close, and spinner content.\", \"mode='chip' shows active, chip, close, and spinner content and hides the compact toggle content.\", \"Action Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.\", ], }, writing: { list: [ \"Use short labels so the expanded chip or active state stays compact inside the prompt action rail.\", ], }, }, }"
         }
       ],
       "exports": [
@@ -21,7 +21,52 @@
           "name": "muiDocs",
           "declaration": {
             "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
+            "module": "src/components/mui-action-toggle/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-action-toggle/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switches a prompt action between its compact trigger and expanded active content.",
+          "name": "MuiActionToggle",
+          "attributes": [
+            {
+              "name": "mode",
+              "type": {
+                "text": "\"icon\" | \"chip\""
+              },
+              "default": "icon",
+              "description": "Shows collapsed trigger content in icon mode and active, chip, close, or spinner content in chip mode."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-action-toggle",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Prompt action controls marked with `context-toggle`, `context-active`, `context-chip`, `context-close`, or `context-spinner`."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-action-toggle",
+          "declaration": {
+            "name": "MuiActionToggle",
+            "module": "src/components/mui-action-toggle/index.ts"
           }
         }
       ]
@@ -103,6 +148,30 @@
           "declaration": {
             "name": "MuiAddon",
             "module": "src/components/mui-addon/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-accordion/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Use Accordion Block size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large; medium is the default.\", \"Set level to match the surrounding document hierarchy; changing size does not change heading semantics.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, stories: { items: [ { \"key\": \"accordion-inline\", \"title\": \"Accordion Inline\", \"description\": \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block\", \"title\": \"Accordion Group & Block\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-block-sizes\", \"title\": \"Accordion Block Sizes\", \"description\": \"Compares heading typography, summary spacing, disclosure icon size, and detail spacing across the full Accordion Block size scale.\", \"list\": [ \"Use size to scale heading typography, summary and detail spacing, and the disclosure icon from xx-small through large.\", \"Use medium as the unchanged default baseline and smaller sizes for denser data-oriented layouts.\", \"Set level from the document hierarchy independently from the visual size.\" ] }, { \"key\": \"accordion-group-and-block-exclusive\", \"title\": \"Accordion Group & Block: Exclusive\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-button\", \"title\": \"Tab Behaviour: Button\", \"description\": \"A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-link\", \"title\": \"Tab Behaviour: Link\", \"description\": \"A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"detail-space-none\", \"title\": \"Detail Space: None\", \"description\": \"In accordion-block, you are able to turn off the space within the detail section.\", \"list\": [ \"Ideal for using the accordion block to contain navigation items\", \"Support full-bleed content such as images or documents.\" ] }, { \"key\": \"card-w-accordion\", \"title\": \"Card w/ Accordion\", \"description\": \"Demonstrates the Card w/ Accordion Accordion treatment.\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"card-header-w-accordion\", \"title\": \"Card Header w/ Accordion\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"accordion-slat-detection\", \"title\": \"Accordion: Slat Detection\", \"description\": \"Demonstrates the Accordion: Slat Detection Accordion treatment.\", \"list\": [ \"When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"card-slat-detection\", \"title\": \"Card: Slat Detection\", \"description\": \"Demonstrates the Card: Slat Detection Accordion treatment.\", \"list\": [ \"When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"accordion-core\", \"title\": \"Accordion Core\", \"description\": \"Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -216,75 +285,6 @@
           "declaration": {
             "name": "MuiAlert",
             "module": "src/components/mui-alert/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-action-toggle/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ ActionToggle: { title: \"Action Toggle\", description: \"Action Toggle switches between compact prompt actions and expanded active content inside Prompt.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-action-toggle--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-action-toggle/index.ts\"], website: [\"https://muibook.com/action-toggle\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside mui-prompt when a compact action needs to expand into an active state, chip state, spinner, or close action.\", \"Use mode='icon' for the collapsed trigger state and mode='chip' for the expanded active state.\", \"Slot toggle content for the collapsed action and active or chip content for the expanded state.\", \"This pattern works well for context selectors, source pickers, tool toggles, or lightweight prompt-side dropdown triggers.\", \"Pair with Dropdown when the expanded state needs to reveal additional actions or menu choices.\", \"Use close or active controls when the expanded state should be dismissible without clearing the entire prompt.\", ], }, accessibility: { designerList: [ \"Keep the compact and expanded states visually related so users understand they represent the same prompt action.\", \"Use clear affordances for close or dismiss actions when expanded state can be exited independently.\", ], engineerList: [ \"Treat Action Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.\", \"Ensure slotted toggle and active controls expose their own accessible labels when they are icon-only.\", ], }, anatomy: { image: \"\", list: [\"Collapsed toggle content\", \"Expanded active or chip content\", \"Optional close or spinner content\"], }, variants: { items: [ { key: \"icon\", title: \"Icon\", description: \"Collapsed state showing the prompt action trigger.\", image: \"\", }, { key: \"chip\", title: \"Chip\", description: \"Expanded or active state showing the selected context, dismiss action, or loading state.\", image: \"\", }, ], }, stories: { items: [ { key: \"recommended-prompt\", title: \"Recommended Prompt Composition\", list: [\"Use mui-action-toggle only in slot='actions'.\", \"Prompt includes a default submit control in actions-right; override only when needed.\", \"Wire submit and context events from the parent mui-prompt.\"] }, { key: \"toggle-private\", title: \"Private Mode\", list: [\"Toggle into a private-mode chip and dismiss to return to icon mode.\"] }, { key: \"toggle-chip\", title: \"Button to Chip\", list: [\"Swap an icon action to a contextual chip state, then dismiss back.\"] }, { key: \"toggle-input\", title: \"Button to Input\", list: [\"Toggle into an input action with a close fallback.\"] }, { key: \"toggle-spinner\", title: \"Button to Spinner\", list: [\"Toggle into a spinner action with a Stop button.\"] }, { key: \"toggle-button\", title: \"Button to Button\", list: [\"Toggle to a custom action group, then close.\"] }, { key: \"toggle-calendar\", title: \"Button to Calendar\", list: [\"Toggle from a calendar icon into date-range actions with a close fallback.\", \"Selecting a range updates the Prompt value.\"] }, { key: \"toggle-dropdown\", title: \"Accessibility Tools\", list: [\"Toggle into accessibility controls and close back to icon mode.\", \"Menu actions apply live Prompt settings.\"] }, ] }, compositions: { description: \"Showcases prompt-side action patterns that transform from compact controls into richer active states.\", items: [ { key: \"context-toggle\", name: \"Prompt Context Toggle\", description: \"A compact prompt action that expands into an active chip with dismiss or close behavior.\", image: \"\", }, ], }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/prompt\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Use for stateful prompt actions\", description: \"Action Toggle is for prompt actions that need a compact state and a richer active state in the same position.\", doContent: [ { description: \"Use it for context, source, or tool actions that start as a small trigger and then become an active chip, dropdown launcher, or dismissible action.\", image: \"\", }, ], dontContent: [ { description: \"Do not use it for static prompt actions that never change shape or state.\", image: \"\", }, ], }, ], behaviour: { list: [ \"mode='icon' shows toggle content and hides active, chip, close, and spinner content.\", \"mode='chip' shows active, chip, close, and spinner content and hides the compact toggle content.\", \"Action Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.\", ], }, writing: { list: [ \"Use short labels so the expanded chip or active state stays compact inside the prompt action rail.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-action-toggle/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-action-toggle/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switches a prompt action between its compact trigger and expanded active content.",
-          "name": "MuiActionToggle",
-          "attributes": [
-            {
-              "name": "mode",
-              "type": {
-                "text": "\"icon\" | \"chip\""
-              },
-              "default": "icon",
-              "description": "Shows collapsed trigger content in icon mode and active, chip, close, or spinner content in chip mode."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-action-toggle",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Prompt action controls marked with `context-toggle`, `context-active`, `context-chip`, `context-close`, or `context-spinner`."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-action-toggle",
-          "declaration": {
-            "name": "MuiActionToggle",
-            "module": "src/components/mui-action-toggle/index.ts"
           }
         }
       ]
@@ -460,119 +460,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-avatar-group/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ AvatarGroup: { title: \"Avatar Group\", description: \"Avatar Group stacks multiple avatars to represent a team, collaborators, or participants.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-avatar-group\"], website: [\"https://muibook.com/avatar-group\"], guides: [\"https://guides.muibook.com/avatar-group\"], usage: { list: [ \"Use Avatar Group when multiple people or entities need to be represented in a compact area.\", \"Use the label attribute to describe the group, such as project collaborators or active participants.\", \"Use overlap to tune density for headers, tables, and cards.\", \"Use fan when a compact group should temporarily expand so individual avatars are easier to inspect.\", \"Avatar Group automatically adjusts its separating ring in supported card and slat contexts; use --avatar-group-ring-color for custom surfaces.\", ], }, accessibility: { designerList: [ \"Keep avatar groups small enough that each identity remains visually recognizable.\", \"Use surrounding text or tooltips when individual identity needs to be explicit.\", ], engineerList: [ \"Provide a label attribute for the group when the surrounding context does not already name it.\", \"Ensure each slotted avatar still has its own label attribute.\", ], }, anatomy: { image: \"\", list: [ \"Group: The inline wrapper that owns overlap and accessible grouping.\", \"Avatar: Slotted `mui-avatar` children that keep their own image, initials, icon, and status APIs.\", ], }, variants: { items: [ { key: \"overlap\", title: \"Overlap\", description: \"Use loose, tight, or compact overlap depending on available space and recognition needs.\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"Stack avatars when a compact surface needs to show multiple people.\", \"list\": [ \"Avatar Group owns the overlap, ring, and default size.\", \"Each slotted Avatar still owns its image, initials, background, and status.\", \"Use label to describe the group when surrounding text does not already name it.\" ] }, { \"key\": \"overlap\", \"title\": \"Overlap\", \"description\": \"Tune overlap density for recognition or compact layout.\", \"list\": [ \"Use loose when recognition matters.\", \"Use tight as the default balance.\", \"Use compact for dense tables, cards, and headers.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Set size on the group to size slotted avatars that do not declare their own size.\", \"list\": [ \"Use group size when all avatars should share the same footprint.\", \"Set size directly on an individual Avatar only when it should intentionally differ from the group.\" ] }, { \"key\": \"hover-fan\", \"title\": \"Hover Fan\", \"description\": \"Use fan when a stacked group should expand temporarily for easier recognition.\", \"list\": [ \"The group fans on pointer hover and keyboard focus within the group.\", \"Use this for dense collaborator groups where recognition matters on inspection.\", \"Keep the default static overlap when layout stability matters more than inspection.\" ] }, { \"key\": \"with-status\", \"title\": \"With Status\", \"description\": \"Avatar Group composes with Avatar status indicators without owning presence state itself.\", \"list\": [ \"Use status on each Avatar when availability belongs to that individual.\", \"Keep the group label focused on what the collection represents.\" ] }, { \"key\": \"context-ring\", \"title\": \"Context Ring\", \"description\": \"Avatar Group adjusts its separating ring in supported surface contexts.\", \"list\": [ \"Card Body marks nested Avatar Groups so their ring matches the card surface.\", \"Slat slots pass their default and hover surfaces to the group.\", \"Use the custom property only for one-off custom surfaces outside known component contexts.\" ] } ], }, compositions: { description: \"\", items: [], }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Badge\", link: \"https://guides.muibook.com/badge\" }, ], }, rules: [], behaviour: { list: [ \"Avatar Group applies default sizing to child avatars that do not declare their own size.\", \"Avatar Group keeps later avatars visually underneath earlier avatars so leading identities remain prominent.\", \"When fan is set, the group expands on hover and focus-within, then returns to its compact overlap.\", \"When placed in a Card Body or directly in a Slat slot, the group ring follows that component surface by default.\", ], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-avatar-group/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Stacks multiple avatars with controlled overlap and a separating ring.",
-          "name": "MuiAvatarGroup",
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xxx-small\" | \"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Default size applied to slotted avatars that do not declare their own size."
-            },
-            {
-              "name": "overlap",
-              "type": {
-                "text": "\"loose\" | \"tight\" | \"compact\""
-              },
-              "default": "tight",
-              "description": "Controls how strongly avatars overlap each other."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "Avatar group",
-              "description": "Accessible label for the grouped avatars."
-            },
-            {
-              "name": "fan",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Expands the stacked avatars on hover or keyboard focus within the group."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-avatar-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "One or more `mui-avatar` elements."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": [
-            {
-              "name": "--avatar-group-ring-color",
-              "description": "Ring color used to separate overlapping avatars. Defaults to the current surface and is adjusted in supported card and slat contexts."
-            },
-            {
-              "name": "--avatar-group-ring-width",
-              "description": "Width of the separating ring around each avatar."
-            },
-            {
-              "name": "--avatar-group-overlap",
-              "description": "Manual overlap distance between avatars."
-            },
-            {
-              "name": "--avatar-group-fan-overlap",
-              "description": "Overlap distance used when `fan` is active and the group is hovered or focused."
-            },
-            {
-              "name": "--avatar-group-transition",
-              "description": "Transition used when avatars fan in or out."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-avatar-group",
-          "declaration": {
-            "name": "MuiAvatarGroup",
-            "module": "src/components/mui-avatar-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-avatar-chip/doc.ts",
       "declarations": [
         {
@@ -735,6 +622,119 @@
           "declaration": {
             "name": "MuiAvatarChip",
             "module": "src/components/mui-avatar-chip/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar-group/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ AvatarGroup: { title: \"Avatar Group\", description: \"Avatar Group stacks multiple avatars to represent a team, collaborators, or participants.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-avatar-group\"], website: [\"https://muibook.com/avatar-group\"], guides: [\"https://guides.muibook.com/avatar-group\"], usage: { list: [ \"Use Avatar Group when multiple people or entities need to be represented in a compact area.\", \"Use the label attribute to describe the group, such as project collaborators or active participants.\", \"Use overlap to tune density for headers, tables, and cards.\", \"Use fan when a compact group should temporarily expand so individual avatars are easier to inspect.\", \"Avatar Group automatically adjusts its separating ring in supported card and slat contexts; use --avatar-group-ring-color for custom surfaces.\", ], }, accessibility: { designerList: [ \"Keep avatar groups small enough that each identity remains visually recognizable.\", \"Use surrounding text or tooltips when individual identity needs to be explicit.\", ], engineerList: [ \"Provide a label attribute for the group when the surrounding context does not already name it.\", \"Ensure each slotted avatar still has its own label attribute.\", ], }, anatomy: { image: \"\", list: [ \"Group: The inline wrapper that owns overlap and accessible grouping.\", \"Avatar: Slotted `mui-avatar` children that keep their own image, initials, icon, and status APIs.\", ], }, variants: { items: [ { key: \"overlap\", title: \"Overlap\", description: \"Use loose, tight, or compact overlap depending on available space and recognition needs.\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"Stack avatars when a compact surface needs to show multiple people.\", \"list\": [ \"Avatar Group owns the overlap, ring, and default size.\", \"Each slotted Avatar still owns its image, initials, background, and status.\", \"Use label to describe the group when surrounding text does not already name it.\" ] }, { \"key\": \"overlap\", \"title\": \"Overlap\", \"description\": \"Tune overlap density for recognition or compact layout.\", \"list\": [ \"Use loose when recognition matters.\", \"Use tight as the default balance.\", \"Use compact for dense tables, cards, and headers.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Set size on the group to size slotted avatars that do not declare their own size.\", \"list\": [ \"Use group size when all avatars should share the same footprint.\", \"Set size directly on an individual Avatar only when it should intentionally differ from the group.\" ] }, { \"key\": \"hover-fan\", \"title\": \"Hover Fan\", \"description\": \"Use fan when a stacked group should expand temporarily for easier recognition.\", \"list\": [ \"The group fans on pointer hover and keyboard focus within the group.\", \"Use this for dense collaborator groups where recognition matters on inspection.\", \"Keep the default static overlap when layout stability matters more than inspection.\" ] }, { \"key\": \"with-status\", \"title\": \"With Status\", \"description\": \"Avatar Group composes with Avatar status indicators without owning presence state itself.\", \"list\": [ \"Use status on each Avatar when availability belongs to that individual.\", \"Keep the group label focused on what the collection represents.\" ] }, { \"key\": \"context-ring\", \"title\": \"Context Ring\", \"description\": \"Avatar Group adjusts its separating ring in supported surface contexts.\", \"list\": [ \"Card Body marks nested Avatar Groups so their ring matches the card surface.\", \"Slat slots pass their default and hover surfaces to the group.\", \"Use the custom property only for one-off custom surfaces outside known component contexts.\" ] } ], }, compositions: { description: \"\", items: [], }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Badge\", link: \"https://guides.muibook.com/badge\" }, ], }, rules: [], behaviour: { list: [ \"Avatar Group applies default sizing to child avatars that do not declare their own size.\", \"Avatar Group keeps later avatars visually underneath earlier avatars so leading identities remain prominent.\", \"When fan is set, the group expands on hover and focus-within, then returns to its compact overlap.\", \"When placed in a Card Body or directly in a Slat slot, the group ring follows that component surface by default.\", ], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-avatar-group/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Stacks multiple avatars with controlled overlap and a separating ring.",
+          "name": "MuiAvatarGroup",
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"xxx-small\" | \"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Default size applied to slotted avatars that do not declare their own size."
+            },
+            {
+              "name": "overlap",
+              "type": {
+                "text": "\"loose\" | \"tight\" | \"compact\""
+              },
+              "default": "tight",
+              "description": "Controls how strongly avatars overlap each other."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "Avatar group",
+              "description": "Accessible label for the grouped avatars."
+            },
+            {
+              "name": "fan",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Expands the stacked avatars on hover or keyboard focus within the group."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-avatar-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "One or more `mui-avatar` elements."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": [
+            {
+              "name": "--avatar-group-ring-color",
+              "description": "Ring color used to separate overlapping avatars. Defaults to the current surface and is adjusted in supported card and slat contexts."
+            },
+            {
+              "name": "--avatar-group-ring-width",
+              "description": "Width of the separating ring around each avatar."
+            },
+            {
+              "name": "--avatar-group-overlap",
+              "description": "Manual overlap distance between avatars."
+            },
+            {
+              "name": "--avatar-group-fan-overlap",
+              "description": "Overlap distance used when `fan` is active and the group is hovered or focused."
+            },
+            {
+              "name": "--avatar-group-transition",
+              "description": "Transition used when avatars fan in or out."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-avatar-group",
+          "declaration": {
+            "name": "MuiAvatarGroup",
+            "module": "src/components/mui-avatar-group/index.ts"
           }
         }
       ]
@@ -3178,6 +3178,174 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-date-picker/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ DatePicker: { title: \"Date Picker\", description: \"The Date Picker combines the Calendar and Time Picker into a dropdown input.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-date-picker\"], website: [\"https://muibook.com/date-picker\"], guides: [\"https://guides.muibook.com/date-picker\"], usage: { list: [ \"Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.\", \"Use the Date Picker when users need to input dates or dates with timeslots in a form.\", ], }, accessibility: { designerList: [ \"The label clearly conveys the input's required format and purpose.\", \"The component natively avoids relying solely on color to indicate the current date or selected state in the popover.\", ], engineerList: [ \"When composing, the trigger input has an appropriate aria-label if a visible label is not used.\", \"The popover automatically traps focus when open and supports ESC to close.\", ], }, anatomy: { image: \"\", list: [ \"Input Trigger: Displays the current value and opens the dropdown.\", \"Popover: Contains the Calendar and/or Time Picker depending on the configured type.\", ], }, variants: { items: [ { key: \"date\", title: \"Date\", description: \"Default type. Shows just the calendar.\", }, { key: \"date-timeslot\", title: \"Date & Timeslot\", description: \"type='datetime' or type='datetimeslot'. Shows the calendar alongside a list of time chips, perfect for scheduling appointments.\", } ], }, stories: { items: [ { \"key\": \"date-picker\", \"title\": \"Date picker\", \"description\": \"A standard date picker using the default type='date'.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] }, { \"key\": \"date-and-timeslot\", \"title\": \"Date & Timeslot\", \"description\": \"Combine the calendar and timeslot picker using type='datetimeslot'.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Date Picker supports x-small, small, medium, and large input sizes.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] } ], }, compositions: { description: \"\", items: [], }, related: { items: [ { name: \"Calendar\", link: \"https://guides.muibook.com/calendar\" }, { name: \"Time Picker\", link: \"https://guides.muibook.com/time-picker\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [], behaviour: { list: [ \"Clicking the trigger opens the dropdown containing the calendar and optional time picker.\", \"Clicking outside the popover closes it.\", \"Selecting a date automatically updates the input to a human-readable display string.\", ], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-date-picker/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-date-picker/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "MuiDatePickerPopover",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-date-picker-popover",
+          "customElement": true,
+          "attributes": []
+        },
+        {
+          "kind": "class",
+          "description": "A composed date and time picker input.",
+          "name": "MuiDatePicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Gets or sets the selected date or date-time value."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Composed, bubbling event dispatched when the selected date or date-time value changes with `detail.value`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The selected date/time value."
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "\"date\" | \"datetime\" | \"datetimeslot\""
+              },
+              "default": "date",
+              "description": "The layout of the picker. 'date' shows just a calendar, 'datetime' and 'datetimeslot' show a calendar and a time slot selection."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the input field."
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting text forwarded to the internal Input."
+            },
+            {
+              "name": "hide-label"
+            },
+            {
+              "name": "optional"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Size of the input field."
+            },
+            {
+              "name": "variant"
+            },
+            {
+              "name": "menu-slot"
+            },
+            {
+              "name": "padding-block",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides internal Input block padding."
+            },
+            {
+              "name": "padding-inline",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides internal Input inline padding."
+            },
+            {
+              "name": "surface",
+              "type": {
+                "text": "\"default\" | \"seamless\""
+              },
+              "default": "default",
+              "description": "Visual surface style. Seamless removes borders and backgrounds."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-date-picker",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "description",
+              "description": "Rich supporting content forwarded to the internal Input."
+            }
+          ],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-date-picker-popover",
+          "declaration": {
+            "name": "MuiDatePickerPopover",
+            "module": "src/components/mui-date-picker/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-date-picker",
+          "declaration": {
+            "name": "MuiDatePicker",
+            "module": "src/components/mui-date-picker/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-dialog/doc.ts",
       "declarations": [
         {
@@ -3359,174 +3527,6 @@
           "declaration": {
             "name": "MuiDialog",
             "module": "src/components/mui-dialog/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-date-picker/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ DatePicker: { title: \"Date Picker\", description: \"The Date Picker combines the Calendar and Time Picker into a dropdown input.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-date-picker\"], website: [\"https://muibook.com/date-picker\"], guides: [\"https://guides.muibook.com/date-picker\"], usage: { list: [ \"Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.\", \"Use the Date Picker when users need to input dates or dates with timeslots in a form.\", ], }, accessibility: { designerList: [ \"The label clearly conveys the input's required format and purpose.\", \"The component natively avoids relying solely on color to indicate the current date or selected state in the popover.\", ], engineerList: [ \"When composing, the trigger input has an appropriate aria-label if a visible label is not used.\", \"The popover automatically traps focus when open and supports ESC to close.\", ], }, anatomy: { image: \"\", list: [ \"Input Trigger: Displays the current value and opens the dropdown.\", \"Popover: Contains the Calendar and/or Time Picker depending on the configured type.\", ], }, variants: { items: [ { key: \"date\", title: \"Date\", description: \"Default type. Shows just the calendar.\", }, { key: \"date-timeslot\", title: \"Date & Timeslot\", description: \"type='datetime' or type='datetimeslot'. Shows the calendar alongside a list of time chips, perfect for scheduling appointments.\", } ], }, stories: { items: [ { \"key\": \"date-picker\", \"title\": \"Date picker\", \"description\": \"A standard date picker using the default type='date'.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] }, { \"key\": \"date-and-timeslot\", \"title\": \"Date & Timeslot\", \"description\": \"Combine the calendar and timeslot picker using type='datetimeslot'.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Date Picker supports x-small, small, medium, and large input sizes.\", \"list\": [ \"Use Date Picker when a calendar supports selecting the required date more effectively than free text.\" ] } ], }, compositions: { description: \"\", items: [], }, related: { items: [ { name: \"Calendar\", link: \"https://guides.muibook.com/calendar\" }, { name: \"Time Picker\", link: \"https://guides.muibook.com/time-picker\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [], behaviour: { list: [ \"Clicking the trigger opens the dropdown containing the calendar and optional time picker.\", \"Clicking outside the popover closes it.\", \"Selecting a date automatically updates the input to a human-readable display string.\", ], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-date-picker/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-date-picker/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "MuiDatePickerPopover",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-date-picker-popover",
-          "customElement": true,
-          "attributes": []
-        },
-        {
-          "kind": "class",
-          "description": "A composed date and time picker input.",
-          "name": "MuiDatePicker",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "Gets or sets the selected date or date-time value."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Composed, bubbling event dispatched when the selected date or date-time value changes with `detail.value`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "The selected date/time value."
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "\"date\" | \"datetime\" | \"datetimeslot\""
-              },
-              "default": "date",
-              "description": "The layout of the picker. 'date' shows just a calendar, 'datetime' and 'datetimeslot' show a calendar and a time slot selection."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Label for the input field."
-            },
-            {
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "description": "Supporting text forwarded to the internal Input."
-            },
-            {
-              "name": "hide-label"
-            },
-            {
-              "name": "optional"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Size of the input field."
-            },
-            {
-              "name": "variant"
-            },
-            {
-              "name": "menu-slot"
-            },
-            {
-              "name": "padding-block",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides internal Input block padding."
-            },
-            {
-              "name": "padding-inline",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides internal Input inline padding."
-            },
-            {
-              "name": "surface",
-              "type": {
-                "text": "\"default\" | \"seamless\""
-              },
-              "default": "default",
-              "description": "Visual surface style. Seamless removes borders and backgrounds."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-date-picker",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "description",
-              "description": "Rich supporting content forwarded to the internal Input."
-            }
-          ],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-date-picker-popover",
-          "declaration": {
-            "name": "MuiDatePickerPopover",
-            "module": "src/components/mui-date-picker/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-date-picker",
-          "declaration": {
-            "name": "MuiDatePicker",
-            "module": "src/components/mui-date-picker/index.ts"
           }
         }
       ]
@@ -6099,112 +6099,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-illustrations/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Illustrations: { title: \"Illustrations\", description: \"Large-format decorative visuals used to support empty states, onboarding moments, and explanatory content without competing with the primary interface.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1945-4584&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-illustrations--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-illustrations\"], website: [\"https://muibook.com/illustrations\"], guides: [\"https://guides.muibook.com/illustrations\"], usage: { list: [ \"Use illustrations to add tone and clarity to empty states, helper panels, and onboarding screens.\", \"Prefer one illustration per message area so the visual supports the content instead of competing with it.\", \"Use color='default' for light contexts and color='inverted' when the illustration needs to sit on dark surfaces.\", \"Use a custom CSS color only when the illustration needs to inherit a specific product accent.\", \"Keep illustration sizing consistent within the same product area.\", \"Keep motion optional: use once for an entry moment and loop only when subtle ambient movement supports the experience.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Treat illustrations as decorative unless they communicate unique meaning that is not already present in adjacent text.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"trash\", title: \"Trash\", description: \"A single illustration export for destructive, discard, or empty-bin related moments.\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"Renders an illustration with its standard palette.\", \"list\": [ \"Import from @muibook/components/mui-illustrations and use the named illustration tag directly.\", \"Use the default palette for standard light surfaces.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Compares the supported Illustration size scale.\", \"list\": [ \"Use one illustration size consistently within the same surface or flow.\" ] }, { \"key\": \"motion\", \"title\": \"Motion\", \"description\": \"Compares static, one-shot, and looping particle treatments.\", \"list\": [ \"Use motion='once' when particles should reveal and settle as the illustration enters.\", \"Use motion='loop' sparingly for subtle ambient movement; the illustration subject remains stable.\", \"Use play(), pause(), and restart() when application state needs to control playback.\", \"Particle animation is disabled when the user requests reduced motion.\" ] }, { \"key\": \"custom-color\", \"title\": \"Custom Color\", \"description\": \"Applies a custom illustration accent.\", \"list\": [ \"Pass a direct CSS color when the illustration needs to align to a product accent or special state.\" ] }, { \"key\": \"empty-state\", \"title\": \"Empty State\", \"description\": \"Composes Illustration with empty-state content and an action.\", \"list\": [ \"Pair illustrations with a heading, supporting body copy, and a single clear action.\" ] } ], }, compositions: { description: \"Illustrations are typically paired with heading, body copy, and one primary action.\", items: [ { key: \"empty-state\", name: \"Empty State\", description: \"A compact empty-state composition using an illustration to anchor the message.\", image: \"\", }, ], }, related: { items: [ { name: \"Icons\", link: \"https://guides.muibook.com/icons\" }, { name: \"Message\", link: \"https://guides.muibook.com/message\" }, { name: \"Card\", link: \"https://guides.muibook.com/card\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [ \"Motion is opt-in and defaults to none.\", \"Once plays a staggered particle reveal, while loop provides slow ambient particle movement.\", \"Reduced-motion preferences leave all particles visible without animation.\" ], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-illustrations/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-illustrations/trash.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Representative API for Muibook illustration elements.",
-          "name": "MuiIllustrationTrash",
-          "members": [
-            {
-              "kind": "method",
-              "name": "play",
-              "description": "Starts particle motion. A static illustration switches to one-shot motion."
-            },
-            {
-              "kind": "method",
-              "name": "pause",
-              "description": "Pauses the current particle animation."
-            },
-            {
-              "kind": "method",
-              "name": "restart",
-              "description": "Restarts the current one-shot or looping particle animation."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\" | \"x-large\""
-              },
-              "default": "medium",
-              "description": "Sets the illustration footprint."
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "\"default\" | \"inverted\" | string"
-              },
-              "default": "default",
-              "description": "Sets an illustration color preset or accepts any valid CSS color."
-            },
-            {
-              "name": "motion",
-              "type": {
-                "text": "\"none\" | \"once\" | \"loop\""
-              },
-              "default": "none",
-              "description": "Controls optional particle motion without animating the primary illustration subject."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-illustration-trash",
-          "customElement": true,
-          "slots": [],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": [
-            {
-              "name": "--illustration-main-color-default",
-              "description": "Primary color used by default illustrations."
-            },
-            {
-              "name": "--illustration-main-color-inverted",
-              "description": "Primary color used by inverted illustrations."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-illustration-trash",
-          "declaration": {
-            "name": "MuiIllustrationTrash",
-            "module": "src/components/mui-illustrations/trash.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-image/doc.ts",
       "declarations": [
         {
@@ -6332,6 +6226,112 @@
           "declaration": {
             "name": "MuiImage",
             "module": "src/components/mui-image/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-illustrations/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Illustrations: { title: \"Illustrations\", description: \"Large-format decorative visuals used to support empty states, onboarding moments, and explanatory content without competing with the primary interface.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1945-4584&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-illustrations--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-illustrations\"], website: [\"https://muibook.com/illustrations\"], guides: [\"https://guides.muibook.com/illustrations\"], usage: { list: [ \"Use illustrations to add tone and clarity to empty states, helper panels, and onboarding screens.\", \"Prefer one illustration per message area so the visual supports the content instead of competing with it.\", \"Use color='default' for light contexts and color='inverted' when the illustration needs to sit on dark surfaces.\", \"Use a custom CSS color only when the illustration needs to inherit a specific product accent.\", \"Keep illustration sizing consistent within the same product area.\", \"Keep motion optional: use once for an entry moment and loop only when subtle ambient movement supports the experience.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Treat illustrations as decorative unless they communicate unique meaning that is not already present in adjacent text.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"trash\", title: \"Trash\", description: \"A single illustration export for destructive, discard, or empty-bin related moments.\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"Renders an illustration with its standard palette.\", \"list\": [ \"Import from @muibook/components/mui-illustrations and use the named illustration tag directly.\", \"Use the default palette for standard light surfaces.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Compares the supported Illustration size scale.\", \"list\": [ \"Use one illustration size consistently within the same surface or flow.\" ] }, { \"key\": \"motion\", \"title\": \"Motion\", \"description\": \"Compares static, one-shot, and looping particle treatments.\", \"list\": [ \"Use motion='once' when particles should reveal and settle as the illustration enters.\", \"Use motion='loop' sparingly for subtle ambient movement; the illustration subject remains stable.\", \"Use play(), pause(), and restart() when application state needs to control playback.\", \"Particle animation is disabled when the user requests reduced motion.\" ] }, { \"key\": \"custom-color\", \"title\": \"Custom Color\", \"description\": \"Applies a custom illustration accent.\", \"list\": [ \"Pass a direct CSS color when the illustration needs to align to a product accent or special state.\" ] }, { \"key\": \"empty-state\", \"title\": \"Empty State\", \"description\": \"Composes Illustration with empty-state content and an action.\", \"list\": [ \"Pair illustrations with a heading, supporting body copy, and a single clear action.\" ] } ], }, compositions: { description: \"Illustrations are typically paired with heading, body copy, and one primary action.\", items: [ { key: \"empty-state\", name: \"Empty State\", description: \"A compact empty-state composition using an illustration to anchor the message.\", image: \"\", }, ], }, related: { items: [ { name: \"Icons\", link: \"https://guides.muibook.com/icons\" }, { name: \"Message\", link: \"https://guides.muibook.com/message\" }, { name: \"Card\", link: \"https://guides.muibook.com/card\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [ \"Motion is opt-in and defaults to none.\", \"Once plays a staggered particle reveal, while loop provides slow ambient particle movement.\", \"Reduced-motion preferences leave all particles visible without animation.\" ], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-illustrations/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-illustrations/trash.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Representative API for Muibook illustration elements.",
+          "name": "MuiIllustrationTrash",
+          "members": [
+            {
+              "kind": "method",
+              "name": "play",
+              "description": "Starts particle motion. A static illustration switches to one-shot motion."
+            },
+            {
+              "kind": "method",
+              "name": "pause",
+              "description": "Pauses the current particle animation."
+            },
+            {
+              "kind": "method",
+              "name": "restart",
+              "description": "Restarts the current one-shot or looping particle animation."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\" | \"x-large\""
+              },
+              "default": "medium",
+              "description": "Sets the illustration footprint."
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "\"default\" | \"inverted\" | string"
+              },
+              "default": "default",
+              "description": "Sets an illustration color preset or accepts any valid CSS color."
+            },
+            {
+              "name": "motion",
+              "type": {
+                "text": "\"none\" | \"once\" | \"loop\""
+              },
+              "default": "none",
+              "description": "Controls optional particle motion without animating the primary illustration subject."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-illustration-trash",
+          "customElement": true,
+          "slots": [],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": [
+            {
+              "name": "--illustration-main-color-default",
+              "description": "Primary color used by default illustrations."
+            },
+            {
+              "name": "--illustration-main-color-inverted",
+              "description": "Primary color used by inverted illustrations."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-illustration-trash",
+          "declaration": {
+            "name": "MuiIllustrationTrash",
+            "module": "src/components/mui-illustrations/trash.ts"
           }
         }
       ]
@@ -8854,99 +8854,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-loader/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Loader: { title: \"Loader\", description: \"The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience.\", hero: [\"\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/loading-loader--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts\"], website: [\"https://muibook.com/loader\"], guides: [\"https://guides.muibook.com/loader\"], usage: { list: [ \"Wrap any page or UI section with Mui-Loader to automatically display loading animations.\", \"Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.\", \"When crafting skeleton states inside Loader, prefer design tokens, rem units, and percentages over fixed pixel sizes.\", \"Compose placeholders with Muibook layout components such as mui-v-stack, mui-h-stack, and mui-grid for consistent spacing.\", \"Applied to pages or key components for seamless load transitions.\", \"Works seamlessly with other MUI components and layouts without additional setup.\", \"Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.\", ], }, accessibility: { designerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], engineerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5gZwRuH4Ojs38xlq7HAMCt/47be2502487c0d85955c203788442d12/pulse.gif\", }, { key: \"fade-in\", title: \"Fade-In\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/xPo8WGtJjoiW5y8gcXFJG/ed432ec413dc4839129139dad546e926/fade-in.gif\", }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4UTi4tmMxdiTDNR0wi5AOt/8d0e21d88eb33c71d1c7f69df8f42772/up.gif\", }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/63936AreBgAC7oxohQbLpY/e26318a5b4b6aaa790f363c4180d92ad/down.gif\", }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"hhttps://images.ctfassets.net/i5uwscj4pkk2/5Rzmo4ISRIfaY5aMAbO1U6/0db9896ce44b9704960fde8bc9b70a07/left.gif\", }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2pzlTEsdJj4FKmnsleLO0T/79a8d4fbecc3953a9ec21772df5ee9ac/right.gif\", }, ], }, stories: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"Applies a subtle opacity pulse to loading content.\", list: [\"Use for skeleton layouts where the placeholder structure should remain visible.\", \"Mirror the loaded content hierarchy to reduce layout shift.\"] }, { key: \"fade-in\", title: \"Fade-In\", description: \"Reveals loaded content with a simple opacity transition.\", list: [\"Use when movement would distract from the content change.\"] }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Reveals content while translating upward.\", list: [\"Use directional motion consistently within the same workflow.\"] }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Reveals content while translating downward.\", list: [\"Match the direction to the spatial origin of the content when possible.\"] }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Reveals content while translating left.\", list: [\"Reserve lateral movement for interfaces where direction carries meaning.\"] }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Reveals content while translating right.\", list: [\"Reserve lateral movement for interfaces where direction carries meaning.\"] }, { key: \"duration\", title: \"Duration\", description: \"Customises the loading animation duration.\", list: [\"Keep durations restrained and verify reduced-motion behavior.\"] }, { key: \"spinner\", title: \"Loader + Spinner\", description: \"Combines container animation with immediate progress feedback.\", list: [\"Use Spinner when progress is indeterminate and the loading region needs a clear focal indicator.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, ], }, related: { items: [ { name: \"Spinner\", link: \"https://guides.muibook.com/loader\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-loader/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-loader/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Animates slotted content into view for loading and refresh states.",
-          "name": "MuiLoader",
-          "attributes": [
-            {
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Turns the loader animation behavior on for the slotted content."
-            },
-            {
-              "name": "animation",
-              "type": {
-                "text": "\"fade-in\" | \"pulsate\" | \"translate\""
-              },
-              "default": "fade-in",
-              "description": "Selects the loading transition behavior."
-            },
-            {
-              "name": "direction",
-              "type": {
-                "text": "\"up\" | \"right\" | \"down\" | \"left\""
-              },
-              "default": "up",
-              "description": "Sets the translate direction when `animation=\"translate\"` is used."
-            },
-            {
-              "name": "duration",
-              "type": {
-                "text": "string"
-              },
-              "default": "1s",
-              "description": "Sets the animation timing duration."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-loader",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "The content that adopts the configured loading animation."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-loader",
-          "declaration": {
-            "name": "MuiLoader",
-            "module": "src/components/mui-loader/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-market-sparkline/doc.ts",
       "declarations": [
         {
@@ -9612,6 +9519,99 @@
           "declaration": {
             "name": "MuiMenu",
             "module": "src/components/mui-menu/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-loader/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Loader: { title: \"Loader\", description: \"The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience.\", hero: [\"\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/loading-loader--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts\"], website: [\"https://muibook.com/loader\"], guides: [\"https://guides.muibook.com/loader\"], usage: { list: [ \"Wrap any page or UI section with Mui-Loader to automatically display loading animations.\", \"Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.\", \"When crafting skeleton states inside Loader, prefer design tokens, rem units, and percentages over fixed pixel sizes.\", \"Compose placeholders with Muibook layout components such as mui-v-stack, mui-h-stack, and mui-grid for consistent spacing.\", \"Applied to pages or key components for seamless load transitions.\", \"Works seamlessly with other MUI components and layouts without additional setup.\", \"Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.\", ], }, accessibility: { designerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], engineerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5gZwRuH4Ojs38xlq7HAMCt/47be2502487c0d85955c203788442d12/pulse.gif\", }, { key: \"fade-in\", title: \"Fade-In\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/xPo8WGtJjoiW5y8gcXFJG/ed432ec413dc4839129139dad546e926/fade-in.gif\", }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4UTi4tmMxdiTDNR0wi5AOt/8d0e21d88eb33c71d1c7f69df8f42772/up.gif\", }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/63936AreBgAC7oxohQbLpY/e26318a5b4b6aaa790f363c4180d92ad/down.gif\", }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"hhttps://images.ctfassets.net/i5uwscj4pkk2/5Rzmo4ISRIfaY5aMAbO1U6/0db9896ce44b9704960fde8bc9b70a07/left.gif\", }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2pzlTEsdJj4FKmnsleLO0T/79a8d4fbecc3953a9ec21772df5ee9ac/right.gif\", }, ], }, stories: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"Applies a subtle opacity pulse to loading content.\", list: [\"Use for skeleton layouts where the placeholder structure should remain visible.\", \"Mirror the loaded content hierarchy to reduce layout shift.\"] }, { key: \"fade-in\", title: \"Fade-In\", description: \"Reveals loaded content with a simple opacity transition.\", list: [\"Use when movement would distract from the content change.\"] }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Reveals content while translating upward.\", list: [\"Use directional motion consistently within the same workflow.\"] }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Reveals content while translating downward.\", list: [\"Match the direction to the spatial origin of the content when possible.\"] }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Reveals content while translating left.\", list: [\"Reserve lateral movement for interfaces where direction carries meaning.\"] }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Reveals content while translating right.\", list: [\"Reserve lateral movement for interfaces where direction carries meaning.\"] }, { key: \"duration\", title: \"Duration\", description: \"Customises the loading animation duration.\", list: [\"Keep durations restrained and verify reduced-motion behavior.\"] }, { key: \"spinner\", title: \"Loader + Spinner\", description: \"Combines container animation with immediate progress feedback.\", list: [\"Use Spinner when progress is indeterminate and the loading region needs a clear focal indicator.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, ], }, related: { items: [ { name: \"Spinner\", link: \"https://guides.muibook.com/loader\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-loader/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Animates slotted content into view for loading and refresh states.",
+          "name": "MuiLoader",
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Turns the loader animation behavior on for the slotted content."
+            },
+            {
+              "name": "animation",
+              "type": {
+                "text": "\"fade-in\" | \"pulsate\" | \"translate\""
+              },
+              "default": "fade-in",
+              "description": "Selects the loading transition behavior."
+            },
+            {
+              "name": "direction",
+              "type": {
+                "text": "\"up\" | \"right\" | \"down\" | \"left\""
+              },
+              "default": "up",
+              "description": "Sets the translate direction when `animation=\"translate\"` is used."
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "string"
+              },
+              "default": "1s",
+              "description": "Sets the animation timing duration."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-loader",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "The content that adopts the configured loading animation."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-loader",
+          "declaration": {
+            "name": "MuiLoader",
+            "module": "src/components/mui-loader/index.ts"
           }
         }
       ]
@@ -13733,6 +13733,187 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-time-picker/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ TimePicker: { title: \"Time Picker\", description: \"The Time Picker allows users to enter a time via an input field and interactive popover.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-time-picker\"], website: [\"https://muibook.com/time-picker\"], guides: [\"https://guides.muibook.com/time-picker\"], usage: { list: [ \"Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.\", \"Use the Time Picker when you need users to input a time in a form.\", ], }, accessibility: { designerList: [ \"Any custom time options passed to the slots variant are clear and sequential.\", \"Overridden styles maintain high contrast between selected and unselected time slots.\", ], engineerList: [ \"The component provides native keyboard navigation (Up/Down/Left/Right) within time columns.\", \"The component automatically announces the selected time via standard input bindings.\", ], }, anatomy: { image: \"\", list: [ \"Input: The field showing the selected time.\", \"Dropdown: The popover containing the mui-time UI.\", ], }, variants: { items: [ { key: \"time\", title: \"Time\", description: \"Default type. Shows columnar scrolling lists for hours and minutes.\", }, { key: \"time-slot\", title: \"Time Slot\", description: \"type='timeslot'. Shows a flat list of time chips, perfect for appointments.\", } ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A composition time picker input with a scrolling wheels popover.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] }, { \"key\": \"time-slot\", \"title\": \"Time Slot\", \"description\": \"Use type='timeslot' to show discrete time chips.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Time Picker supports x-small, small, medium, and large input sizes.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] } ], }, compositions: { description: \"Time Picker is composed of an Input, Dropdown, and Time component.\", items: [], }, related: { items: [ { name: \"Time\", link: \"https://guides.muibook.com/time\" }, { name: \"Date Picker\", link: \"https://guides.muibook.com/date-picker\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, ], }, rules: [], behaviour: { list: [ \"Clicking the trigger opens the dropdown containing the time component.\", \"In slot mode, selecting a time chip immediately updates the value.\", \"In wheel mode, scrolling updates the time selection smoothly.\", ], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-time-picker/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-time-picker/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "MuiTimePickerPopover",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-time-picker-popover",
+          "customElement": true,
+          "attributes": []
+        },
+        {
+          "kind": "class",
+          "description": "A time selection input field with an interactive popover.",
+          "name": "MuiTimePicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Gets or sets the selected time value."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Composed, bubbling event dispatched when the selected time value changes with `detail.value`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The selected time value."
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "\"time\" | \"timeslot\""
+              },
+              "default": "time",
+              "description": "The layout of the time picker. 'time' shows scrolling wheels, 'timeslot' shows selectable chips."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The label for the input field."
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "description": "Supporting text forwarded to the internal Input."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Visually hides the label while remaining accessible."
+            },
+            {
+              "name": "optional",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays an (optional) tag next to the label."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "The physical size of the input."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"filled\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "The visual variant of the input field."
+            },
+            {
+              "name": "menu-slot"
+            },
+            {
+              "name": "padding-block",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides internal Input block padding."
+            },
+            {
+              "name": "padding-inline",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides internal Input inline padding."
+            },
+            {
+              "name": "surface",
+              "type": {
+                "text": "\"default\" | \"seamless\""
+              },
+              "default": "default",
+              "description": "Visual surface style. Seamless removes borders and backgrounds."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-time-picker",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "description",
+              "description": "Rich supporting content forwarded to the internal Input."
+            }
+          ],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-time-picker-popover",
+          "declaration": {
+            "name": "MuiTimePickerPopover",
+            "module": "src/components/mui-time-picker/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-time-picker",
+          "declaration": {
+            "name": "MuiTimePicker",
+            "module": "src/components/mui-time-picker/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-video-thumbnail/doc.ts",
       "declarations": [
         {
@@ -14001,187 +14182,6 @@
           "declaration": {
             "name": "MuiVideoThumbnail",
             "module": "src/components/mui-video-thumbnail/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-time-picker/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ TimePicker: { title: \"Time Picker\", description: \"The Time Picker allows users to enter a time via an input field and interactive popover.\", hero: [], figma: [], storybook: [], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-time-picker\"], website: [\"https://muibook.com/time-picker\"], guides: [\"https://guides.muibook.com/time-picker\"], usage: { list: [ \"Use description for persistent guidance or slot='description' with mui-body for rich content; both forward to the internal Input.\", \"Use the Time Picker when you need users to input a time in a form.\", ], }, accessibility: { designerList: [ \"Any custom time options passed to the slots variant are clear and sequential.\", \"Overridden styles maintain high contrast between selected and unselected time slots.\", ], engineerList: [ \"The component provides native keyboard navigation (Up/Down/Left/Right) within time columns.\", \"The component automatically announces the selected time via standard input bindings.\", ], }, anatomy: { image: \"\", list: [ \"Input: The field showing the selected time.\", \"Dropdown: The popover containing the mui-time UI.\", ], }, variants: { items: [ { key: \"time\", title: \"Time\", description: \"Default type. Shows columnar scrolling lists for hours and minutes.\", }, { key: \"time-slot\", title: \"Time Slot\", description: \"type='timeslot'. Shows a flat list of time chips, perfect for appointments.\", } ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A composition time picker input with a scrolling wheels popover.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] }, { \"key\": \"time-slot\", \"title\": \"Time Slot\", \"description\": \"Use type='timeslot' to show discrete time chips.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Time Picker supports x-small, small, medium, and large input sizes.\", \"list\": [ \"Use Time Picker when users need to enter or choose a specific time.\" ] } ], }, compositions: { description: \"Time Picker is composed of an Input, Dropdown, and Time component.\", items: [], }, related: { items: [ { name: \"Time\", link: \"https://guides.muibook.com/time\" }, { name: \"Date Picker\", link: \"https://guides.muibook.com/date-picker\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, ], }, rules: [], behaviour: { list: [ \"Clicking the trigger opens the dropdown containing the time component.\", \"In slot mode, selecting a time chip immediately updates the value.\", \"In wheel mode, scrolling updates the time selection smoothly.\", ], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-time-picker/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-time-picker/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "MuiTimePickerPopover",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-time-picker-popover",
-          "customElement": true,
-          "attributes": []
-        },
-        {
-          "kind": "class",
-          "description": "A time selection input field with an interactive popover.",
-          "name": "MuiTimePicker",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "Gets or sets the selected time value."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Composed, bubbling event dispatched when the selected time value changes with `detail.value`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "The selected time value."
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "\"time\" | \"timeslot\""
-              },
-              "default": "time",
-              "description": "The layout of the time picker. 'time' shows scrolling wheels, 'timeslot' shows selectable chips."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "The label for the input field."
-            },
-            {
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "description": "Supporting text forwarded to the internal Input."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Visually hides the label while remaining accessible."
-            },
-            {
-              "name": "optional",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays an (optional) tag next to the label."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "The physical size of the input."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"filled\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "The visual variant of the input field."
-            },
-            {
-              "name": "menu-slot"
-            },
-            {
-              "name": "padding-block",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides internal Input block padding."
-            },
-            {
-              "name": "padding-inline",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides internal Input inline padding."
-            },
-            {
-              "name": "surface",
-              "type": {
-                "text": "\"default\" | \"seamless\""
-              },
-              "default": "default",
-              "description": "Visual surface style. Seamless removes borders and backgrounds."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-time-picker",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "description",
-              "description": "Rich supporting content forwarded to the internal Input."
-            }
-          ],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-time-picker-popover",
-          "declaration": {
-            "name": "MuiTimePickerPopover",
-            "module": "src/components/mui-time-picker/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-time-picker",
-          "declaration": {
-            "name": "MuiTimePicker",
-            "module": "src/components/mui-time-picker/index.ts"
           }
         }
       ]
@@ -14692,6 +14692,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-card/header/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays heading or summary content at the top of a card.",
+          "name": "MuiCardHeader",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-card-header",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"none\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Controls internal Card Header padding. Medium is the default, small is compact, large is spacious, and none is edge-to-edge."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Header content such as headings, text, or actions."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-card-header",
+          "declaration": {
+            "name": "MuiCardHeader",
+            "module": "src/components/mui-card/header/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-carousel/controller/index.ts",
       "declarations": [
         {
@@ -14778,51 +14823,6 @@
           "declaration": {
             "name": "MuiCarouselController",
             "module": "src/components/mui-carousel/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-card/header/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays heading or summary content at the top of a card.",
-          "name": "MuiCardHeader",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-card-header",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"none\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Controls internal Card Header padding. Medium is the default, small is compact, large is spacious, and none is edge-to-edge."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Header content such as headings, text, or actions."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-card-header",
-          "declaration": {
-            "name": "MuiCardHeader",
-            "module": "src/components/mui-card/header/index.ts"
           }
         }
       ]
@@ -15017,102 +15017,6 @@
           "declaration": {
             "name": "MuiSlatGroup",
             "module": "src/components/mui-slat/group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slat/slat/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges leading and trailing row content with optional action and accessory treatments.",
-          "name": "MuiSlat",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"header\" | \"row\" | \"action\""
-              },
-              "description": "Sets the slat layout and interactive presentation. Explicitly set variant='row' for standard row slats unless creating a header (variant='header'), interactive action slat (variant='action'), or custom layout; Slat items inside SlatGroup or CardBody require an explicit variant for automatic layout and card alignment."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets Slat row density. Action Slats pass the size to their internal Button so action height and typography use the same scale."
-            },
-            {
-              "name": "col",
-              "type": {
-                "text": "string"
-              },
-              "default": "1fr 1fr; action: minmax(0, 1fr) auto",
-              "description": "Sets grid columns using any valid `grid-template-columns` value. Action slats default to `minmax(0, 1fr) auto` so trailing content stays aligned to the end."
-            },
-            {
-              "name": "space",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-500)",
-              "description": "Sets spacing between slat columns using any valid CSS gap value or token, including action slats."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "\"none\""
-              },
-              "description": "Removes the button radius for grouped action slats."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-slat",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "accessory",
-              "description": "Optional leading avatar, icon or compact supporting element."
-            },
-            {
-              "name": "start",
-              "description": "Primary row content."
-            },
-            {
-              "name": "end",
-              "description": "Trailing value, status or action content."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": [
-            {
-              "name": "--slat-background",
-              "description": "Background color for row and action slats."
-            },
-            {
-              "name": "--slat-background-hover",
-              "description": "Hover background color for action slats."
-            },
-            {
-              "name": "--slat-radius",
-              "description": "Radius applied to row and action slats."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-slat",
-          "declaration": {
-            "name": "MuiSlat",
-            "module": "src/components/mui-slat/slat/index.ts"
           }
         }
       ]
@@ -15347,85 +15251,96 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/stepper/index.ts",
+      "path": "src/components/mui-slat/slat/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
-          "name": "MuiStepper",
-          "events": [
-            {
-              "name": "step-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Emitted when the active step changes during interactive use."
-            }
-          ],
+          "description": "Arranges leading and trailing row content with optional action and accessory treatments.",
+          "name": "MuiSlat",
           "attributes": [
             {
-              "name": "direction",
+              "name": "variant",
               "type": {
-                "text": "\"horizontal\" | \"vertical\""
+                "text": "\"header\" | \"row\" | \"action\""
               },
-              "default": "horizontal",
-              "description": "Sets the step flow direction."
-            },
-            {
-              "name": "active-step",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Sets the current active step position."
-            },
-            {
-              "name": "linear",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Restricts interactive navigation to the current and next available step."
-            },
-            {
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables click and keyboard navigation between steps."
+              "description": "Sets the slat layout and interactive presentation. Explicitly set variant='row' for standard row slats unless creating a header (variant='header'), interactive action slat (variant='action'), or custom layout; Slat items inside SlatGroup or CardBody require an explicit variant for automatic layout and card alignment."
             },
             {
               "name": "size",
               "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\""
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
               },
               "default": "medium",
-              "description": "Controls the stepper visual scale."
+              "description": "Sets Slat row density. Action Slats pass the size to their internal Button so action height and typography use the same scale."
+            },
+            {
+              "name": "col",
+              "type": {
+                "text": "string"
+              },
+              "default": "1fr 1fr; action: minmax(0, 1fr) auto",
+              "description": "Sets grid columns using any valid `grid-template-columns` value. Action slats default to `minmax(0, 1fr) auto` so trailing content stays aligned to the end."
+            },
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Sets spacing between slat columns using any valid CSS gap value or token, including action slats."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "\"none\""
+              },
+              "description": "Removes the button radius for grouped action slats."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-stepper",
+          "tagName": "mui-slat",
           "customElement": true,
           "slots": [
             {
-              "name": "",
-              "description": "Accepts one or more `mui-step` children."
+              "name": "accessory",
+              "description": "Optional leading avatar, icon or compact supporting element."
+            },
+            {
+              "name": "start",
+              "description": "Primary row content."
+            },
+            {
+              "name": "end",
+              "description": "Trailing value, status or action content."
             }
           ],
+          "events": [],
           "cssParts": [],
-          "cssProperties": []
+          "cssProperties": [
+            {
+              "name": "--slat-background",
+              "description": "Background color for row and action slats."
+            },
+            {
+              "name": "--slat-background-hover",
+              "description": "Hover background color for action slats."
+            },
+            {
+              "name": "--slat-radius",
+              "description": "Radius applied to row and action slats."
+            }
+          ]
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-stepper",
+          "name": "mui-slat",
           "declaration": {
-            "name": "MuiStepper",
-            "module": "src/components/mui-stepper/stepper/index.ts"
+            "name": "MuiSlat",
+            "module": "src/components/mui-slat/slat/index.ts"
           }
         }
       ]
@@ -15652,58 +15567,74 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/cell/index.ts",
+      "path": "src/components/mui-stepper/stepper/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays content inside a table row with optional checkbox, horizontal alignment, or action-column styling.",
-          "name": "MuiCell",
+          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
+          "name": "MuiStepper",
+          "events": [
+            {
+              "name": "step-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Emitted when the active step changes during interactive use."
+            }
+          ],
           "attributes": [
             {
-              "name": "aligny",
+              "name": "direction",
               "type": {
-                "text": "string"
+                "text": "\"horizontal\" | \"vertical\""
               },
-              "default": "initial",
-              "description": "Sets vertical alignment using any valid CSS `align-self` value."
+              "default": "horizontal",
+              "description": "Sets the step flow direction."
             },
             {
-              "name": "alignx",
+              "name": "active-step",
               "type": {
-                "text": "\"start\" | \"center\" | \"end\" | \"space-between\""
+                "text": "number"
               },
-              "default": "space-between",
-              "description": "Horizontal content alignment, mapped to flex `justify-content`."
+              "default": "1",
+              "description": "Sets the current active step position."
             },
             {
-              "name": "action",
+              "name": "linear",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Aligns a final-column action control using the parent row action size."
+              "description": "Restricts interactive navigation to the current and next available step."
             },
             {
-              "name": "checkbox",
+              "name": "interactive",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Applies compact alignment for a checkbox column."
+              "description": "Enables click and keyboard navigation between steps."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\""
+              },
+              "default": "medium",
+              "description": "Controls the stepper visual scale."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-cell",
+          "tagName": "mui-stepper",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Cell text or component content."
+              "description": "Accepts one or more `mui-step` children."
             }
           ],
-          "events": [],
           "cssParts": [],
           "cssProperties": []
         }
@@ -15711,10 +15642,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-cell",
+          "name": "mui-stepper",
           "declaration": {
-            "name": "MuiCell",
-            "module": "src/components/mui-table/cell/index.ts"
+            "name": "MuiStepper",
+            "module": "src/components/mui-stepper/stepper/index.ts"
           }
         }
       ]
@@ -15798,31 +15729,55 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/row-group/index.ts",
+      "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Groups related table rows and optionally presents them as a heading region.",
-          "name": "MuiRowGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row-group",
-          "customElement": true,
+          "description": "Displays content inside a table row with optional checkbox, horizontal alignment, or action-column styling.",
+          "name": "MuiCell",
           "attributes": [
             {
-              "name": "heading",
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "initial",
+              "description": "Sets vertical alignment using any valid CSS `align-self` value."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "\"start\" | \"center\" | \"end\" | \"space-between\""
+              },
+              "default": "space-between",
+              "description": "Horizontal content alignment, mapped to flex `justify-content`."
+            },
+            {
+              "name": "action",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Applies header row styling to the contained rows."
+              "description": "Aligns a final-column action control using the parent row action size."
+            },
+            {
+              "name": "checkbox",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies compact alignment for a checkbox column."
             }
           ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-cell",
+          "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Related `mui-row` children."
+              "description": "Cell text or component content."
             }
           ],
           "events": [],
@@ -15833,10 +15788,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-row-group",
+          "name": "mui-cell",
           "declaration": {
-            "name": "MuiRowGroup",
-            "module": "src/components/mui-table/row-group/index.ts"
+            "name": "MuiCell",
+            "module": "src/components/mui-table/cell/index.ts"
           }
         }
       ]
@@ -15921,6 +15876,87 @@
           "declaration": {
             "name": "MuiRow",
             "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/row-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related table rows and optionally presents them as a heading region.",
+          "name": "MuiRowGroup",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row-group",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies header row styling to the contained rows."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row` children."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row-group",
+          "declaration": {
+            "name": "MuiRowGroup",
+            "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
@@ -16013,101 +16049,6 @@
           "declaration": {
             "name": "MuiTable",
             "module": "src/components/mui-table/table/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-panel",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Panel content."
-            }
-          ],
-          "events": [],
-          "cssParts": [],
-          "cssProperties": [
-            {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
-          "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
@@ -16341,6 +16282,65 @@
           "declaration": {
             "name": "MuiTabBar",
             "module": "src/components/mui-tabs/tab-bar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-panel",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Panel content."
+            }
+          ],
+          "events": [],
+          "cssParts": [],
+          "cssProperties": [
+            {
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-panel",
+          "declaration": {
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]

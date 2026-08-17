@@ -165,21 +165,11 @@ When operating standalone without access to `assets/muibook-knowledge/`, `muiboo
 
 ## 6. Wireframe Interpretation
 
-When a wireframe image is provided:
+When a wireframe image, sketch, or screenshot is provided for a Redactd canvas:
 
-1. Read it as a description of intent, hierarchy, and approximate layout rather than a pixel-perfect specification.
-2. Use visible labels and control patterns to identify likely UI concepts, then resolve them through the Muibook keyword mappings.
-3. Verify inferred components, public attributes, and slots against `assets/muibook-knowledge/` (or `muibook-components` skill) before generating the Redactd JSON tree.
-4. Treat unlabelled rectangles as layout regions by default. Do not automatically convert every outlined region into a Card.
-5. Infer H Stack, V Stack, Grid, spacing, alignment, wrapping, and responsive direction from the spatial relationships between elements.
-6. Preserve repeated visual patterns as repeated component structures.
-7. Use a generic Muibook layout component when the intended component is ambiguous. Do not invent components or attributes.
-8. **No Hardcoded Canvas Colors or Tokens:** Treat white/light paper drawing canvas colors, outline colors, or sketch backgrounds purely as visual drawing artifacts—**NEVER** convert them to `var(--white)`, `#ffffff`, `white`, `color: black`, or hardcoded inline background styles. Hardcoding static white or light colors breaks Redactd's theme adaptation and dark mode.
-9. **Prefer Slat over Custom HStack:** For row-like wireframe items with primary content on the left and metadata/status/action on the right, use `Slat` (or `SlatGroup` for repeated rows).
-   - If the wireframe row shows a trailing chevron, arrow, or interactive trigger, use `variant="action"` (which automatically applies `col="minmax(0, 1fr) auto"`).
-   - For non-interactive data rows, use `variant="row"`. Leave `col` unset unless the trailing content requires asymmetric column tracks (e.g. `col="1fr auto"`).
-10. **Use Drawer for Side Navigation & Panels:** When a wireframe or prompt shows a sidebar, side menu, collapsible filter panel, or slide-out overlay, use the `Drawer` component as the shell region (`open: true`, `side: "left"`, `variant: "persistent"`). Drawer is the root when it owns the whole shell; when a global top header spans above it, place HeaderBar and Drawer as siblings in a zero-space `VStack` root and copy the configured Drawer width to HeaderBar `left-width`. All navigation `Button` and `Link` items inside Drawer **MUST explicitly set `align: "start"`** and `variant: "tertiary"` with `props.slot="before"` icons.
-11. Produce a reasonable first pass without blocking on minor ambiguity. Ask for clarification only when uncertainty would materially change the workflow or component hierarchy.
+1. Follow the **`wireframe-to-muibook-components`** skill (in `skills/wireframe-to-muibook-components/SKILL.md` or `assets/muibook-knowledge/`) for authoritative visual interpretation rules (intent over pixel-perfection, unlabelled region handling, Slat vs HStack rules, Drawer shell detection, and avoiding hardcoded canvas colors).
+2. Convert the resolved components into the Redactd JSON Tree format (`{ id, type, props, children }`).
+3. Send the verified tree directly to Redactd via `create_redactd_recipe`.
 
 ## 7. Muibook Chart Data
 

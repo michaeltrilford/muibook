@@ -40,6 +40,12 @@
       "file": "skills/muibook-json-rules/SKILL.md",
       "title": "Muibook JSON Rules",
       "useWhen": "Authoritative rules, component mappings, chart data shapes, and MuiScan normalization guidelines for generating valid Muibook JSON trees."
+    },
+    {
+      "id": "wireframe-to-muibook-components",
+      "file": "skills/wireframe-to-muibook-components/SKILL.md",
+      "title": "Wireframe To Muibook Components",
+      "useWhen": "Interpreting sketches, wireframe drawings, design screenshots, and visual mockups into semantic Muibook Web Components and layouts."
     }
   ]
 }

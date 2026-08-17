@@ -17,6 +17,20 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `typed-elements.d.ts`: React/TSX ambient declaration for `JSX.IntrinsicElements` so React applications can use Muibook Web Components directly in JSX with full TypeScript validation and autocomplete.
 - `AGENTS.md`: operating guidance for coding agents working in the Muibook source repo.
 
+## Package Installation & Consumption
+
+To install the Web Component library in an application:
+
+```bash
+npm install @muibook/components
+```
+
+Register components in your application entry point:
+
+```ts
+import "@muibook/components";
+```
+
 ## Recommended Agent Flow
 
 1. Start with `knowledge-map.md` or the MCP `start_here` tool.
