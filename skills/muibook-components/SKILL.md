@@ -1279,6 +1279,7 @@ Use real Muibook asset paths:
 - `mui-icon-copy` — MuiIconCopy Attributes: size, color. Slots: none.
 - `mui-icon-down-arrow-circle` — MuiIconDownArrowCircle Attributes: size, color. Slots: none.
 - `mui-icon-down-chevron` — MuiIconDownChevron Attributes: size, color. Slots: none.
+- `mui-icon-drag` — MuiIconDrag Attributes: size, color. Slots: none.
 - `mui-icon-ellipsis` — MuiIconEllipsis Attributes: size, color. Slots: none.
 - `mui-icon-exclamationmark` — MuiIconExclamationmark Attributes: size, color. Slots: none.
 - `mui-icon-game-controller` — MuiIconGameController Attributes: size, color. Slots: none.

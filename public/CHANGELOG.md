@@ -1,5 +1,22 @@
 ## Header [Start]
 
+## v26.1.1
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Fixed & Improved
+
+- Fixed `mui-icon-drag` viewBox and coordinate scaling by aligning it with the core `0 0 36 36` icon system grid, resolving oversized rendering and edge clipping in action containers.
+- Standardized all remaining icons (`mui-icon-vertical-ellipsis`, `mui-icon-stop-fill`, `mui-icon-speaker-mute`, `mui-icon-speaker-one-wave`, `mui-icon-speaker-two-wave`, `mui-icon-reload`, `mui-icon-play-fill`, `mui-icon-picture-in-picture`, `mui-icon-pause`, and `mui-icon-fullscreen`) to the canonical `0 0 36 36` component pattern with updated vector coordinates, retiring `icon-helper.ts`.
+- Added `mui-icon-drag` to the Icons story page under circular icon buttons and the icon-type gallery grid.
+- Added `mui-icon-calendar`, `mui-icon-checkmark`, and `mui-icon-search` to the `@muibook/components/mui-icons` bundle export.
+
+---
+
+## Header [Start]
+
 ## v26.1.0
 
 _Status: Released_

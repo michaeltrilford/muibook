@@ -16,6 +16,7 @@ const circularButtonIcons = [
   "close",
   "copy",
   "down-arrow-circle",
+  "drag",
   "ellipsis",
   "exclamationmark",
   "fullscreen",
@@ -882,6 +883,11 @@ class storyIcon extends HTMLElement {
           <story-icon-grid center>
             <mui-icon-copy slot="body"></mui-icon-copy>
             <mui-code slot="footer" scrollable>mui-icon-copy</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-drag slot="body"></mui-icon-drag>
+            <mui-code slot="footer" scrollable>mui-icon-drag</mui-code>
           </story-icon-grid>
         </mui-grid>
 

@@ -1,6 +1,82 @@
-import { defineMuiIcon } from "./icon-helper";
+class MuiIconSpeakerMute extends HTMLElement {
+  static get observedAttributes() {
+    return ["size", "color"];
+  }
 
-defineMuiIcon(
-  "mui-icon-speaker-mute",
-  `<path d="M15.44 22.5q-.493 0-.903-.197-.402-.187-.867-.616l-3.432-3.191a.24.24 0 0 0-.134-.036H7.699q-1.305 0-2.002-.733T5 15.645v-3.29q0-1.35.697-2.073.697-.733 2.002-.733h2.414q.053 0 .134-.063l3.423-3.164q.483-.447.894-.634.411-.188.867-.188.768 0 1.287.527.518.519.518 1.278v13.398q0 .76-.518 1.279a1.74 1.74 0 0 1-1.278.518m6.103-5.602q-.36.36-.86.354a1.2 1.2 0 0 1-.859-.379 1.24 1.24 0 0 1-.385-.866q0-.493.36-.853l4.07-4.07q.367-.367.853-.36.493.012.866.385t.38.86q.012.492-.355.86zm-1.744-4.07a1.15 1.15 0 0 1-.36-.853q.012-.493.385-.866.373-.372.86-.38.492-.012.86.355l4.07 4.07q.36.36.347.853 0 .493-.373.866t-.872.38a1.14 1.14 0 0 1-.847-.355z"></path>`,
-);
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    if ((name === "size" || name === "color") && oldValue !== newValue) {
+      this.render();
+    }
+  }
+
+  render(): void {
+    const size = (this.getAttribute("size") || "small") as "xx-small" | "x-small" | "small" | "medium" | "large";
+    const rawColor = this.getAttribute("color");
+
+    // Color map for predefined color options
+    const colorMap: Record<string, string> = {
+      default: "var(--icon-color-default)",
+      inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
+    };
+
+    // Resolve color based on the provided variant or color attribute
+    const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
+
+    // Map size to actual values
+    const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
+      "xx-small": "1.2rem",
+      "x-small": "1.6rem",
+      small: "2.1rem",
+      medium: "2.4rem",
+      large: "2.8rem",
+    };
+
+    const sizeStyleMap = sizeMap[size] ?? sizeMap.small;
+
+    this.classList.add("mui-icon");
+
+    if (!this.shadowRoot) return;
+
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style>
+        :host {
+          width: ${sizeStyleMap};
+          height: ${sizeStyleMap};
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          fill: ${iconColor};
+        }
+        svg {
+          width: 100%;
+          height: auto;
+          display: block;
+          fill: inherit; 
+        }
+      </style>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 36 36"
+      >
+        <path
+          d="M19.85 28.929q-.63 0-1.16-.253-.517-.241-1.114-.793l-4.413-4.103a.3.3 0 0 0-.173-.046H9.9q-1.679 0-2.575-.942t-.896-2.678v-4.228q0-1.736.896-2.666.897-.943 2.574-.943h3.103q.069 0 .172-.08l4.402-4.068q.62-.575 1.149-.816.528-.242 1.114-.242.989 0 1.655.678.667.668.667 1.644v17.226q0 .976-.667 1.643-.666.666-1.643.667m7.848-7.203a1.48 1.48 0 0 1-1.105.455q-.625-.008-1.105-.487-.48-.48-.495-1.113 0-.635.463-1.097l5.233-5.233q.471-.472 1.097-.464.633.016 1.113.496t.487 1.105q.017.634-.455 1.105zm-2.242-5.233q-.471-.471-.463-1.097.016-.633.495-1.113.48-.48 1.105-.487.634-.017 1.105.455l5.233 5.233q.464.462.447 1.097 0 .633-.48 1.113-.479.48-1.12.487a1.46 1.46 0 0 1-1.09-.455z"
+        ></path>
+      </svg>
+    `;
+  }
+}
+
+if (!customElements.get("mui-icon-speaker-mute")) {
+  customElements.define("mui-icon-speaker-mute", MuiIconSpeakerMute);
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-17T02:55:26.251Z",
+  "generatedAt": "2026-08-17T04:58:49.272Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -340,6 +340,16 @@
         }
       ]
     },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -362,26 +372,6 @@
         }
       ]
     },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
-        }
-      ]
-    },
-    "mui-cell": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "card-slot",
-          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
-        }
-      ]
-    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -393,6 +383,16 @@
         {
           "name": "card-slot",
           "description": "Applied to a Table Row used in Card Body, allowing the row to use horizontal padding matched to the current Card size."
+        }
+      ]
+    },
+    "mui-cell": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
         }
       ]
     },

@@ -1,6 +1,82 @@
-import { defineMuiIcon } from "./icon-helper";
+class MuiIconSpeakerTwoWave extends HTMLElement {
+  static get observedAttributes() {
+    return ["size", "color"];
+  }
 
-defineMuiIcon(
-  "mui-icon-speaker-two-wave",
-  `<path d="M15.44 22.5q-.493 0-.903-.197-.402-.187-.867-.616l-3.432-3.191a.24.24 0 0 0-.134-.036H7.699q-1.305 0-2.002-.733T5 15.645v-3.29q0-1.35.697-2.073.697-.733 2.002-.733h2.414q.053 0 .134-.063l3.423-3.164q.483-.447.894-.634.411-.188.867-.188.768 0 1.287.527.518.519.518 1.278v13.398q0 .76-.518 1.279a1.74 1.74 0 0 1-1.278.518m3.79-3.825a1.36 1.36 0 0 1-.671-.975q-.108-.634.366-1.465.287-.492.438-1.064.153-.572.152-1.18 0-.607-.152-1.18a4.1 4.1 0 0 0-.438-1.063q-.482-.831-.375-1.466.116-.644.68-.974a1.5 1.5 0 0 1 1.09-.215q.572.107.884.536a7.6 7.6 0 0 1 1.002 2.038q.366 1.11.366 2.324 0 1.215-.366 2.324a7.4 7.4 0 0 1-1.001 2.02 1.33 1.33 0 0 1-.885.554 1.56 1.56 0 0 1-1.09-.214m4.736 2.645q-.625-.348-.706-1.01-.08-.67.322-1.35.634-1.072.983-2.341a9.9 9.9 0 0 0 .349-2.628q0-1.367-.349-2.628a9.7 9.7 0 0 0-.983-2.35q-.402-.67-.322-1.341t.706-1.01a1.57 1.57 0 0 1 1.127-.179q.58.125.92.653.938 1.483 1.44 3.226.5 1.743.5 3.63 0 1.885-.5 3.628a12.3 12.3 0 0 1-1.44 3.217 1.42 1.42 0 0 1-.92.653q-.582.135-1.127-.17"></path>`,
-);
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    if ((name === "size" || name === "color") && oldValue !== newValue) {
+      this.render();
+    }
+  }
+
+  render(): void {
+    const size = (this.getAttribute("size") || "small") as "xx-small" | "x-small" | "small" | "medium" | "large";
+    const rawColor = this.getAttribute("color");
+
+    // Color map for predefined color options
+    const colorMap: Record<string, string> = {
+      default: "var(--icon-color-default)",
+      inverted: "var(--icon-color-inverted)",
+      secondary: "var(--text-color-secondary)",
+    };
+
+    // Resolve color based on the provided variant or color attribute
+    const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
+
+    // Map size to actual values
+    const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
+      "xx-small": "1.2rem",
+      "x-small": "1.6rem",
+      small: "2.1rem",
+      medium: "2.4rem",
+      large: "2.8rem",
+    };
+
+    const sizeStyleMap = sizeMap[size] ?? sizeMap.small;
+
+    this.classList.add("mui-icon");
+
+    if (!this.shadowRoot) return;
+
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style>
+        :host {
+          width: ${sizeStyleMap};
+          height: ${sizeStyleMap};
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          fill: ${iconColor};
+        }
+        svg {
+          width: 100%;
+          height: auto;
+          display: block;
+          fill: inherit; 
+        }
+      </style>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 36 36"
+      >
+        <path
+          d="M19.85 28.929q-.63 0-1.16-.253-.517-.241-1.114-.793l-4.413-4.103a.3.3 0 0 0-.173-.046H9.9q-1.679 0-2.575-.942t-.896-2.678v-4.228q0-1.736.896-2.666.897-.943 2.574-.943h3.103q.069 0 .172-.08l4.402-4.068q.62-.575 1.149-.816.528-.242 1.114-.242.989 0 1.655.678.667.668.667 1.644v17.226q0 .976-.667 1.643-.666.666-1.643.667m4.873-4.919a1.74 1.74 0 0 1-.862-1.253q-.137-.815.472-1.884.368-.632.563-1.368.195-.734.195-1.517 0-.78-.195-1.516a5.3 5.3 0 0 0-.563-1.368q-.621-1.068-.483-1.884.15-.828.873-1.253.679-.414 1.402-.276.736.138 1.138.69.827 1.183 1.287 2.62.471 1.425.471 2.987a9.5 9.5 0 0 1-.471 2.988 9.6 9.6 0 0 1-1.287 2.598q-.402.574-1.138.712-.723.126-1.402-.276m6.09 3.402q-.803-.45-.907-1.299-.103-.862.414-1.735.816-1.38 1.264-3.01.448-1.633.448-3.38 0-1.758-.448-3.378a12.5 12.5 0 0 0-1.264-3.022q-.517-.863-.414-1.724.104-.863.908-1.299.7-.39 1.448-.23.746.161 1.184.84a16 16 0 0 1 1.85 4.148q.643 2.241.643 4.665t-.643 4.666a15.8 15.8 0 0 1-1.85 4.137q-.438.678-1.184.839-.747.172-1.448-.218"
+        ></path>
+      </svg>
+    `;
+  }
+}
+
+if (!customElements.get("mui-icon-speaker-two-wave")) {
+  customElements.define("mui-icon-speaker-two-wave", MuiIconSpeakerTwoWave);
+}
