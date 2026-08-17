@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-17T02:52:28.940Z",
+  "generatedAt": "2026-08-17T02:55:26.251Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -340,16 +340,6 @@
         }
       ]
     },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
-        }
-      ]
-    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -369,6 +359,16 @@
         {
           "name": "card-body-size-none-slot-last",
           "description": "Applied to the last slat in a Card Body with size none, allowing its exposed bottom radius to match the card."
+        }
+      ]
+    },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },
