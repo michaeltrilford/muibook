@@ -9,7 +9,7 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 # Muibook Components
  
-Use this single-file snapshot of Muibook 26.1.0 when the full knowledge MCP is unavailable or unnecessary.
+Use this single-file snapshot of Muibook 26.1.1 when the full knowledge MCP is unavailable or unnecessary.
  
 This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
 owns the Redactd tree contract, validation, browser transport, and paste workflow.
@@ -1282,6 +1282,7 @@ Use real Muibook asset paths:
 - `mui-icon-drag` — MuiIconDrag Attributes: size, color. Slots: none.
 - `mui-icon-ellipsis` — MuiIconEllipsis Attributes: size, color. Slots: none.
 - `mui-icon-exclamationmark` — MuiIconExclamationmark Attributes: size, color. Slots: none.
+- `mui-icon-fullscreen` — MuiIconFullscreen Attributes: size, color. Slots: none.
 - `mui-icon-game-controller` — MuiIconGameController Attributes: size, color. Slots: none.
 - `mui-icon-gear` — MuiIconGear Attributes: size, color. Slots: none.
 - `mui-icon-globe` — MuiIconGlobe Attributes: size, color. Slots: none.
@@ -1300,8 +1301,11 @@ Use real Muibook asset paths:
 - `mui-icon-music-quarter-note` — MuiIconMusicQuarterNote Attributes: size, color. Slots: none.
 - `mui-icon-notification` — MuiIconNotification Attributes: size, color. Slots: none.
 - `mui-icon-panel` — MuiIconPanel Attributes: size, color. Slots: none.
+- `mui-icon-pause` — MuiIconPause Attributes: size, color. Slots: none.
+- `mui-icon-picture-in-picture` — MuiIconPictureInPicture Attributes: size, color. Slots: none.
 - `mui-icon-pin` — MuiIconPin Attributes: size, color. Slots: none.
 - `mui-icon-pin-slash` — MuiIconPinSlash Attributes: size, color. Slots: none.
+- `mui-icon-play-fill` — MuiIconPlayFill Attributes: size, color. Slots: none.
 - `mui-icon-play-rectangle` — MuiIconPlayRectangle Attributes: size, color. Slots: none.
 - `mui-icon-play-stack` — MuiIconPlayStack Attributes: size, color. Slots: none.
 - `mui-icon-rectangle` — MuiIconRectangle Attributes: size, color. Slots: none.
@@ -1309,10 +1313,15 @@ Use real Muibook asset paths:
 - `mui-icon-rectangle-left-drawer` — MuiIconRectangleLeftDrawer Attributes: size, color. Slots: none.
 - `mui-icon-rectangle-media-text` — MuiIconRectangleMediaText Attributes: size, color. Slots: none.
 - `mui-icon-rectangle-right-drawer` — MuiIconRectangleRightDrawer Attributes: size, color. Slots: none.
+- `mui-icon-reload` — MuiIconReload Attributes: size, color. Slots: none.
 - `mui-icon-right-chevron` — MuiIconRightChevron Attributes: size, color. Slots: none.
 - `mui-icon-search` — MuiIconSearch Attributes: size, color. Slots: none.
+- `mui-icon-speaker-mute` — MuiIconSpeakerMute Attributes: size, color. Slots: none.
+- `mui-icon-speaker-one-wave` — MuiIconSpeakerOneWave Attributes: size, color. Slots: none.
+- `mui-icon-speaker-two-wave` — MuiIconSpeakerTwoWave Attributes: size, color. Slots: none.
 - `mui-icon-spinner` — MuiIconSpinner Attributes: size, color. Slots: none.
 - `mui-icon-stop` — MuiIconStop Attributes: size, color. Slots: none.
+- `mui-icon-stop-fill` — MuiIconStopFill Attributes: size, color. Slots: none.
 - `mui-icon-subtract` — MuiIconSubtract Attributes: size, color. Slots: none.
 - `mui-icon-sun` — MuiIconSun Attributes: size, color. Slots: none.
 - `mui-icon-text-below-folder` — MuiIconTextBelowFolder Attributes: size, color. Slots: none.
@@ -1321,6 +1330,7 @@ Use real Muibook asset paths:
 - `mui-icon-translate` — MuiIconTranslate Attributes: size, color, flip. Slots: none.
 - `mui-icon-up-arrow` — MuiIconUpArrow Attributes: size, color. Slots: none.
 - `mui-icon-up-chevron` — MuiIconUpChevron Attributes: size, color. Slots: none.
+- `mui-icon-vertical-ellipsis` — MuiIconVerticalEllipsis Attributes: size, color. Slots: none.
 - `mui-icon-warning` — MuiIconWarning Attributes: size, color. Slots: none.
 - `mui-illustration-trash` — Representative API for Muibook illustration elements. Attributes: size, color, motion. Slots: none.
 - `mui-image` — Frames a slotted image with optional cropping, focal positioning and caption content. Attributes: height, fit, crop, position, zoom, focal-x, focal-y, radius, aspect-ratio. Slots: image, caption.
@@ -1373,7 +1383,6 @@ Use real Muibook asset paths:
 - `mui-v-stack` — Arranges slotted content vertically with token-based spacing and alignment controls. Attributes: space, alignx, aligny, padding, height, width, viewport, fill. Slots: default.
 - `mui-video-thumbnail` — Displays a video thumbnail image with optional play affordance, hover treatment, and tokenized frame styling. Attributes: src, src-light, src-dark, src-mui, src-mui-light, src-mui-dark, src-jal, src-jal-light, src-jal-dark, src-ana, src-ana-light, src-ana-dark, src-sensei, src-sensei-light, src-sensei-dark, src-paperclip, src-paperclip-light, src-paperclip-dark, alt, aspect-ratio, loading, decoding, play, overlay, hide-play, src-{brand}-{theme}. Slots: image, meta.
 - `mui-work-log` — Displays a compact expandable work summary for agent responses, such as elapsed work time, steps reviewed, checks run, or supporting execution detail. Attributes: label, open, rule, nested, pending, status, variant. Slots: icon, before, after, default.
-- `tagName` — MuiIcon Attributes: size, color. Slots: none.
 
 ## Token Reference
 
