@@ -8,7 +8,7 @@ export const muiDocs: MuiDocs = {
     },
     title: "Field",
     description:
-      "A Field allows users to input or select data. It includes a label, an optional required indicator, and supports validation feedback to communicate errors or requirements.",
+      "A Field allows users to input or select data. It includes a label, an optional marker, and validation feedback to communicate errors or requirements.",
     hero: [
       "https://images.ctfassets.net/i5uwscj4pkk2/1HqTclvMBXW2jyvUwLummp/ac1dc5c5a4c0596c2122b3f4bc06d0be/Field_-_Home_Image.png",
     ],
@@ -28,9 +28,10 @@ export const muiDocs: MuiDocs = {
         "For rich supporting content, place mui-body slot='description' directly inside the slotted control so that control owns its accessible description relationship.",
         "Use slot='message' for rich helper/validation content (for example, mui-form-message with icons); Field inherits size to message content.",
         "Use optional on Field and let it inherit to the slotted form control label treatment.",
+        "Use required on Field only when native validation is needed; prefer optional markers to identify exceptions and use Field feedback for unmet requirements.",
         "Inside Form Group, keep helper/validation content attached to each related Field via slot='message'.",
         "Use clear, descriptive labels so users understand the purpose of the form field.",
-        "Mark required fields with an asterisk (*) and validate input before submission.",
+        "Mark exceptional fields as optional and show clear Field feedback when a required value is missing.",
         "Display validation messages in real-time or upon submission to guide corrections.",
         "Helper and supporting copy should be intentionally knocked back so form controls remain visually primary.",
       ],
@@ -50,6 +51,7 @@ export const muiDocs: MuiDocs = {
         "The label and form element are linked via for and id. If no id is provided, one is generated.",
         "Clear focus styles are shown for keyboard users.",
         "The native disabled attribute is fully supported by assistive tech.",
+        "Required forwards the native required state to the slotted control.",
       ],
     },
 

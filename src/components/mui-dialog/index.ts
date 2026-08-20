@@ -10,7 +10,7 @@ class MuiDialog extends HTMLElement {
   private titleSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
-    return ["open", "width", "max-height", "close-size", "hide-header"];
+    return ["open", "width", "max-height", "close-size", "close-shape", "hide-header"];
   }
 
   constructor() {
@@ -32,11 +32,16 @@ class MuiDialog extends HTMLElement {
     return closeSize;
   }
 
+  private getCloseShape(): "circle" | null {
+    return this.getAttribute("close-shape") === "circle" ? "circle" : null;
+  }
+
   connectedCallback() {
     if (!this.shadowRoot) return;
 
     const closeSize = this.getCloseSize();
     const closeButtonSize = this.getCloseButtonSize();
+    const closeShape = this.getCloseShape();
 
     const styles = /*css*/ `
       :host {
@@ -115,7 +120,7 @@ class MuiDialog extends HTMLElement {
       <dialog>
         <div class="header">
           <slot name="title"></slot>
-          <mui-button class="close" aria-label="Close" variant="tertiary" size="${closeButtonSize}"><mui-icon-close size="${closeSize}"></mui-icon-close></mui-button>
+          <mui-button class="close" aria-label="Close" variant="tertiary" size="${closeButtonSize}"${closeShape ? ' shape="circle"' : ""}><mui-icon-close size="${closeSize}"></mui-icon-close></mui-button>
         </div>
         <div class="content">
           <slot></slot>
@@ -203,6 +208,9 @@ class MuiDialog extends HTMLElement {
       this.shadowRoot.querySelector(".header")?.setAttribute("style", `min-height: var(--header-min-height-${closeSize})`);
       this.shadowRoot.querySelector(".close")?.setAttribute("size", this.getCloseButtonSize());
       this.shadowRoot.querySelector("mui-icon-close")?.setAttribute("size", closeSize);
+    }
+    if (name === "close-shape" && this.shadowRoot) {
+      this.shadowRoot.querySelector(".close")?.toggleAttribute("shape", this.getCloseShape() === "circle");
     }
     if (name === "hide-header") this.updateHeaderVisibility();
   }

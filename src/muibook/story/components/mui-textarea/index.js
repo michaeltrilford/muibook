@@ -55,6 +55,17 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="fill-available-height" title="${storyMeta["fill-available-height"].title}" description="${storyMeta["fill-available-height"].description}" usage="${storyMeta["fill-available-height"].usage}">
+        <div slot="body" style="height: 20rem;">
+          <mui-textarea label="Description" rows="4" placeholder="Write your notes..." style="height: 100%;"></mui-textarea>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;div style="height: 20rem;"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-textarea label="Description" rows="4" style="height: 100%;"&gt;&lt;/mui-textarea&gt;<br />
+          &lt;/div&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <div slot="body">
           <mui-v-stack space="var(--space-300)">

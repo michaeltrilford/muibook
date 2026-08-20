@@ -1,5 +1,33 @@
 ## Header [Start]
 
+## v27.0.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Breaking Changes
+
+- `mui-button-group` now passes `space` through as the authored CSS gap value. Replace bare token scales such as `space="100"` with `space="var(--space-100)"`.
+
+### Added
+
+- Added declarative `value` support, child `active` synchronization, and disabled-tab handling to `mui-tab-bar`, with focused interactive stories.
+- Added `space` to `mui-button-group`, defaulting to `var(--space-300)`.
+- Added `close-shape="circle"` to Dialog and Drawer for their built-in close actions.
+- Added native Input target attributes: `autocomplete`, `readonly`, `autocorrect`, `autocapitalize`, and `spellcheck`; required fields now expose native validation and a visible label asterisk.
+- Added `width` to `mui-link`, matching Button's CSS-width contract and story coverage.
+
+### Fixed & Improved
+
+- Dialog now reapplies surface usage when opened and when slotted content changes, keeping dynamically mounted Tab Bars surface-aware.
+- Textarea now fills its assigned height while retaining its rows-based minimum height.
+- Improved Tab stories with clearer grouping, panel spacing, selection state placement, and secondary demonstration controls.
+
+---
+
+## Header [Start]
+
 ## v26.1.1
 
 _Status: Released_

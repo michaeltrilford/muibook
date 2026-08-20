@@ -3,6 +3,7 @@ export const muiApi = {
     description: "Groups related tab items and renders an active selection highlight.",
     attributes: [
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Size applied to child tab items." },
+      { name: "value", type: { text: "string" }, description: "Selects the direct child tab item whose id matches this value. When present, value is the canonical selection; child active attributes remain the uncontrolled initial-state API." },
       { name: "usage", type: { text: '"surface"' }, description: "Applies the contextual treatment used when Tab Bar sits inside a framed surface such as Card, Drawer, Dialog, or Carousel." },
       { name: "variant", type: { text: '"default" | "dots" | "ghost"' }, default: "default", description: "Visual treatment for the tab bar and its children." },
       { name: "stroke", type: { text: '"border" | "none"' }, default: "border", description: "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing." },
@@ -34,6 +35,7 @@ export const muiApi = {
     description: "Interactive tab label controlled by a parent `mui-tab-bar`.",
     attributes: [
       { name: "active", type: { text: "boolean" }, default: "false", description: "Marks the selected tab item." },
+      { name: "disabled", type: { text: "boolean" }, default: "false", description: "Prevents pointer and keyboard selection. Disabled tab items are skipped by Tab Bar keyboard navigation." },
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Tab item size, normally forwarded by `mui-tab-bar`." },
       { name: "variant", type: { text: '"default" | "dots" | "ghost"' }, default: "default", description: "Tab item presentation, normally forwarded by `mui-tab-bar`." },
       { name: "id", type: { text: "string" }, description: "Identifier matched by a related `mui-tab-panel[item]`." },

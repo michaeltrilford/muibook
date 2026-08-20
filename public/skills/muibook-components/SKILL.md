@@ -9,7 +9,7 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 # Muibook Components
  
-Use this single-file snapshot of Muibook 26.1.1 when the full knowledge MCP is unavailable or unnecessary.
+Use this single-file snapshot of Muibook 27.0.0 when the full knowledge MCP is unavailable or unnecessary.
  
 This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
 owns the Redactd tree contract, validation, browser transport, and paste workflow.
@@ -1229,7 +1229,7 @@ Use real Muibook asset paths:
 - `mui-badge` — Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record. Use Status for state values in tables and slats. Attributes: variant, size, color, usage. Slots: default.
 - `mui-body` — Renders body text with semantic size, weight and feedback color treatments. Attributes: size, weight, variant, truncate, clamp. Slots: default, before, after.
 - `mui-button` — Triggers an action with semantic button behaviour, visual emphasis variants, and optional leading or trailing content. Attributes: onclick, type, aria-label, disabled, pending, variant, stroke, stroke-ring-size, focus-ring, size, usage, width, shape, gap, align. Slots: default, before, after, badge.
-- `mui-button-group` — Arranges related buttons horizontally or as full-width stacked actions. Attributes: layout, align, right. Slots: default.
+- `mui-button-group` — Arranges related buttons horizontally or as full-width stacked actions. Attributes: layout, align, right, space. Slots: default.
 - `mui-calendar` — A flexible, accessible calendar grid for selecting dates. Attributes: value, view, min-date, max-date. Slots: none.
 - `mui-card` — Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card size controls section padding; Card width comes from the parent layout or an explicit constrained style. Attributes: footer, borderless, size, usage. Slots: default.
 - `mui-card-body` — Displays the main content area of a card and adapts spacing for known layout components. Attributes: size. Slots: default.
@@ -1250,10 +1250,10 @@ Use real Muibook asset paths:
 - `mui-context-bar` — Displays a compact prompt context row in the `context-above` or `context-below` slot of `mui-prompt`, usually for an active task, selected context, steering target, or attached instruction. Attributes: none. Slots: default, actions.
 - `mui-date-picker` — A composed date and time picker input. Attributes: value, type, label, description, hide-label, optional, size, variant, menu-slot, padding-block, padding-inline, surface. Slots: description.
 - `mui-date-picker-popover` — MuiDatePickerPopover Attributes: none. Slots: none.
-- `mui-dialog` — Presents modal content and optional actions in a native dialog surface. Attributes: open, width, max-height, close-size, hide-header, content-padding. Slots: default, title, actions.
-- `mui-drawer` — Displays supplementary content as an overlay, push layout, persistent adjacent panel, or workspace shell. Attributes: open, width, height, side, variant, left-open, right-open, left-width, right-width, z-index, panel-padding, hide-header, close-size, breakpoint, mobile-presentation, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, contained. Slots: default, title, actions, page, left, right.
+- `mui-dialog` — Presents modal content and optional actions in a native dialog surface. Attributes: open, width, max-height, close-size, close-shape, hide-header, content-padding. Slots: default, title, actions.
+- `mui-drawer` — Displays supplementary content as an overlay, push layout, persistent adjacent panel, or workspace shell. Attributes: open, width, height, side, variant, left-open, right-open, left-width, right-width, z-index, panel-padding, hide-header, close-size, close-shape, breakpoint, mobile-presentation, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, contained. Slots: default, title, actions, page, left, right.
 - `mui-dropdown` — Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour. Attributes: zindex, position, vertical-position, persistent, size, offset, usage. Slots: action, default.
-- `mui-field` — Wraps a form control with shared label, sizing, and message feedback behavior. Attributes: variant, message, label, description, hide-label, size, optional. Slots: default, message.
+- `mui-field` — Wraps a form control with shared label, sizing, and message feedback behavior. Attributes: variant, message, label, description, hide-label, size, optional, required. Slots: default, message.
 - `mui-file-diff` — A component representing a file and its diff stats. Attributes: filename, filepath, additions, deletions, result-slot, card-slot, result-slot-last. Slots: icon.
 - `mui-file-icon` — Renders a pinned VSCode Icons file-type SVG from the vscode-icons CDN. Attributes: icon, type, size, label, decorative. Slots: none.
 - `mui-file-upload` — Provides a file picker control that displays the current or newly selected file name. Attributes: accepted-file-types, current-file-name, acceptedfiletypes, currentfilename. Slots: none.
@@ -1334,8 +1334,8 @@ Use real Muibook asset paths:
 - `mui-icon-warning` — MuiIconWarning Attributes: size, color. Slots: none.
 - `mui-illustration-trash` — Representative API for Muibook illustration elements. Attributes: size, color, motion. Slots: none.
 - `mui-image` — Frames a slotted image with optional cropping, focal positioning and caption content. Attributes: height, fit, crop, position, zoom, focal-x, focal-y, radius, aspect-ratio. Slots: image, caption.
-- `mui-input` — Captures a single text-like form value with label, validation state and composable affordance slots. Attributes: type, name, value, placeholder, id, label, description, disabled, hide-label, variant, optional, max-length, size, align, input-mode, pattern, step, slot-layout, autofocus, menu-slot, padding-block, padding-inline, surface. Slots: description, before, after, inside-before, inside-start, inside-after, inside-end, hint.
-- `mui-link` — Provides anchor navigation as an inline link or action-styled link with optional supporting content. Attributes: target, href, variant, disabled, weight, stroke, stroke-ring-size, focus-ring, size, download, usage, align. Slots: default, before, after.
+- `mui-input` — Captures a single text-like form value with label, validation state and composable affordance slots. Attributes: type, name, value, placeholder, id, label, description, disabled, required, readonly, read-only, autocomplete, autocorrect, autocapitalize, spellcheck, hide-label, variant, optional, max-length, size, align, input-mode, pattern, step, slot-layout, autofocus, menu-slot, padding-block, padding-inline, surface. Slots: description, before, after, inside-before, inside-start, inside-after, inside-end, hint.
+- `mui-link` — Provides anchor navigation as an inline link or action-styled link with optional supporting content. Attributes: target, href, variant, disabled, weight, stroke, stroke-ring-size, focus-ring, size, download, usage, width, align. Slots: default, before, after.
 - `mui-list` — Groups ordered or unordered list item content. Attributes: as. Slots: default.
 - `mui-list-item` — Renders one text item within a `mui-list`. Attributes: variant, size, weight. Slots: default.
 - `mui-loader` — Animates slotted content into view for loading and refresh states. Attributes: loading, animation, direction, duration. Slots: default.
@@ -1358,7 +1358,7 @@ Use real Muibook asset paths:
 - `mui-row-group` — Groups related table rows and optionally presents them as a heading region. Attributes: heading. Slots: default.
 - `mui-rule` — Displays a horizontal or vertical divider with configurable length and weight. Attributes: length, weight, direction. Slots: none.
 - `mui-search-input` — Composes mui-input, mui-button and icons into a search affordance that can vertically reveal over adjacent slotted controls. Attributes: id, label, description, placeholder, value, name, size, disabled, open, autofocus, cancel-label, menu-slot, padding-block, padding-inline, surface. Slots: description, action, after.
-- `mui-select` — Captures one selection from a supplied option list with label and validation styling. Attributes: name, value, id, label, description, options, disabled, hide-label, variant, optional, size, appearance, selected-content, col, space, max-height, padding-block, padding-inline, surface. Slots: description.
+- `mui-select` — Captures one selection from a supplied option list with label and validation styling. Attributes: name, value, id, label, description, options, disabled, required, hide-label, variant, optional, size, appearance, selected-content, col, space, max-height, padding-block, padding-inline, surface. Slots: description.
 - `mui-skeleton` — Renders placeholder shapes and lines for loading states, with optional before and after slot composition. Attributes: shape, size, width, height, radius, animation, lines, gap, loading, line-widths, max-width, duration. Slots: default, before, after.
 - `mui-slat` — Arranges leading and trailing row content with optional action and accessory treatments. Attributes: variant, size, col, space, radius. Slots: accessory, start, end.
 - `mui-slat-group` — Groups related slats and rules with context-aware alignment spacing. Attributes: usage. Slots: default.
@@ -1371,12 +1371,12 @@ Use real Muibook asset paths:
 - `mui-stepper` — Displays progress across a multi-step flow with optional interactive navigation. Attributes: direction, active-step, linear, interactive, size. Slots: default.
 - `mui-submenu` — Reveals a portalled, viewport-aware nested Menu from a Button trigger. Attributes: size. Slots: default.
 - `mui-switch` — Toggles a boolean state with a labelled switch control. Attributes: label, disabled, checked, size. Slots: on-icon, off-icon.
-- `mui-tab-bar` — Groups related tab items and renders an active selection highlight. Attributes: size, variant, stroke, radius, usage, active-inset, orientation, speed, full-width, controlsPosition. Slots: default.
+- `mui-tab-bar` — Groups related tab items and renders an active selection highlight. Attributes: value, size, variant, stroke, radius, usage, active-inset, orientation, speed, full-width, controlsPosition. Slots: default.
 - `mui-tab-controller` — Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values. Attributes: none. Slots: default.
-- `mui-tab-item` — Interactive tab label controlled by a parent `mui-tab-bar`. Attributes: active, size, variant, id. Slots: default, before, after.
+- `mui-tab-item` — Interactive tab label controlled by a parent `mui-tab-bar`. Attributes: active, disabled, size, variant, id. Slots: default, before, after.
 - `mui-tab-panel` — Displays content associated with the selected tab item inside `mui-tab-controller`. Attributes: item. Slots: default.
 - `mui-table` — Groups row collections into an accessible table layout. Attributes: highlight, highlight-row, highlight-row-index, size. Slots: default.
-- `mui-textarea` — Captures multi-line text with label, validation state, visible rows and optional character counting. Attributes: name, value, placeholder, id, label, description, disabled, hide-label, variant, rows, optional, max-length, size, padding-block, padding-inline, surface. Slots: description.
+- `mui-textarea` — Captures multi-line text with label, validation state, visible rows and optional character counting. Attributes: name, value, placeholder, id, label, description, disabled, required, hide-label, variant, rows, optional, max-length, size, padding-block, padding-inline, surface. Slots: description.
 - `mui-time` — A scrolling columnar interface for selecting a specific time of day. Attributes: value, format, step, start, end, variant, header. Slots: none.
 - `mui-time-picker` — A time selection input field with an interactive popover. Attributes: value, type, label, description, hide-label, optional, size, variant, menu-slot, padding-block, padding-inline, surface. Slots: description.
 - `mui-time-picker-popover` — MuiTimePickerPopover Attributes: none. Slots: none.

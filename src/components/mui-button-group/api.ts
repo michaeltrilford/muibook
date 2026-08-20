@@ -3,6 +3,12 @@ export const muiApi = {
     description: "Arranges related buttons horizontally or as full-width stacked actions.",
     attributes: [
       {
+        name: "space",
+        type: { text: "string" },
+        default: "var(--space-300)",
+        description: "Gap between actions. Accepts any valid CSS gap value, including token references and expressions.",
+      },
+      {
         name: "layout",
         type: { text: '"row" | "column"' },
         default: "row",

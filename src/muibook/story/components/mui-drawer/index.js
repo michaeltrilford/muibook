@@ -769,6 +769,20 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="drawer-close-shape" title="${storyMeta["drawer-close-shape"].title}" description="${storyMeta["drawer-close-shape"].description}" usage="${storyMeta["drawer-close-shape"].usage}">
+        <mui-button variant="secondary" data-drawer="drawer-close-shape" slot="body">Open Circular Close Drawer</mui-button>
+        <mui-drawer variant="overlay" data-drawer="drawer-close-shape" width="400px" side="right" close-shape="circle" slot="body">
+          <mui-heading size="4" level="4" slot="title">Project settings</mui-heading>
+          <mui-body>The close action keeps its standard label and dismissal behaviour.</mui-body>
+        </mui-drawer>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer close-shape="circle"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Project settings&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;...<br />
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="drawer-dropdown-portal" title="${storyMeta["drawer-dropdown-portal"].title}" description="${storyMeta["drawer-dropdown-portal"].description}" usage="${storyMeta["drawer-dropdown-portal"].usage}">
         <mui-button variant="primary" data-drawer="drawer-dropdown-portal" slot="body">Open</mui-button>
 

@@ -71,22 +71,34 @@ class storyTabBar extends HTMLElement {
         <story-card canvas-background="var(--surface)" id="surface-usage" title="${storyMeta["surface-usage"].title}" description="${storyMeta["surface-usage"].description}" usage="${storyMeta["surface-usage"].usage}">
           <mui-card slot="body">
             <mui-card-body>
-              <mui-v-stack>
-                <mui-tab-bar>
-                  <mui-tab-item active id="surface-usage-1">Overview</mui-tab-item>
-                  <mui-tab-item id="surface-usage-2">Activity</mui-tab-item>
-                  <mui-tab-item id="surface-usage-3">Settings</mui-tab-item>
-                </mui-tab-bar>
-                <mui-tab-bar active-inset>
-                  <mui-tab-item active id="surface-usage-1">Overview</mui-tab-item>
-                  <mui-tab-item id="surface-usage-2">Activity</mui-tab-item>
-                  <mui-tab-item id="surface-usage-3">Settings</mui-tab-item>
-                </mui-tab-bar>
+              <mui-v-stack space="var(--space-500)">
+                <mui-v-stack space="var(--space-300)">
+                  <mui-v-stack space="var(--space-100)">
+                    <mui-body size="small" weight="medium" variant="secondary">Default surface</mui-body>
+                    <mui-tab-bar>
+                      <mui-tab-item active id="surface-usage-default-1">Overview</mui-tab-item>
+                      <mui-tab-item id="surface-usage-default-2">Activity</mui-tab-item>
+                      <mui-tab-item id="surface-usage-default-3">Settings</mui-tab-item>
+                    </mui-tab-bar>
+                  </mui-v-stack>
+                  <mui-v-stack space="var(--space-100)">
+                    <mui-body size="small" weight="medium" variant="secondary">Inset active surface</mui-body>
+                    <mui-tab-bar active-inset>
+                      <mui-tab-item active id="surface-usage-inset-1">Overview</mui-tab-item>
+                      <mui-tab-item id="surface-usage-inset-2">Activity</mui-tab-item>
+                      <mui-tab-item id="surface-usage-inset-3">Settings</mui-tab-item>
+                    </mui-tab-bar>
+                  </mui-v-stack>
+                </mui-v-stack>
 
-                <mui-h-stack space="var(--space-200)" wrap width="100%" alignX="stretch">
-                  <mui-button style="flex: 1" data-surface-dialog="tabs-surface-dialog">Open Dialog</mui-button>
-                  <mui-button style="flex: 1" data-surface-drawer="tabs-surface-drawer">Open Drawer</mui-button>
-                </mui-h-stack>
+                <mui-v-stack space="var(--space-200)">
+                  <mui-body size="small" weight="medium" variant="secondary">Check surface use in overlays</mui-body>
+                  <mui-h-stack space="var(--space-200)" wrap>
+                    <mui-button size="small" variant="secondary" data-surface-dialog="tabs-surface-dialog">Open Dialog</mui-button>
+                    <mui-button size="small" variant="secondary" data-surface-drawer="tabs-surface-drawer">Open Drawer</mui-button>
+                    <mui-button size="small" variant="secondary" data-surface-remount="tabs-surface-dialog">Remount Dialog Tabs</mui-button>
+                  </mui-h-stack>
+                </mui-v-stack>
                 <mui-dialog data-surface-dialog="tabs-surface-dialog" width="min(90vw, 32rem)" aria-labelledby="tabs-surface-dialog-title">
                   <mui-heading slot="title" id="tabs-surface-dialog-title" level="3" size="4">Account settings</mui-heading>
                   <mui-tab-bar full-width active-inset>
@@ -123,6 +135,28 @@ class storyTabBar extends HTMLElement {
             &lt;mui-drawer data-surface-drawer=&quot;tabs-drawer&quot; variant=&quot;overlay&quot; side=&quot;right&quot;&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-bar full-width active-inset&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;/mui-drawer&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card canvas-background="var(--surface)" id="keyed-dialog" title="${storyMeta["keyed-dialog"].title}" description="${storyMeta["keyed-dialog"].description}" usage="${storyMeta["keyed-dialog"].usage}">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-button data-keyed-dialog-open="tabs-keyed-dialog">Open Dialog</mui-button>
+            <mui-body size="small" variant="secondary" data-keyed-dialog-status>Tab key: 0</mui-body>
+            <mui-dialog data-keyed-dialog="tabs-keyed-dialog" aria-labelledby="tabs-keyed-dialog-title">
+              <mui-heading slot="title" id="tabs-keyed-dialog-title" level="3" size="4">Account settings</mui-heading>
+              <mui-v-stack data-keyed-dialog-content space="var(--space-300)" alignx="stretch">
+                <mui-tab-bar full-width active-inset data-tab-key="0">
+                  <mui-tab-item active id="keyed-profile-0">Profile</mui-tab-item>
+                  <mui-tab-item id="keyed-security-0">Security</mui-tab-item>
+                </mui-tab-bar>
+              </mui-v-stack>
+              <mui-button slot="actions" data-keyed-dialog-change>Change Tab Bar Key</mui-button>
+            </mui-dialog>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-dialog&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-bar key=&quot;session-&#36;{key}&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
+            &lt;/mui-dialog&gt;
           </story-code-block>
         </story-card>
 
@@ -178,6 +212,78 @@ class storyTabBar extends HTMLElement {
             &lt;mui-tab-bar radius=&quot;200&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;mui-tab-bar radius=&quot;300&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;mui-tab-bar radius=&quot;400&quot;&gt;...&lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card canvas-background="var(--surface)" id="value" title="${storyMeta["value"].title}" description="${storyMeta["value"].description}" usage="${storyMeta["value"].usage}">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-h-stack space="var(--space-200)" wrap>
+              <mui-button size="small" variant="secondary" data-tab-value="account-profile">Show Profile</mui-button>
+              <mui-button size="small" variant="secondary" data-tab-value="account-password">Show Password</mui-button>
+              <mui-button size="small" variant="secondary" data-tab-value="account-notifications">Show Notifications</mui-button>
+            </mui-h-stack>
+            <mui-tab-controller style="width: 100%;">
+              <mui-tab-bar data-value-tab-bar value="account-profile" active-inset full-width>
+                <mui-tab-item id="account-profile">Profile</mui-tab-item>
+                <mui-tab-item id="account-password">Password</mui-tab-item>
+                <mui-tab-item id="account-notifications">Notifications</mui-tab-item>
+              </mui-tab-bar>
+              <mui-tab-panel item="account-profile" style="padding-block-start: var(--space-200);"><mui-body>Profile preferences</mui-body></mui-tab-panel>
+              <mui-tab-panel item="account-password" style="padding-block-start: var(--space-200);"><mui-body>Password preferences</mui-body></mui-tab-panel>
+              <mui-tab-panel item="account-notifications" style="padding-block-start: var(--space-200);"><mui-body>Notification preferences</mui-body></mui-tab-panel>
+            </mui-tab-controller>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar value=&quot;account-password&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;account-profile&quot;&gt;Profile&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;account-password&quot;&gt;Password&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;<br /><br />
+            tabBar.setAttribute(&quot;value&quot;, &quot;account-password&quot;);
+          </story-code-block>
+        </story-card>
+
+        <story-card canvas-background="var(--surface)" id="active-attribute" title="${storyMeta["active-attribute"].title}" description="${storyMeta["active-attribute"].description}" usage="${storyMeta["active-attribute"].usage}">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-h-stack space="var(--space-200)" wrap>
+              <mui-button size="small" variant="secondary" data-tab-active="framework-overview">Set Overview Active</mui-button>
+              <mui-button size="small" variant="secondary" data-tab-active="framework-activity">Set Activity Active</mui-button>
+              <mui-button size="small" variant="secondary" data-tab-active="framework-settings">Set Settings Active</mui-button>
+            </mui-h-stack>
+            <mui-tab-controller style="width: 100%">
+              <mui-tab-bar data-active-tab-bar active-inset full-width>
+                <mui-tab-item active id="framework-overview">Overview</mui-tab-item>
+                <mui-tab-item id="framework-activity">Activity</mui-tab-item>
+                <mui-tab-item id="framework-settings">Settings</mui-tab-item>
+              </mui-tab-bar>
+              <mui-tab-panel item="framework-overview" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Overview content</mui-body><mui-body size="small" variant="secondary" data-active-state>Selected: framework-overview</mui-body></mui-v-stack></mui-tab-panel>
+              <mui-tab-panel item="framework-activity" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Activity content</mui-body><mui-body size="small" variant="secondary" data-active-state>Selected: framework-overview</mui-body></mui-v-stack></mui-tab-panel>
+              <mui-tab-panel item="framework-settings" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Settings content</mui-body><mui-body size="small" variant="secondary" data-active-state>Selected: framework-overview</mui-body></mui-v-stack></mui-tab-panel>
+            </mui-tab-controller>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            tabBar.querySelector(&quot;#framework-activity&quot;)?.setAttribute(&quot;active&quot;, &quot;&quot;);
+          </story-code-block>
+        </story-card>
+
+        <story-card canvas-background="var(--surface)" id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-h-stack space="var(--space-200)" wrap>
+              <mui-button size="small" variant="secondary" data-disabled-tab-attempt>Try Share Link</mui-button>
+              <mui-button size="small" variant="secondary" data-disabled-tab-select="outcomes-settings">Show Settings</mui-button>
+            </mui-h-stack>
+            <mui-tab-controller style="width: 100%">
+              <mui-tab-bar data-disabled-tab-bar active-inset full-width>
+                <mui-tab-item active id="outcomes-overview">Overview</mui-tab-item>
+                <mui-tab-item disabled id="outcomes-share">Share link</mui-tab-item>
+                <mui-tab-item id="outcomes-settings">Settings</mui-tab-item>
+              </mui-tab-bar>
+              <mui-tab-panel item="outcomes-overview" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Outcome overview</mui-body><mui-body size="small" variant="secondary" data-disabled-tab-state>Selected: outcomes-overview</mui-body></mui-v-stack></mui-tab-panel>
+              <mui-tab-panel item="outcomes-share" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Share link unavailable</mui-body><mui-body size="small" variant="secondary" data-disabled-tab-state>Selected: outcomes-overview</mui-body></mui-v-stack></mui-tab-panel>
+              <mui-tab-panel item="outcomes-settings" style="padding-block-start: var(--space-200);"><mui-v-stack space="var(--space-100)"><mui-body>Outcome settings</mui-body><mui-body size="small" variant="secondary" data-disabled-tab-state>Selected: outcomes-overview</mui-body></mui-v-stack></mui-tab-panel>
+            </mui-tab-controller>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-item disabled id=&quot;outcomes-share&quot;&gt;Share link&lt;/mui-tab-item&gt;
           </story-code-block>
         </story-card>
 
@@ -547,6 +653,97 @@ class storyTabBar extends HTMLElement {
       button.addEventListener("click", () => {
         const target = button.getAttribute("data-surface-drawer");
         this.shadowRoot.querySelector(`mui-drawer[data-surface-drawer="${target}"]`)?.setAttribute("open", "");
+      });
+    });
+
+    this.shadowRoot.querySelectorAll("mui-button[data-surface-remount]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.getAttribute("data-surface-remount");
+        const dialog = this.shadowRoot.querySelector(`mui-dialog[data-surface-dialog="${target}"]`);
+        const currentTabBar = dialog?.querySelector("mui-tab-bar");
+        if (!currentTabBar) return;
+
+        const tabBar = document.createElement("mui-tab-bar");
+        tabBar.setAttribute("full-width", "");
+        tabBar.setAttribute("active-inset", "");
+        [
+          ["dialog-remounted-profile", "Profile"],
+          ["dialog-remounted-security", "Security"],
+        ].forEach(([id, label], index) => {
+          const tab = document.createElement("mui-tab-item");
+          tab.id = id;
+          tab.textContent = label;
+          if (index === 0) tab.setAttribute("active", "");
+          tabBar.append(tab);
+        });
+        currentTabBar.replaceWith(tabBar);
+      });
+    });
+
+    const keyedDialog = this.shadowRoot.querySelector("mui-dialog[data-keyed-dialog]");
+    const keyedContent = this.shadowRoot.querySelector("[data-keyed-dialog-content]");
+    const keyedStatus = this.shadowRoot.querySelector("[data-keyed-dialog-status]");
+    let tabKey = 0;
+    const renderKeyedTabBar = () => {
+      tabKey += 1;
+      const tabBar = document.createElement("mui-tab-bar");
+      tabBar.setAttribute("full-width", "");
+      tabBar.setAttribute("active-inset", "");
+      tabBar.setAttribute("data-tab-key", String(tabKey));
+      [
+        [`keyed-profile-${tabKey}`, `Profile ${tabKey}`],
+        [`keyed-security-${tabKey}`, `Security ${tabKey}`],
+      ].forEach(([id, label], index) => {
+        const tab = document.createElement("mui-tab-item");
+        tab.id = id;
+        tab.textContent = label;
+        if (index === 0) tab.setAttribute("active", "");
+        tabBar.append(tab);
+      });
+      keyedContent?.replaceChildren(tabBar);
+      if (keyedStatus) keyedStatus.textContent = `Tab key: ${tabKey}`;
+    };
+    this.shadowRoot.querySelectorAll("mui-button[data-keyed-dialog-open]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.getAttribute("data-keyed-dialog-open");
+        this.shadowRoot.querySelector(`mui-dialog[data-keyed-dialog="${target}"]`)?.setAttribute("open", "");
+      });
+    });
+    this.shadowRoot.querySelector("mui-button[data-keyed-dialog-change]")?.addEventListener("click", renderKeyedTabBar);
+
+    this.shadowRoot.querySelectorAll("mui-button[data-tab-value]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.getAttribute("data-tab-value");
+        this.shadowRoot.querySelector("mui-tab-bar[data-value-tab-bar]")?.setAttribute("value", value || "");
+      });
+    });
+
+    const activeTabBar = this.shadowRoot.querySelector("mui-tab-bar[data-active-tab-bar]");
+    const activeStates = this.shadowRoot.querySelectorAll("[data-active-state]");
+    activeTabBar?.addEventListener("tab-change", (event) => {
+      activeStates.forEach((state) => (state.textContent = `Selected: ${event.detail.activeId}`));
+    });
+    this.shadowRoot.querySelectorAll("mui-button[data-tab-active]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.getAttribute("data-tab-active");
+        activeTabBar?.querySelector(`mui-tab-item#${id}`)?.setAttribute("active", "");
+      });
+    });
+
+    const disabledTabBar = this.shadowRoot.querySelector("mui-tab-bar[data-disabled-tab-bar]");
+    const disabledTabStates = this.shadowRoot.querySelectorAll("[data-disabled-tab-state]");
+    disabledTabBar?.addEventListener("tab-change", (event) => {
+      disabledTabStates.forEach((state) => (state.textContent = `Selected: ${event.detail.activeId}`));
+    });
+    this.shadowRoot.querySelector("mui-button[data-disabled-tab-attempt]")?.addEventListener("click", () => {
+      const disabledTab = disabledTabBar?.querySelector("mui-tab-item#outcomes-share");
+      if (disabledTab) disabledTabBar?.setActiveTab(disabledTab);
+    });
+    this.shadowRoot.querySelectorAll("mui-button[data-disabled-tab-select]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.getAttribute("data-disabled-tab-select");
+        const tab = disabledTabBar?.querySelector(`mui-tab-item#${id}`);
+        if (tab) disabledTabBar?.setActiveTab(tab);
       });
     });
   }

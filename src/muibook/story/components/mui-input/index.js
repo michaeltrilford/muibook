@@ -156,6 +156,31 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="required-feedback" title="${storyMeta["required-feedback"].title}" description="${storyMeta["required-feedback"].description}" usage="${storyMeta["required-feedback"].usage}">
+        <mui-v-stack slot="body" space="var(--space-300)" alignX="stretch">
+          <mui-field label="Work email" required data-required-field>
+            <mui-input data-required-input type="email" autocomplete="email" placeholder="you@company.com"></mui-input>
+          </mui-field>
+          <mui-button data-check-required variant="secondary" align="start">Validate email</mui-button>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-field label="Work email" required&gt;<br />
+          &nbsp;&nbsp;&lt;mui-input type="email" autocomplete="email"&gt;&lt;/mui-input&gt;<br />
+          &lt;/mui-field&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="native-target-attributes" title="${storyMeta["native-target-attributes"].title}" description="${storyMeta["native-target-attributes"].description}" usage="${storyMeta["native-target-attributes"].usage}">
+        <mui-v-stack slot="body" space="var(--space-300)">
+          <mui-input label="One-time code" autocomplete="one-time-code" autocorrect="off" autocapitalize="none" spellcheck="false" input-mode="numeric" placeholder="123456"></mui-input>
+          <mui-input label="Share URL" readonly value="https://muibook.com/share/project-42" spellcheck="false"></mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input autocomplete="one-time-code" autocorrect="off" autocapitalize="none" spellcheck="false"&gt;&lt;/mui-input&gt;<br /><br />
+          &lt;mui-input readonly value="https://muibook.com/share/project-42" spellcheck="false"&gt;&lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="character-count" title="${storyMeta["character-count"].title}" description="${storyMeta["character-count"].description}" usage="${storyMeta["character-count"].usage}">
         <mui-v-stack slot="body" space="var(--space-500)">
           <mui-input size="x-small" label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
@@ -873,6 +898,19 @@ class storyInput extends HTMLElement {
         showBtn.textContent = isPassword ? "Hide" : "Show";
       });
     }
+
+    const requiredCard = this.shadowRoot.querySelector("#required-feedback");
+    const requiredField = requiredCard?.querySelector("[data-required-field]");
+    const requiredInput = requiredCard?.querySelector("[data-required-input]");
+    const requiredButton = requiredCard?.querySelector("[data-check-required]");
+
+    requiredButton?.addEventListener("click", () => {
+      const nativeInput = requiredInput?.shadowRoot?.querySelector("input");
+      const valid = nativeInput?.reportValidity();
+      if (!requiredField) return;
+      requiredField.setAttribute("variant", valid ? "success" : "error");
+      requiredField.setAttribute("message", valid ? "Email address is valid." : "Enter a valid work email address to continue.");
+    });
   }
 }
 

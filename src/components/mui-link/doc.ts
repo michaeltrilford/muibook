@@ -170,6 +170,15 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
+          "key": "width",
+          "title": "Width",
+          "description": "Applies custom width sizing to the link, defaulting to auto with support for any metric such as 100% or fixed units.",
+          "list": [
+            "Use width='100%' for full-width action links or sidebar navigation items",
+            "Use explicit width metrics when links require fixed sizes across layouts"
+          ]
+        },
+        {
           "key": "link-button-x-small",
           "title": "Link Button: X-Small",
           "description": "When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.",

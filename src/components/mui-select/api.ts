@@ -15,6 +15,7 @@ export const muiApi = {
         description: "JSON-encoded array of options, each containing `value` and `label`.",
       },
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables selection interaction." },
+      { name: "required", type: { text: "boolean" }, default: "false", description: "Applies the native required constraint and displays a label asterisk. Prefer optional markers to identify exceptional fields, then show validation feedback through Field when needed." },
       {
         name: "hide-label",
         type: { text: "boolean" },

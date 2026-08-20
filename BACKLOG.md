@@ -1,6 +1,116 @@
 # Muibook Backlog
 
-## 1. Fix the Dropdown intrinsic Menu width resize loop
+# Completed — August 19th
+
+## DONE | 1. Align Dialog surface usage scanning with Drawer behaviour (`applySurfaceUsage`)
+
+### Observed
+- When `<mui-tab-bar>` is rendered inside `<mui-dialog>`, dynamic or keyed child remounts (e.g., React `key={`tab-${session}`}`) fail to receive `usage="surface"`.
+- Unlike `<mui-drawer>`, which re-evaluates layout and surface inspection when opened via `syncOpenState()`, `<mui-dialog>` only executes `applySurfaceUsage(this)` once synchronously inside `connectedCallback()`.
+- If child elements are mounted after initial creation, swapped dynamically, or remounted with framework keys, `mui-dialog` never re-scans its children.
+- Because `mui-dialog` also lacks a `slotchange` listener on its default `<slot></slot>`, late-mounted or keyed `<mui-tab-bar>` instances do not receive `usage="surface"` and fail to pick up surface theme tokens.
+
+### Solution
+Align `mui-dialog` with `mui-drawer` to re-scan for slotted surface elements on open and slot changes:
+
+1. **Re-scan on open in `syncOpenState()`**:
+   ```ts
+   syncOpenState() {
+     if (this.hasAttribute("open")) {
+       applySurfaceUsage(this); // Re-scans children whenever the dialog opens
+       this.dialogEl.open || this.dialogEl.showModal();
+     } else {
+       this.dialogEl.open && this.dialogEl.close();
+     }
+   }
+   ```
+
+2. **Add `slotchange` listener on default content slot in `connectedCallback()`**:
+   ```ts
+   this.contentSlot = this.shadowRoot.querySelector("slot:not([name])");
+   this.contentSlot?.addEventListener("slotchange", () => {
+     applySurfaceUsage(this);
+   });
+   ```
+
+---
+
+## DONE | 2. Support Declarative `active` / `value` Attribute on `<mui-tab-bar>`
+
+### Observed
+- `<mui-tab-bar>` currently resolves its active tab once at startup by checking `this.children` for `hasAttribute("active")` (or falling back to the first child).
+- When frameworks (React, Vue, Svelte) programmatically update the `active` attribute on a child `<mui-tab-item active={...}>` in JSX without tearing down the DOM tree, `<mui-tab-bar>` is not notified because it does not observe child attribute mutations.
+- As a result, the sliding highlight pill and active state stay stuck on the previous tab unless the consumer calls `tabBar.setActiveTab(...)` via imperative DOM references.
+- Additionally, when `<mui-tab-bar>` is mounted inside a hidden container (e.g. `<dialog>` or drawer with `width: 0`), becoming visible causes the highlight pill to animate from `0px` to full width with a visible expansion flash.
+
+### Proposed Solutions
+
+#### Approach A: Declarative `active` / `value` on `<mui-tab-bar>` (Recommended)
+Allow consumers to bind the active tab directly on `<mui-tab-bar active="password">`:
+```ts
+static get observedAttributes() {
+  return ["active", "value", "size", "variant", "stroke", "radius"];
+}
+
+attributeChangedCallback(name: string, oldVal: string, newVal: string) {
+  if ((name === "active" || name === "value") && oldVal !== newVal) {
+    const target = this.querySelector<HTMLElement>(`#${newVal}`) ||
+                   this.querySelector<HTMLElement>(`[data-id="${newVal}"]`);
+    if (target) {
+      this.setActiveTab(target);
+    }
+  }
+}
+```
+
+#### Approach B: Child Mutation Observer in `<mui-tab-bar>`
+- Observe `attributeFilter: ["active"]` on child `<mui-tab-item>` elements so changes to child `active` attributes automatically invoke `setActiveTab(target)`.
+
+#### Approach C: Suppress Highlight Transition on Hidden-to-Visible Reveal
+- When transitioning from `0px` width (hidden container) to visible width, temporarily set `highlight.style.transition = "none"` for one frame to prevent the pill from expanding visibly on dialog open.
+
+---
+
+## DONE | 3. Support `space` (gap) Attribute on `<mui-button-group>` with `300` Default
+
+### Proposed
+- Update `<mui-button-group>` to support the `space` attribute (aligning with layout primitives like `<mui-h-stack>` and `<mui-grid>`).
+- Set the default gap to `var(--space-300)` (matching the standard drawer and dialog footer actions gap).
+- Support standard space token scales (e.g., `space="var(--space-100)"`, `space="300"`, `space="400"`).
+- Ensure flex wrapping and alignment (`justify-content: flex-end` / `space-between`) work seamlessly with the configured gap.
+
+---
+
+## DONE | 4. Support `close-shape` on `<mui-drawer>` and `<mui-dialog>`
+
+### Proposed
+
+### `close-shape` Attribute
+- Add a clean `close-shape` prop (e.g., `close-shape="circle" | "default" | "square"`) to `<mui-drawer>` and `<mui-dialog>`.
+- Passes through to the internal close button (`<mui-button class="close" shape="${this.getCloseShape()}">`), enabling circular close affordances natively without custom CSS overrides.
+
+---
+
+# Completed — August 17th
+
+## DONE | 1. Target Attributes for `mui-input`
+
+- `autocomplete` (e.g., `email`, `current-password`, `new-password`, `one-time-code`, `off`)
+- `readonly` / `read-only` (for selectable, non-editable text like share URLs/API keys)
+- `required` (native browser validation)
+- `autocorrect` (`on` / `off`)
+- `autocapitalize` (`none`, `sentences`, `words`, `characters`)
+- `spellcheck` (`true` / `false`)
+
+## DONE | 2. Support `width` attribute on `mui-link`
+
+## DONE | 3. Text Area fills its assigned height while retaining the rows minimum
+
+## DONE | 4. Disabled option for tabs? Outcomes share link etc
+
+# August 16th
+
+## DONE | 1. Fix the Dropdown intrinsic Menu width resize loop
 
 This issue was found while composing `mui-dropdown` actions inside `mui-prompt`. It is a Dropdown sizing and observation problem and does not depend on Dialog or top-layer behaviour.
 
@@ -64,7 +174,7 @@ This issue was found while composing `mui-dropdown` actions inside `mui-prompt`.
 
 ---
 
-## 2. Fix Dialog / Dropdown z-index and native top-layer behaviour
+## DONE | 2. Fix Dialog / Dropdown z-index and native top-layer behaviour
 
 This issue was found with `mui-dropdown` actions inside `mui-prompt`, where the Prompt was hosted in a custom native modal `<dialog>`.
 
@@ -156,7 +266,7 @@ Use this as the realistic composition regression. If a smaller component-level f
 
 ---
 
-## 3. Dialog content sizing does not match the public API
+## DONE | 3. Dialog content sizing does not match the public API
 
 This issue was found while trying to cap a `mui-dialog` Product Canvas flow at a stable viewport-relative size.
 

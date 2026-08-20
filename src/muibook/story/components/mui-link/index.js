@@ -154,6 +154,23 @@ class storyLink extends HTMLElement {
 
       </story-card>
 
+      <story-card id="width" title="${storyMeta["width"].title}" description="${storyMeta["width"].description}" usage="${storyMeta["width"].usage}">
+        <mui-v-stack slot="body" space="var(--space-200)" alignx="stretch">
+          <mui-link variant="primary" width="100%">Continue to Checkout</mui-link>
+          <mui-h-stack space="var(--space-200)">
+            <mui-link variant="secondary" width="200px">Save Draft</mui-link>
+            <mui-link variant="tertiary" width="16rem">Cancel Request</mui-link>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Full-width action link --&gt;<br />
+          &lt;mui-link variant="primary" width="100%"&gt;Continue to Checkout&lt;/mui-link&gt;<br /><br />
+          &lt;!-- Fixed pixel/rem metric links --&gt;<br />
+          &lt;mui-link variant="secondary" width="200px"&gt;Save Draft&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="tertiary" width="16rem"&gt;Cancel Request&lt;/mui-link&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="link-button-x-small" title="${storyMeta["link-button-x-small"].title}" description="${storyMeta["link-button-x-small"].description}" usage="${storyMeta["link-button-x-small"].usage}">
 
         <mui-v-stack slot="body" alignx="stretch">

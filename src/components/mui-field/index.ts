@@ -2,7 +2,7 @@ import "../mui-icons/info";
 
 class MuiField extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "message", "label", "description", "hide-label", "size", "optional"];
+    return ["variant", "message", "label", "description", "hide-label", "size", "optional", "required"];
   }
 
   constructor() {
@@ -99,6 +99,14 @@ class MuiField extends HTMLElement {
     else this.removeAttribute("optional");
   }
 
+  get required() {
+    return this.hasAttribute("required");
+  }
+  set required(val: boolean) {
+    if (val) this.setAttribute("required", "");
+    else this.removeAttribute("required");
+  }
+
   // -----------------------
   // Lifecycle methods
   // -----------------------
@@ -110,7 +118,7 @@ class MuiField extends HTMLElement {
   }
 
   attributeChangedCallback(name: string) {
-    if (["variant", "message", "label", "description", "hide-label", "size", "optional"].includes(name)) {
+    if (["variant", "message", "label", "description", "hide-label", "size", "optional", "required"].includes(name)) {
       this.renderMessage();
       this.passAttributesToChild();
       this.syncMessageSlotSizing();
@@ -126,7 +134,7 @@ class MuiField extends HTMLElement {
     const slotted = slot?.assignedElements?.()[0]; // assumes only one
     if (!slotted) return;
 
-    ["variant", "label", "description", "hide-label", "size", "optional"].forEach((attr) => {
+    ["variant", "label", "description", "hide-label", "size", "optional", "required"].forEach((attr) => {
       if (this.hasAttribute(attr)) {
         slotted.setAttribute(attr, this.getAttribute(attr) || "");
       } else {

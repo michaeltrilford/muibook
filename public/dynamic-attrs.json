@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-17T05:08:05.758Z",
+  "generatedAt": "2026-08-20T10:13:16.673Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -202,24 +202,6 @@
         }
       ]
     },
-    "mui-prompt": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-actions",
-          "description": "Set when action content exists, allowing the prompt layout to reserve action space and align controls."
-        },
-        {
-          "name": "has-extra-actions",
-          "description": "Set when extra action content exists, allowing the prompt layout to switch to the expanded action treatment."
-        },
-        {
-          "name": "has-error",
-          "description": "Set when error content exists, allowing the component to expose the error layout and visual treatment."
-        }
-      ]
-    },
     "mui-rule": {
       "version": 1,
       "destinationOnly": true,
@@ -277,6 +259,24 @@
         {
           "name": "slide-hidden",
           "description": "Applied to hidden slide sections, allowing the slide frame to hide inactive sections."
+        }
+      ]
+    },
+    "mui-prompt": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-actions",
+          "description": "Set when action content exists, allowing the prompt layout to reserve action space and align controls."
+        },
+        {
+          "name": "has-extra-actions",
+          "description": "Set when extra action content exists, allowing the prompt layout to switch to the expanded action treatment."
+        },
+        {
+          "name": "has-error",
+          "description": "Set when error content exists, allowing the component to expose the error layout and visual treatment."
         }
       ]
     },
@@ -372,6 +372,20 @@
         }
       ]
     },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
     "mui-cell": {
       "version": 1,
       "destinationOnly": true,
@@ -403,20 +417,6 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in Card Body, allowing edge-to-edge table layout with content inset matched to the current Card size."
-        }
-      ]
-    },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }

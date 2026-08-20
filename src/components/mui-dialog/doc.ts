@@ -28,6 +28,7 @@ export const muiDocs: MuiDocs = {
         "Use max-height to cap the complete Dialog surface, including its header and actions. The body scrolls within the remaining space and the Dialog keeps its natural height when content is shorter than the cap.",
         "When no title slot is provided, the dialog does not render the header row or built-in close action.",
         "Use hide-header for unified/headerless dialogs such as confirmations, or when custom body content provides the heading and dismissal path.",
+        "Use close-shape='circle' when the built-in close action should use a circular icon treatment.",
       ],
     },
 
@@ -74,6 +75,7 @@ export const muiDocs: MuiDocs = {
     stories: {
       items: [
         { key: "confirmation", title: "Confirmation Dialog", description: "Requests a focused decision without leaving the current context.", list: ["Use for decisions that require explicit confirmation or cancellation.", "Connect the title and supporting copy with aria-labelledby and aria-describedby."] },
+        { key: "close-shape", title: "Close Shape", description: "Uses a circular treatment for the built-in close action.", list: ["Use close-shape='circle' when the close affordance should match circular icon actions elsewhere in the interface.", "The default close treatment remains unchanged when close-shape is omitted."] },
         { key: "max-height", title: "Max Height", description: "Caps a headerless, tabbed Dialog and keeps longer panels scrollable.", list: ["Set max-height when tab panels contain different amounts of content to limit how much the Dialog surface can grow between selections.", "Place a full-width Tab Bar beneath the shared heading and introduction so navigation remains consistent across panels.", "Keep form actions in the footer while the body consumes the available space and scrolls when content exceeds the maximum."] },
         { key: "default-height", title: "No Height Set", description: "Shows the same tabbed Dialog without an explicit height constraint.", list: ["Compare this story with Max Height to see the Dialog's default sizing behaviour when max-height is omitted."] },
         { key: "dropdown-portal", title: "Dropdown Portal", description: "Verifies Dropdown Menus in the Dialog body and footer remain visible and interactive above the modal surface.", list: [] },

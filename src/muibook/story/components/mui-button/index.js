@@ -679,6 +679,24 @@ class storyButton extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="button-group-spacing" title="${storyMeta["button-group-spacing"].title}" description="${storyMeta["button-group-spacing"].description}" usage="${storyMeta["button-group-spacing"].usage}">
+        <mui-v-stack slot="body" space="var(--space-300)" alignX="stretch">
+          <mui-button-group>
+            <mui-button variant="secondary">Cancel</mui-button>
+            <mui-button variant="primary">Save changes</mui-button>
+          </mui-button-group>
+          <mui-button-group space="var(--space-100)">
+            <mui-button variant="secondary">Cancel</mui-button>
+            <mui-button variant="primary">Save changes</mui-button>
+          </mui-button-group>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Defaults to var(--space-300) --&gt;<br />
+          &lt;mui-button-group&gt;...&lt;/mui-button-group&gt;<br /><br />
+          &lt;mui-button-group space=\"var(--space-100)\"&gt;...&lt;/mui-button-group&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="icon-before-and-after" title="${storyMeta["icon-before-and-after"].title}" description="${storyMeta["icon-before-and-after"].description}" usage="${storyMeta["icon-before-and-after"].usage}">
 
         <mui-v-stack slot="body" space="var(--space-200)" alignX="start">

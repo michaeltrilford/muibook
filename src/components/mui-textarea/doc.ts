@@ -74,6 +74,15 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
+          "key": "fill-available-height",
+          "title": "Fill Available Height",
+          "description": "Fills the height assigned to Textarea while keeping rows as its minimum control height.",
+          "list": [
+            "Use when the surrounding layout deliberately assigns a height to Textarea.",
+            "Rows still define the minimum height in ordinary auto-height layouts."
+          ]
+        },
+        {
           "key": "sizes",
           "title": "Sizes",
           "description": "Compares the supported Textarea size scale.",

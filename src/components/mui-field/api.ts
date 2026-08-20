@@ -9,6 +9,7 @@ export const muiApi = {
       { name: "hide-label", type: { text: "boolean" }, default: "false", description: "Visually hides the forwarded label while preserving its accessible meaning." },
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Size forwarded to the slotted form control and message content." },
       { name: "optional", type: { text: "boolean" }, default: "false", description: "Marks the field as optional and forwards that state to the slotted control." },
+      { name: "required", type: { text: "boolean" }, default: "false", description: "Forwards the native required constraint to the slotted control. Prefer optional markers for exceptions and Field feedback for unmet requirements." },
     ],
     slots: [
       { name: "", description: "Primary form control, such as `mui-input`, `mui-select`, or `mui-textarea`." },

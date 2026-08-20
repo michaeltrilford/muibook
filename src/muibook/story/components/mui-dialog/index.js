@@ -108,6 +108,20 @@ class storyDialog extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="close-shape" title="${storyMeta["close-shape"].title}" description="${storyMeta["close-shape"].description}" usage="${storyMeta["close-shape"].usage}">
+        <mui-button variant="secondary" data-dialog="close-shape" slot="body">Open Circular Close Dialog</mui-button>
+        <mui-dialog data-dialog="close-shape" width="400px" close-shape="circle" slot="body" aria-labelledby="dialog-close-shape-title">
+          <mui-heading size="4" level="4" slot="title" id="dialog-close-shape-title">Project settings</mui-heading>
+          <mui-body>The close action keeps its standard label and dismissal behaviour.</mui-body>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dialog close-shape="circle"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Project settings&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;...<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="max-height" title="${storyMeta["max-height"].title}" description="${storyMeta["max-height"].description}" usage="${storyMeta["max-height"].usage}">
         <mui-button variant="primary" data-dialog="hook-sizing" slot="body">Open</mui-button>
         <mui-dialog data-dialog="hook-sizing" width="min(90vw, 60rem)" max-height="62.7rem" slot="body" aria-label="Product canvas">

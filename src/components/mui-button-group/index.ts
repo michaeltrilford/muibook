@@ -1,7 +1,7 @@
 /* Mui ButtonGroup */
 class MuiButtonGroup extends HTMLElement {
   static get observedAttributes() {
-    return ["layout", "align", "right"];
+    return ["layout", "align", "right", "space"];
   }
 
   constructor() {
@@ -9,11 +9,12 @@ class MuiButtonGroup extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
   connectedCallback() {
+    this.syncSpace();
     let html = /*html*/ `
     <style>      
       :host {
         display: flex;
-        gap: var(--space-200);
+        gap: var(--button-group-space);
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
@@ -37,6 +38,15 @@ class MuiButtonGroup extends HTMLElement {
     <slot></slot>`;
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = html;
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (name === "space" && oldValue !== newValue) this.syncSpace();
+  }
+
+  private syncSpace() {
+    const space = this.getAttribute("space")?.trim() || "var(--space-300)";
+    this.style.setProperty("--button-group-space", space);
   }
 }
 

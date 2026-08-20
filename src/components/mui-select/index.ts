@@ -14,6 +14,7 @@ class MuiSelect extends HTMLElement {
       "description",
       "options",
       "disabled",
+      "required",
       "hide-label",
       "variant",
       "optional",
@@ -117,6 +118,13 @@ class MuiSelect extends HTMLElement {
       return;
     }
 
+    if (name === "required" && selectEl) {
+      selectEl.toggleAttribute("required", this.hasAttribute("required"));
+      this.render();
+      this.setupListener();
+      return;
+    }
+
     if (
       [
         "options",
@@ -126,6 +134,7 @@ class MuiSelect extends HTMLElement {
         "hide-label",
         "variant",
         "optional",
+        "required",
         "size",
         "appearance",
         "selected-content",
@@ -193,6 +202,7 @@ class MuiSelect extends HTMLElement {
     const value = this.getAttribute("value") || "";
     const hideLabel = this.hasAttribute("hide-label");
     const optional = this.hasAttribute("optional");
+    const required = this.hasAttribute("required");
     const disabled = this.hasAttribute("disabled");
     const optionsAttr = this.getAttribute("options") || "[]";
     const size = this.getAttribute("size") || "medium";
@@ -590,6 +600,10 @@ class MuiSelect extends HTMLElement {
         .optional-text {
           transform: translateY(calc(var(--stroke-size-100) * -1));
         }
+        .required {
+          color: var(--feedback-attention-text, var(--text-color-attention));
+          font-weight: var(--font-weight-bold);
+        }
         .chevron {
           position: absolute; 
           right: var(--select-chevron-inset);
@@ -660,7 +674,7 @@ class MuiSelect extends HTMLElement {
               optional
                 ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
                 : ""
-            }</label>`
+            }${required ? ' <span class="required" aria-hidden="true">*</span>' : ""}</label>`
           : ""
       }
       <div id="${descriptionId}" class="select-description"${hasDescription ? "" : " hidden"}>
@@ -668,7 +682,8 @@ class MuiSelect extends HTMLElement {
       </div>
       <div style="position: relative; ${chevronStyle}">
         <select class="${[variantClass, `size-${normalizedSize}`, `appearance-${appearance}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${hasDescription ? `aria-describedby="${descriptionId}"` : ""} style="${customStyle}"
-        ${disabled ? "disabled" : ""}>
+        ${disabled ? "disabled" : ""}
+        ${required ? "required" : ""}>
           ${selectedContent}
           ${optionsHTML}
         </select>

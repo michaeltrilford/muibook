@@ -91,6 +91,12 @@ export const muiApi = {
         description: "Sets the built-in header close icon scale and matching header minimum height. Medium uses a small Button; large uses a medium Button.",
       },
       {
+        name: "close-shape",
+        type: { text: '"default" | "circle"' },
+        default: "default",
+        description: "Controls the built-in header close button shape. Use `circle` for a circular icon action.",
+      },
+      {
         name: "breakpoint",
         type: { text: "number | string" },
         default: "768",

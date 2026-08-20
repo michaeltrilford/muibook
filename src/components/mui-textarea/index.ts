@@ -10,6 +10,7 @@ class MuiTextarea extends HTMLElement {
       "label",
       "description",
       "disabled",
+      "required",
       "hide-label",
       "variant",
       "rows",
@@ -107,6 +108,13 @@ class MuiTextarea extends HTMLElement {
       return;
     }
 
+    if (name === "required") {
+      textareaEl.toggleAttribute("required", this.hasAttribute("required"));
+      this.render();
+      this.setupListener();
+      return;
+    }
+
     if (name === "rows") {
       if (newValue) {
         textareaEl.setAttribute("rows", newValue);
@@ -114,7 +122,7 @@ class MuiTextarea extends HTMLElement {
       return;
     }
 
-    if (["id", "placeholder", "label", "description", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline", "surface"].includes(name)) {
+    if (["id", "placeholder", "label", "description", "hide-label", "variant", "optional", "required", "max-length", "size", "padding-block", "padding-inline", "surface"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -174,6 +182,7 @@ class MuiTextarea extends HTMLElement {
     const descriptionId = `${id}-description`;
     const hasDescription = Boolean(description.trim() || this.querySelector('[slot="description"]'));
     const optional = this.hasAttribute("optional");
+    const required = this.hasAttribute("required");
     const hideLabel = this.hasAttribute("hide-label");
     const disabled = this.hasAttribute("disabled");
     const rows = this.getAttribute("rows") || "4";
@@ -193,8 +202,10 @@ class MuiTextarea extends HTMLElement {
     const html = /*html*/ `
       <style>
         :host {
-          display: inline-block;
+          display: flex;
+          flex-direction: column;
           width: 100%;
+          min-height: 0;
         }
         :host([surface="seamless"]) {
           --input-background: transparent;
@@ -233,6 +244,7 @@ class MuiTextarea extends HTMLElement {
         :host([size="large"]) .textarea-description { margin-block-end: var(--space-200); }
 
         textarea {
+          flex: 1 1 auto;
           width: 100%;
           min-height: calc(
             (var(--textarea-line-height-current) * var(--textarea-rows, 4)) +
@@ -453,6 +465,10 @@ class MuiTextarea extends HTMLElement {
         .optional-text {
           transform: translateY(calc(var(--stroke-size-100) * -1));
         }
+        .required {
+          color: var(--feedback-attention-text, var(--text-color-attention));
+          font-weight: var(--font-weight-bold);
+        }
       </style>
 
       ${
@@ -461,7 +477,7 @@ class MuiTextarea extends HTMLElement {
               optional
                 ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
                 : ""
-            }</label>`
+            }${required ? ' <span class="required" aria-hidden="true">*</span>' : ""}</label>`
           : ""
       }
       <div id="${descriptionId}" class="textarea-description"${hasDescription ? "" : " hidden"}>
@@ -477,6 +493,7 @@ class MuiTextarea extends HTMLElement {
         placeholder="${placeholder}"
         ${maxLength ? `maxlength="${maxLength}"` : ""}
         ${disabled ? "disabled" : ""}
+        ${required ? "required" : ""}
         ${hasDescription ? `aria-describedby="${descriptionId}"` : ""}
         ${ariaLabel}
       >${value}</textarea>

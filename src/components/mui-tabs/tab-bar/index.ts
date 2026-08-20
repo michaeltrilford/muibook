@@ -1,3 +1,5 @@
+import { hasSurfaceOwner } from "../../../utils/surface-usage";
+
 class MuiTabBar extends HTMLElement {
   private _resizeTimeout: number | null;
   private _activeTab: HTMLElement | null;
@@ -6,8 +8,10 @@ class MuiTabBar extends HTMLElement {
   private _animationSpeed: number = 200;
   private _resizeObserver: ResizeObserver;
   private _slot: HTMLSlotElement | null = null;
+  private _childStateObserver: MutationObserver;
+  private _lastMeasuredWidth = 0;
   static get observedAttributes() {
-    return ["size", "variant", "stroke", "radius"];
+    return ["value", "size", "variant", "stroke", "radius"];
   }
 
   constructor() {
@@ -18,16 +22,24 @@ class MuiTabBar extends HTMLElement {
     this._resizeTimeout = null;
     this._observedTab = null;
     this._activeTab = null;
+    this._childStateObserver = new MutationObserver((mutations) => this._handleChildStateChanges(mutations));
 
     // Use a more performant approach with transform instead of left/width adjustments
     this._resizeObserver = new ResizeObserver(() => {
+      const width = this.getBoundingClientRect().width;
+      const becameVisible = this._lastMeasuredWidth === 0 && width > 0;
+      this._lastMeasuredWidth = width;
       if (this._activeTab) {
-        this._updateHighlight(this._activeTab);
+        this._updateHighlight(this._activeTab, becameVisible);
       }
     });
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (name === "value" && oldValue !== newValue && this.isConnected) {
+      this._syncValueToActiveTab();
+    }
+
     if ((name === "size" || name === "variant" || name === "stroke") && oldValue !== newValue) {
       this._applySizeToChildren();
       this._applyVariantToChildren();
@@ -40,6 +52,7 @@ class MuiTabBar extends HTMLElement {
   }
 
   connectedCallback() {
+    if (hasSurfaceOwner(this)) this.setAttribute("usage", "surface");
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this._syncRadiusAttribute();
 
@@ -56,37 +69,40 @@ class MuiTabBar extends HTMLElement {
     this.setAttribute("aria-orientation", orientation);
 
     this.addEventListener("keydown", (e: KeyboardEvent) => {
-      const children = Array.from(this.children);
-      const activeIndex = children.findIndex((el) => el.hasAttribute("active"));
+      const children = Array.from(this.children) as HTMLElement[];
+      const enabledTabs = children.filter((child) => !child.hasAttribute("disabled"));
+      if (!enabledTabs.length) return;
+
+      const activeIndex = enabledTabs.findIndex((el) => el.hasAttribute("active"));
       const orientation = this.getAttribute("aria-orientation") || "horizontal";
 
-      let nextIndex = activeIndex;
+      let nextIndex = activeIndex >= 0 ? activeIndex : 0;
 
       switch (e.key) {
         case "ArrowRight":
           if (orientation === "horizontal") {
-            nextIndex = (activeIndex + 1) % children.length;
+            nextIndex = (nextIndex + 1) % enabledTabs.length;
             e.preventDefault();
           }
           break;
 
         case "ArrowLeft":
           if (orientation === "horizontal") {
-            nextIndex = (activeIndex - 1 + children.length) % children.length;
+            nextIndex = (nextIndex - 1 + enabledTabs.length) % enabledTabs.length;
             e.preventDefault();
           }
           break;
 
         case "ArrowDown":
           if (orientation === "vertical") {
-            nextIndex = (activeIndex + 1) % children.length;
+            nextIndex = (nextIndex + 1) % enabledTabs.length;
             e.preventDefault();
           }
           break;
 
         case "ArrowUp":
           if (orientation === "vertical") {
-            nextIndex = (activeIndex - 1 + children.length) % children.length;
+            nextIndex = (nextIndex - 1 + enabledTabs.length) % enabledTabs.length;
             e.preventDefault();
           }
           break;
@@ -97,7 +113,7 @@ class MuiTabBar extends HTMLElement {
           break;
 
         case "End":
-          nextIndex = children.length - 1;
+          nextIndex = enabledTabs.length - 1;
           e.preventDefault();
           break;
 
@@ -105,7 +121,7 @@ class MuiTabBar extends HTMLElement {
           return;
       }
 
-      const nextTab = children[nextIndex] as HTMLElement;
+      const nextTab = enabledTabs[nextIndex];
       if (nextTab) {
         this.setActiveTab(nextTab);
         nextTab.focus();
@@ -121,7 +137,7 @@ class MuiTabBar extends HTMLElement {
       ) as HTMLElement | undefined;
       const tabFromTarget = e.target instanceof HTMLElement ? e.target.closest("mui-tab-item") : null;
       const tab = tabFromPath || tabFromTarget;
-      if (!tab || !this.contains(tab)) return;
+      if (!tab || !this.contains(tab) || tab.hasAttribute("disabled")) return;
       this.setActiveTab(tab as HTMLElement);
     });
 
@@ -267,6 +283,12 @@ class MuiTabBar extends HTMLElement {
 
     this._slot = this.shadowRoot.querySelector("slot");
     this._slot?.addEventListener("slotchange", this._handleSlotChange);
+    this._childStateObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["active", "disabled", "id"],
+    });
 
     // Attach resize handler
     window.addEventListener("resize", this._handleResize);
@@ -279,14 +301,17 @@ class MuiTabBar extends HTMLElement {
       const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
       highlight.style.transition = "none";
 
-      // Find the active tab or use the first tab
-      const active =
-        (children.find((el) => el.hasAttribute("active")) as HTMLElement | undefined) || (children[0] as HTMLElement);
+      // A parent value is the canonical selection when supplied; otherwise use
+      // the authored active child or the first child as the uncontrolled default.
+      const active = this._getSelectableTab(this._getTabForValue()) ||
+        (children.find((el) => el.hasAttribute("active") && !el.hasAttribute("disabled")) as HTMLElement | undefined) ||
+        (children.find((el) => !el.hasAttribute("disabled")) as HTMLElement | undefined);
 
       if (active) {
         this._activeTab = active;
-        active.setAttribute("active", "");
+        children.forEach((child) => child.toggleAttribute("active", child === active));
         this._updateHighlight(active);
+        this._lastMeasuredWidth = this.getBoundingClientRect().width;
 
         // Start observing this tab
         this._observedTab = active;
@@ -340,7 +365,10 @@ class MuiTabBar extends HTMLElement {
     this._applyVariantToChildren(children);
     this._applyChildPositions(children);
 
-    const active = children.find((child) => child.hasAttribute("active")) || children[0] || null;
+    const active = this._getSelectableTab(this._getTabForValue()) ||
+      children.find((child) => child.hasAttribute("active") && !child.hasAttribute("disabled")) ||
+      children.find((child) => !child.hasAttribute("disabled")) ||
+      null;
     if (!active) {
       this._activeTab = null;
       this._observedTab = null;
@@ -359,6 +387,50 @@ class MuiTabBar extends HTMLElement {
       if (this.isConnected && this._activeTab === active) this._updateHighlight(active);
     });
   };
+
+  private _getTabForValue(): HTMLElement | null {
+    const value = this.getAttribute("value");
+    if (!value) return null;
+    return (Array.from(this.children) as HTMLElement[]).find((child) => child.id === value) || null;
+  }
+
+  private _getSelectableTab(tab: HTMLElement | null): HTMLElement | null {
+    return tab && !tab.hasAttribute("disabled") ? tab : null;
+  }
+
+  private _syncValueToActiveTab() {
+    const target = this._getSelectableTab(this._getTabForValue());
+    if (target && target !== this._activeTab) {
+      this._selectTab(target, this._hasInitialized);
+      return;
+    }
+
+    if (this._activeTab?.hasAttribute("disabled")) {
+      const fallback = (Array.from(this.children) as HTMLElement[]).find((child) => !child.hasAttribute("disabled"));
+      if (fallback) this._selectTab(fallback, this._hasInitialized);
+    }
+  }
+
+  private _handleChildStateChanges(mutations: MutationRecord[]) {
+    if (!this.isConnected) return;
+
+    if (this.hasAttribute("value")) {
+      this._syncValueToActiveTab();
+      return;
+    }
+
+    const changedActiveTab = [...mutations]
+      .reverse()
+      .map((mutation) => mutation.target)
+      .find((target) => {
+        return target instanceof HTMLElement && target.parentElement === this && target.hasAttribute("active");
+      }) as HTMLElement | undefined;
+    const children = Array.from(this.children) as HTMLElement[];
+    const target = this._getSelectableTab(changedActiveTab || null) ||
+      children.find((child) => child.hasAttribute("active") && !child.hasAttribute("disabled")) ||
+      children.find((child) => !child.hasAttribute("disabled"));
+    if (target && target !== this._activeTab) this._selectTab(target, this._hasInitialized);
+  }
 
   private _syncRadiusAttribute() {
     const raw = this.getAttribute("radius")?.trim();
@@ -393,6 +465,7 @@ class MuiTabBar extends HTMLElement {
 
     // Disconnect the observer completely
     this._resizeObserver.disconnect();
+    this._childStateObserver.disconnect();
   }
 
   _handleResize() {
@@ -431,22 +504,41 @@ class MuiTabBar extends HTMLElement {
     }, 100);
   }
 
-  private _updateHighlight(el: HTMLElement): void {
+  private _updateHighlight(el: HTMLElement, suppressTransition = false): void {
     if (this.getAttribute("variant") === "dots") return;
     const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
+    const previousTransition = highlight.style.transition;
+    if (suppressTransition) highlight.style.transition = "none";
     const elRect = el.getBoundingClientRect();
     const barRect = this.getBoundingClientRect();
     const borderWidth = parseFloat(getComputedStyle(this).borderWidth) || 0;
     const leftPosition = elRect.left - barRect.left - borderWidth;
     highlight.style.transform = `translateX(${leftPosition}px)`;
     highlight.style.width = `${elRect.width}px`;
+
+    if (suppressTransition) {
+      void highlight.offsetWidth;
+      requestAnimationFrame(() => {
+        if (highlight.style.transition === "none") highlight.style.transition = previousTransition;
+      });
+    }
   }
 
   setActiveTab(el: HTMLElement) {
+    this._selectTab(el, true, true);
+  }
+
+  private _selectTab(el: HTMLElement, emitChange: boolean, syncValue = false) {
+    if (el.parentElement !== this || el.hasAttribute("disabled")) return;
     const children = Array.from(this.children) as HTMLElement[];
+    const changed = this._activeTab !== el;
     children.forEach((child) => child.removeAttribute("active"));
     el.setAttribute("active", "");
     this._activeTab = el;
+
+    if (syncValue && this.hasAttribute("value") && this.getAttribute("value") !== el.id) {
+      this.setAttribute("value", el.id);
+    }
 
     // Stop observing the previous tab
     if (this._observedTab && this._observedTab !== el) {
@@ -472,13 +564,15 @@ class MuiTabBar extends HTMLElement {
     }
 
     // Dispatch the tab-change event
-    this.dispatchEvent(
-      new CustomEvent("tab-change", {
-        bubbles: true,
-        composed: true,
-        detail: { activeId: el.id },
-      })
-    );
+    if (emitChange && changed) {
+      this.dispatchEvent(
+        new CustomEvent("tab-change", {
+          bubbles: true,
+          composed: true,
+          detail: { activeId: el.id },
+        })
+      );
+    }
   }
 }
 

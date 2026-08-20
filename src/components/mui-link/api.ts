@@ -54,6 +54,12 @@ export const muiApi = {
         description: "Link scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing.",
       },
       {
+        name: "width",
+        type: { text: "string" },
+        default: "auto",
+        description: "Custom link width metric, such as `100%`, `200px`, or `16rem`.",
+      },
+      {
         name: "align",
         type: { text: '"start"' },
         description: "Aligns content to the inline start and pushes trailing slot content to the inline end.",

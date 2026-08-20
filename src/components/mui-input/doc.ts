@@ -31,6 +31,8 @@ export const muiDocs: MuiDocs = {
         "Use placeholder text to provide context of the input use; avoid using them as primary labels.",
         "Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.",
         "Use the optional attribute when a field is not required to show a clear (optional) marker in the label.",
+        "Prefer optional markers to identify exceptional fields. Required remains available when a native required constraint and label asterisk are needed; use Field validation feedback for unmet requirements.",
+        "Use autocomplete, readonly, autocorrect, autocapitalize, and spellcheck to retain native input behaviours without reaching into shadow DOM.",
         "Use max-length when input limits matter; the component shows a live character count.",
         "In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.",
       ],
@@ -46,6 +48,7 @@ export const muiDocs: MuiDocs = {
         "Clear focus styles are shown for keyboard users.",
         "The native disabled attribute is fully supported by assistive tech.",
         "Optional fields can be explicitly communicated with the optional attribute without changing label association.",
+        "Required inputs expose the native required state and a visible asterisk; surface unmet requirements with Field validation feedback.",
         "When max-length is set, users get visible character progress while native maxlength enforcement remains intact.",
         "For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.",
       ],
@@ -200,6 +203,25 @@ export const muiDocs: MuiDocs = {
           "description": "Marks the field as optional without weakening its label.",
           "list": [
             "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "required-feedback",
+          "title": "Required Feedback",
+          "description": "Shows native validation feedback for a required input.",
+          "list": [
+            "Prefer optional markers to distinguish exceptional fields.",
+            "Use Field feedback after native validation reports an unmet required value."
+          ]
+        },
+        {
+          "key": "native-target-attributes",
+          "title": "Native Target Attributes",
+          "description": "Forwards platform input behaviours to the internal native control.",
+          "list": [
+            "Use autocomplete to help browsers and password managers fill recognised values.",
+            "Use readonly for selectable values that users must not edit, such as a share URL or API key.",
+            "Use autocorrect, autocapitalize, and spellcheck deliberately for code, names, and prose."
           ]
         },
         {

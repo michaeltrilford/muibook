@@ -16,6 +16,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use layout='row|column' to match the intended action arrangement.",
         "Use align='left|right' to control action alignment for row layouts.",
+        "Use space to control the gap between actions. It defaults to var(--space-300) and accepts any valid CSS gap value.",
         "Column layout is intended for full-width stacked actions.",
         "Prefer align='right' instead of the legacy right attribute.",
         "Use small (default) size icon when paired with text-based action is used in a button group.",

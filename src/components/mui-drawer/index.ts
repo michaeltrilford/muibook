@@ -66,6 +66,7 @@ class MuiDrawer extends HTMLElement {
       "panel-padding",
       "hide-header",
       "close-size",
+      "close-shape",
       "breakpoint",
       "mobile-presentation",
       "resize-rail",
@@ -147,6 +148,10 @@ class MuiDrawer extends HTMLElement {
     if (closeSize === "large") return "medium";
     if (closeSize === "medium") return "small";
     return closeSize;
+  }
+
+  private getCloseShape(): "circle" | null {
+    return this.getAttribute("close-shape") === "circle" ? "circle" : null;
   }
 
   private getMobilePresentation(): "overlay" | "stack" {
@@ -320,6 +325,7 @@ class MuiDrawer extends HTMLElement {
     const noPadding = this.getAttribute("panel-padding") === "none" ? "no-padding" : "";
     const closeSize = this.getCloseSize();
     const closeButtonSize = this.getCloseButtonSize();
+    const closeShape = this.getCloseShape();
     const partMap = getPartMap("visual");
 
     return /*html*/ `
@@ -330,7 +336,7 @@ class MuiDrawer extends HTMLElement {
           ${
             hasCloseButton
               ? `
-            <mui-button class="close" variant="tertiary" size="${closeButtonSize}" aria-label="Close drawer">
+            <mui-button class="close" variant="tertiary" size="${closeButtonSize}" aria-label="Close drawer"${closeShape ? ' shape="circle"' : ""}>
               <mui-icon-close size="${closeSize}"></mui-icon-close>
             </mui-button>`
               : ""
@@ -353,6 +359,7 @@ class MuiDrawer extends HTMLElement {
     const hasResizeRail = (variant === "push" || variant === "persistent") && this.hasAttribute("resize-rail");
     const hasWorkspaceResizeRail = variant === "workspace" && this.hasAttribute("resize-rail");
     const closeSize = this.getCloseSize();
+    const closeShape = this.getCloseShape();
     const partMap = getPartMap("visual");
 
     // Determine side: attribute takes priority, otherwise fallback to slot logic
@@ -1172,7 +1179,7 @@ class MuiDrawer extends HTMLElement {
       <div class="inner" part="${partMap}" role="dialog" aria-modal="true">
         <div class="header" hidden>
           <slot name="title"></slot>
-          <mui-button class="close" variant="tertiary" size="${this.getCloseButtonSize()}" aria-label="Close drawer">
+          <mui-button class="close" variant="tertiary" size="${this.getCloseButtonSize()}" aria-label="Close drawer"${closeShape ? ' shape="circle"' : ""}>
             <mui-icon-close size="${closeSize}"></mui-icon-close>
           </mui-button>
         </div>
@@ -1356,7 +1363,7 @@ class MuiDrawer extends HTMLElement {
       this.syncOpenState();
       this.syncWorkspaceState();
     }
-    if (name === "close-size") {
+    if (name === "close-size" || name === "close-shape") {
       if (!this.isConnected) return;
       this.render();
       this.cacheEls();

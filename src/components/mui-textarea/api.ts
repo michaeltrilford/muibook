@@ -10,6 +10,7 @@ export const muiApi = {
       { name: "label", type: { text: "string" }, description: "Accessible textarea label." },
       { name: "description", type: { text: "string" }, description: "Persistent supporting text displayed between the label and textarea." },
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables text entry." },
+      { name: "required", type: { text: "boolean" }, default: "false", description: "Applies the native required constraint and displays a label asterisk. Prefer optional markers to identify exceptional fields, then show validation feedback through Field when needed." },
       { name: "hide-label", type: { text: "boolean" }, default: "false", description: "Visually hides the supplied label while preserving it as the accessible name." },
       { name: "variant", type: { text: '"default" | "success" | "warning" | "error"' }, default: "default", description: "Visual validation state." },
       { name: "rows", type: { text: "number | string" }, default: "4", description: "Initial visible row count." },

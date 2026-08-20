@@ -17,6 +17,7 @@ class MuiLink extends HTMLElement {
       "size",
       "download",
       "usage",
+      "width",
     ];
   }
 
@@ -39,6 +40,7 @@ class MuiLink extends HTMLElement {
     if (!this.hasAttribute("weight")) this.setAttribute("weight", "regular");
     if (!this.hasAttribute("variant")) this.setAttribute("variant", "default");
     this.syncRingSizeAttribute();
+    this.syncWidth();
 
     await this.waitForPartMap();
 
@@ -130,6 +132,10 @@ class MuiLink extends HTMLElement {
     if (name === "stroke-ring-size" && _oldValue !== newValue) {
       this.syncRingSizeAttribute();
     }
+
+    if (name === "width" && _oldValue !== newValue) {
+      this.syncWidth();
+    }
   }
 
   private syncRingSizeAttribute(): void {
@@ -143,6 +149,15 @@ class MuiLink extends HTMLElement {
     const tokenValue = raw.startsWith("stroke-size-") ? raw.replace("stroke-size-", "") : raw;
     const isStrokeToken = /^(100|200|300|400|500)$/.test(tokenValue);
     this.style.setProperty("--action-ring-size", isStrokeToken ? `var(--stroke-size-${tokenValue})` : raw);
+  }
+
+  private syncWidth(): void {
+    const raw = this.getAttribute("width")?.trim();
+    if (!raw) {
+      this.style.removeProperty("--link-width");
+      return;
+    }
+    this.style.setProperty("--link-width", raw);
   }
 
   private isAvatarOnlyElement(element: Element): boolean {
@@ -270,7 +285,7 @@ class MuiLink extends HTMLElement {
 
       :host {
         display: inline-flex;
-        width: auto;
+        width: var(--link-width, auto);
         text-align: initial;
         --action-focus-outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
         --action-focus-outline-inset-offset: var(--stroke-size-400);

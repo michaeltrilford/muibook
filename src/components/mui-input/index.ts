@@ -11,6 +11,13 @@ class MuiInput extends HTMLElement {
       "label",
       "description",
       "disabled",
+      "required",
+      "readonly",
+      "read-only",
+      "autocomplete",
+      "autocorrect",
+      "autocapitalize",
+      "spellcheck",
       "hide-label",
       "variant",
       "optional",
@@ -93,6 +100,25 @@ class MuiInput extends HTMLElement {
       } else {
         inputEl.setAttribute("disabled", "");
       }
+      return;
+    }
+
+    if (name === "required") {
+      inputEl.toggleAttribute("required", this.hasAttribute("required"));
+      this.render();
+      this.setupListener();
+      return;
+    }
+
+    if (name === "readonly" || name === "read-only") {
+      inputEl.toggleAttribute("readonly", this.hasAttribute("readonly") || this.hasAttribute("read-only"));
+      return;
+    }
+
+    if (["autocomplete", "autocorrect", "autocapitalize", "spellcheck"].includes(name)) {
+      const attributeName = name;
+      if (newValue === null) inputEl.removeAttribute(attributeName);
+      else inputEl.setAttribute(attributeName, newValue);
       return;
     }
 
@@ -526,8 +552,14 @@ class MuiInput extends HTMLElement {
     const hasSlottedDescription = this.querySelector('[slot="description"]') !== null;
     const hasDescription = Boolean(description.trim() || hasSlottedDescription);
     const optional = this.hasAttribute("optional");
+    const required = this.hasAttribute("required");
     const hideLabel = this.hasAttribute("hide-label");
     const disabled = this.hasAttribute("disabled");
+    const readOnly = this.hasAttribute("readonly") || this.hasAttribute("read-only");
+    const autocomplete = this.getAttribute("autocomplete") || "";
+    const autocorrect = this.getAttribute("autocorrect") || "";
+    const autocapitalize = this.getAttribute("autocapitalize") || "";
+    const spellcheck = this.getAttribute("spellcheck");
     const ariaLabel = hideLabel && label ? `aria-label="${label}"` : "";
     const maxLengthRaw = this.getAttribute("max-length");
     const maxLength = maxLengthRaw && Number(maxLengthRaw) > 0 ? String(Number(maxLengthRaw)) : "";
@@ -900,6 +932,10 @@ class MuiInput extends HTMLElement {
           display: inline-flex;
           align-items: center;
         }
+        .required {
+          color: var(--feedback-attention-text, var(--text-color-attention));
+          font-weight: var(--font-weight-bold);
+        }
         input {
           min-height: 4.4rem;
           width: auto;
@@ -1208,7 +1244,7 @@ class MuiInput extends HTMLElement {
               optional
                 ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
                 : ""
-            }</label>`
+            }${required ? ' <span class="required" aria-hidden="true">*</span>' : ""}</label>`
           : ""
       }
       <div id="${descriptionId}" class="input-description"${hasDescription ? "" : " hidden"}>
@@ -1237,6 +1273,12 @@ class MuiInput extends HTMLElement {
           ${pattern ? `pattern="${pattern}"` : ""}
           ${step ? `step="${step}"` : ""}
           ${disabled ? 'disabled aria-disabled="true"' : ""}
+          ${required ? "required" : ""}
+          ${readOnly ? "readonly" : ""}
+          ${autocomplete ? `autocomplete="${autocomplete}"` : ""}
+          ${autocorrect ? `autocorrect="${autocorrect}"` : ""}
+          ${autocapitalize ? `autocapitalize="${autocapitalize}"` : ""}
+          ${spellcheck !== null ? `spellcheck="${spellcheck}"` : ""}
           ${maxLength ? `maxlength="${maxLength}"` : ""}
           ${hasDescription ? `aria-describedby="${descriptionId}"` : ""}
           ${ariaLabel}

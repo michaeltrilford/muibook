@@ -59,12 +59,14 @@ class MuiTabItem extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["active", "size", "variant"];
+    return ["active", "disabled", "size", "variant"];
   }
 
   attributeChangedCallback(name: string): void {
     if (name === "active") {
       this.updateActiveState();
+    } else if (name === "disabled") {
+      this.updateDisabledState();
     } else if (name === "size" || name === "variant") {
       this.updateSlotState();
     }
@@ -308,6 +310,11 @@ class MuiTabItem extends HTMLElement {
         color: var(--tab-text-color-active);
       }
 
+      :host([disabled]) {
+        color: var(--action-tertiary-text-color-disabled);
+        cursor: not-allowed;
+      }
+
       :host([active]:focus-visible) {
         outline: var(--outline-thick);
         outline-offset: -5px;
@@ -373,13 +380,23 @@ class MuiTabItem extends HTMLElement {
 
     this.updateSlotState();
     this.updateActiveState();
+    this.updateDisabledState();
   }
 
   updateActiveState() {
     const isActive = this.hasAttribute("active");
     this.setAttribute("role", "tab");
     this.setAttribute("aria-selected", isActive ? "true" : "false");
-    this.setAttribute("tabindex", isActive ? "0" : "-1");
+    this.setAttribute("tabindex", isActive && !this.hasAttribute("disabled") ? "0" : "-1");
+
+    this.syncSlottedAffordances(this.beforeSlot);
+    this.syncSlottedAffordances(this.afterSlot);
+  }
+
+  updateDisabledState() {
+    const isDisabled = this.hasAttribute("disabled");
+    this.setAttribute("aria-disabled", isDisabled ? "true" : "false");
+    this.setAttribute("tabindex", !isDisabled && this.hasAttribute("active") ? "0" : "-1");
 
     this.syncSlottedAffordances(this.beforeSlot);
     this.syncSlottedAffordances(this.afterSlot);

@@ -25,6 +25,13 @@ export const muiApi = {
         default: "false",
         description: "Disables input interaction.",
       },
+      { name: "required", type: { text: "boolean" }, default: "false", description: "Applies the native required constraint and displays a label asterisk. Prefer optional markers to identify exceptional fields, then show validation feedback through Field when needed." },
+      { name: "readonly", type: { text: "boolean" }, default: "false", description: "Makes the native input read-only while keeping its value selectable and focusable." },
+      { name: "read-only", type: { text: "boolean" }, default: "false", description: "Alias for `readonly`. Prefer `readonly` in new markup." },
+      { name: "autocomplete", type: { text: "string" }, description: "Native autocomplete hint, such as `email`, `current-password`, or `one-time-code`." },
+      { name: "autocorrect", type: { text: '"on" | "off"' }, description: "Controls native autocorrection where supported." },
+      { name: "autocapitalize", type: { text: '"none" | "sentences" | "words" | "characters"' }, description: "Controls native automatic capitalization where supported." },
+      { name: "spellcheck", type: { text: "boolean" }, description: "Controls native spellchecking." },
       {
         name: "hide-label",
         type: { text: "boolean" },

@@ -331,6 +331,15 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
+          "key": "button-group-spacing",
+          "title": "Button-Group: Spacing",
+          "description": "Controls the gap between related actions.",
+          "list": [
+            "Button groups default to space=\"300\", matching dialog and drawer action spacing.",
+            "Use a bare Muibook token scale such as 100, 200, or 400, or pass any valid CSS gap value."
+          ]
+        },
+        {
           "key": "icon-before-and-after",
           "title": "Icon (Before & After)",
           "description": "Composes leading and trailing content with Button.",
