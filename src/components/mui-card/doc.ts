@@ -136,6 +136,7 @@ export const muiDocs: MuiDocs = {
           "description": "If a mui-slat is slotted directly into the mui-card-body,\n          if will automatically align the slats with the heading to ensure consistent alignment within a card.",
           "list": [
             "mui-slat-group is added within the mui-card-body to apply an offset for the slat items",
+            "Card Body re-scans descendant Slats when they mount later so card-slot is not limited to first paint",
             "Place slats directly inside mui-card-body to inherit alignment",
             "Use this layout only for cards with limited width. For wider layouts, consider using a table."
           ]

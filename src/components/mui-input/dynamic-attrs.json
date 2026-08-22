@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "menu-slot",
+      "description": "Applied to a direct form control inside Menu so it inherits Menu sizing and joined corner treatment."
+    }
+  ]
+}

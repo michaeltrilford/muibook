@@ -3,6 +3,10 @@
   "destinationOnly": true,
   "attributes": [
     {
+      "name": "inner-space",
+      "description": "Set when there is visible slotted content that is not Code, allowing Footer inset padding. Code stays flush to the card edge."
+    },
+    {
       "name": "has-button-group",
       "description": "Set when a Button Group is present, removing Card Footer top padding while preserving size-aware inline and bottom spacing."
     }

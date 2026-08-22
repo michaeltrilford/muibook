@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "has-after",
+      "description": "Set when after slot content exists, allowing Search Input to show the compact action row and reveal search over those controls."
+    },
+    {
+      "name": "menu-slot",
+      "description": "Applied to a direct Search Input inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
+    }
+  ]
+}

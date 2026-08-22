@@ -200,7 +200,14 @@ export default {
 
             const dynamicAttrs = readDynamicAttrs(mod.path);
             if (dynamicAttrs) {
-              dynamicAttrsManifest[decl.tagName] = dynamicAttrs;
+              const targetTags = dynamicAttrs.tags || (dynamicAttrs.tagName ? [dynamicAttrs.tagName] : null);
+              if (!targetTags || targetTags.includes(decl.tagName)) {
+                dynamicAttrsManifest[decl.tagName] = {
+                  version: dynamicAttrs.version,
+                  destinationOnly: dynamicAttrs.destinationOnly,
+                  attributes: dynamicAttrs.attributes,
+                };
+              }
             }
           }
         }

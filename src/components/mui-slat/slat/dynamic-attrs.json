@@ -17,6 +17,14 @@
     {
       "name": "card-body-size-none-slot-last",
       "description": "Applied to the last slat in a Card Body with size none, allowing its exposed bottom radius to match the card."
+    },
+    {
+      "name": "result-slot",
+      "description": "Applied to a Slat used in Result Bar, allowing the row to match result-surface inset and radius."
+    },
+    {
+      "name": "result-slot-last",
+      "description": "Applied to the last Slat in Result Bar, allowing its exposed bottom radius to match the result surface."
     }
   ]
 }

@@ -5,6 +5,10 @@ class MuiCardBody extends HTMLElement {
     return ["size"];
   }
 
+  private slotEl: HTMLSlotElement | null = null;
+  private slottedObserver: MutationObserver | null = null;
+  private slottedUpdateScheduled = false;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -14,15 +18,41 @@ class MuiCardBody extends HTMLElement {
     this.render();
   }
 
+  disconnectedCallback() {
+    this.teardownSlottedObservers();
+  }
+
   attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null): void {
     if (name === "size") {
       this.updateSlottedContent();
     }
   }
 
+  private handleSlotChange = () => {
+    this.updateSlottedContent();
+  };
+
+  private teardownSlottedObservers(): void {
+    this.slotEl?.removeEventListener("slotchange", this.handleSlotChange);
+    this.slotEl = null;
+    this.slottedObserver?.disconnect();
+    this.slottedObserver = null;
+  }
+
+  private observeSlottedContent(): void {
+    this.teardownSlottedObservers();
+    this.slotEl = this.shadowRoot?.querySelector("slot") ?? null;
+    this.slotEl?.addEventListener("slotchange", this.handleSlotChange);
+    this.slottedObserver = new MutationObserver(() => this.updateSlottedContent());
+    this.slottedObserver.observe(this, { childList: true, subtree: true });
+  }
+
   updateSlottedContent(): void {
+    if (this.slottedUpdateScheduled) return;
+    this.slottedUpdateScheduled = true;
     requestAnimationFrame(() => {
-      if (!this.shadowRoot) return;
+      this.slottedUpdateScheduled = false;
+      if (!this.isConnected || !this.shadowRoot) return;
       const slot = this.shadowRoot.querySelector("slot") as HTMLSlotElement | null;
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
@@ -268,6 +298,7 @@ class MuiCardBody extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+    this.observeSlottedContent();
     this.updateSlottedContent();
   }
 }

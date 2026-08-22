@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "usage",
+      "values": ["surface"],
+      "description": "Set to `surface` when Tab Bar sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the tab treatment to match that framed surface."
+    }
+  ]
+}

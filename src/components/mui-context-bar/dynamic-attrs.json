@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "prompt-position",
+      "values": [
+        {
+          "value": "above",
+          "description": "Set by Prompt when the Context Bar is in the context-above slot, so the row stacks above the composer."
+        },
+        {
+          "value": "below",
+          "description": "Set by Prompt when the Context Bar is in the context-below slot, so the row stacks below the composer."
+        }
+      ]
+    }
+  ]
+}

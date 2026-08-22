@@ -414,7 +414,7 @@ class MuiDropdown extends HTMLElement {
       this.portalItems();
       const menu = this.activeMenu;
       if (!menu) return;
-      menu.style.display = "block"; // restore for transitions
+      menu.style.display = "block"; // restore for transitions; stay visually hidden until positioned
       if (this.portalDialog && this.portalMenu?.hasAttribute("popover")) {
         try {
           this.portalMenu.showPopover();
@@ -422,6 +422,7 @@ class MuiDropdown extends HTMLElement {
           // The dialog may have closed between resolving and opening the portal.
         }
       }
+      this.adjustPosition(true);
       requestAnimationFrame(() => {
         menu.classList.add("show");
         menu.removeAttribute("inert"); // enable interaction
@@ -670,6 +671,7 @@ class MuiDropdown extends HTMLElement {
     style.textContent = `
       .mui-dropdown-portal {
         display: none;
+        visibility: hidden;
         opacity: 0;
         transform: translateY(-0.25rem);
         transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
@@ -919,6 +921,7 @@ class MuiDropdown extends HTMLElement {
         .dropdown-menu {
           /* hidden state */
           display: none;
+          visibility: hidden;
           opacity: 0;
           transform: translateY(-0.25rem);
           transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;

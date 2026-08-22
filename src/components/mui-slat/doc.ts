@@ -317,6 +317,7 @@ export const muiDocs: MuiDocs = {
         "A strong pattern is a header slat followed by grouped item slats for balances, recent activity, account options, or grouped settings.",
         "Use inside Card when grouped rows need a shared container or section framing.",
         "When SlatGroup is inside CardBody, leave CardBody size unset by default; CardBody detects SlatGroup and applies the correct card spacing automatically.",
+        "Slats mapped or remounted after first paint still receive card-slot: Card Body re-scans descendant childList changes, and Slat Group with usage=card stamps eligible children as they appear.",
         "Pair with Rule between header and item sets when additional separation is needed.",
         "Use Slat for the individual row content and SlatGroup for the grouped structure.",
       ],
@@ -324,7 +325,10 @@ export const muiDocs: MuiDocs = {
 
     accessibility: {
       designerList: ["Maintain a consistent row order so grouped content is easy to scan."],
-      engineerList: ["Use SlatGroup as structural grouping; individual mui-slat rows continue to own their row/cell semantics."],
+      engineerList: [
+        "Use SlatGroup as structural grouping; individual mui-slat rows continue to own their row/cell semantics.",
+        "Do not stamp card-slot in app markup. Card Body and Slat Group usage=card apply it, including late-mounted children.",
+      ],
     },
 
     anatomy: {

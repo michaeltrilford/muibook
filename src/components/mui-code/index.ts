@@ -38,7 +38,9 @@ class MuiCode extends HTMLElement {
         display: grid;
       }
       :host([inline]) {
-        display: inline;
+        display: inline-flex;
+        align-items: baseline;
+        vertical-align: baseline;
       }
       :host([usage="surface"]) {
         --code-background: var(--code-background-surface);
@@ -78,15 +80,14 @@ class MuiCode extends HTMLElement {
       }
 
       :host([inline]) code {
-        display: inline-block;
-        vertical-align: baseline;
+        display: inline;
         padding: var(--space-050) var(--space-100);
         width: auto;
         overflow-x: visible;
         white-space: ${isWrap ? "pre-wrap" : "nowrap"};
       }
       :host([inline][prose-slot]) code {
-        padding: var(--space-000) var(--space-100);
+        padding: var(--space-000) var(--space-050);
       }
 
       code:focus-visible {

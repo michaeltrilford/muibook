@@ -13,6 +13,10 @@
     {
       "name": "menu-slot",
       "description": "Applied to direct Body content inside Menu so it inherits Menu sizing and action-aligned padding."
+    },
+    {
+      "name": "menu-inset",
+      "description": "Applied with menu-slot when Menu is inset, allowing Body padding to account for the inset offset."
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "tagName": "mui-date-picker",
+  "attributes": [
+    {
+      "name": "menu-slot",
+      "description": "Applied to a direct Date Picker inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
+    }
+  ]
+}

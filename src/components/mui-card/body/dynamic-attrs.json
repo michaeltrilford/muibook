@@ -11,8 +11,12 @@
       "description": "Set when accordion slat group content exists, allowing the card body to tune internal spacing for grouped accordions."
     },
     {
+      "name": "inner-space",
+      "description": "Set when default-slot content needs inset padding, including card slat groups. Not set when table or accordion layout owns the surface, and not set when size is none."
+    },
+    {
       "name": "inner-space-top",
-      "description": "Set when top inner spacing is needed, allowing the card body to adjust vertical rhythm."
+      "description": "Set by Card when a Header is present, allowing Card to collapse Body top padding so the sections sit flush."
     }
   ]
 }

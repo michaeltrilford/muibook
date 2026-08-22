@@ -1,5 +1,22 @@
 ## Header [Start]
 
+## v27.0.1
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Fixed & Improved
+
+- Destination `dynamic-attrs.json` now matches runtime stamps: Card Body/Footer `inner-space`, Card `inner-space-top` set-when copy, Menu/Alert/Result/Prompt destination attrs, and `usage` on Slat Group (`card` / `accordion`), Code and Tab Bar (`surface`), Button (`input` / `header-bar`), Link and Chip (`input`), Dropdown (`header-bar`), Avatar Chip (`media-player`), and Avatar (`color-input`). Valued destination attrs list each stamp separately (`usage="card"`, `usage="accordion"`) with who sets it.
+- Inline `mui-code` is now one `inline-flex` chip with baseline alignment, so punctuation immediately after a snippet sits flush instead of leaving a nested `inline-block` gap. Inside Body or List Item prose, `prose-slot` also reduces chip padding to `var(--space-000) var(--space-050)` so the snippet sits in the text line.
+- `mui-card-body` re-scans descendant childList changes (not only first paint) so late-mounted or mapped Slats still receive `card-slot`; `mui-slat-group` with `usage="card"` stamps eligible Slat and File Diff children as they appear.
+- Dialog-promoted Dropdowns write `top` / `left` before `.show`, and unpositioned portals stay `visibility: hidden`, so Menus inside a native modal no longer flash at the viewport origin.
+
+---
+
+## Header [Start]
+
 ## v27.0.0
 
 _Status: Released_

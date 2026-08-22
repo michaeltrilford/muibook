@@ -311,11 +311,11 @@ Dynamic attrs are the machine-readable record of the parent/child and runtime st
 
 Common dynamic attr families in this codebase include:
 
-- Slot presence and affordance state: `has-before`, `has-after`, `has-actions`, `has-extra-actions`, `has-message`, `has-rule`, `has-header`, `has-footer`, `has-notes`.
+- Slot presence and affordance state: `has-before`, `has-after`, `has-actions`, `has-extra-actions`, `has-message`, `has-rule`, `has-header`, `has-footer`, `has-notes`, `has-top`, `has-bottom`.
 - Content-shape state: `icon-only`, `avatar-only`, `has-video`, `has-avatar-chip`, `has-error`, `has-chrome`.
-- Destination context attrs: `card-slot`, `card-body-size-none-slot`, `menu-slot`, `menu-slot-first`, `menu-slot-last`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`.
-- Layout/container context attrs: `in-card`, `in-form-section`, `in-dialog`, `in-drawer`, `usage`, `first-child`, `last-child`.
-- Presentation/runtime attrs: `notes-visible`, `data-slide-section`, `slide-active`, `slide-hidden`, `inner-space-top`.
+- Destination context attrs: `card-slot`, `card-body-size-none-slot`, `menu-slot`, `menu-slot-first`, `menu-slot-last`, `menu-inset`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`, `result-slot`, `result-slot-last`, `prompt-position`.
+- Layout/container context attrs: `in-card`, `in-form-section`, `in-dialog`, `in-drawer`, named `usage` values such as `usage="card"` and `usage="accordion"`, `first-child`, `last-child`.
+- Presentation/runtime attrs: `notes-visible`, `data-slide-section`, `slide-active`, `slide-hidden`, `inner-space`, `inner-space-top`.
 
 Dynamic attrs should help tooling reproduce component behavior without pretending those attrs are user-authored API.
 

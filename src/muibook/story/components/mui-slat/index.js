@@ -23,7 +23,7 @@ class storySlat extends HTMLElement {
       {
         component: "mui-slat-group",
         parentAttrs: [],
-        childAttrs: ['usage="card"'],
+        childAttrs: [],
       },
     ]);
 

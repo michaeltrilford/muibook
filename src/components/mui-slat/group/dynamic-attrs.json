@@ -4,7 +4,16 @@
   "attributes": [
     {
       "name": "usage",
-      "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+      "values": [
+        {
+          "value": "card",
+          "description": "Set by Card Body so the group switches to card spacing and offsets."
+        },
+        {
+          "value": "accordion",
+          "description": "Set by Accordion Block so the group switches to accordion spacing and offsets."
+        }
+      ]
     }
   ]
 }

@@ -29,11 +29,22 @@ const dynamicAttributeDescription =
   "In Shadow DOM, :has() can’t cross boundaries, so attributes are the practical way to react to structure. If a slot or type exists, set a host attribute to keep behaviour consistent across preview, builder, and export.";
 
 const normalizeDynamicAttribute = (item) => {
-  const name = typeof item === "string" ? item : item?.name;
+  let name = typeof item === "string" ? item : item?.name;
   if (!name) return null;
+
+  const valuedMatch = String(name).match(/^([A-Za-z0-9-]+)=["']?([^"']+)["']?$/);
+  if (valuedMatch) name = valuedMatch[1];
+
+  const values =
+    typeof item === "object" && Array.isArray(item?.values)
+      ? item.values
+      : valuedMatch
+        ? [{ value: valuedMatch[2], description: typeof item === "object" ? item.description : undefined }]
+        : undefined;
 
   return {
     name,
+    values,
     description:
       typeof item === "object" && item?.description
         ? item.description
@@ -41,16 +52,46 @@ const normalizeDynamicAttribute = (item) => {
   };
 };
 
-const uniqueDynamicAttributes = (items = []) => {
-  const attrsByName = new Map();
+const expandDynamicAttributes = (items = []) => {
+  const rows = [];
+  const seen = new Set();
 
   items.forEach((item) => {
     const attr = normalizeDynamicAttribute(item);
-    if (!attr || attrsByName.has(attr.name)) return;
-    attrsByName.set(attr.name, attr);
+    if (!attr) return;
+
+    const valueEntries = (attr.values || [])
+      .map((entry) => {
+        if (typeof entry === "string") return { value: entry };
+        if (entry?.value) return { value: entry.value, description: entry.description };
+        return null;
+      })
+      .filter(Boolean);
+
+    if (valueEntries.length) {
+      valueEntries.forEach((entry) => {
+        const type = `${attr.name}="${entry.value}"`;
+        if (seen.has(type)) return;
+        seen.add(type);
+        rows.push({
+          name: attr.name,
+          type,
+          description: entry.description || attr.description,
+        });
+      });
+      return;
+    }
+
+    if (seen.has(attr.name)) return;
+    seen.add(attr.name);
+    rows.push({
+      name: attr.name,
+      type: attr.name,
+      description: attr.description,
+    });
   });
 
-  return Array.from(attrsByName.values());
+  return rows;
 };
 
 class StoryApiTypes extends HTMLElement {
@@ -107,7 +148,7 @@ class StoryApiTypes extends HTMLElement {
         return [];
       }
     })();
-    const dynamicAttributes = uniqueDynamicAttributes([
+    const dynamicAttributes = expandDynamicAttributes([
       ...(Array.isArray(dynamicAttrsDefinition?.attributes) ? dynamicAttrsDefinition.attributes : []),
       ...dynamicAttributesFromReference,
     ]);
@@ -137,7 +178,7 @@ class StoryApiTypes extends HTMLElement {
                     return /*html*/ `
                     <mui-row-group>
                       <mui-row columns="${dynamicAttributeColumns}" size="small">
-                        <mui-cell class="card-slot"><mui-body size="x-small">${codeValue(attr.name)}</mui-body></mui-cell>
+                        <mui-cell class="card-slot"><mui-body size="x-small">${codeValue(attr.type)}</mui-body></mui-cell>
                         <mui-cell class="card-slot"><mui-body size="x-small">${escapeHtml(attr.description)}</mui-body></mui-cell>
                       </mui-row>
                     </mui-row-group>
@@ -153,7 +194,7 @@ class StoryApiTypes extends HTMLElement {
                     return /*html*/ `
                     <div class="mobile-api-row">
                       <mui-v-stack space="var(--space-200)">
-                        <mui-body size="small" weight="bold">${codeValue(attr.name)}</mui-body>
+                        <mui-body size="small" weight="bold">${codeValue(attr.type)}</mui-body>
                         <mui-body size="x-small">${escapeHtml(attr.description)}</mui-body>
                       </mui-v-stack>
                     </div>

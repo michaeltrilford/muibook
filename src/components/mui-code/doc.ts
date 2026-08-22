@@ -21,8 +21,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use to present short snippets of code or commands.",
         "Ideal for inline code within paragraphs or standalone blocks.",
-        "Use the `inline` attribute to render code snippets inline with text, utilizing compact padding and baseline alignment.",
-        "Inline code inside Body or List Item prose receives tighter vertical padding so it sits naturally with the line-height.",
+        "Use the `inline` attribute to render code snippets inline with text. The host is one `inline-flex` chip so following punctuation sits flush; inner code is not a nested inline-block.",
+        "Inline code inside Body or List Item prose receives `prose-slot` padding of `var(--space-000) var(--space-050)` so the chip sits in the text line.",
         "Ensure code is visually distinct with monospace font and background.",
         "Avoid using for long or complex code—consider specialised code blocks or editors.",
       ],

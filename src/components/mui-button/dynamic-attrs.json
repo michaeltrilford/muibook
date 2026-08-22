@@ -35,6 +35,10 @@
       "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
     },
     {
+      "name": "menu-inset",
+      "description": "Applied to Menu actions when Menu is inset, allowing action padding to account for the inset offset."
+    },
+    {
       "name": "menu-slot-first",
       "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
     },
@@ -65,6 +69,19 @@
     {
       "name": "alert-attention-slot",
       "description": "Applied to attention alert action content, allowing the action to match the attention alert tone."
+    },
+    {
+      "name": "usage",
+      "values": [
+        {
+          "value": "input",
+          "description": "Set by Input when the Button is slotted before or after the field, so the action matches the input surface."
+        },
+        {
+          "value": "header-bar",
+          "description": "Set by Header Bar, or a Header Bar Dropdown, so the action matches Header Bar sizing and chrome."
+        }
+      ]
     }
   ]
 }

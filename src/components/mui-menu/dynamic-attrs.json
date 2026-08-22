@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "has-top",
+      "description": "Set when top slot content exists, allowing Menu to reserve and style the top region."
+    },
+    {
+      "name": "has-bottom",
+      "description": "Set when bottom slot content exists, allowing Menu to reserve and style the bottom region."
+    }
+  ]
+}

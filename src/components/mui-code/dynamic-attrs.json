@@ -4,7 +4,12 @@
   "attributes": [
     {
       "name": "prose-slot",
-      "description": "Applied to inline code used inside body or list item prose, allowing tighter vertical padding that sits naturally with text line-height."
+      "description": "Applied when inline Code sits inside Body or List Item prose, reducing chip padding to `var(--space-000) var(--space-050)` so it sits in the text line."
+    },
+    {
+      "name": "usage",
+      "values": ["surface"],
+      "description": "Set to `surface` when Code sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the code background to match that surface."
     }
   ]
 }

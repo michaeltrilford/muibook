@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "usage",
+      "values": ["color-input"],
+      "description": "Set to `color-input` when Avatar is slotted before or after Color Input, allowing dimensions and initials to match the field action size."
+    }
+  ]
+}

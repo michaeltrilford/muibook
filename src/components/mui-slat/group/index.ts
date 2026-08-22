@@ -15,6 +15,8 @@ class MuiSlatGroup extends HTMLElement {
     if (name === "usage") {
       this.usage = newValue;
       this.render();
+      this.observeSlotChanges();
+      this.setLastInGroup();
     }
   }
 
@@ -26,6 +28,10 @@ class MuiSlatGroup extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.teardownSlotChanges();
+  }
+
+  private teardownSlotChanges() {
     if (this.mutationObserver) {
       this.mutationObserver.disconnect();
       this.mutationObserver = null;
@@ -33,6 +39,7 @@ class MuiSlatGroup extends HTMLElement {
   }
 
   private observeSlotChanges() {
+    this.teardownSlotChanges();
     const slot = this.shadowRoot?.querySelector("slot");
     if (!slot) return;
 
@@ -46,7 +53,25 @@ class MuiSlatGroup extends HTMLElement {
 
     this.mutationObserver.observe(this, { childList: true, subtree: true });
   }
+
+  private applyCardSlotContext() {
+    if (this.usage !== "card") return;
+
+    Array.from(this.children).forEach((el) => {
+      if (!(el instanceof HTMLElement)) return;
+      const tag = el.tagName.toLowerCase();
+      if (tag !== "mui-slat" && tag !== "mui-file-diff") return;
+
+      const variant = el.getAttribute("variant") || "action";
+      if (variant === "action" || variant === "row") {
+        el.setAttribute("card-slot", "");
+      }
+    });
+  }
+
   private setLastInGroup() {
+    this.applyCardSlotContext();
+
     const children = Array.from(this.children) as HTMLElement[];
 
     const isSlat = (el: Element | undefined): el is HTMLElement => !!el && el.tagName.toLowerCase() === "mui-slat";

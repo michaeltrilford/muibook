@@ -21,6 +21,47 @@
     {
       "name": "avatar-only",
       "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
+    },
+    {
+      "name": "menu-slot",
+      "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
+    },
+    {
+      "name": "menu-slot-first",
+      "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
+    },
+    {
+      "name": "menu-slot-last",
+      "description": "Applied to the last menu action, allowing edge radius and spacing to match the menu surface."
+    },
+    {
+      "name": "menu-inset",
+      "description": "Applied to Menu actions when Menu is inset, allowing action padding to account for the inset offset."
+    },
+    {
+      "name": "alert-slot",
+      "description": "Applied to alert action content, allowing the action to match the alert layout and tone."
+    },
+    {
+      "name": "alert-positive-slot",
+      "description": "Applied to positive alert action content, allowing the action to match the positive alert tone."
+    },
+    {
+      "name": "alert-info-slot",
+      "description": "Applied to info alert action content, allowing the action to match the info alert tone."
+    },
+    {
+      "name": "alert-warning-slot",
+      "description": "Applied to warning alert action content, allowing the action to match the warning alert tone."
+    },
+    {
+      "name": "alert-attention-slot",
+      "description": "Applied to attention alert action content, allowing the action to match the attention alert tone."
+    },
+    {
+      "name": "usage",
+      "values": ["input"],
+      "description": "Set to `input` when slotted before or after Input, allowing field-compatible sizing and chrome."
     }
   ]
 }

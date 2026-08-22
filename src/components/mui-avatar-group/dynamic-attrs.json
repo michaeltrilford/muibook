@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "card-slot",
+      "description": "Applied to an Avatar Group used in Card Body, allowing the avatar ring color to match the card surface."
+    }
+  ]
+}

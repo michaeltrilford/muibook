@@ -9,6 +9,11 @@
     {
       "name": "has-after",
       "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "usage",
+      "values": ["input"],
+      "description": "Set to `input` when Chip is slotted before or after Input, allowing radius and shell to match the field."
     }
   ]
 }

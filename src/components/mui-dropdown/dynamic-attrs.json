@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "usage",
+      "values": ["header-bar"],
+      "description": "Set to `header-bar` when Dropdown is used in Header Bar, allowing the trigger Button to inherit Header Bar sizing and chrome."
+    }
+  ]
+}

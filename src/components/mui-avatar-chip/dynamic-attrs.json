@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    {
+      "name": "usage",
+      "values": ["media-player"],
+      "description": "Set to `media-player` when Avatar Chip is slotted into Media Player metadata, allowing avatar scale to match that surface."
+    }
+  ]
+}

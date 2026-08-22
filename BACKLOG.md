@@ -1,5 +1,68 @@
 # Muibook Backlog
 
+# Completed — August 22nd
+
+## DONE | 1. Full review of runtime / destination dynamic attrs (Card `inner-space` was the known miss)
+
+`inner-space-top` remains live: Card stamps it on Body when a Header exists, and `::slotted([inner-space-top])` collapses Body top padding. `inner-space` is a separate Body/Footer inset flag and was the knowledge miss.
+
+### Inventory (added / removed / rewritten)
+
+| Tag | Attr | Change |
+| --- | --- | --- |
+| `mui-card-body` | `inner-space` | Added. Set when default-slot content needs inset padding, including card slat groups; not when table/accordion owns the surface; not when `size="none"`. |
+| `mui-card-body` | `inner-space-top` | Rewritten. Set by Card when a Header is present. |
+| `mui-card-footer` | `inner-space` | Added. Set when visible slotted content is not Code. |
+| `mui-avatar-group` | `card-slot` | Added. Card Body stamp for card-surface ring color. |
+| `mui-chip-rail` | `card-slot` | Added. Card Body stamp for card-surface rail masks. |
+| `mui-file-diff` | `card-slot`, `result-slot`, `result-slot-last` | Added. Forwarded to the inner Slat. |
+| `mui-slat` | `result-slot`, `result-slot-last` | Added. Result Bar stamps. |
+| `mui-body` | `menu-inset` | Added. Menu inset Body padding. |
+| `mui-button` | `menu-inset` | Added. Menu inset action padding. |
+| `mui-link` | `menu-slot`, `menu-slot-first`, `menu-slot-last`, `menu-inset`, `alert-slot`, `alert-*-slot` | Added. Same destination families as Button. |
+| `mui-input`, `mui-select`, `mui-textarea`, `mui-date-picker`, `mui-time-picker`, `mui-search-input`, `mui-chip-input` | `menu-slot` | Added. Direct Menu form controls. |
+| `mui-search-input` | `has-after` | Added. After-slot compact/reveal layout. |
+| `mui-context-bar` | `prompt-position` | Added. Prompt `context-above` / `context-below`. |
+| `mui-menu` | `has-top`, `has-bottom` | Added. Named slot presence. |
+| `mui-slat-group` | `usage` | Kept. Card Body stamps `card`; Accordion Block stamps `accordion`. |
+| `mui-code` | `usage` | Added. `surface` inside Card, Drawer, Dialog, or Carousel. |
+| `mui-tab-bar` | `usage` | Added. `surface` from the surface owner. |
+| `mui-button` | `usage` | Added. `input` from Input; `header-bar` from Header Bar / Dropdown. |
+| `mui-link`, `mui-chip` | `usage` | Added. `input` from Input. |
+| `mui-dropdown` | `usage` | Added. `header-bar` from Header Bar. |
+| `mui-avatar-chip` | `usage` | Added. `media-player` from Media Player. |
+| `mui-avatar` | `usage` | Added. `color-input` from Color Input. |
+
+### Called out, not in dynamic attrs
+
+- Public CEM already covers Card `size` on Header/Body/Footer, Code/Tab Bar `usage="surface"`, Menu compact `padding-inline` / `surface="seamless"`.
+- `mui-dialog` stamps unused `has-header` (no host CSS).
+- Empty Card Footer stamps `hidden`.
+- Prompt `fan-open`, `preview-dialog-*`, and `data-prompt-position` are internal runtime.
+- Card Body can stamp `card-body-size-none-slot*` on `mui-file-diff`, but File Diff does not observe or forward those attrs.
+- Menu stamps `menu-slot` on `mui-range-input`, but Range Input does not consume it.
+
+---
+
+# Completed — August 22nd (earlier)
+
+## DONE | 1. Position dialog-promoted Dropdown menus before they become visible
+
+- `toggleMenu()` portals the Menu, promotes popover when needed, then `adjustPosition(true)` before adding `.show`.
+- `.mui-dropdown-portal` (and in-host `.dropdown-menu`) use `visibility: hidden` until `.show`, so an unpositioned popover cannot paint at the UA origin.
+
+## DONE | 2. Inline Code should sit flush with following punctuation
+
+- `:host([inline])` is `display: inline-flex` with `align-items: baseline` and `vertical-align: baseline`.
+- Inner `<code>` is `display: inline` (no nested `inline-block`), so punctuation after the host sits flush with the chip.
+
+## DONE | 3. Re-scan Card Body context when Slats mount late
+
+- `mui-card-body` coalesces `updateSlottedContent()` on default-slot `slotchange` and a host `MutationObserver` (`childList`, `subtree`; not attributes).
+- `mui-slat-group` with `usage="card"` stamps `card-slot` on action/row Slat and File Diff children in `setLastInGroup()`, including after usage `render()` rebinds observers.
+
+---
+
 # Completed — August 19th
 
 ## DONE | 1. Align Dialog surface usage scanning with Drawer behaviour (`applySurfaceUsage`)

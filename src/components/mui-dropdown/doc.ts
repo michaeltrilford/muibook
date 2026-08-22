@@ -31,7 +31,7 @@ export const muiDocs: MuiDocs = {
         "Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.",
         "Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.",
         "Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.",
-        "Dropdown resolves an open ancestor native dialog as its portal root and promotes the Menu into the browser top layer so modal content does not cover it.",
+        "Dropdown resolves an open ancestor native dialog as its portal root and promotes the Menu into the browser top layer so modal content does not cover it. Positioning runs before the Menu is shown so a dialog-promoted popover never paints at the viewport origin.",
         "Use zindex to order the Menu within its current portal or top-layer context. A large z-index alone cannot move an ordinary body portal above a native modal dialog.",
         "Ensure essential or frequently-used actions are not hidden within a dropdown visible outside the dropdown.",
       ],

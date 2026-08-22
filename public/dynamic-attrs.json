@@ -1,7 +1,43 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-21T08:10:58.474Z",
+  "generatedAt": "2026-08-22T07:18:19.182Z",
   "components": {
+    "mui-avatar": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "values": [
+            "color-input"
+          ],
+          "description": "Set to `color-input` when Avatar is slotted before or after Color Input, allowing dimensions and initials to match the field action size."
+        }
+      ]
+    },
+    "mui-avatar-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to an Avatar Group used in Card Body, allowing the avatar ring color to match the card surface."
+        }
+      ]
+    },
+    "mui-avatar-chip": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "values": [
+            "media-player"
+          ],
+          "description": "Set to `media-player` when Avatar Chip is slotted into Media Player metadata, allowing avatar scale to match that surface."
+        }
+      ]
+    },
     "mui-body": {
       "version": 1,
       "destinationOnly": true,
@@ -17,6 +53,10 @@
         {
           "name": "menu-slot",
           "description": "Applied to direct Body content inside Menu so it inherits Menu sizing and action-aligned padding."
+        },
+        {
+          "name": "menu-inset",
+          "description": "Applied with menu-slot when Menu is inset, allowing Body padding to account for the inset offset."
         }
       ]
     },
@@ -57,6 +97,10 @@
           "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
         },
         {
+          "name": "menu-inset",
+          "description": "Applied to Menu actions when Menu is inset, allowing action padding to account for the inset offset."
+        },
+        {
           "name": "menu-slot-first",
           "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
         },
@@ -87,6 +131,19 @@
         {
           "name": "alert-attention-slot",
           "description": "Applied to attention alert action content, allowing the action to match the attention alert tone."
+        },
+        {
+          "name": "usage",
+          "values": [
+            {
+              "value": "input",
+              "description": "Set by Input when the Button is slotted before or after the field, so the action matches the input surface."
+            },
+            {
+              "value": "header-bar",
+              "description": "Set by Header Bar, or a Header Bar Dropdown, so the action matches Header Bar sizing and chrome."
+            }
+          ]
         }
       ]
     },
@@ -101,6 +158,33 @@
         {
           "name": "has-after",
           "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "usage",
+          "values": [
+            "input"
+          ],
+          "description": "Set to `input` when Chip is slotted before or after Input, allowing radius and shell to match the field."
+        }
+      ]
+    },
+    "mui-chip-input": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct Chip Input inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
+        }
+      ]
+    },
+    "mui-chip-rail": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a Chip Rail used in Card Body, allowing rail edge masks to match the card surface."
         }
       ]
     },
@@ -110,7 +194,43 @@
       "attributes": [
         {
           "name": "prose-slot",
-          "description": "Applied to inline code used inside body or list item prose, allowing tighter vertical padding that sits naturally with text line-height."
+          "description": "Applied when inline Code sits inside Body or List Item prose, reducing chip padding to `var(--space-000) var(--space-050)` so it sits in the text line."
+        },
+        {
+          "name": "usage",
+          "values": [
+            "surface"
+          ],
+          "description": "Set to `surface` when Code sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the code background to match that surface."
+        }
+      ]
+    },
+    "mui-context-bar": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "prompt-position",
+          "values": [
+            {
+              "value": "above",
+              "description": "Set by Prompt when the Context Bar is in the context-above slot, so the row stacks above the composer."
+            },
+            {
+              "value": "below",
+              "description": "Set by Prompt when the Context Bar is in the context-below slot, so the row stacks below the composer."
+            }
+          ]
+        }
+      ]
+    },
+    "mui-date-picker": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct Date Picker inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
         }
       ]
     },
@@ -128,6 +248,19 @@
         }
       ]
     },
+    "mui-dropdown": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "values": [
+            "header-bar"
+          ],
+          "description": "Set to `header-bar` when Dropdown is used in Header Bar, allowing the trigger Button to inherit Header Bar sizing and chrome."
+        }
+      ]
+    },
     "mui-field": {
       "version": 1,
       "destinationOnly": true,
@@ -135,6 +268,24 @@
         {
           "name": "has-message",
           "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
+        }
+      ]
+    },
+    "mui-file-diff": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a File Diff used in Card Body, allowing the inner Slat to use edge-to-edge layout with content inset matched to the current Card size."
+        },
+        {
+          "name": "result-slot",
+          "description": "Applied to a File Diff used in Result Bar, allowing the inner Slat to match result-surface inset and radius."
+        },
+        {
+          "name": "result-slot-last",
+          "description": "Applied to the last File Diff in Result Bar, allowing the inner Slat bottom radius to match the result surface."
         }
       ]
     },
@@ -176,6 +327,16 @@
         }
       ]
     },
+    "mui-input": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct form control inside Menu so it inherits Menu sizing and joined corner treatment."
+        }
+      ]
+    },
     "mui-link": {
       "version": 1,
       "destinationOnly": true,
@@ -199,6 +360,63 @@
         {
           "name": "avatar-only",
           "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
+        },
+        {
+          "name": "menu-slot",
+          "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
+        },
+        {
+          "name": "menu-slot-first",
+          "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
+        },
+        {
+          "name": "menu-slot-last",
+          "description": "Applied to the last menu action, allowing edge radius and spacing to match the menu surface."
+        },
+        {
+          "name": "menu-inset",
+          "description": "Applied to Menu actions when Menu is inset, allowing action padding to account for the inset offset."
+        },
+        {
+          "name": "alert-slot",
+          "description": "Applied to alert action content, allowing the action to match the alert layout and tone."
+        },
+        {
+          "name": "alert-positive-slot",
+          "description": "Applied to positive alert action content, allowing the action to match the positive alert tone."
+        },
+        {
+          "name": "alert-info-slot",
+          "description": "Applied to info alert action content, allowing the action to match the info alert tone."
+        },
+        {
+          "name": "alert-warning-slot",
+          "description": "Applied to warning alert action content, allowing the action to match the warning alert tone."
+        },
+        {
+          "name": "alert-attention-slot",
+          "description": "Applied to attention alert action content, allowing the action to match the attention alert tone."
+        },
+        {
+          "name": "usage",
+          "values": [
+            "input"
+          ],
+          "description": "Set to `input` when slotted before or after Input, allowing field-compatible sizing and chrome."
+        }
+      ]
+    },
+    "mui-menu": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-top",
+          "description": "Set when top slot content exists, allowing Menu to reserve and style the top region."
+        },
+        {
+          "name": "has-bottom",
+          "description": "Set when bottom slot content exists, allowing Menu to reserve and style the bottom region."
         }
       ]
     },
@@ -239,6 +457,30 @@
         {
           "name": "in-drawer",
           "description": "Set when rendered inside a drawer, allowing the component to inherit drawer-aware divider treatment."
+        }
+      ]
+    },
+    "mui-search-input": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing Search Input to show the compact action row and reveal search over those controls."
+        },
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct Search Input inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
+        }
+      ]
+    },
+    "mui-select": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct form control inside Menu so it inherits Menu sizing and joined corner treatment."
         }
       ]
     },
@@ -294,6 +536,26 @@
         }
       ]
     },
+    "mui-textarea": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct form control inside Menu so it inherits Menu sizing and joined corner treatment."
+        }
+      ]
+    },
+    "mui-time-picker": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "menu-slot",
+          "description": "Applied to a direct Time Picker inside Menu and forwarded to the inner Input so it inherits Menu sizing and joined corner treatment."
+        }
+      ]
+    },
     "mui-accordion-block": {
       "version": 1,
       "destinationOnly": true,
@@ -325,8 +587,12 @@
           "description": "Set when accordion slat group content exists, allowing the card body to tune internal spacing for grouped accordions."
         },
         {
+          "name": "inner-space",
+          "description": "Set when default-slot content needs inset padding, including card slat groups. Not set when table or accordion layout owns the surface, and not set when size is none."
+        },
+        {
           "name": "inner-space-top",
-          "description": "Set when top inner spacing is needed, allowing the card body to adjust vertical rhythm."
+          "description": "Set by Card when a Header is present, allowing Card to collapse Body top padding so the sections sit flush."
         }
       ]
     },
@@ -334,6 +600,10 @@
       "version": 1,
       "destinationOnly": true,
       "attributes": [
+        {
+          "name": "inner-space",
+          "description": "Set when there is visible slotted content that is not Code, allowing Footer inset padding. Code stays flush to the card edge."
+        },
         {
           "name": "has-button-group",
           "description": "Set when a Button Group is present, removing Card Footer top padding while preserving size-aware inline and bottom spacing."
@@ -346,7 +616,16 @@
       "attributes": [
         {
           "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+          "values": [
+            {
+              "value": "card",
+              "description": "Set by Card Body so the group switches to card spacing and offsets."
+            },
+            {
+              "value": "accordion",
+              "description": "Set by Accordion Block so the group switches to accordion spacing and offsets."
+            }
+          ]
         }
       ]
     },
@@ -369,6 +648,14 @@
         {
           "name": "card-body-size-none-slot-last",
           "description": "Applied to the last slat in a Card Body with size none, allowing its exposed bottom radius to match the card."
+        },
+        {
+          "name": "result-slot",
+          "description": "Applied to a Slat used in Result Bar, allowing the row to match result-surface inset and radius."
+        },
+        {
+          "name": "result-slot-last",
+          "description": "Applied to the last Slat in Result Bar, allowing its exposed bottom radius to match the result surface."
         }
       ]
     },
@@ -386,13 +673,16 @@
         }
       ]
     },
-    "mui-cell": {
+    "mui-tab-bar": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "card-slot",
-          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
+          "name": "usage",
+          "values": [
+            "surface"
+          ],
+          "description": "Set to `surface` when Tab Bar sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the tab treatment to match that framed surface."
         }
       ]
     },
@@ -407,6 +697,16 @@
         {
           "name": "card-slot",
           "description": "Applied to a Table Row used in Card Body, allowing the row to use horizontal padding matched to the current Card size."
+        }
+      ]
+    },
+    "mui-cell": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a Table Cell used in Card Body, allowing the first and last cells to use the content inset matched to the current Card size."
         }
       ]
     },
