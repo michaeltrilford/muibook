@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-22T07:18:19.182Z",
+  "generatedAt": "2026-08-22T07:26:53.647Z",
   "components": {
     "mui-avatar": {
       "version": 1,
@@ -15,16 +15,6 @@
         }
       ]
     },
-    "mui-avatar-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "card-slot",
-          "description": "Applied to an Avatar Group used in Card Body, allowing the avatar ring color to match the card surface."
-        }
-      ]
-    },
     "mui-avatar-chip": {
       "version": 1,
       "destinationOnly": true,
@@ -35,6 +25,16 @@
             "media-player"
           ],
           "description": "Set to `media-player` when Avatar Chip is slotted into Media Player metadata, allowing avatar scale to match that surface."
+        }
+      ]
+    },
+    "mui-avatar-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to an Avatar Group used in Card Body, allowing the avatar ring color to match the card surface."
         }
       ]
     },
@@ -659,33 +659,6 @@
         }
       ]
     },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
-        }
-      ]
-    },
-    "mui-tab-bar": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "values": [
-            "surface"
-          ],
-          "description": "Set to `surface` when Tab Bar sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the tab treatment to match that framed surface."
-        }
-      ]
-    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -717,6 +690,33 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in Card Body, allowing edge-to-edge table layout with content inset matched to the current Card size."
+        }
+      ]
+    },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
+    "mui-tab-bar": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "values": [
+            "surface"
+          ],
+          "description": "Set to `surface` when Tab Bar sits inside Card, Card Body, Drawer, Dialog, or Carousel, allowing the tab treatment to match that framed surface."
         }
       ]
     }
